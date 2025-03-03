@@ -1,11 +1,14 @@
 package seedu.internsprint.internship;
 
+import seedu.internsprint.handler.StorageHandler;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class InternshipList {
     private final HashMap<String, ArrayList<Internship>> internshipMap;
     private int internshipCount = 0;
+    private final StorageHandler storageHandler = new StorageHandler();
 
     public InternshipList() {
         internshipMap = new HashMap<>();
@@ -25,7 +28,15 @@ public class InternshipList {
         return internshipMap.get(type).contains(internship);
     }
 
+    public void saveInternships() {
+        storageHandler.saveInternships(this);
+    }
+
     public int getInternshipCount() {
         return internshipCount;
+    }
+
+    public HashMap<String, ArrayList<Internship>> getInternshipMap() {
+        return internshipMap;
     }
 }

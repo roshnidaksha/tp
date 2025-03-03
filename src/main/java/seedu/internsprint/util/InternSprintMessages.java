@@ -6,6 +6,8 @@ public class InternSprintMessages {
     public static final String BYE_MESSAGE = "Goodbye! Hope to see you again soon!";
 
     public static final String WELCOME_MESSAGE = "Welcome to InternSprint!";
+    public static final String SAVE_SUCCESS_MESSAGE = "Internships saved successfully\n" +
+            "You can view the list of internships at data/internships.txt";
 
     public static final String LIST_COUNT_MESSAGE = "Now you have %d internships in the list";
 }
