@@ -1,7 +1,6 @@
 package seedu.internsprint.handler;
 
 import seedu.internsprint.internship.InternshipList;
-import seedu.internsprint.util.InternSprintExceptionMessages;
 
 import org.json.JSONArray;
 
@@ -9,6 +8,11 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Paths;
+
+import static seedu.internsprint.util.InternSprintExceptionMessages.FILE_ALREADY_EXISTS;
+import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_CREATE_DIRECTORY;
+import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_CREATE_FILE;
+import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_WRITE_FILE;
 
 public class StorageHandler {
     private static final String FILE_PATH = Paths.get("data", "internships.txt").toString();
@@ -22,16 +26,16 @@ public class StorageHandler {
         try {
             if (file.getParentFile() != null && !file.getParentFile().exists()) {
                 if (!file.getParentFile().mkdirs()) {
-                    throw new RuntimeException(String.format(InternSprintExceptionMessages.UNABLE_TO_CREATE_DIRECTORY,
+                    throw new RuntimeException(String.format(UNABLE_TO_CREATE_DIRECTORY,
                             file.getParentFile().getAbsolutePath()));
                 }
                 if (!file.createNewFile()) {
-                    throw new RuntimeException(String.format(InternSprintExceptionMessages.FILE_ALREADY_EXISTS,
+                    throw new RuntimeException(String.format(FILE_ALREADY_EXISTS,
                             file.getAbsolutePath()));
                 }
             }
         } catch (IOException e) {
-            throw new RuntimeException(String.format(InternSprintExceptionMessages.UNABLE_TO_CREATE_FILE,
+            throw new RuntimeException(String.format(UNABLE_TO_CREATE_FILE,
                     file.getAbsolutePath()));
         }
     }
@@ -48,7 +52,7 @@ public class StorageHandler {
         try (FileWriter fileWriter = new FileWriter(file)) {
             fileWriter.write(jsonArray.toString(4));
         } catch (IOException e) {
-            throw new RuntimeException(String.format(InternSprintExceptionMessages.UNABLE_TO_WRITE_FILE,
+            throw new RuntimeException(String.format(UNABLE_TO_WRITE_FILE,
                     file.getAbsolutePath()));
         }
     }

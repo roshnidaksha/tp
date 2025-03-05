@@ -5,7 +5,8 @@ import seedu.internsprint.command.CommandResult;
 import java.util.List;
 import java.util.Scanner;
 
-import static seedu.internsprint.util.InternSprintMessages.*;
+import static seedu.internsprint.util.InternSprintMessages.LOGO;
+import static seedu.internsprint.util.InternSprintMessages.WELCOME_MESSAGE;
 
 public class Ui {
     private static final int DASH_LINE_WIDTH = 120;

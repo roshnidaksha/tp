@@ -1,12 +1,12 @@
 package seedu.internsprint.command;
 
 import seedu.internsprint.internship.InternshipList;
-import seedu.internsprint.util.InternSprintMessages;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static seedu.internsprint.util.InternSprintMessages.BYE_MESSAGE;
+import static seedu.internsprint.util.InternSprintMessages.SAVE_SUCCESS_MESSAGE;
 
 public class ByeCommand extends Command {
     public static final String COMMAND_WORD = "bye";
@@ -26,7 +26,7 @@ public class ByeCommand extends Command {
 
         try {
             internships.saveInternships();
-            feedback.add(InternSprintMessages.SAVE_SUCCESS_MESSAGE);
+            feedback.add(SAVE_SUCCESS_MESSAGE);
         } catch (Exception e) {
             feedback.add(e.getMessage());
             result = new CommandResult(feedback);
