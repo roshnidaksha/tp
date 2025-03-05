@@ -16,5 +16,13 @@ public abstract class Internship {
 
     public abstract JSONObject toJson();
 
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public abstract String getType();
 }
