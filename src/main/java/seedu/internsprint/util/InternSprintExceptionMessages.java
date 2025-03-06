@@ -10,8 +10,8 @@ public class InternSprintExceptionMessages {
     public static final String UNABLE_TO_WRITE_FILE = "Unable to write to file: %s";
 
     public static final String EDIT_UNABLE_TO_FIND_INTERNSHIP = """
-                This internship is not found within your saved list. Check that /index is provided with a valid
-            index reference, or that the type of internship you are editing contains that type of flag""";
+            This internship is not found within your saved list. Check that /index is provided with a valid
+        index reference, or that the type of internship you are editing contains that type of flag""";
     public static final String EDIT_INVALID_PARAMS = "You have not entered a valid parameter to edit.\n"
-            + "    The edit command works as mentioned below:";
+        + "    The edit command works as mentioned below:";
 }

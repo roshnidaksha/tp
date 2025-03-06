@@ -48,7 +48,7 @@ public class Ui {
         System.out.println(DIVIDER);
         if (result.isSuccessful()) {
             for (String feedback : result.getFeedbackToUser()) {
-                System.out.println("    "+feedback);
+                System.out.println("    " + feedback);
             }
             System.out.println(DIVIDER);
         } else {
