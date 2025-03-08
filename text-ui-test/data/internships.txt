@@ -1,0 +1,6 @@
+[{
+    "role": "Software Developer",
+    "techStack": "Python, AWS",
+    "type": "software",
+    "companyName": "Google"
+}]
