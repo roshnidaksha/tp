@@ -5,6 +5,7 @@ import seedu.internsprint.internship.HardwareInternship;
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
 import seedu.internsprint.internship.SoftwareInternship;
+import seedu.internsprint.util.InternSprintMessages;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -88,6 +89,16 @@ public class EditCommand extends Command {
 
         if (foundInternship == null || wrongTypeOfInternship) {
             result = new CommandResult(EDIT_UNABLE_TO_FIND_INTERNSHIP);
+            result.setSuccessful(false);
+            return result;
+        }
+
+        try {
+            internships.saveInternships();
+            feedback.add(InternSprintMessages.SAVE_SUCCESS_MESSAGE);
+        } catch (Exception e) {
+            feedback.add(e.getMessage());
+            result = new CommandResult(feedback);
             result.setSuccessful(false);
             return result;
         }
