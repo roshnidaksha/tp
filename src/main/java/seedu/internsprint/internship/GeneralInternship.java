@@ -29,7 +29,9 @@ public class GeneralInternship extends Internship {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
 
         GeneralInternship generalInternship = (GeneralInternship) obj;
         return companyName.equals(generalInternship.getCompanyName())

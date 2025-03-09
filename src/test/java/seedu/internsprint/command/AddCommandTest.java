@@ -11,14 +11,18 @@ import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class AddCommandTest {
 
     @Test
     void execute_internshipListAlreadyContainsInternship_throwsException() {
         AddCommand addCommand = new AddSoftwareCommand();
-        addCommand.setParameters(new HashMap<>(Map.of("/c", "Google", "/r", "Software Engineer", "/tech", "Java, Python")));
+        addCommand.setParameters(new HashMap<>(Map.of(
+            "/c", "Google",
+            "/r", "Software Engineer",
+            "/tech", "Java, Python")));
 
         InternshipList internships = new InternshipList();
         Internship internship = new SoftwareInternship("Google", "Software Engineer", "Java, Python");

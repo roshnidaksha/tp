@@ -29,7 +29,9 @@ public class HardwareInternship extends Internship {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
 
         HardwareInternship hardwareInternship = (HardwareInternship) obj;
         return companyName.equals(hardwareInternship.getCompanyName())
