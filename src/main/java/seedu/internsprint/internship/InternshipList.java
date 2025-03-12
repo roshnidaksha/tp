@@ -32,4 +32,8 @@ public class InternshipList {
     public int getInternshipCount() {
         return internshipCount;
     }
+
+    public void decrementInternshipCount() {
+        internshipCount--;
+    }
 }

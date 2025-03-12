@@ -22,4 +22,5 @@ public class InternSprintMessages {
 
 
     public static final String LIST_COUNT_MESSAGE = "Now you have %d internships in the list";
+    public static final String SUCCESSFUL_DELETE = "Successfully deleted internship: %s";
 }
