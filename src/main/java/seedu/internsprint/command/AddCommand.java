@@ -2,6 +2,7 @@ package seedu.internsprint.command;
 
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
+import seedu.internsprint.util.InternSprintMessages;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +36,14 @@ public abstract class AddCommand extends Command {
             return result;
         }
 
-        Internship toAdd = createInternship();
+        Internship toAdd;
+        try {
+            toAdd = createInternship();
+        } catch (Exception e) {
+            result = new CommandResult(e.getMessage());
+            result.setSuccessful(false);
+            return result;
+        }
 
         if (internships.contains(toAdd)) {
             result = new CommandResult(MESSAGE_DUPLICATE_INTERNSHIP);
@@ -49,6 +57,17 @@ public abstract class AddCommand extends Command {
         feedback.add(ADD_MESSAGE_SUCCESS);
         feedback.add(toAdd.toString());
         feedback.add(String.format(LIST_COUNT_MESSAGE, internships.getInternshipCount()));
+
+        try {
+            internships.saveInternships();
+            feedback.add(InternSprintMessages.SAVE_SUCCESS_MESSAGE);
+        } catch (Exception e) {
+            feedback.add(e.getMessage());
+            result = new CommandResult(feedback);
+            result.setSuccessful(false);
+            return result;
+        }
+
         result = new CommandResult(feedback);
         result.setSuccessful(true);
         return result;
