@@ -42,6 +42,7 @@ public class Ui {
         for (int i = 1; i < messages.size(); i++) {
             System.out.println(messages.get(i));
         }
+        System.out.println(DIVIDER);
     }
 
     public static void showResultToUser(CommandResult result) {

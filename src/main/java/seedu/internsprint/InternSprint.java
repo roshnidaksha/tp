@@ -3,6 +3,7 @@ package seedu.internsprint;
 import seedu.internsprint.command.Command;
 import seedu.internsprint.command.CommandResult;
 import seedu.internsprint.handler.Parser;
+import seedu.internsprint.handler.StorageHandler;
 import seedu.internsprint.internship.InternshipList;
 import seedu.internsprint.util.Ui;
 
@@ -11,6 +12,7 @@ public class InternSprint {
 
     public InternSprint() {
         internships = new InternshipList();
+        StorageHandler.loadInternships(internships);
     }
 
     /**
