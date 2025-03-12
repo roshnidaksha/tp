@@ -6,6 +6,7 @@ import seedu.internsprint.command.AddSoftwareCommand;
 import seedu.internsprint.command.ByeCommand;
 import seedu.internsprint.command.Command;
 import seedu.internsprint.command.EditCommand;
+import seedu.internsprint.command.HelpCommand;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -43,7 +44,8 @@ public class Parser {
         case "delete":
             String[] deleteArgs = params.split(" ", 2);
             if (deleteArgs.length < 2) {
-                throw new IllegalArgumentException("Please specify both the category (software/hardware/general) and the index.");
+                throw new IllegalArgumentException("Please specify both the
+                category (software/hardware/general) and the index.");
             }
 
             String category = deleteArgs[0].toLowerCase();
