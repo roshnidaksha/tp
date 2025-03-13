@@ -9,13 +9,15 @@ import java.util.Set;
 
 public class DeleteCommand extends Command {
     public static final String COMMAND_WORD = "delete";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes an internship based on its category and index.\n"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes an internship " +
+            "based on its category and index.\n"
             + "     Parameters: " + "CATEGORY INDEX\n"
             + "     Example: " + COMMAND_WORD + " software 2";
 
+
+    public static final Set<String> VALID_CATEGORIES = Set.of("software", "hardware", "general");
     private final String category;
     private final int index;
-    public static final Set<String> VALID_CATEGORIES = Set.of("software", "hardware", "general");
 
     public DeleteCommand(String category, int index) {
         this.category = category.toLowerCase();

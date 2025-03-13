@@ -11,7 +11,8 @@ public class InternSprintMessages {
     public static final String LOGO ="InternSprint";
     public static final String WELCOME_MESSAGE =
             "Welcome to InternSprint! Your one-stop platform to manage and track your internship applications.\n" +
-                    "Get started by adding an internship! InternSprint allows you to add three types of internships:\n" +
+                    "Get started by adding an internship! InternSprint allows you to add " +
+                    "three types of internships:\n" +
                     "- General\n" +
                     "- Software\n" +
                     "- Hardware\n\n" +

@@ -1,6 +1,12 @@
 package seedu.internsprint.handler;
 
-import seedu.internsprint.command.*;
+import seedu.internsprint.command.AddGeneralCommand;
+import seedu.internsprint.command.AddHardwareCommand;
+import seedu.internsprint.command.AddSoftwareCommand;
+import seedu.internsprint.command.ByeCommand;
+import seedu.internsprint.command.Command;
+import seedu.internsprint.command.EditCommand;
+import seedu.internsprint.command.DeleteCommand;
 
 import java.util.Arrays;
 import java.util.HashMap;

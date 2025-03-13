@@ -24,7 +24,7 @@ public class EditCommand extends Command {
             + "     /dept DEPARTMENT /hardtech HARDWARE TECHNOLOGIES /desc DESCRIPTION /tech TECHNOLOGIES\n"
             + "     Example: " + COMMAND_WORD + " /index 1 /c Google /r Hardware Engineer /tech C, C++";
     public static final String[] OPTIONAL_PARAMETERS = {"/c", "/r", "/dept", "/eli",
-            "/ex", "/tech", "/desc", "/hardtech"};
+        "/ex", "/tech", "/desc", "/hardtech"};
 
     @Override
     protected boolean isValidParameters() {
