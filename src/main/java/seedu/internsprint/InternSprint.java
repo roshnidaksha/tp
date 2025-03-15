@@ -12,7 +12,6 @@ public class InternSprint {
 
     public InternSprint() {
         internships = new InternshipList();
-        StorageHandler.loadInternships(internships);
     }
 
     /**
@@ -29,12 +28,14 @@ public class InternSprint {
     }
 
     private void runCommandLoopUntilExitCommand() {
+        CommandResult result = StorageHandler.loadInternships(internships);
+        Ui.showResultToUser(result);
         boolean isExit = false;
         while (!isExit) {
             try {
                 String userCommand = Ui.getUserCommand();
                 Command command = Parser.parseCommand(userCommand);
-                CommandResult result = command.execute(internships);
+                result = command.execute(internships);
                 Ui.showResultToUser(result);
                 isExit = result.isExit();
             } catch (Exception e) {

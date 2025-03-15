@@ -1,5 +1,6 @@
 package seedu.internsprint.handler;
 
+import seedu.internsprint.command.CommandResult;
 import seedu.internsprint.internship.GeneralInternship;
 import seedu.internsprint.internship.HardwareInternship;
 import seedu.internsprint.internship.SoftwareInternship;
@@ -14,11 +15,16 @@ import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.FILE_ALREADY_EXISTS;
 import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_CREATE_DIRECTORY;
 import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_CREATE_FILE;
 import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_WRITE_FILE;
+import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_READ_FILE;
+
+import static seedu.internsprint.util.InternSprintMessages.LOADING_DATA_SUCCESS;
 
 public class StorageHandler {
     private static final String FILE_PATH = Paths.get("data", "internships.txt").toString();
@@ -63,9 +69,11 @@ public class StorageHandler {
         }
     }
 
-    public static void loadInternships(InternshipList internships) {
+    public static CommandResult loadInternships(InternshipList internships) {
+        CommandResult result;
         if (!file.exists()) {
-            return;
+            result = errorReadingFile();
+            return result;
         }
         StringBuilder jsonData = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
@@ -74,28 +82,46 @@ public class StorageHandler {
                 jsonData.append(line);
             }
         } catch (IOException e) {
-            throw new RuntimeException(String.format("Unable to read file: %s", file.getAbsolutePath()));
+            result = errorReadingFile();
+            return result;
         }
 
         JSONArray jsonArray = new JSONArray(jsonData.toString());
         if (jsonArray.isEmpty()) {
-            return;
+            result = errorReadingFile();
+            return result;
         }
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject internshipJson = jsonArray.getJSONObject(i);
-            switch (internshipJson.getString("type")) {
-            case "general":
-                internships.addInternship(GeneralInternship.fromJson(internshipJson));
-                break;
-            case "software":
-                internships.addInternship(SoftwareInternship.fromJson(internshipJson));
-                break;
-            case "hardware":
-                internships.addInternship(HardwareInternship.fromJson(internshipJson));
-                break;
-            default:
-                break;
-            }
+            addInternshipToList(internships, internshipJson);
+        }
+        result = new CommandResult(LOADING_DATA_SUCCESS);
+        result.setSuccessful(true);
+        return result;
+    }
+
+    private static CommandResult errorReadingFile() {
+        CommandResult result;
+        List<String> feedback = new ArrayList<>();
+        feedback.add(UNABLE_TO_READ_FILE);
+        result = new CommandResult(feedback);
+        result.setSuccessful(false);
+        return result;
+    }
+
+    private static void addInternshipToList(InternshipList internships, JSONObject internshipJson) {
+        switch (internshipJson.getString("type")) {
+        case "general":
+            internships.addInternship(GeneralInternship.fromJson(internshipJson));
+            break;
+        case "software":
+            internships.addInternship(SoftwareInternship.fromJson(internshipJson));
+            break;
+        case "hardware":
+            internships.addInternship(HardwareInternship.fromJson(internshipJson));
+            break;
+        default:
+            break;
         }
     }
 }

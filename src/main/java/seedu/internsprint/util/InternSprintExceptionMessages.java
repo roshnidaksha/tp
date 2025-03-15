@@ -9,6 +9,7 @@ public class InternSprintExceptionMessages {
     public static final String FILE_ALREADY_EXISTS = "File already exists: %s";
     public static final String UNABLE_TO_CREATE_FILE = "Unable to create file: %s";
     public static final String UNABLE_TO_WRITE_FILE = "Unable to write to file: %s";
+    public static final String UNABLE_TO_READ_FILE = "Unable to read file: %s";
 
     public static final String EDIT_UNABLE_TO_FIND_INTERNSHIP = """
             This internship is not found within your saved list. Check that /index is provided with a valid
