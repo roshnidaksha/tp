@@ -24,7 +24,20 @@ public class GeneralInternship extends Internship {
 
     @Override
     public String toString() {
-        return "Company: " + companyName + ", Role: " + role + ", Dept: " + department;
+        String internshipString =  "Company: " + companyName + ", Role: " + role + ", Dept: " + department;
+        if (eligibility != null && !eligibility.isBlank()) {
+            internshipString += ", Eligibility: "+eligibility;
+        }
+        if (description != null && !description.isBlank()) {
+            internshipString += ", Description: "+description;
+        }
+        if (status != null && !status.isBlank()) {
+            internshipString += ", Status: "+status;
+        }
+        if (expectations != null && !expectations.isBlank()) {
+            internshipString += ", Expectations: "+expectations;
+        }
+        return internshipString;
     }
 
     @Override
