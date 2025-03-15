@@ -49,6 +49,14 @@ public class HardwareInternship extends Internship {
         return new JSONObject(orderedMap);
     }
 
+    public static HardwareInternship fromJson(JSONObject json) {
+        return new HardwareInternship(
+                json.getString("companyName"),
+                json.getString("role"),
+                json.getString("embeddedSystems")
+        );
+    }
+
     @Override
     public String getType() {
         return "hardware";

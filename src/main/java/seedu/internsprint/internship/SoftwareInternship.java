@@ -49,6 +49,14 @@ public class SoftwareInternship extends Internship {
         return new JSONObject(orderedMap);
     }
 
+    public static SoftwareInternship fromJson(JSONObject json) {
+        return new SoftwareInternship(
+                json.getString("companyName"),
+                json.getString("role"),
+                json.getString("techStack")
+        );
+    }
+
     @Override
     public String getType() {
         return "software";
