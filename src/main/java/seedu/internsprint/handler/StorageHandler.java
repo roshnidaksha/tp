@@ -82,8 +82,10 @@ public class StorageHandler {
                 jsonData.append(line);
             }
         } catch (IOException e) {
-            result = errorReadingFile();
-            return result;
+//            result = errorReadingFile();
+//            return result;
+            throw new RuntimeException(String.format(UNABLE_TO_WRITE_FILE,
+                    file.getAbsolutePath()));
         }
 
         JSONArray jsonArray = new JSONArray(jsonData.toString());
