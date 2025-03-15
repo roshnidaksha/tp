@@ -18,6 +18,15 @@ public class SoftwareInternship extends Internship {
         this.techStack = techStack;
     }
 
+    public SoftwareInternship(String companyName, String role, String techStack, String eligibility,
+                             String description, String status, String expectations) {
+        super(companyName, role, eligibility,description,status,expectations);
+        if (techStack == null || techStack.isBlank()) {
+            throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS, "/tech"));
+        }
+        this.techStack = techStack;
+    }
+
     public void setTechStack(String techStack) {
         this.techStack = techStack;
     }

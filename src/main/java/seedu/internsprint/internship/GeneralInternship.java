@@ -18,6 +18,15 @@ public class GeneralInternship extends Internship {
         this.department = department;
     }
 
+    public GeneralInternship(String companyName, String role, String department, String eligibility,
+                             String description, String status, String expectations) {
+        super(companyName, role, eligibility,description,status,expectations);
+        if (department == null || department.isBlank()) {
+            throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS, "/dept"));
+        }
+        this.department = department;
+    }
+
     public void setDepartment(String department) {
         this.department = department;
     }

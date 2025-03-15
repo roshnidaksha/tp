@@ -17,6 +17,14 @@ public class HardwareInternship extends Internship {
         }
         this.embeddedSystems = embeddedSystems;
     }
+    public HardwareInternship(String companyName, String role, String embeddedSystems, String eligibility,
+                             String description, String status, String expectations) {
+        super(companyName, role, eligibility,description,status,expectations);
+        if (embeddedSystems == null || embeddedSystems.isBlank()) {
+            throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS, "/tech"));
+        }
+        this.embeddedSystems = embeddedSystems;
+    }
 
     public void setEmbeddedSystems(String embeddedSystems) {
         this.embeddedSystems = embeddedSystems;

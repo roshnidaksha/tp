@@ -1,6 +1,26 @@
-[{
-    "role": "Human Resource",
-    "type": "general",
-    "department": "HR",
-    "companyName": "Google"
-}]
+[
+    {
+        "role": "Human Resource",
+        "type": "general",
+        "department": "HR",
+        "companyName": "Google"
+    },
+    {
+        "role": "Human Resource",
+        "type": "general",
+        "department": "HR",
+        "companyName": "Java"
+    },
+    {
+        "role": "Resource",
+        "type": "general",
+        "department": "HR",
+        "companyName": "Jave"
+    },
+    {
+        "role": "something",
+        "type": "general",
+        "department": "HR",
+        "companyName": "Jave"
+    }
+]
