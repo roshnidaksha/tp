@@ -24,7 +24,8 @@ public abstract class Internship {
         this.role = role;
     }
 
-    public Internship(String companyName, String role, String eligibility, String description, String status, String expectations) {
+    public Internship(String companyName, String role, String eligibility, String description, String status,
+                      String expectations) {
         if (companyName == null || role == null || companyName.isBlank() || role.isBlank()) {
             throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS, "/c or /r"));
         }
