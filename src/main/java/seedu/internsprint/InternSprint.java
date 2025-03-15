@@ -3,6 +3,7 @@ package seedu.internsprint;
 import seedu.internsprint.command.Command;
 import seedu.internsprint.command.CommandResult;
 import seedu.internsprint.handler.Parser;
+import seedu.internsprint.handler.StorageHandler;
 import seedu.internsprint.internship.InternshipList;
 import seedu.internsprint.util.Ui;
 
@@ -27,12 +28,14 @@ public class InternSprint {
     }
 
     private void runCommandLoopUntilExitCommand() {
+        CommandResult result = StorageHandler.loadInternships(internships);
+        Ui.showResultToUser(result);
         boolean isExit = false;
         while (!isExit) {
             try {
                 String userCommand = Ui.getUserCommand();
                 Command command = Parser.parseCommand(userCommand);
-                CommandResult result = command.execute(internships);
+                result = command.execute(internships);
                 Ui.showResultToUser(result);
                 isExit = result.isExit();
             } catch (Exception e) {

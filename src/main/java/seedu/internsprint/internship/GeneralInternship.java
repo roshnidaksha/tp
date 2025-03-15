@@ -49,6 +49,14 @@ public class GeneralInternship extends Internship {
         return new JSONObject(orderedMap);
     }
 
+    public static GeneralInternship fromJson(JSONObject json) {
+        return new GeneralInternship(
+                json.getString("companyName"),
+                json.getString("role"),
+                json.getString("department")
+        );
+    }
+
     @Override
     public String getType() {
         return "general";
