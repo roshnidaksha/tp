@@ -33,7 +33,20 @@ public class SoftwareInternship extends Internship {
 
     @Override
     public String toString() {
-        return "Company: " + companyName + ", Role: " + role+ ", Tech: " + techStack;
+        String internshipString =   "Company: " + companyName + ", Role: " + role+ ", Tech: " + techStack;
+        if (eligibility != null && !eligibility.isBlank()) {
+            internshipString += ", Eligibility: "+eligibility;
+        }
+        if (description != null && !description.isBlank()) {
+            internshipString += ", Description: "+description;
+        }
+        if (status != null && !status.isBlank()) {
+            internshipString += ", Status: "+status;
+        }
+        if (expectations != null && !expectations.isBlank()) {
+            internshipString += ", Expectations: "+expectations;
+        }
+        return internshipString;
     }
 
     @Override
