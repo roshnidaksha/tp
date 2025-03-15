@@ -25,6 +25,7 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_WR
 import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_READ_FILE;
 
 import static seedu.internsprint.util.InternSprintMessages.LOADING_DATA_SUCCESS;
+import static seedu.internsprint.util.InternSprintMessages.LOADING_DATA_FIRST_TIME;
 
 public class StorageHandler {
     private static final String FILE_PATH = Paths.get("data", "internships.txt").toString();
@@ -34,7 +35,7 @@ public class StorageHandler {
         file = new File(FILE_PATH);
     }
 
-    public void createFile() {
+    public static void createFile() {
         try {
             if (file.getParentFile() != null && !file.getParentFile().exists()) {
                 if (!file.getParentFile().mkdirs()) {
@@ -71,8 +72,9 @@ public class StorageHandler {
 
     public static CommandResult loadInternships(InternshipList internships) {
         CommandResult result;
-        if (!file.exists()) {
-            result = errorReadingFile();
+        if (!file.exists()|| file.length() == 0) {
+            result = new CommandResult(LOADING_DATA_FIRST_TIME);
+            result.setSuccessful(true);
             return result;
         }
         StringBuilder jsonData = new StringBuilder();
@@ -82,10 +84,8 @@ public class StorageHandler {
                 jsonData.append(line);
             }
         } catch (IOException e) {
-            //result = errorReadingFile();
-            //return result;
-            throw new RuntimeException(String.format(UNABLE_TO_WRITE_FILE,
-                    file.getAbsolutePath()));
+            result = errorReadingFile();
+            return result;
         }
 
         JSONArray jsonArray = new JSONArray(jsonData.toString());
