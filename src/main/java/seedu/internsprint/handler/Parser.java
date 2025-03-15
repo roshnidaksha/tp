@@ -6,6 +6,7 @@ import seedu.internsprint.command.AddSoftwareCommand;
 import seedu.internsprint.command.ByeCommand;
 import seedu.internsprint.command.Command;
 import seedu.internsprint.command.EditCommand;
+import seedu.internsprint.command.DeleteCommand;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -36,11 +37,41 @@ public class Parser {
         case "edit":
             command = new EditCommand();
             break;
+        case "delete":
+            command = parseDeleteCommand(params);
+            break;
         default:
             throw new IllegalArgumentException("Unknown command type: " + commandType);
         }
         parseKeyValuePairs(params, command);
         return command;
+    }
+
+    private static Command parseDeleteCommand(String params) {
+        String[] paramParts = params.split(" ");
+
+        if (paramParts.length == 1) {
+            return new DeleteCommand(paramParts[0], -1);
+        }
+
+        if (paramParts.length != 2) {
+            return new DeleteCommand("", -1);
+        }
+
+        String category = paramParts[0];
+        int index;
+
+        if (!DeleteCommand.VALID_CATEGORIES.contains(category.toLowerCase())) {
+            return new DeleteCommand("", -1);
+        }
+
+        try {
+            index = Integer.parseInt(paramParts[1]);
+        } catch (NumberFormatException e) {
+            return new DeleteCommand("", -1);
+        }
+
+        return new DeleteCommand(category, index);
     }
 
     private static String[] splitCommandTypeAndParams(String userInput) {

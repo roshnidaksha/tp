@@ -28,12 +28,16 @@ public class InternshipList {
         return internshipMap.get(type).contains(internship);
     }
 
+    public int getInternshipCount() {
+        return internshipCount;
+    }
+
     public void saveInternships() {
         storageHandler.saveInternships(this);
     }
 
-    public int getInternshipCount() {
-        return internshipCount;
+    public void decrementInternshipCount() {
+        internshipCount--;
     }
 
     public HashMap<String, ArrayList<Internship>> getInternshipMap() {
