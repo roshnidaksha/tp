@@ -2,7 +2,6 @@ package seedu.internsprint.command;
 
 import seedu.internsprint.internship.HardwareInternship;
 import seedu.internsprint.internship.Internship;
-import seedu.internsprint.internship.SoftwareInternship;
 
 import java.util.Set;
 
@@ -42,6 +41,5 @@ public class AddHardwareCommand extends AddCommand {
                 status != null ? status : "",
                 expectations != null ? expectations : ""
         );
-        //return new HardwareInternship(parameters.get("/c"), parameters.get("/r"), parameters.get("/tech"));
     }
 }

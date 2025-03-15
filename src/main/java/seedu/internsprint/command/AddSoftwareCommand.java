@@ -1,6 +1,5 @@
 package seedu.internsprint.command;
 
-import seedu.internsprint.internship.GeneralInternship;
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.SoftwareInternship;
 
@@ -42,6 +41,5 @@ public class AddSoftwareCommand extends AddCommand {
                 status != null ? status : "",
                 expectations != null ? expectations : ""
         );
-//        return new SoftwareInternship(parameters.get("/c"), parameters.get("/r"), parameters.get("/tech"));
     }
 }
