@@ -1,6 +1,20 @@
-[{
-    "role": "IT Intern",
-    "type": "general",
-    "department": "IT",
-    "companyName": "UBS"
-}]
+[
+    {
+        "role": "Human Resource",
+        "type": "general",
+        "department": "HR",
+        "companyName": "Google"
+    },
+    {
+        "role": "Human Resource",
+        "type": "general",
+        "department": "HR",
+        "companyName": "Java"
+    },
+    {
+        "role": "Human Resource",
+        "type": "general",
+        "department": "HR",
+        "companyName": "Teams"
+    }
+]

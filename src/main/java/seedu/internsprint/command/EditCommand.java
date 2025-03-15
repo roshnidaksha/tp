@@ -23,7 +23,7 @@ public class EditCommand extends Command {
             + "     Parameters: " + "/c COMPANY_NAME /r ROLE /ex EXPECTATIONS /eli ELIGIBILITY\n"
             + "     /dept DEPARTMENT /hardtech HARDWARE TECHNOLOGIES /desc DESCRIPTION /tech TECHNOLOGIES\n"
             + "     Example: " + COMMAND_WORD + " /index 1 /c Google /r Hardware Engineer /tech C, C++";
-    public static final String[] OPTIONAL_PARAMETERS = {"/c", "/r", "/dept", "/eli",
+    public static final String[] POSSIBLE_PARAMETERS = {"/c", "/r", "/dept", "/eli",
         "/ex", "/tech", "/desc", "/hardtech"};
 
     @Override
@@ -32,7 +32,7 @@ public class EditCommand extends Command {
             return false;
         }
         for (String key : parameters.keySet()) {
-            if (!key.equals("/index") && !Arrays.asList(OPTIONAL_PARAMETERS).contains(key)) {
+            if (!key.equals("/index") && !Arrays.asList(POSSIBLE_PARAMETERS).contains(key)) {
                 System.out.println("Invalid key found: " + key);
                 return false;
             }
@@ -83,6 +83,15 @@ public class EditCommand extends Command {
                 } else if (parameters.containsKey("/hardtech") && !(foundInternship instanceof HardwareInternship)) {
                     wrongTypeOfInternship = true;
                 }
+                if (parameters.containsKey("/eli")) {
+                    foundInternship.setEligibility(parameters.get("/eli"));
+                }
+                if (parameters.containsKey("/desc")) {
+                    foundInternship.setDescription(parameters.get("/desc"));
+                }
+                if (parameters.containsKey("/ex")) {
+                    foundInternship.setExpectations(parameters.get("/ex"));
+                }
             }
             index -= oneTypeInternships.size();
         }
@@ -102,7 +111,7 @@ public class EditCommand extends Command {
             result.setSuccessful(false);
             return result;
         }
-
+        System.out.println(foundInternship);
         feedback.add(EDIT_MESSAGE_SUCCESS);
         feedback.add(foundInternship.toString());
         result = new CommandResult(feedback);
