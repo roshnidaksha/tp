@@ -19,8 +19,8 @@ public class SoftwareInternship extends Internship {
     }
 
     public SoftwareInternship(String companyName, String role, String techStack, String eligibility,
-                             String description, String status, String expectations) {
-        super(companyName, role, eligibility,description,status,expectations);
+                              String description, String status, String expectations) {
+        super(companyName, role, eligibility, description, status, expectations);
         if (techStack == null || techStack.isBlank()) {
             throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS, "/tech"));
         }
@@ -33,18 +33,18 @@ public class SoftwareInternship extends Internship {
 
     @Override
     public String toString() {
-        String internshipString =   "Company: " + companyName + ", Role: " + role+ ", Tech: " + techStack;
+        String internshipString = "Company: " + companyName + ", Role: " + role + ", Tech: " + techStack;
         if (eligibility != null && !eligibility.isBlank()) {
-            internshipString += ", Eligibility: "+eligibility;
+            internshipString += ", Eligibility: " + eligibility;
         }
         if (description != null && !description.isBlank()) {
-            internshipString += ", Description: "+description;
+            internshipString += ", Description: " + description;
         }
         if (status != null && !status.isBlank()) {
-            internshipString += ", Status: "+status;
+            internshipString += ", Status: " + status;
         }
         if (expectations != null && !expectations.isBlank()) {
-            internshipString += ", Expectations: "+expectations;
+            internshipString += ", Expectations: " + expectations;
         }
         return internshipString;
     }
