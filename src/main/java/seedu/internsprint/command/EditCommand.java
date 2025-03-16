@@ -16,6 +16,7 @@ import java.util.List;
 import static seedu.internsprint.util.InternSprintExceptionMessages.EDIT_INVALID_PARAMS;
 import static seedu.internsprint.util.InternSprintExceptionMessages.EDIT_UNABLE_TO_FIND_INTERNSHIP;
 import static seedu.internsprint.util.InternSprintMessages.EDIT_MESSAGE_SUCCESS;
+import static seedu.internsprint.util.InternSprintMessages.MESSAGE_DUPLICATE_INTERNSHIP;
 
 public class EditCommand extends Command {
     public static final String COMMAND_WORD = "edit";
@@ -72,6 +73,16 @@ public class EditCommand extends Command {
 
         if (foundInternship == null || checkWrongTypeOfInternship) {
             result = new CommandResult(EDIT_UNABLE_TO_FIND_INTERNSHIP);
+            result.setSuccessful(false);
+            return result;
+        }
+
+        long count = internshipMap.values().stream().flatMap(List::stream)
+            .filter(internship -> internship.equals(foundInternship))
+            .count();
+        if (count >= 2) {
+            feedback.add(MESSAGE_DUPLICATE_INTERNSHIP);
+            result = new CommandResult(feedback);
             result.setSuccessful(false);
             return result;
         }
