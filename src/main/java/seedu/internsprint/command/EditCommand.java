@@ -1,5 +1,6 @@
 package seedu.internsprint.command;
 
+import seedu.internsprint.handler.Parser;
 import seedu.internsprint.internship.GeneralInternship;
 import seedu.internsprint.internship.HardwareInternship;
 import seedu.internsprint.internship.Internship;
@@ -11,11 +12,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.EDIT_INVALID_PARAMS;
 import static seedu.internsprint.util.InternSprintExceptionMessages.EDIT_UNABLE_TO_FIND_INTERNSHIP;
 import static seedu.internsprint.util.InternSprintMessages.EDIT_MESSAGE_SUCCESS;
+import static seedu.internsprint.util.InternSprintMessages.MESSAGE_DUPLICATE_INTERNSHIP;
 
 public class EditCommand extends Command {
     public static final String COMMAND_WORD = "edit";
@@ -52,23 +53,36 @@ public class EditCommand extends Command {
             return result;
         }
 
-        Internship foundInternship = null;
         HashMap<String, ArrayList<Internship>> internshipMap = internships.getInternshipMap();
-        int index = Integer.parseInt(parameters.get("/index")) - 1;
-        boolean checkWrongTypeOfInternship = false;
 
-        for (Map.Entry<String, ArrayList<Internship>> entry : internshipMap.entrySet()) {
-            ArrayList<Internship> oneTypeInternships = entry.getValue();
-            if (index >= 0 && index < oneTypeInternships.size()) {
-                foundInternship = oneTypeInternships.get(index); // Found the internship
-                checkWrongTypeOfInternship = editParametersForFoundInternships(foundInternship,
-                                                                                checkWrongTypeOfInternship);
-            }
-            index -= oneTypeInternships.size();
+        String[] validIndex;
+        try {
+            validIndex = Parser.validateIndex(parameters.get("/index"), internships);
+        } catch (IllegalArgumentException e) {
+            feedback.add(e.getMessage());
+            result = new CommandResult(feedback);
+            result.setSuccessful(false);
+            return result;
         }
+
+        int index = Integer.parseInt(validIndex[1]);
+        String type = validIndex[0];
+
+        Internship foundInternship = internshipMap.get(type).get(index);
+        boolean checkWrongTypeOfInternship = editParametersForFoundInternships(foundInternship);
 
         if (foundInternship == null || checkWrongTypeOfInternship) {
             result = new CommandResult(EDIT_UNABLE_TO_FIND_INTERNSHIP);
+            result.setSuccessful(false);
+            return result;
+        }
+
+        long count = internshipMap.values().stream().flatMap(List::stream)
+            .filter(internship -> internship.equals(foundInternship))
+            .count();
+        if (count >= 2) {
+            feedback.add(MESSAGE_DUPLICATE_INTERNSHIP);
+            result = new CommandResult(feedback);
             result.setSuccessful(false);
             return result;
         }
@@ -82,6 +96,7 @@ public class EditCommand extends Command {
             result.setSuccessful(false);
             return result;
         }
+
         feedback.add(EDIT_MESSAGE_SUCCESS);
         feedback.add(foundInternship.toString());
         result = new CommandResult(feedback);
@@ -89,7 +104,8 @@ public class EditCommand extends Command {
         return result;
     }
 
-    private boolean editParametersForFoundInternships(Internship foundInternship, boolean checkWrongTypeOfInternship) {
+    private boolean editParametersForFoundInternships(Internship foundInternship) {
+        boolean checkWrongTypeOfInternship = false;
         if (parameters.containsKey("/c")) {
             foundInternship.setCompanyName(parameters.get("/c"));
         }
