@@ -19,10 +19,10 @@ import static seedu.internsprint.util.InternSprintMessages.EDIT_MESSAGE_SUCCESS;
 
 public class EditCommand extends Command {
     public static final String COMMAND_WORD = "edit";
-    public static final String MESSAGE_USAGE = "    " + COMMAND_WORD + ": Edits the parameters of an internship.\n"
-            + "     Parameters: " + "/c COMPANY_NAME /r ROLE /ex EXPECTATIONS /eli ELIGIBILITY\n"
-            + "     /dept DEPARTMENT /hardtech HARDWARE TECHNOLOGIES /desc DESCRIPTION /tech TECHNOLOGIES\n"
-            + "     Example: " + COMMAND_WORD + " /index 1 /c Google /r Hardware Engineer /tech C, C++";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the parameters of an internship.\n"
+            + "    Parameters: " + "/c COMPANY_NAME /r ROLE /ex EXPECTATIONS /eli ELIGIBILITY\n"
+            + "    /dept DEPARTMENT /hardtech HARDWARE TECHNOLOGIES /desc DESCRIPTION /tech TECHNOLOGIES\n"
+            + "    Example: " + COMMAND_WORD + " /index 1 /c Google /r Hardware Engineer /tech C, C++";
     public static final String[] POSSIBLE_PARAMETERS = {"/c", "/r", "/dept", "/eli",
         "/ex", "/tech", "/desc", "/hardtech"};
 

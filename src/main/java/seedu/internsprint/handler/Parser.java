@@ -7,6 +7,7 @@ import seedu.internsprint.command.ByeCommand;
 import seedu.internsprint.command.Command;
 import seedu.internsprint.command.EditCommand;
 import seedu.internsprint.command.DeleteCommand;
+import seedu.internsprint.command.HelpCommand;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -36,6 +37,9 @@ public class Parser {
             break;
         case "edit":
             command = new EditCommand();
+            break;
+        case "help":
+            command = new HelpCommand();
             break;
         case "delete":
             command = parseDeleteCommand(params);
