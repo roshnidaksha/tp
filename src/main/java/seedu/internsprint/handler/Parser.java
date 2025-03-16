@@ -6,6 +6,7 @@ import seedu.internsprint.command.AddSoftwareCommand;
 import seedu.internsprint.command.ByeCommand;
 import seedu.internsprint.command.Command;
 import seedu.internsprint.command.EditCommand;
+import seedu.internsprint.command.DeleteCommand;
 import seedu.internsprint.command.HelpCommand;
 
 import java.util.Arrays;
@@ -40,28 +41,41 @@ public class Parser {
         case "help":
             command = new HelpCommand();
             break;
-            /*
         case "delete":
-            String[] deleteArgs = params.split(" ", 2);
-            if (deleteArgs.length < 2) {
-                throw new IllegalArgumentException("Please specify both the
-                category (software/hardware/general) and the index.");
-            }
-
-            String category = deleteArgs[0].toLowerCase();
-            int index;
-            try {
-                index = Integer.parseInt(deleteArgs[1].trim());
-            } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("Invalid index. Please enter a valid number for the index.");
-            }
-            command = new DeleteCommand(category, index);
-            break;*/
+            command = parseDeleteCommand(params);
+            break;
         default:
             throw new IllegalArgumentException("Unknown command type: " + commandType);
         }
         parseKeyValuePairs(params, command);
         return command;
+    }
+
+    private static Command parseDeleteCommand(String params) {
+        String[] paramParts = params.split(" ");
+
+        if (paramParts.length == 1) {
+            return new DeleteCommand(paramParts[0], -1);
+        }
+
+        if (paramParts.length != 2) {
+            return new DeleteCommand("", -1);
+        }
+
+        String category = paramParts[0];
+        int index;
+
+        if (!DeleteCommand.VALID_CATEGORIES.contains(category.toLowerCase())) {
+            return new DeleteCommand("", -1);
+        }
+
+        try {
+            index = Integer.parseInt(paramParts[1]);
+        } catch (NumberFormatException e) {
+            return new DeleteCommand("", -1);
+        }
+
+        return new DeleteCommand(category, index);
     }
 
     private static String[] splitCommandTypeAndParams(String userInput) {
