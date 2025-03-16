@@ -23,6 +23,11 @@ public class InternshipList {
         internshipCount++;
     }
 
+    public void deleteInternship(String type, int index) {
+        internshipMap.get(type).remove(index);
+        internshipCount--;
+    }
+
     public boolean contains(Internship internship) {
         String type = internship.getType();
         return internshipMap.get(type).contains(internship);
@@ -34,10 +39,6 @@ public class InternshipList {
 
     public void saveInternships() {
         storageHandler.saveInternships(this);
-    }
-
-    public void decrementInternshipCount() {
-        internshipCount--;
     }
 
     public HashMap<String, ArrayList<Internship>> getInternshipMap() {
