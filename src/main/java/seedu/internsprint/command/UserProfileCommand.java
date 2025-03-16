@@ -14,10 +14,10 @@ public class UserProfileCommand extends Command{
             + "yourself.\n"+ "     Parameters: " + "/c COMPANIES_YOU_PREFER /r ROLES_YOU_PREFER /ygoals YEARLY_GOALS"
             + " /mgoals MONTHLY_GOALS\n" + "     /pay PAY_RANGE /ind INDUSTRIES_YOU_PREFER /time TIME_RANGE " +
             "/name YOUR_NAME\n"
-            + "     Example: " + COMMAND_WORD + " /name John Doe /c Google,Java /r Hardware Engineer, Automation Intern" +
-            " /pay 2000-3000";
+            + "     Example: " + COMMAND_WORD + " /name John Doe /c Google,Java /r Hardware Engineer, Automation Intern"
+            + " /pay 2000-3000";
     public static final String[] OPTIONAL_PARAMETERS = {"/pay", "/ind", "/time", "/name",
-            "/ygoals", "/mgoals", "/c", "/r"};
+                                                        "/ygoals", "/mgoals", "/c", "/r"};
     @Override
     protected boolean isValidParameters() {
         for (String key : parameters.keySet()) {
