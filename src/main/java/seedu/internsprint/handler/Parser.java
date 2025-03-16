@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.ILLEGAL_VALUE_INPUT;
+import static seedu.internsprint.util.InternSprintExceptionMessages.INVALID_COMMAND_TYPE;
 import static seedu.internsprint.util.InternSprintExceptionMessages.INVALID_INDEX;
 import static seedu.internsprint.util.InternSprintExceptionMessages.INVALID_INDEX_RANGE;
 import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_INDEX;
@@ -47,7 +48,7 @@ public class Parser {
             command = new DeleteCommand();
             break;
         default:
-            throw new IllegalArgumentException("Unknown command type: " + commandType);
+            throw new IllegalArgumentException(String.format(INVALID_COMMAND_TYPE, commandType));
         }
         parseKeyValuePairs(params, command);
         return command;
