@@ -9,7 +9,7 @@ public class HelpCommand extends Command {
     public static final String COMMAND_WORD = "help";
     public static final String MESSAGE_USAGE = COMMAND_WORD + " : Shows information on how to use a specific command " +
             "or a list of all commands.\n"
-            + "    Parameters: COMMAND (optional)\n"
+            + "    Parameters: [COMMAND] \n"
             + "    Example: " + COMMAND_WORD + " add general";
 
     private static final LinkedHashMap<String, String> COMMAND_HELP_MESSAGES = new LinkedHashMap<>();
