@@ -11,8 +11,8 @@ import static seedu.internsprint.util.InternSprintMessages.SAVE_SUCCESS_MESSAGE;
 public class ByeCommand extends Command {
     public static final String COMMAND_WORD = "bye";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Exits the program.\n"
-            + "Parameters: None\n"
-            + "Example: " + COMMAND_WORD;
+            + "    Parameters: None\n"
+            + "    Example: " + COMMAND_WORD;
 
     @Override
     protected boolean isValidParameters() {

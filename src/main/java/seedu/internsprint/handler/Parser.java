@@ -9,6 +9,7 @@ import seedu.internsprint.command.EditCommand;
 import seedu.internsprint.command.DeleteCommand;
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
+import seedu.internsprint.command.HelpCommand;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,6 +44,9 @@ public class Parser {
             break;
         case "edit":
             command = new EditCommand();
+            break;
+        case "help":
+            command = new HelpCommand();
             break;
         case "delete":
             command = new DeleteCommand();

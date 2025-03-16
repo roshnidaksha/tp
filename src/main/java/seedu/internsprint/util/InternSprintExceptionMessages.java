@@ -21,4 +21,7 @@ public class InternSprintExceptionMessages {
     public static final String MISSING_INDEX = "Missing index: Please enter an index to reference the internship.";
     public static final String INVALID_INDEX_RANGE = "Invalid index range: Please enter a valid index within the list.";
     public static final String INVALID_INDEX = "Invalid index: Please enter a valid number as index.";
+
+    public static final String HELP_INVALID_PARAMETERS = "Invalid parameters: Use 'help' to see a list of all " +
+            "commands or 'help COMMAND' for specific command instructions.";
 }

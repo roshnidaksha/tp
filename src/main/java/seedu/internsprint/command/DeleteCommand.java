@@ -4,6 +4,7 @@ import seedu.internsprint.handler.Parser;
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
 import seedu.internsprint.util.InternSprintMessages;
+import seedu.internsprint.util.InternSprintExceptionMessages;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +15,8 @@ public class DeleteCommand extends Command {
     public static final String COMMAND_WORD = "delete";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes an internship " +
         "based on its category and index.\n"
-        + "     Parameters: " + "/index INDEX_OF_INTERNSHIP \n"
-        + "     Example: " + COMMAND_WORD + " software 2";
+        + "    Parameters: " + "/index INDEX_OF_INTERNSHIP \n"
+        + "    Example: " + COMMAND_WORD + " software 2";
     public static final String[] REQUIRED_PARAMETERS = {"/index"};
 
     @Override
