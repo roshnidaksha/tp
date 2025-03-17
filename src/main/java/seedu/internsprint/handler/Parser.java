@@ -131,12 +131,14 @@ public class Parser {
                 throw new IllegalArgumentException(INVALID_INDEX_RANGE);
             }
             String type;
-            if (indexValue <= internshipsMap.get("general").size()) {
-                type = "general";
-            } else if (indexValue <= internshipsMap.get("general").size() + internshipsMap.get("software").size()) {
+            if (indexValue <= internshipsMap.get("software").size()) {
                 type = "software";
-            } else {
+            } else if (indexValue <= internshipsMap.get("software").size() + internshipsMap.get("hardware").size()) {
+                indexValue -= internshipsMap.get("software").size();
                 type = "hardware";
+            } else {
+                indexValue -= internshipsMap.get("hardware").size();
+                type = "general";
             }
             return new String[]{type, Integer.toString(indexValue - 1)};
         } catch (NumberFormatException e) {
