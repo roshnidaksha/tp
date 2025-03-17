@@ -63,6 +63,10 @@ public class GeneralInternship extends Internship {
         orderedMap.put("companyName", companyName);
         orderedMap.put("role", role);
         orderedMap.put("department", department);
+        orderedMap.put("eligibility", eligibility);
+        orderedMap.put("description", description);
+        orderedMap.put("status", status);
+        orderedMap.put("expectations", expectations);
         return new JSONObject(orderedMap);
     }
 

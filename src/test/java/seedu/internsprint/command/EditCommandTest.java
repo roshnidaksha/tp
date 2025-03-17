@@ -93,6 +93,21 @@ class EditCommandTest {
     }
 
     @Test
+    void execute_multipleInternships_editsCorrectly() {
+        EditCommand editCommand = new EditCommand();
+        editCommand.parameters.put("/index", "2");
+        editCommand.parameters.put("/eli","Good knowledge of microcontrollers");
+        SoftwareInternship internship = new SoftwareInternship("Facebook","Automation Intern", "C");
+        HardwareInternship internship2 = new HardwareInternship("AMD","Engineer", "Arduino");
+        InternshipList internshipList = new InternshipList();
+        internshipList.addInternship(internship);
+        internshipList.addInternship(internship2);
+        editCommand.execute(internshipList);
+        assertEquals("Good knowledge of microcontrollers", internship2.getEligibility());
+        assertEquals("AMD", internship2.getCompanyName());
+    }
+
+    @Test
     void execute_invalidFieldForSoftware_throwsError() {
         EditCommand editCommand = new EditCommand();
         editCommand.parameters.put("/index", "1");

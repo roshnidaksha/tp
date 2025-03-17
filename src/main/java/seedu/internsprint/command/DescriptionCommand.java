@@ -52,7 +52,6 @@ public class DescriptionCommand extends Command {
         int index = Integer.parseInt(validIndex[1]);
         String type = validIndex[0];
 
-
         HashMap<String, ArrayList<Internship>> internshipMap = internships.getInternshipMap();
         Internship foundInternship = internshipMap.get(type).get(index);
 
