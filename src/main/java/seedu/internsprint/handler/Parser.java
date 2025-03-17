@@ -5,8 +5,10 @@ import seedu.internsprint.command.AddHardwareCommand;
 import seedu.internsprint.command.AddSoftwareCommand;
 import seedu.internsprint.command.ByeCommand;
 import seedu.internsprint.command.Command;
+import seedu.internsprint.command.DescriptionCommand;
 import seedu.internsprint.command.EditCommand;
 import seedu.internsprint.command.DeleteCommand;
+import seedu.internsprint.command.ListCommand;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -36,6 +38,12 @@ public class Parser {
             break;
         case "edit":
             command = new EditCommand();
+            break;
+        case "list":
+            command = new ListCommand();
+            break;
+        case "desc":
+            command = new DescriptionCommand();
             break;
         case "delete":
             command = parseDeleteCommand(params);

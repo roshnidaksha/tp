@@ -14,8 +14,12 @@ public class InternSprintExceptionMessages {
     public static final String EDIT_UNABLE_TO_FIND_INTERNSHIP = """
             This internship is not found within your saved list. Check that /index is provided with a valid
         index reference, or that the type of internship you are editing contains that type of flag""";
+    public static final String DESC_UNABLE_TO_FIND_INTERNSHIP = "This internship is not found within your saved list." +
+            " Check that /index is provided with a valid index reference.";
     public static final String EDIT_INVALID_PARAMS = "You have not entered a valid parameter to edit.\n"
             + "    The edit command works as mentioned below:";
+    public static final String DESC_INVALID_PARAMS = "You have not entered a valid index to show the description.\n"
+            + "The desc command works as mentioned below:";
     public static final String INVALID_CATEGORY_ERROR = "Invalid category: Valid categories are: " +
             "software, hardware, general.";
     public static final String INVALID_INDEX_ERROR = "Invalid index: Please enter a valid index within the list.";
