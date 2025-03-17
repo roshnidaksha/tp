@@ -1,5 +1,6 @@
 package seedu.internsprint.internship;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -33,19 +34,13 @@ public class SoftwareInternship extends Internship {
 
     @Override
     public String toString() {
-        String internshipString = "Company: " + companyName + ", Role: " + role + ", Tech: " + techStack;
-        if (eligibility != null && !eligibility.isBlank()) {
-            internshipString += ", Eligibility: " + eligibility;
-        }
-        if (description != null && !description.isBlank()) {
-            internshipString += ", Description: " + description;
-        }
-        if (status != null && !status.isBlank()) {
-            internshipString += ", Status: " + status;
-        }
-        if (expectations != null && !expectations.isBlank()) {
-            internshipString += ", Expectations: " + expectations;
-        }
+        return "Company: " + companyName + ", Role: " + role + ", Tech: " + techStack;
+    }
+
+    @Override
+    public ArrayList<String> toDescription() {
+        ArrayList<String> internshipString = super.toDescription();
+        internshipString.add("Tech Stack: " + techStack);
         return internshipString;
     }
 

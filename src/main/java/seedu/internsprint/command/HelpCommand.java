@@ -18,6 +18,8 @@ public class HelpCommand extends Command {
         COMMAND_HELP_MESSAGES.put("add general", AddGeneralCommand.MESSAGE_USAGE);
         COMMAND_HELP_MESSAGES.put("add software", AddSoftwareCommand.MESSAGE_USAGE);
         COMMAND_HELP_MESSAGES.put("add hardware", AddHardwareCommand.MESSAGE_USAGE);
+        COMMAND_HELP_MESSAGES.put("list", ListCommand.MESSAGE_USAGE);
+        COMMAND_HELP_MESSAGES.put("description", DescriptionCommand.MESSAGE_USAGE);
         COMMAND_HELP_MESSAGES.put("delete", DeleteCommand.MESSAGE_USAGE);
         COMMAND_HELP_MESSAGES.put("edit", EditCommand.MESSAGE_USAGE);
         COMMAND_HELP_MESSAGES.put("help", HelpCommand.MESSAGE_USAGE);
