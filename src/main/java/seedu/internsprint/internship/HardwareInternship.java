@@ -75,7 +75,11 @@ public class HardwareInternship extends Internship {
         return new HardwareInternship(
                 json.getString("companyName"),
                 json.getString("role"),
-                json.getString("embeddedSystems")
+                json.getString("embeddedSystems"),
+                json.optString("eligibility", ""),
+                json.optString("description", ""),
+                json.optString("status", ""),
+                json.optString("expectations", "")
         );
     }
 

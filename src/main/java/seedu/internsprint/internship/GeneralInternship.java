@@ -75,7 +75,11 @@ public class GeneralInternship extends Internship {
         return new GeneralInternship(
                 json.getString("companyName"),
                 json.getString("role"),
-                json.getString("department")
+                json.getString("department"),
+                json.optString("eligibility", ""),
+                json.optString("description", ""),
+                json.optString("status", ""),
+                json.optString("expectations", "")
         );
     }
 
