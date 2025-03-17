@@ -70,7 +70,11 @@ public class SoftwareInternship extends Internship {
         return new SoftwareInternship(
                 json.getString("companyName"),
                 json.getString("role"),
-                json.getString("techStack")
+                json.getString("techStack"),
+                json.optString("eligibility", ""),
+                json.optString("description", ""),
+                json.optString("status", ""),
+                json.optString("expectations", "")
         );
     }
 
