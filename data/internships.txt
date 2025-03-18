@@ -1,9 +1,10 @@
 [
     {
         "role": "IT Intern",
+        "expectations": "Be strong",
         "type": "general",
         "department": "IT",
-        "companyName": "UBS"
+        "companyName": "Bank"
     },
     {
         "role": "Human Resource",
