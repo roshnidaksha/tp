@@ -2,7 +2,6 @@ package seedu.internsprint.command;
 
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
-import seedu.internsprint.util.InternSprintMessages;
 
 import java.util.ArrayList;
 import java.util.List;
