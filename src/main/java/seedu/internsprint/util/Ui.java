@@ -24,7 +24,6 @@ public class Ui {
         System.out.println(LOGO);
         System.out.println(WELCOME_MESSAGE);
         System.out.println(DIVIDER);
-        System.out.println();
     }
 
     public static void showExitMessage() {

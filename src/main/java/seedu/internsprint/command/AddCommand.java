@@ -62,7 +62,7 @@ public abstract class AddCommand extends Command {
 
         try {
             internships.saveInternships();
-            feedback.add(InternSprintMessages.SAVE_SUCCESS_MESSAGE);
+            //feedback.add(InternSprintMessages.SAVE_SUCCESS_MESSAGE);
         } catch (Exception e) {
             feedback.add(e.getMessage());
             result = new CommandResult(feedback);

@@ -11,5 +11,17 @@
         "type": "general",
         "department": "HR",
         "companyName": "Google"
+    },
+    {
+        "role": "Software Engineer",
+        "techStack": "Java, Python",
+        "type": "software",
+        "companyName": "Google"
+    },
+    {
+        "role": "Hardware Engineer",
+        "type": "hardware",
+        "embeddedSystems": "C, C++",
+        "companyName": "Google"
     }
 ]

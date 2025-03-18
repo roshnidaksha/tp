@@ -41,14 +41,14 @@ public class HelpCommand extends Command {
         } else if (parameters.isEmpty()) {
             StringBuilder helpMessage = new StringBuilder("Here is the guide for all available commands:\n\n");
             for (String command : COMMAND_HELP_MESSAGES.keySet()) {
-                helpMessage.append(COMMAND_HELP_MESSAGES.get(command)).append("\n\n");
+                helpMessage.append("\t-> ").append(COMMAND_HELP_MESSAGES.get(command)).append("\n\n");
             }
             feedback = helpMessage.toString();
             isSuccess = true;
         } else {
             String commandName = parameters.values().iterator().next();
             if (COMMAND_HELP_MESSAGES.containsKey(commandName)) {
-                feedback = COMMAND_HELP_MESSAGES.get(commandName);
+                feedback = "-> "+ COMMAND_HELP_MESSAGES.get(commandName);
                 isSuccess = true;
             } else {
                 feedback = InternSprintExceptionMessages.HELP_INVALID_PARAMETERS;
