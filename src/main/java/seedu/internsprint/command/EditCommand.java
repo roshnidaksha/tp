@@ -98,7 +98,7 @@ public class EditCommand extends Command {
         }
 
         feedback.add(EDIT_MESSAGE_SUCCESS);
-        feedback.add(foundInternship.toString());
+        feedback.add(String.valueOf(foundInternship.toDescription()));
         result = new CommandResult(feedback);
         result.setSuccessful(true);
         return result;

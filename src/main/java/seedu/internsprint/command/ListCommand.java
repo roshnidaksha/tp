@@ -9,10 +9,11 @@ import java.util.List;
 import static seedu.internsprint.util.InternSprintMessages.LIST_MESSAGE_SUCCESS;
 
 public class ListCommand extends Command {
-    public static final String COMMAND_WORD = "bye";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Lists\n"
-            + "Parameters: None\n"
-            + "Example: " + COMMAND_WORD;
+    public static final String COMMAND_WORD = "list";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Lists every saved internship in your list, arranged "
+            + "by categories\n"
+            + "    Parameters: None\n"
+            + "    Example: " + COMMAND_WORD;
 
     @Override
     protected boolean isValidParameters() {
