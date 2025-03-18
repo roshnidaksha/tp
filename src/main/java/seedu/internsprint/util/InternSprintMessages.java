@@ -12,7 +12,13 @@ public class InternSprintMessages {
     public static final String MESSAGE_DUPLICATE_INTERNSHIP = "This internship already exists in the internship list";
     public static final String BYE_MESSAGE = "Goodbye! Hope to see you again soon!";
 
-    public static final String LOGO ="InternSprint";
+    //Generated below ASCII text art from: https://www.asciiart.eu/text-to-ascii-art
+    public static final String LOGO ="    ____      __                 _____            _       __ \n" +
+            "   /  _/___  / /____  _________ / ___/____  _____(_)___  / /_\n" +
+            "   / // __ \\/ __/ _ \\/ ___/ __ \\\\__ \\/ __ \\/ ___/ / __ \\/ __/\n" +
+            " _/ // / / / /_/  __/ /  / / / /__/ / /_/ / /  / / / / / /_  \n" +
+            "/___/_/ /_/\\__/\\___/_/  /_/ /_/____/ .___/_/  /_/_/ /_/\\__/  \n" +
+            "                                  /_/                        ";
 
     public static final String WELCOME_MESSAGE = "Welcome to InternSprint! \n\n" +
             "Your ultimate assistant for managing internship applications!\n" +
