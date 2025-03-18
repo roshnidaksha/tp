@@ -25,7 +25,7 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_WR
 import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_READ_FILE;
 
 import static seedu.internsprint.util.InternSprintMessages.LOADING_DATA_SUCCESS;
-//import static seedu.internsprint.util.InternSprintMessages.LOADING_DATA_FIRST_TIME;
+import static seedu.internsprint.util.InternSprintMessages.LOADING_DATA_FIRST_TIME;
 
 /**
  * Handles the reading and writing of data to the file.
@@ -90,7 +90,7 @@ public class StorageHandler {
     public static CommandResult loadInternships(InternshipList internships) {
         CommandResult result;
         if (!file.exists() || file.length() == 0) {
-            result = new CommandResult(LOADING_DATA_SUCCESS);
+            result = new CommandResult(LOADING_DATA_FIRST_TIME);
             result.setSuccessful(true);
             return result;
         }

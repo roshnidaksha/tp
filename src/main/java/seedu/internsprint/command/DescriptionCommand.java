@@ -15,9 +15,9 @@ import static seedu.internsprint.util.InternSprintMessages.DESC_MESSAGE_SUCCESS;
 public class DescriptionCommand extends Command {
     public static final String COMMAND_WORD = "desc";
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + "Shows the description of a particular internship.\n"
-            + "Parameter: " + "/index INDEX_OF_INTERNSHIP\n"
-            + "Example: " + COMMAND_WORD + " 1 ";
+            + ": Shows the description of a particular internship.\n"
+            + "    Parameter: " + "/index INDEX_OF_INTERNSHIP\n"
+            + "    Example: " + COMMAND_WORD + " /index 1 ";
     public static final String[] REQUIRED_PARAMETERS = {"/index"};
 
     @Override
