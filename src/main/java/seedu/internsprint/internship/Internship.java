@@ -52,6 +52,13 @@ public abstract class Internship {
     }
 
     /**
+     * Creates a copy of the internship.
+     *
+     * @return Copy of the internship.
+     */
+    public abstract Internship copy();
+
+    /**
      * Returns a string representation of the internship.
      *
      * @return String representation of the internship.

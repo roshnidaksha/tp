@@ -32,6 +32,15 @@ public class SoftwareInternship extends Internship {
     }
 
     /**
+     * Returns a copy of the software internship.
+     *
+     * @return Copy of the software internship.
+     */
+    public SoftwareInternship copy() {
+        return new SoftwareInternship(companyName, role, techStack, eligibility, description, status, expectations);
+    }
+
+    /**
      * Returns a string representation of the software internship.
      * Shows the company name, role and tech stack.
      *

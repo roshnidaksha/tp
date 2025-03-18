@@ -32,6 +32,16 @@ public class HardwareInternship extends Internship {
     }
 
     /**
+     * Returns a copy of the hardware internship.
+     *
+     * @return Copy of the hardware internship.
+     */
+    public HardwareInternship copy() {
+        return new HardwareInternship(companyName, role, embeddedSystems, eligibility,
+            description, status, expectations);
+    }
+
+    /**
      * Returns a string representation of the hardware internship.
      * Shows the company name, role and embedded systems.
      *

@@ -32,6 +32,15 @@ public class GeneralInternship extends Internship {
     }
 
     /**
+     * Returns a copy of the general internship.
+     *
+     * @return Copy of the general internship.
+     */
+    public GeneralInternship copy() {
+        return new GeneralInternship(companyName, role, department, eligibility, description, status, expectations);
+    }
+
+    /**
      * Returns a string representation of the general internship.
      * Shows the company name, role and department.
      *
