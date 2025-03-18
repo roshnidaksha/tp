@@ -38,7 +38,7 @@ public class InternSprint {
                 result = command.execute(internships);
                 Ui.showResultToUser(result);
                 isExit = result.isExit();
-            } catch (Exception e) {
+            } catch (IllegalArgumentException e) {
                 Ui.showError(e.getMessage());
             } finally {
                 System.out.println();

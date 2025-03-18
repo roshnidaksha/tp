@@ -1,5 +1,6 @@
 package seedu.internsprint.internship;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -33,19 +34,13 @@ public class HardwareInternship extends Internship {
 
     @Override
     public String toString() {
-        String internshipString = "Company: " + companyName + ", Role: " + role + ", Tech: " + embeddedSystems;
-        if (eligibility != null && !eligibility.isBlank()) {
-            internshipString += ", Eligibility: " + eligibility;
-        }
-        if (description != null && !description.isBlank()) {
-            internshipString += ", Description: " + description;
-        }
-        if (status != null && !status.isBlank()) {
-            internshipString += ", Status: " + status;
-        }
-        if (expectations != null && !expectations.isBlank()) {
-            internshipString += ", Expectations: " + expectations;
-        }
+        return "Company: " + companyName + ", Role: " + role + ", Tech: " + embeddedSystems;
+    }
+
+    @Override
+    public ArrayList<String> toDescription() {
+        ArrayList<String> internshipString = super.toDescription();
+        internshipString.add("Embedded Systems: " + embeddedSystems);
         return internshipString;
     }
 
@@ -68,6 +63,10 @@ public class HardwareInternship extends Internship {
         orderedMap.put("companyName", companyName);
         orderedMap.put("role", role);
         orderedMap.put("embeddedSystems", embeddedSystems);
+        orderedMap.put("eligibility", eligibility);
+        orderedMap.put("description", description);
+        orderedMap.put("status", status);
+        orderedMap.put("expectations", expectations);
         return new JSONObject(orderedMap);
     }
 
@@ -75,7 +74,11 @@ public class HardwareInternship extends Internship {
         return new HardwareInternship(
                 json.getString("companyName"),
                 json.getString("role"),
-                json.getString("embeddedSystems")
+                json.getString("embeddedSystems"),
+                json.optString("eligibility", ""),
+                json.optString("description", ""),
+                json.optString("status", ""),
+                json.optString("expectations", "")
         );
     }
 

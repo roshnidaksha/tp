@@ -1,5 +1,7 @@
 package seedu.internsprint.internship;
 
+import java.util.ArrayList;
+
 import org.json.JSONObject;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_REQUIRED_PARAMETERS;
@@ -49,6 +51,26 @@ public abstract class Internship {
 
     @Override
     public abstract String toString();
+
+    public ArrayList<String> toDescription() {
+        ArrayList<String> internshipString = new ArrayList<>();
+        internshipString.add("Company: " + companyName);
+        internshipString.add("Role: " + role);
+        if (eligibility != null && !eligibility.isBlank()) {
+            internshipString.add("Eligibility: " + eligibility);
+        }
+        if (description != null && !description.isBlank()) {
+            internshipString.add("Description: " + description);
+        }
+        if (status != null && !status.isBlank()) {
+            internshipString.add("Status: " + status);
+        }
+        if (expectations != null && !expectations.isBlank()) {
+            internshipString.add("Expectations: " + expectations);
+        }
+        return internshipString;
+    }
+
 
     @Override
     public abstract boolean equals(Object obj);
