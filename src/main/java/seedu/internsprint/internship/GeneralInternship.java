@@ -1,5 +1,6 @@
 package seedu.internsprint.internship;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -33,19 +34,13 @@ public class GeneralInternship extends Internship {
 
     @Override
     public String toString() {
-        String internshipString = "Company: " + companyName + ", Role: " + role + ", Dept: " + department;
-        if (eligibility != null && !eligibility.isBlank()) {
-            internshipString += ", Eligibility: " + eligibility;
-        }
-        if (description != null && !description.isBlank()) {
-            internshipString += ", Description: " + description;
-        }
-        if (status != null && !status.isBlank()) {
-            internshipString += ", Status: " + status;
-        }
-        if (expectations != null && !expectations.isBlank()) {
-            internshipString += ", Expectations: " + expectations;
-        }
+        return "Company: " + companyName + ", Role: " + role + ", Dept: " + department;
+    }
+
+    @Override
+    public ArrayList<String> toDescription() {
+        ArrayList<String> internshipString = super.toDescription();
+        internshipString.add("Department: " + department);
         return internshipString;
     }
 
@@ -68,6 +63,10 @@ public class GeneralInternship extends Internship {
         orderedMap.put("companyName", companyName);
         orderedMap.put("role", role);
         orderedMap.put("department", department);
+        orderedMap.put("eligibility", eligibility);
+        orderedMap.put("description", description);
+        orderedMap.put("status", status);
+        orderedMap.put("expectations", expectations);
         return new JSONObject(orderedMap);
     }
 
@@ -75,7 +74,11 @@ public class GeneralInternship extends Internship {
         return new GeneralInternship(
                 json.getString("companyName"),
                 json.getString("role"),
-                json.getString("department")
+                json.getString("department"),
+                json.optString("eligibility", ""),
+                json.optString("description", ""),
+                json.optString("status", ""),
+                json.optString("expectations", "")
         );
     }
 

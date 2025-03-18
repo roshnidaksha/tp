@@ -24,10 +24,53 @@ To begin, use one of the following commands to learn the correct syntax:
 ------------------------------------------------------------------------------------------------------------------------
 
 > ------------------------------------------------------------------------------------------------------------------------
+    New internship added
+    Company: AMD, Role: Hardware Engineer, Tech: Arduino
+    Now you have 2 internships in the list
+    Internships saved successfully
+    You can view the list of internships at data/internships.txt
+------------------------------------------------------------------------------------------------------------------------
+
+> ------------------------------------------------------------------------------------------------------------------------
+    Here is your internship List!
+    Software Internships:
+      1. Company: Google, Role: Software Developer, Tech: Python
+    Hardware Internships:
+      2. Company: AMD, Role: Hardware Engineer, Tech: Arduino
+    General Internships:
+------------------------------------------------------------------------------------------------------------------------
+
+> ------------------------------------------------------------------------------------------------------------------------
     Internships saved successfully
     You can view the list of internships at data/internships.txt
     Internship edited successfully.
     Company: Google, Role: Software Developer, Tech: Python, AWS
+------------------------------------------------------------------------------------------------------------------------
+
+> ------------------------------------------------------------------------------------------------------------------------
+    Here is your internship Description!
+    Company: Google
+    Role: Software Developer
+    Tech Stack: Python, AWS
+------------------------------------------------------------------------------------------------------------------------
+
+> ------------------------------------------------------------------------------------------------------------------------
+    Internships saved successfully
+    You can view the list of internships at data/internships.txt
+    Successfully deleted internship: Company: AMD, Role: Hardware Engineer, Tech: Arduino
+------------------------------------------------------------------------------------------------------------------------
+
+> ------------------------------------------------------------------------------------------------------------------------
+    Internships saved successfully
+    You can view the list of internships at data/internships.txt
+    Successfully deleted internship: Company: Google, Role: Software Developer, Tech: Python, AWS
+------------------------------------------------------------------------------------------------------------------------
+
+> ------------------------------------------------------------------------------------------------------------------------
+    Here is your internship List!
+    Software Internships:
+    Hardware Internships:
+    General Internships:
 ------------------------------------------------------------------------------------------------------------------------
 
 > ------------------------------------------------------------------------------------------------------------------------
