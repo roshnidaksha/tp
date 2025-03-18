@@ -137,5 +137,7 @@ class EditCommandTest {
         CommandResult result = editCommand.execute(internshipList);
         assertFalse(result.isSuccessful());
         assertEquals(MESSAGE_DUPLICATE_INTERNSHIP, result.getFeedbackToUser().get(0));
+        assertEquals("Facebook", internshipList.getInternshipMap().get("software").get(0).getCompanyName());
+        assertEquals("Automation Intern", internshipList.getInternshipMap().get("software").get(0).getRole());
     }
 }

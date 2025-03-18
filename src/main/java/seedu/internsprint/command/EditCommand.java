@@ -70,7 +70,7 @@ public class EditCommand extends Command {
 
         Internship foundInternship = internshipMap.get(type).get(index);
         Internship foundInternshipCopy = foundInternship.copy();
-        boolean checkWrongTypeOfInternship = editParametersForFoundInternships(foundInternshipCopy);
+        boolean checkWrongTypeOfInternship = editParametersForFoundInternships(foundInternship);
 
         if (foundInternship == null || checkWrongTypeOfInternship) {
             result = new CommandResult(EDIT_UNABLE_TO_FIND_INTERNSHIP);
@@ -81,14 +81,13 @@ public class EditCommand extends Command {
         long count = internshipMap.values().stream().flatMap(List::stream)
             .filter(internship -> internship.equals(foundInternship))
             .count();
-        if (count >= 1) {
+        if (count >= 2) {
+            internshipMap.get(type).set(index, foundInternshipCopy);
             feedback.add(MESSAGE_DUPLICATE_INTERNSHIP);
             result = new CommandResult(feedback);
             result.setSuccessful(false);
             return result;
         }
-
-        internshipMap.get(type).set(index, foundInternshipCopy);
 
         try {
             internships.saveInternships();
