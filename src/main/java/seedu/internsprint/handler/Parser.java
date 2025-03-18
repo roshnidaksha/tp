@@ -24,7 +24,16 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.INVALID_INDE
 import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_INDEX;
 import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_VALUE_INPUT;
 
+/**
+ * Parses user input.
+ */
 public class Parser {
+    /**
+     * Parses the user input and returns the corresponding Command object.
+     *
+     * @param userInput User input string.
+     * @return Command object corresponding to the user input.
+     */
     public static Command parseCommand(String userInput) {
         String[] commandTypeAndParams = splitCommandTypeAndParams(userInput.trim());
         String commandType = commandTypeAndParams[0];
@@ -66,6 +75,12 @@ public class Parser {
         return command;
     }
 
+    /**
+     * Splits the user input into the command type and the parameters.
+     *
+     * @param userInput User input string.
+     * @return Array containing the command type and the parameters.
+     */
     private static String[] splitCommandTypeAndParams(String userInput) {
         String[] multiWordCommands = {"add software", "add hardware", "add general", "edit"};
         for (String command : multiWordCommands) {
@@ -80,6 +95,12 @@ public class Parser {
         return new String[]{commandType, params};
     }
 
+    /**
+     * Parses the key-value pairs in the parameters string and sets them in the Command object.
+     *
+     * @param params Parameters string.
+     * @param command Command object.
+     */
     protected static void parseKeyValuePairs(String params, Command command) {
         HashMap<String, String> keyValueMap = new HashMap<>();
 
@@ -97,11 +118,11 @@ public class Parser {
             parts = Arrays.copyOfRange(parts, 1, parts.length);
         }
 
-        for (int i = 0; i < parts.length; i++) {
-            if (parts[i].trim().isEmpty()) {
+        for (String part : parts) {
+            if (part.trim().isEmpty()) {
                 continue;
             }
-            String[] keyValue = parts[i].trim().split("\\s+", 2);
+            String[] keyValue = part.trim().split("\\s+", 2);
             if (keyValue.length < 2) {
                 throw new IllegalArgumentException(String.format(MISSING_VALUE_INPUT, keyValue[0]));
             }
@@ -118,6 +139,13 @@ public class Parser {
         command.setParameters(keyValueMap);
     }
 
+    /**
+     * Validates the index input by the user.
+     *
+     * @param index Index input by the user.
+     * @param internships InternshipList object.
+     * @return Array containing the type and index of the internship.
+     */
     public static String[] validateIndex(String index, InternshipList internships) {
         if (index.isEmpty()) {
             throw new IllegalArgumentException(MISSING_INDEX);
@@ -137,6 +165,7 @@ public class Parser {
                 indexValue -= internshipsMap.get("software").size();
                 type = "hardware";
             } else {
+                indexValue -= internshipsMap.get("software").size();
                 indexValue -= internshipsMap.get("hardware").size();
                 type = "general";
             }
