@@ -40,7 +40,7 @@ public class Ui {
     public static void showError(List<String> messages) {
         System.out.println("    " + ERROR_PREFIX + messages.get(0));
         for (int i = 1; i < messages.size(); i++) {
-            System.out.println(messages.get(i));
+            System.out.println("    " + messages.get(i));
         }
     }
 

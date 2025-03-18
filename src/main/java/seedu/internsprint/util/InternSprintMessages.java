@@ -13,17 +13,20 @@ public class InternSprintMessages {
     public static final String BYE_MESSAGE = "Goodbye! Hope to see you again soon!";
 
     public static final String LOGO ="InternSprint";
-    public static final String WELCOME_MESSAGE =
-            "Welcome to InternSprint! Your one-stop platform to manage and track your internship applications.\n" +
-                    "Get started by adding an internship! InternSprint allows you to add " +
-                    "three types of internships:\n" +
-                    "- General\n" +
-                    "- Software\n" +
-                    "- Hardware\n\n" +
-                    "To begin, use one of the following commands to learn the correct syntax:\n" +
-                    "  add general\n" +
-                    "  add software\n" +
-                    "  add hardware";
+
+    public static final String WELCOME_MESSAGE = "Welcome to InternSprint! \n\n" +
+            "Your ultimate assistant for managing internship applications!\n" +
+            "Juggling multiple applications, different platforms, and endless follow-ups? " +
+            "InternSprint makes it easy to log, track, " +
+            "\nand update your applications—all in one place. No more lost " +
+            "applications or forgotten deadlines!\n" +
+            "Get started by adding an internship! InternSprint allows you to add " +
+            "three types of internships:\n" +
+            "- General\n" +
+            "- Software\n" +
+            "- Hardware\n\n"  +
+            "To get started, type 'help' and explore all the ways InternSprint can simplify your internship journey. 🎯";
+
 
     public static final String SAVE_SUCCESS_MESSAGE = "Internships saved successfully\n" +
             "    You can view the list of internships at data/internships.txt";
