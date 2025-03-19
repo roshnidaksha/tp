@@ -6,13 +6,16 @@ import org.json.JSONObject;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_REQUIRED_PARAMETERS;
 
+/**
+ * Represents an internship.
+ */
 public abstract class Internship {
 
-    //Mandatory required parameters to create an internship
+    /* Mandatory required parameters to create an internship */
     protected String companyName;
     protected String role;
 
-    //Optional parameters to create an internship
+    /* Optional parameters to create an internship */
     protected String description = null;
     protected String eligibility = null;
     protected String status = null;
@@ -48,10 +51,27 @@ public abstract class Internship {
         }
     }
 
+    /**
+     * Creates a copy of the internship.
+     *
+     * @return Copy of the internship.
+     */
+    public abstract Internship copy();
 
+    /**
+     * Returns a string representation of the internship.
+     *
+     * @return String representation of the internship.
+     */
     @Override
     public abstract String toString();
 
+    /**
+     * Returns a string representation of the internship.
+     * Shows all details of the internship.
+     *
+     * @return String representation of the internship.
+     */
     public ArrayList<String> toDescription() {
         ArrayList<String> internshipString = new ArrayList<>();
         internshipString.add("Company: " + companyName);
@@ -71,10 +91,20 @@ public abstract class Internship {
         return internshipString;
     }
 
-
+    /**
+     * Returns true if the internship is equal to another object.
+     *
+     * @param obj Object to compare with.
+     * @return True if the internship is equal to the object.
+     */
     @Override
     public abstract boolean equals(Object obj);
 
+    /**
+     * Converts the internship to a JSON object.
+     *
+     * @return JSON object of the internship.
+     */
     public abstract JSONObject toJson();
 
     public void setCompanyName(String companyName) {

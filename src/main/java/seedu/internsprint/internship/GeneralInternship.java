@@ -8,6 +8,9 @@ import org.json.JSONObject;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_REQUIRED_PARAMETERS;
 
+/**
+ * Represents a general internship.
+ */
 public class GeneralInternship extends Internship {
     private String department;
 
@@ -28,15 +31,32 @@ public class GeneralInternship extends Internship {
         this.department = department;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
+    /**
+     * Returns a copy of the general internship.
+     *
+     * @return Copy of the general internship.
+     */
+    public GeneralInternship copy() {
+        return new GeneralInternship(companyName, role, department, eligibility, description, status, expectations);
     }
 
+    /**
+     * Returns a string representation of the general internship.
+     * Shows the company name, role and department.
+     *
+     * @return String representation of the general internship.
+     */
     @Override
     public String toString() {
         return "Company: " + companyName + ", Role: " + role + ", Dept: " + department;
     }
 
+    /**
+     * Returns a string representation of the general internship.
+     * Shows all details of the general internship.
+     *
+     * @return String representation of the general internship.
+     */
     @Override
     public ArrayList<String> toDescription() {
         ArrayList<String> internshipString = super.toDescription();
@@ -44,6 +64,14 @@ public class GeneralInternship extends Internship {
         return internshipString;
     }
 
+    /**
+     * Returns true if the general internship is equal to another object.
+     * Two general internships are equal if they have the same company name, role and department.
+     * This method overrides the equals method in the Object class.
+     *
+     * @param obj Object to compare to.
+     * @return True if the general internship is equal to the other object, false otherwise.
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj == null || getClass() != obj.getClass()) {
@@ -56,6 +84,11 @@ public class GeneralInternship extends Internship {
                 && department.equals(generalInternship.getDepartment());
     }
 
+    /**
+     * Returns a JSON object representing the general internship.
+     *
+     * @return JSON object representing the general internship.
+     */
     @Override
     public JSONObject toJson() {
         Map<String, Object> orderedMap = new LinkedHashMap<>();
@@ -70,6 +103,12 @@ public class GeneralInternship extends Internship {
         return new JSONObject(orderedMap);
     }
 
+    /**
+     * Returns a GeneralInternship object from a JSON object.
+     *
+     * @param json JSON object representing the general internship.
+     * @return GeneralInternship object.
+     */
     public static GeneralInternship fromJson(JSONObject json) {
         return new GeneralInternship(
                 json.getString("companyName"),
@@ -89,5 +128,9 @@ public class GeneralInternship extends Internship {
 
     public String getDepartment() {
         return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
     }
 }

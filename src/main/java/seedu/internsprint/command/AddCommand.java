@@ -11,6 +11,9 @@ import static seedu.internsprint.util.InternSprintMessages.ADD_MESSAGE_SUCCESS;
 import static seedu.internsprint.util.InternSprintMessages.MESSAGE_DUPLICATE_INTERNSHIP;
 import static seedu.internsprint.util.InternSprintMessages.LIST_COUNT_MESSAGE;
 
+/**
+ * Represents a command to add an internship.
+ */
 public abstract class AddCommand extends Command {
     protected final Set<String> requiredParameters;
     protected final Set<String> optionalParameters;
@@ -20,14 +23,36 @@ public abstract class AddCommand extends Command {
         this.optionalParameters = optionalParameters;
     }
 
+    /**
+     * Checks if the parameters entered by the user are valid.
+     *
+     * @return True if the parameters are valid, false otherwise.
+     */
+    @Override
     protected boolean isValidParameters() {
         return parameters.keySet().containsAll(requiredParameters);
     }
 
+    /**
+     * Gets the usage message for the command.
+     *
+     * @return Usage message.
+     */
     protected abstract String getUsageMessage();
 
+    /**
+     * Creates an internship object.
+     *
+     * @return Internship object.
+     */
     protected abstract Internship createInternship();
 
+    /**
+     * Executes the command to add an internship.
+     *
+     * @param internships InternshipList object.
+     * @return CommandResult object.
+     */
     @Override
     public CommandResult execute(InternshipList internships) {
         CommandResult result;
