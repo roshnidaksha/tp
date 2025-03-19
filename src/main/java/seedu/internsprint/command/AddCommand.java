@@ -6,6 +6,8 @@ import seedu.internsprint.internship.InternshipList;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static seedu.internsprint.util.InternSprintMessages.ADD_MESSAGE_SUCCESS;
 import static seedu.internsprint.util.InternSprintMessages.MESSAGE_DUPLICATE_INTERNSHIP;
@@ -15,6 +17,7 @@ import static seedu.internsprint.util.InternSprintMessages.LIST_COUNT_MESSAGE;
  * Represents a command to add an internship.
  */
 public abstract class AddCommand extends Command {
+    protected static Logger logger = Logger.getLogger(AddCommand.class.getName());
     protected final Set<String> requiredParameters;
     protected final Set<String> optionalParameters;
 
@@ -55,6 +58,7 @@ public abstract class AddCommand extends Command {
      */
     @Override
     public CommandResult execute(InternshipList internships) {
+        logger.log(Level.INFO, "Executing add command");
         CommandResult result;
         if (!isValidParameters()) {
             result = new CommandResult(getUsageMessage());
@@ -63,13 +67,7 @@ public abstract class AddCommand extends Command {
         }
 
         Internship toAdd;
-        try {
-            toAdd = createInternship();
-        } catch (Exception e) {
-            result = new CommandResult(e.getMessage());
-            result.setSuccessful(false);
-            return result;
-        }
+        toAdd = createInternship();
 
         if (internships.contains(toAdd)) {
             result = new CommandResult(MESSAGE_DUPLICATE_INTERNSHIP);

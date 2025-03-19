@@ -4,6 +4,7 @@ import seedu.internsprint.internship.GeneralInternship;
 import seedu.internsprint.internship.Internship;
 
 import java.util.Set;
+import java.util.logging.Level;
 
 public class AddGeneralCommand extends AddCommand {
     public static final String COMMAND_WORD = "add general";
@@ -24,6 +25,7 @@ public class AddGeneralCommand extends AddCommand {
 
     @Override
     protected Internship createInternship() {
+        logger.log(Level.INFO, "Creating General Internship");
         String companyName = parameters.get("/c");
         String role = parameters.get("/r");
         String department = parameters.get("/dept");

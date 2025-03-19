@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.FILE_ALREADY_EXISTS;
 import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_CREATE_DIRECTORY;
@@ -33,6 +35,7 @@ import static seedu.internsprint.util.InternSprintMessages.LOADING_DATA_FIRST_TI
 public class StorageHandler {
     private static final String FILE_PATH = Paths.get("data", "internships.txt").toString();
     private static File file;
+    private static Logger logger = Logger.getLogger(StorageHandler.class.getName());
 
     public StorageHandler() {
         file = new File(FILE_PATH);
@@ -54,6 +57,7 @@ public class StorageHandler {
                 }
             }
         } catch (IOException e) {
+            logger.log(Level.SEVERE, "Unable to create file {0}", file.getAbsolutePath());
             throw new RuntimeException(String.format(UNABLE_TO_CREATE_FILE,
                     file.getAbsolutePath()));
         }
@@ -65,6 +69,7 @@ public class StorageHandler {
      * @param internships List of internships to be saved.
      */
     public void saveInternships(InternshipList internships) {
+        logger.log(Level.INFO, "Saving Internships to file ...");
         JSONArray jsonArray = new JSONArray();
         internships.getInternshipMap().forEach((type, list) -> {
             list.forEach(internship -> jsonArray.put(internship.toJson()));
@@ -75,7 +80,10 @@ public class StorageHandler {
         }
         try (FileWriter fileWriter = new FileWriter(file)) {
             fileWriter.write(jsonArray.toString(4));
+            logger.log(Level.INFO, String.format("Successfully saved %s Internships to file %s",
+                jsonArray.length(), file.getAbsolutePath()));
         } catch (IOException e) {
+            logger.log(Level.SEVERE, String.format("Unable to save Internships to file %s", file.getAbsolutePath()));
             throw new RuntimeException(String.format(UNABLE_TO_WRITE_FILE,
                     file.getAbsolutePath()));
         }
@@ -88,8 +96,10 @@ public class StorageHandler {
      * @return CommandResult object indicating the success of the operation.
      */
     public static CommandResult loadInternships(InternshipList internships) {
+        logger.log(Level.INFO, "Trying to load internships from storage");
         CommandResult result;
         if (!file.exists() || file.length() == 0) {
+            logger.log(Level.INFO, "Internships file does not exist");
             result = new CommandResult(LOADING_DATA_FIRST_TIME);
             result.setSuccessful(true);
             return result;
@@ -101,12 +111,14 @@ public class StorageHandler {
                 jsonData.append(line);
             }
         } catch (IOException e) {
+            logger.log(Level.SEVERE, String.format("Unable to load internships from %s", file.getAbsolutePath()));
             result = errorReadingFile();
             return result;
         }
 
         JSONArray jsonArray = new JSONArray(jsonData.toString());
         if (jsonArray.isEmpty()) {
+            logger.log(Level.WARNING, "No internships found in file");
             result = errorReadingFile();
             return result;
         }
@@ -114,6 +126,7 @@ public class StorageHandler {
             JSONObject internshipJson = jsonArray.getJSONObject(i);
             addInternshipToList(internships, internshipJson);
         }
+        logger.log(Level.INFO, "Internships loaded successfully");
         result = new CommandResult(LOADING_DATA_SUCCESS);
         result.setSuccessful(true);
         return result;
@@ -125,6 +138,7 @@ public class StorageHandler {
      * @return CommandResult object indicating the error.
      */
     private static CommandResult errorReadingFile() {
+        logger.log(Level.SEVERE, "Failed to read internship file or file is corrupted");
         CommandResult result;
         List<String> feedback = new ArrayList<>();
         feedback.add(UNABLE_TO_READ_FILE);
@@ -151,6 +165,7 @@ public class StorageHandler {
             internships.addInternship(HardwareInternship.fromJson(internshipJson));
             break;
         default:
+            logger.log(Level.SEVERE, "Unknown internship type");
             break;
         }
     }

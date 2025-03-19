@@ -16,6 +16,8 @@ import seedu.internsprint.command.ListCommand;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.ILLEGAL_VALUE_INPUT;
 import static seedu.internsprint.util.InternSprintExceptionMessages.INVALID_COMMAND_TYPE;
@@ -28,6 +30,8 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_VALU
  * Parses user input.
  */
 public class Parser {
+    private static Logger logger = Logger.getLogger(Parser.class.getName());
+
     /**
      * Parses the user input and returns the corresponding Command object.
      *
@@ -35,6 +39,7 @@ public class Parser {
      * @return Command object corresponding to the user input.
      */
     public static Command parseCommand(String userInput) {
+        logger.log(Level.INFO, String.format("User command inside parseCommand: %s" + userInput));
         String[] commandTypeAndParams = splitCommandTypeAndParams(userInput.trim());
         String commandType = commandTypeAndParams[0];
         String params = commandTypeAndParams.length > 1 ? commandTypeAndParams[1] : "";
