@@ -8,6 +8,9 @@ import org.json.JSONObject;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_REQUIRED_PARAMETERS;
 
+/**
+ * Represents a hardware internship.
+ */
 public class HardwareInternship extends Internship {
     private String embeddedSystems;
 
@@ -28,15 +31,33 @@ public class HardwareInternship extends Internship {
         this.embeddedSystems = embeddedSystems;
     }
 
-    public void setEmbeddedSystems(String embeddedSystems) {
-        this.embeddedSystems = embeddedSystems;
+    /**
+     * Returns a copy of the hardware internship.
+     *
+     * @return Copy of the hardware internship.
+     */
+    public HardwareInternship copy() {
+        return new HardwareInternship(companyName, role, embeddedSystems, eligibility,
+            description, status, expectations);
     }
 
+    /**
+     * Returns a string representation of the hardware internship.
+     * Shows the company name, role and embedded systems.
+     *
+     * @return String representation of the hardware internship.
+     */
     @Override
     public String toString() {
         return "Company: " + companyName + ", Role: " + role + ", Tech: " + embeddedSystems;
     }
 
+    /**
+     * Returns a string representation of the hardware internship.
+     * Shows all details of the hardware internship.
+     *
+     * @return String representation of the hardware internship.
+     */
     @Override
     public ArrayList<String> toDescription() {
         ArrayList<String> internshipString = super.toDescription();
@@ -44,6 +65,14 @@ public class HardwareInternship extends Internship {
         return internshipString;
     }
 
+    /**
+     * Returns true if the hardware internship is equal to another object.
+     * Two hardware internships are equal if they have the same company name, role and embedded systems.
+     * This method overrides the equals method in the Object class.
+     *
+     * @param obj Object to compare to.
+     * @return True if the hardware internship is equal to the object, false otherwise.
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj == null || getClass() != obj.getClass()) {
@@ -56,6 +85,11 @@ public class HardwareInternship extends Internship {
                 && embeddedSystems.equals(hardwareInternship.getEmbeddedSystems());
     }
 
+    /**
+     * Converts the hardware internship to a JSON object.
+     *
+     * @return JSON object representing the hardware internship.
+     */
     @Override
     public JSONObject toJson() {
         Map<String, Object> orderedMap = new LinkedHashMap<>();
@@ -70,6 +104,12 @@ public class HardwareInternship extends Internship {
         return new JSONObject(orderedMap);
     }
 
+    /**
+     * Converts a JSON object to a hardware internship.
+     *
+     * @param json JSON object representing the hardware internship.
+     * @return Hardware internship represented by the JSON object.
+     */
     public static HardwareInternship fromJson(JSONObject json) {
         return new HardwareInternship(
                 json.getString("companyName"),
@@ -89,5 +129,9 @@ public class HardwareInternship extends Internship {
 
     public String getEmbeddedSystems() {
         return embeddedSystems;
+    }
+
+    public void setEmbeddedSystems(String embeddedSystems) {
+        this.embeddedSystems = embeddedSystems;
     }
 }
