@@ -15,7 +15,7 @@ import java.util.logging.Level;
  * Entry point of the InternSprint application.
  */
 public class InternSprint {
-    private static Logger logger = Logger.getLogger(InternSprint.class.getName());
+    private static final Logger logger = Logger.getLogger(InternSprint.class.getName());
     private final InternshipList internships;
 
     public InternSprint() {
@@ -26,7 +26,7 @@ public class InternSprint {
      * Main entry-point for the InternSprint application.
      */
     public static void main(String[] args) {
-        Logger.getLogger("").setLevel(Level.OFF);
+        //Logger.getLogger("").setLevel(Level.OFF);
         new InternSprint().run();
     }
 

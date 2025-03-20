@@ -1,7 +1,6 @@
 [{
-    "description": "This is some description",
     "role": "IT Intern",
     "type": "general",
     "department": "IT",
-    "companyName": "Java"
+    "companyName": "UBS"
 }]
