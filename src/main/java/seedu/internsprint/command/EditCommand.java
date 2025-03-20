@@ -21,7 +21,7 @@ import static seedu.internsprint.util.InternSprintMessages.MESSAGE_DUPLICATE_INT
 import java.util.logging.*;
 
 public class EditCommand extends Command {
-    private static final Logger logger = Logger.getLogger("EditLogger");
+    private static final Logger logger = Logger.getLogger(EditCommand.class.getName());
     public static final String COMMAND_WORD = "edit";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the parameters of an internship.\n"
             + "    Parameters: " + "/c COMPANY_NAME /r ROLE /ex EXPECTATIONS /eli ELIGIBILITY\n"
@@ -117,7 +117,7 @@ public class EditCommand extends Command {
     }
 
     private boolean editParametersForFoundInternships(Internship foundInternship) {
-        logger.log(Level.INFO, "Editing given parameters...li");
+        logger.log(Level.INFO, "Editing given parameters...");
         boolean checkWrongTypeOfInternship = false;
         if (parameters.containsKey("/c")) {
             foundInternship.setCompanyName(parameters.get("/c"));

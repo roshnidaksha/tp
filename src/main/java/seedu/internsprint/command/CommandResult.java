@@ -1,6 +1,7 @@
 package seedu.internsprint.command;
 
 import seedu.internsprint.internship.Internship;
+import java.util.logging.*;
 
 import java.util.List;
 
@@ -8,6 +9,7 @@ import java.util.List;
  * Represents the result of a command execution.
  */
 public class CommandResult {
+    private static final Logger logger = Logger.getLogger(CommandResult.class.getName());
     private final List<String> feedbackToUser;
     private final List<Internship> relevantInternships;
     private boolean isSuccessful;
@@ -19,6 +21,7 @@ public class CommandResult {
      * @param feedbackToUser Feedback to be shown to the user.
      */
     public CommandResult(List<String> feedbackToUser) {
+        logger.log(Level.INFO, "Multiple feedback provided to user...");
         this.feedbackToUser = feedbackToUser;
         this.relevantInternships = null;
         this.isExit = false;
@@ -30,6 +33,7 @@ public class CommandResult {
      * @param feedbackToUser Feedback to be shown to the user.
      */
     public CommandResult(String feedbackToUser) {
+        logger.log(Level.INFO, "One line of feedback provided to user...");
         this.feedbackToUser = List.of(feedbackToUser);
         this.relevantInternships = null;
         this.isExit = false;
@@ -42,6 +46,7 @@ public class CommandResult {
      * @param relevantInternships Internships relevant to the command.
      */
     public CommandResult(List<String> feedbackToUser, List<Internship> relevantInternships) {
+        logger.log(Level.INFO, "Multiple feedback provided to user alongside some relevant internship...");
         this.feedbackToUser = feedbackToUser;
         this.relevantInternships = relevantInternships;
         this.isExit = false;
