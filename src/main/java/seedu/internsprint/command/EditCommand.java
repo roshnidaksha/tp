@@ -38,7 +38,7 @@ public class EditCommand extends Command {
             logger.log(Level.WARNING, "There is no specified index.");
             return false;
         }
-        assert  parameters.containsKey("/index"): "/index flag is not present in the edit command";
+        assert  parameters.containsKey("/index"): "/index flag should be present in the edit command";
         for (String key : parameters.keySet()) {
             if (!key.equals("/index") && !Arrays.asList(POSSIBLE_PARAMETERS).contains(key)) {
                 logger.log(Level.WARNING, "There is a flag that is out of specified optional parameters.");
@@ -48,7 +48,7 @@ public class EditCommand extends Command {
         }
         assert parameters.keySet().stream().allMatch(key -> key.equals("/index")
                                                     || Arrays.asList(POSSIBLE_PARAMETERS).contains(key))
-                : "Some key is not present in predefined valid flags";
+                : "All flags should be members of set of predefined valid flags";
         return true;
     }
 
@@ -81,7 +81,7 @@ public class EditCommand extends Command {
 
         int index = Integer.parseInt(validIndex[1]);
         String type = validIndex[0];
-        assert  (index>=0 && index< internships.getInternshipCount()): "/index value is not within appropriate range";
+        assert  (index>=0 && index< internships.getInternshipCount()): "index value should be within appropriate range";
 
         Internship foundInternship = internshipMap.get(type).get(index);
         Internship foundInternshipCopy = foundInternship.copy();
@@ -115,7 +115,7 @@ public class EditCommand extends Command {
             return result;
         }
         logger.log(Level.INFO, "Finished processing for exit command");
-        assert foundInternship!=null: "Internship has not been found successfully and is a null value.";
+        assert foundInternship!=null: "Internship should not be a null value.";
         feedback.add(EDIT_MESSAGE_SUCCESS);
         feedback.add(String.valueOf(foundInternship.toDescription()));
         result = new CommandResult(feedback);
