@@ -101,12 +101,16 @@ public class StorageHandler {
      * @return CommandResult object indicating the success of the operation.
      */
     public static CommandResult loadInternships(InternshipList internships) {
+        logger.log(Level.INFO, "Beginning process to load internships from file ...");
         CommandResult result;
         if (!file.exists() || file.length() == 0) {
+            logger.log(Level.INFO, "Data file loaded is empty currently");
             result = new CommandResult(LOADING_DATA_FIRST_TIME);
             result.setSuccessful(true);
             return result;
         }
+        assert file.length()!=0 : "File should not be an empty file at this point";
+
         StringBuilder jsonData = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
@@ -120,13 +124,19 @@ public class StorageHandler {
 
         JSONArray jsonArray = new JSONArray(jsonData.toString());
         if (jsonArray.isEmpty()) {
+            logger.log(Level.WARNING, "Error in formatting such that JSONArray could not be" +
+                    "created successfully");
             result = errorReadingFile();
             return result;
         }
+        assert !jsonArray.isEmpty(): "Array of JSON objects read from file should not be an empty at this point";
+        logger.log(Level.INFO, "Successfully extracted internships as JSON objects from file");
+
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject internshipJson = jsonArray.getJSONObject(i);
             addInternshipToList(internships, internshipJson);
         }
+        logger.log(Level.INFO, "Successfully added internships from file to internship list in app");
         result = new CommandResult(LOADING_DATA_SUCCESS);
         result.setSuccessful(true);
         return result;
