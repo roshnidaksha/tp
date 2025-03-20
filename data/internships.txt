@@ -2,5 +2,5 @@
     "role": "IT Intern",
     "type": "general",
     "department": "IT",
-    "companyName": "bank"
+    "companyName": "UBS"
 }]

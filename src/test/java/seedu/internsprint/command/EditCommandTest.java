@@ -140,4 +140,28 @@ class EditCommandTest {
         assertEquals("Facebook", internshipList.getInternshipMap().get("software").get(0).getCompanyName());
         assertEquals("Automation Intern", internshipList.getInternshipMap().get("software").get(0).getRole());
     }
+
+    @Test
+    void isValidParameters_provideIncorrectOptionalFlags_returnsInvalid() {
+        EditCommand editCommand = new EditCommand();
+        editCommand.parameters.put("/index", "1");
+        editCommand.parameters.put("/c", "Java");
+        editCommand.parameters.put("/date", "2020-05-01");
+        assertFalse(editCommand.isValidParameters());
+    }
+
+    @Test
+    void execute_provideCorrectOptionalFlags_editsCorrectly() {
+        EditCommand editCommand = new EditCommand();
+        editCommand.parameters.put("/index", "1");
+        editCommand.parameters.put("/eli","Year 3 students");
+        editCommand.parameters.put("/ex","Should be fast learner");
+        SoftwareInternship internship = new SoftwareInternship("Facebook","Software Engineering",
+                                                        "SWE");
+        InternshipList internshipList = new InternshipList();
+        internshipList.addInternship(internship);
+        editCommand.execute(internshipList);
+        assertEquals("Year 3 students", internship.getEligibility());
+        assertEquals("Should be fast learner", internship.getExpectations());
+    }
 }

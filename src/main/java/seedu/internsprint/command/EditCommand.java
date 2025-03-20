@@ -22,7 +22,6 @@ import java.util.logging.Logger;
 import java.util.logging.Level;
 
 public class EditCommand extends Command {
-    private static final Logger logger = Logger.getLogger(EditCommand.class.getName());
     public static final String COMMAND_WORD = "edit";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the parameters of an internship.\n"
             + "    Parameters: " + "/c COMPANY_NAME /r ROLE /ex EXPECTATIONS /eli ELIGIBILITY\n"
@@ -30,6 +29,7 @@ public class EditCommand extends Command {
             + "    Example: " + COMMAND_WORD + " /index 1 /c Google /r Hardware Engineer /tech C, C++";
     public static final String[] POSSIBLE_PARAMETERS = {"/c", "/r", "/dept", "/eli",
         "/ex", "/tech", "/desc", "/hardtech"};
+    private static final Logger logger = Logger.getLogger(EditCommand.class.getName());
 
     @Override
     protected boolean isValidParameters() {
@@ -46,7 +46,8 @@ public class EditCommand extends Command {
                 return false;
             }
         }
-        assert parameters.keySet().stream().allMatch(key -> key.equals("/index") || Arrays.asList(POSSIBLE_PARAMETERS).contains(key))
+        assert parameters.keySet().stream().allMatch(key -> key.equals("/index")
+                                                    || Arrays.asList(POSSIBLE_PARAMETERS).contains(key))
                 : "Some key is not present in predefined valid flags";
         return true;
     }
