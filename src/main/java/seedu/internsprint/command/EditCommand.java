@@ -18,7 +18,10 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.EDIT_UNABLE_
 import static seedu.internsprint.util.InternSprintMessages.EDIT_MESSAGE_SUCCESS;
 import static seedu.internsprint.util.InternSprintMessages.MESSAGE_DUPLICATE_INTERNSHIP;
 
+import java.util.logging.*;
+
 public class EditCommand extends Command {
+    private static final Logger logger = Logger.getLogger("EditLogger");
     public static final String COMMAND_WORD = "edit";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the parameters of an internship.\n"
             + "    Parameters: " + "/c COMPANY_NAME /r ROLE /ex EXPECTATIONS /eli ELIGIBILITY\n"
@@ -29,11 +32,14 @@ public class EditCommand extends Command {
 
     @Override
     protected boolean isValidParameters() {
+        logger.log(Level.INFO, "Entering check for parameters in edit command.");
         if (!parameters.containsKey("/index")) {
+            logger.log(Level.WARNING, "There is no specified index.");
             return false;
         }
         for (String key : parameters.keySet()) {
             if (!key.equals("/index") && !Arrays.asList(POSSIBLE_PARAMETERS).contains(key)) {
+                logger.log(Level.WARNING, "There is a flag that is out of specified optional parameters.");
                 System.out.println("Invalid key found: " + key);
                 return false;
             }
@@ -43,9 +49,11 @@ public class EditCommand extends Command {
 
     @Override
     public CommandResult execute(InternshipList internships) {
+        logger.log(Level.INFO, "Entering execute for edit command...");
         CommandResult result;
         List<String> feedback = new ArrayList<>();
         if (!isValidParameters()) {
+            logger.log(Level.WARNING, "There are invalid parameters so error result is output to user.");
             feedback.add(EDIT_INVALID_PARAMS);
             feedback.add(MESSAGE_USAGE);
             result = new CommandResult(feedback);
@@ -59,6 +67,7 @@ public class EditCommand extends Command {
         try {
             validIndex = Parser.validateIndex(parameters.get("/index"), internships);
         } catch (IllegalArgumentException e) {
+            logger.log(Level.WARNING, "Index for edit command out of range...");
             feedback.add(e.getMessage());
             result = new CommandResult(feedback);
             result.setSuccessful(false);
@@ -73,6 +82,7 @@ public class EditCommand extends Command {
         boolean checkWrongTypeOfInternship = editParametersForFoundInternships(foundInternship);
 
         if (foundInternship == null || checkWrongTypeOfInternship) {
+            logger.log(Level.WARNING, "Internship not found");
             result = new CommandResult(EDIT_UNABLE_TO_FIND_INTERNSHIP);
             result.setSuccessful(false);
             return result;
@@ -98,7 +108,7 @@ public class EditCommand extends Command {
             result.setSuccessful(false);
             return result;
         }
-
+        logger.log(Level.INFO, "Finished processing for exit command");
         feedback.add(EDIT_MESSAGE_SUCCESS);
         feedback.add(String.valueOf(foundInternship.toDescription()));
         result = new CommandResult(feedback);
@@ -107,6 +117,7 @@ public class EditCommand extends Command {
     }
 
     private boolean editParametersForFoundInternships(Internship foundInternship) {
+        logger.log(Level.INFO, "Editing given parameters...li");
         boolean checkWrongTypeOfInternship = false;
         if (parameters.containsKey("/c")) {
             foundInternship.setCompanyName(parameters.get("/c"));
