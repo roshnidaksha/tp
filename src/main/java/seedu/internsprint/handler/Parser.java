@@ -16,6 +16,8 @@ import seedu.internsprint.command.ListCommand;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.ILLEGAL_VALUE_INPUT;
 import static seedu.internsprint.util.InternSprintExceptionMessages.INVALID_COMMAND_TYPE;
@@ -24,9 +26,25 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.INVALID_INDE
 import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_INDEX;
 import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_VALUE_INPUT;
 
+/**
+ * Parses user input.
+ */
 public class Parser {
+    private static Logger logger = Logger.getLogger(Parser.class.getName());
+
+    /**
+     * Parses the user input and returns the corresponding Command object.
+     *
+     * @param userInput User input string.
+     * @return Command object corresponding to the user input.
+     */
     public static Command parseCommand(String userInput) {
+        logger.log(Level.INFO, String.format("User command inside parseCommand: %s", userInput));
+        assert userInput != null : "User input should not be null";
+
         String[] commandTypeAndParams = splitCommandTypeAndParams(userInput.trim());
+        assert commandTypeAndParams.length > 0 : "Command type should not be empty";
+
         String commandType = commandTypeAndParams[0];
         String params = commandTypeAndParams.length > 1 ? commandTypeAndParams[1] : "";
 
@@ -66,6 +84,12 @@ public class Parser {
         return command;
     }
 
+    /**
+     * Splits the user input into the command type and the parameters.
+     *
+     * @param userInput User input string.
+     * @return Array containing the command type and the parameters.
+     */
     private static String[] splitCommandTypeAndParams(String userInput) {
         String[] multiWordCommands = {"add software", "add hardware", "add general", "edit"};
         for (String command : multiWordCommands) {
@@ -80,6 +104,12 @@ public class Parser {
         return new String[]{commandType, params};
     }
 
+    /**
+     * Parses the key-value pairs in the parameters string and sets them in the Command object.
+     *
+     * @param params Parameters string.
+     * @param command Command object.
+     */
     protected static void parseKeyValuePairs(String params, Command command) {
         HashMap<String, String> keyValueMap = new HashMap<>();
 
@@ -97,11 +127,11 @@ public class Parser {
             parts = Arrays.copyOfRange(parts, 1, parts.length);
         }
 
-        for (int i = 0; i < parts.length; i++) {
-            if (parts[i].trim().isEmpty()) {
+        for (String part : parts) {
+            if (part.trim().isEmpty()) {
                 continue;
             }
-            String[] keyValue = parts[i].trim().split("\\s+", 2);
+            String[] keyValue = part.trim().split("\\s+", 2);
             if (keyValue.length < 2) {
                 throw new IllegalArgumentException(String.format(MISSING_VALUE_INPUT, keyValue[0]));
             }
@@ -118,6 +148,13 @@ public class Parser {
         command.setParameters(keyValueMap);
     }
 
+    /**
+     * Validates the index input by the user.
+     *
+     * @param index Index input by the user.
+     * @param internships InternshipList object.
+     * @return Array containing the type and index of the internship.
+     */
     public static String[] validateIndex(String index, InternshipList internships) {
         if (index.isEmpty()) {
             throw new IllegalArgumentException(MISSING_INDEX);
@@ -131,12 +168,15 @@ public class Parser {
                 throw new IllegalArgumentException(INVALID_INDEX_RANGE);
             }
             String type;
-            if (indexValue <= internshipsMap.get("general").size()) {
-                type = "general";
-            } else if (indexValue <= internshipsMap.get("general").size() + internshipsMap.get("software").size()) {
+            if (indexValue <= internshipsMap.get("software").size()) {
                 type = "software";
-            } else {
+            } else if (indexValue <= internshipsMap.get("software").size() + internshipsMap.get("hardware").size()) {
+                indexValue -= internshipsMap.get("software").size();
                 type = "hardware";
+            } else {
+                indexValue -= internshipsMap.get("software").size();
+                indexValue -= internshipsMap.get("hardware").size();
+                type = "general";
             }
             return new String[]{type, Integer.toString(indexValue - 1)};
         } catch (NumberFormatException e) {

@@ -9,14 +9,15 @@ import java.util.List;
 import static seedu.internsprint.util.InternSprintMessages.LIST_MESSAGE_SUCCESS;
 
 public class ListCommand extends Command {
-    public static final String COMMAND_WORD = "bye";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Lists\n"
-            + "Parameters: None\n"
-            + "Example: " + COMMAND_WORD;
+    public static final String COMMAND_WORD = "list";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Lists every saved internship in your list, arranged "
+            + "by categories\n"
+            + "    Parameters: None\n"
+            + "    Example: " + COMMAND_WORD;
 
     @Override
     protected boolean isValidParameters() {
-        return true;
+        return parameters.isEmpty();
     }
 
     @Override
@@ -24,22 +25,27 @@ public class ListCommand extends Command {
         CommandResult result;
         List<String> feedback = new ArrayList<>();
 
-        for (Internship everyInternship : internshipList.getInternshipMap().get("software")) {
-            System.out.println("Company: " + everyInternship.getCompanyName() + ", Role: " +
-                    everyInternship.getRole());
-        }
-
-        for (Internship everyInternship : internshipList.getInternshipMap().get("hardware")) {
-            System.out.println("Company: " + everyInternship.getCompanyName() + ", Role: " +
-                    everyInternship.getRole());
-        }
-
-        for (Internship everyInternship : internshipList.getInternshipMap().get("general")) {
-            System.out.println("Company: " + everyInternship.getCompanyName() + ", Role: " +
-                    everyInternship.getRole());
-        }
-
+        int count = 1;
         feedback.add(LIST_MESSAGE_SUCCESS);
+
+        feedback.add("Software Internships:");
+        for (Internship everyInternship : internshipList.getInternshipMap().get("software")) {
+            feedback.add("  " + count + ". " + everyInternship.toString());
+            count++;
+        }
+
+        feedback.add("Hardware Internships:");
+        for (Internship everyInternship : internshipList.getInternshipMap().get("hardware")) {
+            feedback.add("  " + count + ". " + everyInternship.toString());
+            count++;
+        }
+
+        feedback.add("General Internships:");
+        for (Internship everyInternship : internshipList.getInternshipMap().get("general")) {
+            feedback.add("  " + count + ". " + everyInternship.toString());
+            count++;
+        }
+
         result = new CommandResult(feedback);
         result.setSuccessful(true);
         return result;
