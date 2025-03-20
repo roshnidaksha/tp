@@ -8,7 +8,9 @@ import java.util.HashMap;
  * Represents a command to be executed.
  */
 public abstract class Command {
-    /** Key-value pairs of arguments entered by user. */
+    /**
+     * Key-value pairs of arguments entered by user.
+     */
     protected HashMap<String, String> parameters = new HashMap<>();
 
     public void setParameters(HashMap<String, String> parameters) {
