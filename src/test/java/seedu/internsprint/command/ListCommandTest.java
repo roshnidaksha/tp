@@ -26,4 +26,19 @@ public class ListCommandTest {
         assertFalse(listcommand.isValidParameters());
     }
 
+    @Test
+    void execute_listTwoInternship_returnsCorrectCommand() {
+        ListCommand listcommand = new ListCommand();
+        SoftwareInternship internship1 = new SoftwareInternship("Facebook", "software Intern", "C++");
+        SoftwareInternship internship2 = new SoftwareInternship("Google", "hardware Intern", "Java");
+        InternshipList internshipList = new InternshipList();
+        internshipList.addInternship(internship1);
+        internshipList.addInternship(internship2);
+
+        CommandResult result = listcommand.execute(internshipList);
+        assertTrue(result.isSuccessful());
+        List<String> feedback = result.getFeedbackToUser();
+        assertEquals(6, feedback.size());
+        assertEquals(LIST_MESSAGE_SUCCESS, feedback.get(0));
+    }
 }
