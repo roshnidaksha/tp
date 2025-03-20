@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.FILE_ALREADY_EXISTS;
 import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_CREATE_DIRECTORY;
@@ -33,6 +35,7 @@ import static seedu.internsprint.util.InternSprintMessages.LOADING_DATA_FIRST_TI
 public class StorageHandler {
     private static final String FILE_PATH = Paths.get("data", "internships.txt").toString();
     private static File file;
+    private static Logger logger = Logger.getLogger(StorageHandler.class.getName());
 
     public StorageHandler() {
         file = new File(FILE_PATH);
@@ -48,12 +51,16 @@ public class StorageHandler {
                     throw new RuntimeException(String.format(UNABLE_TO_CREATE_DIRECTORY,
                             file.getParentFile().getAbsolutePath()));
                 }
+                assert file.getParentFile().exists() : "Directory should exist at this point";
+
                 if (!file.createNewFile()) {
                     throw new RuntimeException(String.format(FILE_ALREADY_EXISTS,
                             file.getAbsolutePath()));
                 }
+                assert file.exists() : "File should exist at this point";
             }
         } catch (IOException e) {
+            logger.log(Level.SEVERE, "Unable to create file {0}", file.getAbsolutePath());
             throw new RuntimeException(String.format(UNABLE_TO_CREATE_FILE,
                     file.getAbsolutePath()));
         }
@@ -65,6 +72,7 @@ public class StorageHandler {
      * @param internships List of internships to be saved.
      */
     public void saveInternships(InternshipList internships) {
+        logger.log(Level.INFO, "Saving Internships to file ...");
         JSONArray jsonArray = new JSONArray();
         internships.getInternshipMap().forEach((type, list) -> {
             list.forEach(internship -> jsonArray.put(internship.toJson()));
@@ -73,9 +81,14 @@ public class StorageHandler {
         if (!file.exists()) {
             createFile();
         }
+        assert file.exists() : "File should exist at this point";
+
         try (FileWriter fileWriter = new FileWriter(file)) {
             fileWriter.write(jsonArray.toString(4));
+            logger.log(Level.INFO, String.format("Successfully saved %s Internships to file %s",
+                jsonArray.length(), file.getAbsolutePath()));
         } catch (IOException e) {
+            logger.log(Level.SEVERE, String.format("Unable to save Internships to file %s", file.getAbsolutePath()));
             throw new RuntimeException(String.format(UNABLE_TO_WRITE_FILE,
                     file.getAbsolutePath()));
         }
