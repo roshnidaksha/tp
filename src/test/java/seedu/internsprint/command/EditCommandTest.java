@@ -93,6 +93,21 @@ class EditCommandTest {
     }
 
     @Test
+    void execute_multipleInternships_editsCorrectly() {
+        EditCommand editCommand = new EditCommand();
+        editCommand.parameters.put("/index", "2");
+        editCommand.parameters.put("/eli","Good knowledge of microcontrollers");
+        SoftwareInternship internship = new SoftwareInternship("Facebook","Automation Intern", "C");
+        HardwareInternship internship2 = new HardwareInternship("AMD","Engineer", "Arduino");
+        InternshipList internshipList = new InternshipList();
+        internshipList.addInternship(internship);
+        internshipList.addInternship(internship2);
+        editCommand.execute(internshipList);
+        assertEquals("Good knowledge of microcontrollers", internship2.getEligibility());
+        assertEquals("AMD", internship2.getCompanyName());
+    }
+
+    @Test
     void execute_invalidFieldForSoftware_throwsError() {
         EditCommand editCommand = new EditCommand();
         editCommand.parameters.put("/index", "1");
@@ -122,5 +137,7 @@ class EditCommandTest {
         CommandResult result = editCommand.execute(internshipList);
         assertFalse(result.isSuccessful());
         assertEquals(MESSAGE_DUPLICATE_INTERNSHIP, result.getFeedbackToUser().get(0));
+        assertEquals("Facebook", internshipList.getInternshipMap().get("software").get(0).getCompanyName());
+        assertEquals("Automation Intern", internshipList.getInternshipMap().get("software").get(0).getRole());
     }
 }

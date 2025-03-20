@@ -4,6 +4,7 @@ import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.SoftwareInternship;
 
 import java.util.Set;
+import java.util.logging.Level;
 
 public class AddSoftwareCommand extends AddCommand {
     public static final String COMMAND_WORD = "add software";
@@ -24,6 +25,7 @@ public class AddSoftwareCommand extends AddCommand {
 
     @Override
     protected Internship createInternship() {
+        logger.log(Level.INFO, "Creating Software Internship");
         String companyName = parameters.get("/c");
         String role = parameters.get("/r");
         String techstack = parameters.get("/tech");
