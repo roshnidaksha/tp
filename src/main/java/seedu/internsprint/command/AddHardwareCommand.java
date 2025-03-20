@@ -4,6 +4,7 @@ import seedu.internsprint.internship.HardwareInternship;
 import seedu.internsprint.internship.Internship;
 
 import java.util.Set;
+import java.util.logging.Level;
 
 public class AddHardwareCommand extends AddCommand {
     public static final String COMMAND_WORD = "add hardware";
@@ -24,6 +25,7 @@ public class AddHardwareCommand extends AddCommand {
 
     @Override
     protected Internship createInternship() {
+        logger.log(Level.INFO, "Creating Hardware Internship");
         String companyName = parameters.get("/c");
         String role = parameters.get("/r");
         String embeddedSystems = parameters.get("/tech");

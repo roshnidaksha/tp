@@ -28,6 +28,8 @@ public class InternshipList {
         String type = internship.getType();
         internshipMap.get(type).add(internship);
         internshipCount++;
+        assert contains(internship) : "Internship should be in the list";
+        assert internshipCount > 0 : "At least one internship should be in the list";
     }
 
     /**
@@ -39,6 +41,7 @@ public class InternshipList {
     public void deleteInternship(String type, int index) {
         internshipMap.get(type).remove(index);
         internshipCount--;
+        assert internshipCount >= 0 : "Internship count should not be negative";
     }
 
     /**
@@ -52,10 +55,6 @@ public class InternshipList {
         return internshipMap.get(type).contains(internship);
     }
 
-    public int getInternshipCount() {
-        return internshipCount;
-    }
-
     /**
      * Saves the internships to the storage.
      */
@@ -65,5 +64,9 @@ public class InternshipList {
 
     public HashMap<String, ArrayList<Internship>> getInternshipMap() {
         return internshipMap;
+    }
+
+    public int getInternshipCount() {
+        return internshipCount;
     }
 }
