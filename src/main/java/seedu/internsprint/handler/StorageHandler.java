@@ -101,10 +101,8 @@ public class StorageHandler {
      * @return CommandResult object indicating the success of the operation.
      */
     public static CommandResult loadInternships(InternshipList internships) {
-        logger.log(Level.INFO, "Trying to load internships from storage");
         CommandResult result;
         if (!file.exists() || file.length() == 0) {
-            logger.log(Level.INFO, "Internships file does not exist");
             result = new CommandResult(LOADING_DATA_FIRST_TIME);
             result.setSuccessful(true);
             return result;
@@ -116,14 +114,12 @@ public class StorageHandler {
                 jsonData.append(line);
             }
         } catch (IOException e) {
-            logger.log(Level.SEVERE, String.format("Unable to load internships from %s", file.getAbsolutePath()));
             result = errorReadingFile();
             return result;
         }
 
         JSONArray jsonArray = new JSONArray(jsonData.toString());
         if (jsonArray.isEmpty()) {
-            logger.log(Level.WARNING, "No internships found in file");
             result = errorReadingFile();
             return result;
         }
@@ -131,7 +127,6 @@ public class StorageHandler {
             JSONObject internshipJson = jsonArray.getJSONObject(i);
             addInternshipToList(internships, internshipJson);
         }
-        logger.log(Level.INFO, "Internships loaded successfully");
         result = new CommandResult(LOADING_DATA_SUCCESS);
         result.setSuccessful(true);
         return result;
@@ -143,7 +138,6 @@ public class StorageHandler {
      * @return CommandResult object indicating the error.
      */
     private static CommandResult errorReadingFile() {
-        logger.log(Level.SEVERE, "Failed to read internship file or file is corrupted");
         CommandResult result;
         List<String> feedback = new ArrayList<>();
         feedback.add(UNABLE_TO_READ_FILE);
@@ -170,7 +164,6 @@ public class StorageHandler {
             internships.addInternship(HardwareInternship.fromJson(internshipJson));
             break;
         default:
-            logger.log(Level.SEVERE, "Unknown internship type");
             break;
         }
     }

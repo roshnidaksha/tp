@@ -61,6 +61,7 @@ public abstract class AddCommand extends Command {
         logger.log(Level.INFO, "Executing add command");
         CommandResult result;
         if (!isValidParameters()) {
+            logger.log(Level.WARNING, "Invalid parameters entered");
             result = new CommandResult(getUsageMessage());
             result.setSuccessful(false);
             return result;
@@ -74,10 +75,13 @@ public abstract class AddCommand extends Command {
             result.setSuccessful(false);
             return result;
         }
+        assert !internships.contains(toAdd) : "Internship should not be present in the list";
 
         List<String> feedback = new ArrayList<>();
 
         internships.addInternship(toAdd);
+        assert internships.contains(toAdd) : "Internship should be present in the list";
+
         feedback.add(ADD_MESSAGE_SUCCESS);
         feedback.add(toAdd.toString());
         feedback.add(String.format(LIST_COUNT_MESSAGE, internships.getInternshipCount()));
@@ -86,12 +90,14 @@ public abstract class AddCommand extends Command {
             internships.saveInternships();
             //feedback.add(InternSprintMessages.SAVE_SUCCESS_MESSAGE);
         } catch (Exception e) {
+            logger.log(Level.WARNING, "Error saving internships after adding an internship");
             feedback.add(e.getMessage());
             result = new CommandResult(feedback);
             result.setSuccessful(false);
             return result;
         }
 
+        logger.log(Level.INFO, "Internship added successfully and saved to file");
         result = new CommandResult(feedback);
         result.setSuccessful(true);
         return result;
