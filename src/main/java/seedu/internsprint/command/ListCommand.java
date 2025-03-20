@@ -16,7 +16,7 @@ public class ListCommand extends Command {
 
     @Override
     protected boolean isValidParameters() {
-        return true;
+        return parameters.isEmpty();
     }
 
     @Override

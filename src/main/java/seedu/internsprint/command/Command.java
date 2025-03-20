@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public abstract class Command {
     /** Key-value pairs of arguments entered by user. */
-    protected HashMap<String, String> parameters = new HashMap<>();
+   protected HashMap<String, String> parameters = new HashMap<>();
 
     public void setParameters(HashMap<String, String> parameters) {
         this.parameters = parameters;
