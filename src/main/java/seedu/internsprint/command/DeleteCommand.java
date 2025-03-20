@@ -38,6 +38,7 @@ public class DeleteCommand extends Command {
 
         if (!isValidParameters()) {
             feedback.add(MISSING_INDEX);
+            feedback.add(MESSAGE_USAGE);
             result = new CommandResult(feedback);
             result.setSuccessful(false);
             logger.log(Level.WARNING, "Missing index processing error");
