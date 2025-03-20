@@ -25,6 +25,7 @@ public class InternSprint {
      * Main entry-point for the InternSprint application.
      */
     public static void main(String[] args) {
+        //Logger.getLogger("").setLevel(Level.OFF);
         new InternSprint().run();
     }
 

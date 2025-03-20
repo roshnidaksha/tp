@@ -39,8 +39,12 @@ public class Parser {
      * @return Command object corresponding to the user input.
      */
     public static Command parseCommand(String userInput) {
-        logger.log(Level.INFO, String.format("User command inside parseCommand: %s" + userInput));
+        logger.log(Level.INFO, String.format("User command inside parseCommand: %s", userInput));
+        assert userInput != null : "User input should not be null";
+
         String[] commandTypeAndParams = splitCommandTypeAndParams(userInput.trim());
+        assert commandTypeAndParams.length > 0 : "Command type should not be empty";
+
         String commandType = commandTypeAndParams[0];
         String params = commandTypeAndParams.length > 1 ? commandTypeAndParams[1] : "";
 

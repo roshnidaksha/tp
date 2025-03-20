@@ -51,10 +51,13 @@ public class StorageHandler {
                     throw new RuntimeException(String.format(UNABLE_TO_CREATE_DIRECTORY,
                             file.getParentFile().getAbsolutePath()));
                 }
+                assert file.getParentFile().exists() : "Directory should exist at this point";
+
                 if (!file.createNewFile()) {
                     throw new RuntimeException(String.format(FILE_ALREADY_EXISTS,
                             file.getAbsolutePath()));
                 }
+                assert file.exists() : "File should exist at this point";
             }
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Unable to create file {0}", file.getAbsolutePath());
@@ -78,6 +81,8 @@ public class StorageHandler {
         if (!file.exists()) {
             createFile();
         }
+        assert file.exists() : "File should exist at this point";
+
         try (FileWriter fileWriter = new FileWriter(file)) {
             fileWriter.write(jsonArray.toString(4));
             logger.log(Level.INFO, String.format("Successfully saved %s Internships to file %s",
