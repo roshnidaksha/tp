@@ -27,7 +27,7 @@ public class DescriptionCommandTest {
         DescriptionCommand descriptioncommand = new DescriptionCommand();
         descriptioncommand.parameters.put("/index", "-1");
         CommandResult commandResult = descriptioncommand.execute(new InternshipList());
-        assertEquals(InternSprintExceptionMessages.DESC_UNABLE_TO_FIND_INTERNSHIP,
+        assertEquals(InternSprintExceptionMessages.INVALID_INDEX_RANGE,
                 commandResult.getFeedbackToUser().get(0));
         assertFalse(commandResult.isSuccessful());
     }
@@ -51,7 +51,7 @@ public class DescriptionCommandTest {
         CommandResult commandResult = descriptioncommand.execute(internshipList);
         assertTrue(commandResult.isSuccessful());
         List<String> feedback = commandResult.getFeedbackToUser();
-        assertEquals(1, feedback.size());
+        assertEquals(4, feedback.size());
         assertEquals(DESC_MESSAGE_SUCCESS, feedback.get(0));
     }
 }
