@@ -122,9 +122,23 @@ Extended Format (with optional parameters): `add general /c COMPANY_NAME /r ROLE
 
 Examples of usage: 
 
-`add general /c Google /r Human Resource /dept HR`
+```
+> add general /c Google /r Human Resource /dept HR
+------------------------------------------------------------------------------------------------------------------------
+    New internship added
+    Company: Google, Role: Human Resource, Dept: HR
+    Now you have 1 internships in the list
+------------------------------------------------------------------------------------------------------------------------
+```
 
-`add general /c Google /r Human Resource /dept HR /ex Fast Learner /eli Year 2 student`
+```
+> add general /c Lazada /r Adviser /dept HR /ex Good Communication /eli Year 2 student
+------------------------------------------------------------------------------------------------------------------------
+    New internship added
+    Company: Lazada, Role: Adviser, Dept: HR
+    Now you have 2 internships in the list
+------------------------------------------------------------------------------------------------------------------------
+```
 
 ---
 
@@ -140,9 +154,23 @@ Extended Format (with optional parameters): `add software /c COMPANY_NAME /r ROL
 
 Examples of usage:
 
-`add software /c Google /r Software Engineer /tech Java, Python`
+```
+> add software /c Google /r Software Engineer /tech Java, Python
+------------------------------------------------------------------------------------------------------------------------
+    New internship added
+    Company: Google, Role: Software Engineer, Tech: Java, Python
+    Now you have 3 internships in the list
+------------------------------------------------------------------------------------------------------------------------
+```
 
-`add software /c Google /r Software Engineer /tech Java, Python /ex Fast Learner /eli Year 2 student`
+```
+> add software /c IBM /r Data Analytics /tech Python, PowerBI /ex Good project showcase
+------------------------------------------------------------------------------------------------------------------------
+    New internship added
+    Company: IBM, Role: Data Analytics, Tech: Python, PowerBI
+    Now you have 4 internships in the list
+------------------------------------------------------------------------------------------------------------------------
+```
 
 ---
 
@@ -160,9 +188,23 @@ mandatory parameters.
 
 Examples of usage:
 
-`add hardware /c Google /r Hardware Engineer /hardtech Arduino, Raspberry Pi`
+```
+> add hardware /c Google /r Hardware Engineer /hardtech Arduino, Raspberry Pi
+------------------------------------------------------------------------------------------------------------------------
+    New internship added
+    Company: Google, Role: Hardware Engineer, Tech: Arduino, Raspberry Pi
+    Now you have 5 internships in the list
+------------------------------------------------------------------------------------------------------------------------
+```
 
-`add hardware /c Google /r Hardware Engineer /hardtech Arduino, Raspberry Pi /ex Fast Learner /eli Year 2 student`
+```
+> add hardware /c AMD /r FPGA analyser /hardtech FPGA, Verilog /desc Low latency high throughput machine learning inference
+------------------------------------------------------------------------------------------------------------------------
+    New internship added
+    Company: AMD, Role: FPGA analyser, Tech: FPGA, Verilog
+    Now you have 6 internships in the list
+------------------------------------------------------------------------------------------------------------------------
+```
 
 ---
 
@@ -186,9 +228,25 @@ Extended Format (with optional parameters): `edit /index INDEX_NUMBER /c COMPANY
 
 Example of usage:
 
-`edit /index 1 /c Google /tech C, C++ /eli Y3 student /ex Fast Learner`
+```
+> edit /index 1 /c IBM /tech C, C++ /eli Y3 student /ex Fast Learner
+------------------------------------------------------------------------------------------------------------------------
+    Internships saved successfully
+    You can view the list of internships at data/internships.txt
+    Internship edited successfully.
+    [Company: IBM, Role: Software Engineer, Eligibility: Y3 student, Expectations: Fast Learner, Tech Stack: C, C++]
+------------------------------------------------------------------------------------------------------------------------
+```
 
-`edit /index 1 /desc Some extended description for our users`
+```
+> edit /index 2 /desc Some extended description for our users
+------------------------------------------------------------------------------------------------------------------------
+    Internships saved successfully
+    You can view the list of internships at data/internships.txt
+    Internship edited successfully.
+    [Company: IBM, Role: Data Analytics, Description: Some extended description for our users, Expectations: Good project showcase, Tech Stack: Python, PowerBI]
+------------------------------------------------------------------------------------------------------------------------
+```
 
 ---
 
