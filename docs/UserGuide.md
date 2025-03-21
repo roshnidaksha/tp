@@ -297,11 +297,11 @@ There is no need to save manually.
 
 ## Editing the data file
 
-InternSprint  data is saved automatically in `.json` format [JAR file location]/data/internships.txt. 
+InternSprint  data is saved automatically in `.json` format `[JAR file location]/data/internships.txt`. 
 Advanced users are welcome to update data directly by editing that data file.
 
 > CAUTION!:
-> The data file has particular .jsonformatting, any change to this file that violates this formatting could **corrupt the
+> The data file has particular `.json` formatting, any change to this file that violates this formatting could **corrupt the
 data** and would require the data file to be deleted
 > and started again. Therefore, edit the data file only if you are confident that you can update it correctly.
 
@@ -311,9 +311,9 @@ data** and would require the data file to be deleted
 
 **Q**: How do I transfer my data to another computer? 
 
-**A**: Simply copy the file [JAR file location]/data/internships.txt and transfer it to the secondary device in 
-the same subdirectory of [JAR file location]/data. This will ensure your data is transferred, but keep in mind there
-should be only one internships.txt in the location.
+**A**: Simply copy the file `[JAR file location]/data/internships.txt` and transfer it to the secondary device in 
+the same subdirectory of `[JAR file location]/data`. This will ensure your data is transferred, but keep in mind there
+should be only one `internships.txt` in the location.
 
 ---
 
