@@ -92,6 +92,8 @@ Example of usage:
 
 `todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
 
+---
+
 ### Listing all internships: `list`
 Adds a new item to the list of todo items.
 
@@ -105,47 +107,106 @@ Example of usage:
 `todo n/Write the rest of the User Guide d/next week`
 
 `todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
+
+---
+
 ### Adding a general category of internship: `add general`
-Adds a new item to the list of todo items.
+Allows users to add a new general internship to their list of internship applications.
 
-Format: `todo n/TODO_NAME d/DEADLINE`
+Basic Format: `add general /c COMPANY_NAME /r ROLE /dept DEPARTMENT`
 
-* The `DEADLINE` can be in a natural language format.
-* The `TODO_NAME` cannot contain punctuation.  
+Extended Format (with optional parameters): `add general /c COMPANY_NAME /r ROLE /ex EXPECTATIONS /eli ELIGIBILITY 
+/dept DEPARTMENT /desc DESCRIPTION`
 
-Example of usage: 
+* The `COMPANY_NAME`, `ROLE` and `DEPARTMENT` must be unique to the list of internships and are mandatory parameters.
 
-`todo n/Write the rest of the User Guide d/next week`
+Examples of usage: 
 
-`todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
+```
+> add general /c Google /r Human Resource /dept HR
+------------------------------------------------------------------------------------------------------------------------
+    New internship added
+    Company: Google, Role: Human Resource, Dept: HR
+    Now you have 1 internships in the list
+------------------------------------------------------------------------------------------------------------------------
+```
+
+```
+> add general /c Lazada /r Adviser /dept HR /ex Good Communication /eli Year 2 student
+------------------------------------------------------------------------------------------------------------------------
+    New internship added
+    Company: Lazada, Role: Adviser, Dept: HR
+    Now you have 2 internships in the list
+------------------------------------------------------------------------------------------------------------------------
+```
+
+---
 
 ### Adding a software category of internship: `add software`
-Adds a new item to the list of todo items.
+Allows users to add a new software internship to their list of internship applications.
 
-Format: `todo n/TODO_NAME d/DEADLINE`
+Basic Format: `add software /c COMPANY_NAME /r ROLE /tech TECHNOLOGIES`
 
-* The `DEADLINE` can be in a natural language format.
-* The `TODO_NAME` cannot contain punctuation.
+Extended Format (with optional parameters): `add software /c COMPANY_NAME /r ROLE /ex EXPECTATIONS /eli ELIGIBILITY
+/tech TECHNOLOGIES /desc DESCRIPTION`
 
-Example of usage:
+* The `COMPANY_NAME`, `ROLE` and `TECHNOLOGIES` must be unique to the list of internships and are mandatory parameters.
 
-`todo n/Write the rest of the User Guide d/next week`
+Examples of usage:
 
-`todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
+```
+> add software /c Google /r Software Engineer /tech Java, Python
+------------------------------------------------------------------------------------------------------------------------
+    New internship added
+    Company: Google, Role: Software Engineer, Tech: Java, Python
+    Now you have 3 internships in the list
+------------------------------------------------------------------------------------------------------------------------
+```
+
+```
+> add software /c IBM /r Data Analytics /tech Python, PowerBI /ex Good project showcase
+------------------------------------------------------------------------------------------------------------------------
+    New internship added
+    Company: IBM, Role: Data Analytics, Tech: Python, PowerBI
+    Now you have 4 internships in the list
+------------------------------------------------------------------------------------------------------------------------
+```
+
+---
 
 ### Adding a hardware category of internship: `add harware`
-Adds a new item to the list of todo items.
 
-Format: `todo n/TODO_NAME d/DEADLINE`
+Allows users to add a new hardware internship to their list of internship applications.
 
-* The `DEADLINE` can be in a natural language format.
-* The `TODO_NAME` cannot contain punctuation.
+Basic Format: `add hardware /c COMPANY_NAME /r ROLE /hardtech HARDWARE_TECHNOLOGIES`
 
-Example of usage:
+Extended Format (with optional parameters): `add hardware /c COMPANY_NAME /r ROLE /ex EXPECTATIONS /eli ELIGIBILITY
+/hardtech HARDWARE_TECHNOLOGIES /desc DESCRIPTION`
 
-`todo n/Write the rest of the User Guide d/next week`
+* The `COMPANY_NAME`, `ROLE` and `HARDWARE_TECHNOLOGIES` must be unique to the list of internships and are 
+mandatory parameters.
 
-`todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
+Examples of usage:
+
+```
+> add hardware /c Google /r Hardware Engineer /hardtech Arduino, Raspberry Pi
+------------------------------------------------------------------------------------------------------------------------
+    New internship added
+    Company: Google, Role: Hardware Engineer, Tech: Arduino, Raspberry Pi
+    Now you have 5 internships in the list
+------------------------------------------------------------------------------------------------------------------------
+```
+
+```
+> add hardware /c AMD /r FPGA analyser /hardtech FPGA, Verilog /desc Low latency high throughput machine learning inference
+------------------------------------------------------------------------------------------------------------------------
+    New internship added
+    Company: AMD, Role: FPGA analyser, Tech: FPGA, Verilog
+    Now you have 6 internships in the list
+------------------------------------------------------------------------------------------------------------------------
+```
+
+---
 
 ### Editing an internship: `edit`
 Allows users to add (job description, eligibility, and expectations) or modify (company name, role,tech and status) 
@@ -160,16 +221,34 @@ Extended Format (with optional parameters): `edit /index INDEX_NUMBER /c COMPANY
 > (as-needed basis) -
 > i.e. you do not need to utilize all flags when using this command, only those relevant to you.
 
-* The `INDEX` must be valid within the internship list else this will return an error out of range message.
+* The `INDEX_NUMBER` must be valid within the internship list else this will return an error out of range message.
 * The parameters cannot effectively be edited to duplicate another internship in the list.
 * To edit the tech of a software internship use the `/tech` flag and to edit the tech of a hardware internship use the
 `/hardtech` flag else if you try and set a software tech flag to a hardware role an error message will be displayed.
 
 Example of usage:
 
-`edit /index 1 /c Google /tech C, C++ /eli Y3 student /ex Fast Learner`
+```
+> edit /index 1 /c IBM /tech C, C++ /eli Y3 student /ex Fast Learner
+------------------------------------------------------------------------------------------------------------------------
+    Internships saved successfully
+    You can view the list of internships at data/internships.txt
+    Internship edited successfully.
+    [Company: IBM, Role: Software Engineer, Eligibility: Y3 student, Expectations: Fast Learner, Tech Stack: C, C++]
+------------------------------------------------------------------------------------------------------------------------
+```
 
-`edit /index 1 /desc Some extended description for our users`
+```
+> edit /index 2 /desc Some extended description for our users
+------------------------------------------------------------------------------------------------------------------------
+    Internships saved successfully
+    You can view the list of internships at data/internships.txt
+    Internship edited successfully.
+    [Company: IBM, Role: Data Analytics, Description: Some extended description for our users, Expectations: Good project showcase, Tech Stack: Python, PowerBI]
+------------------------------------------------------------------------------------------------------------------------
+```
+
+---
 
 ### Deleting an internship: `delete`
 Adds a new item to the list of todo items.
@@ -185,6 +264,7 @@ Example of usage:
 
 `todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
 
+---
 
 ### Viewing extended description of a specific internship: `desc`
 Adds a new item to the list of todo items.
@@ -200,33 +280,42 @@ Example of usage:
 
 `todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
 
+---
+
 ### Exit `bye`
 
 Exits the program.
+
+---
 
 ## Saving the data
 
 InternSprint  data is saved in the hard disk automatically after any command that changes the data. 
 There is no need to save manually.
 
+---
 
 ## Editing the data file
 
-InternSprint  data is saved automatically in `.json` format [JAR file location]/data/internships.txt. 
+InternSprint  data is saved automatically in `.json` format `[JAR file location]/data/internships.txt`. 
 Advanced users are welcome to update data directly by editing that data file.
 
 > CAUTION!:
-> The data file has particular .jsonformatting, any change to this file that violates this formatting could **corrupt the
+> The data file has particular `.json` formatting, any change to this file that violates this formatting could **corrupt the
 data** and would require the data file to be deleted
 > and started again. Therefore, edit the data file only if you are confident that you can update it correctly.
+
+---
 
 ## FAQ
 
 **Q**: How do I transfer my data to another computer? 
 
-**A**: Simply copy the file [JAR file location]/data/internships.txt and transfer it to the secondary device in 
-the same subdirectory of [JAR file location]/data. This will ensure your data is transferred, but keep in mind there
-should be only one internships.txt in the location.
+**A**: Simply copy the file `[JAR file location]/data/internships.txt` and transfer it to the secondary device in 
+the same subdirectory of `[JAR file location]/data`. This will ensure your data is transferred, but keep in mind there
+should be only one `internships.txt` in the location.
+
+---
 
 ## Command Summary
 
