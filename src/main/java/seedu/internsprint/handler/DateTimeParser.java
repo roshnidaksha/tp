@@ -7,6 +7,8 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
+import org.ocpsoft.prettytime.PrettyTime;
+
 import com.joestelmach.natty.DateGroup;
 import com.joestelmach.natty.Parser;
 
@@ -49,6 +51,39 @@ public class DateTimeParser {
     public static LocalTime parseTimeInput(String input) {
         Date date = extractDate(input);
         return LocalTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
+    }
+
+    /**
+     * Formats a LocalDateTime object into a human-readable string.
+     *
+     * @param dateTime The LocalDateTime object.
+     * @return The formatted string.
+     */
+    public static String formatLocalDateTime(LocalDateTime dateTime) {
+        PrettyTime prettyTime = new PrettyTime();
+        return prettyTime.format(Date.from(dateTime.atZone(ZoneId.systemDefault()).toInstant()));
+    }
+
+    /**
+     * Formats a LocalDate object into a human-readable string.
+     *
+     * @param date The LocalDate object.
+     * @return The formatted string.
+     */
+    public static String formatLocalDate(LocalDate date) {
+        PrettyTime prettyTime = new PrettyTime();
+        return prettyTime.format(Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+    }
+
+    /**
+     * Formats a LocalTime object into a human-readable string.
+     *
+     * @param time The LocalTime object.
+     * @return The formatted string.
+     */
+    public static String formatLocalTime(LocalTime time) {
+        PrettyTime prettyTime = new PrettyTime();
+        return prettyTime.format(Date.from(time.atDate(LocalDate.now()).atZone(ZoneId.systemDefault()).toInstant()));
     }
 
     /**
