@@ -5,6 +5,8 @@ import seedu.internsprint.internship.InternshipList;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static seedu.internsprint.util.InternSprintMessages.LIST_MESSAGE_SUCCESS;
 
@@ -14,14 +16,17 @@ public class ListCommand extends Command {
             + "by categories\n"
             + "    Parameters: None\n"
             + "    Example: " + COMMAND_WORD;
+    private static final Logger logger = Logger.getLogger(ListCommand.class.getName());
 
     @Override
     protected boolean isValidParameters() {
+        logger.log(Level.INFO, "Entering into the check for parameters in list command");
         return parameters.isEmpty();
     }
 
     @Override
     public CommandResult execute(InternshipList internshipList) {
+        logger.log(Level.INFO, "Executing list command");
         CommandResult result;
         List<String> feedback = new ArrayList<>();
 
@@ -46,6 +51,7 @@ public class ListCommand extends Command {
             count++;
         }
 
+        logger.log(Level.INFO, "Internships listed successfully");
         result = new CommandResult(feedback);
         result.setSuccessful(true);
         return result;
