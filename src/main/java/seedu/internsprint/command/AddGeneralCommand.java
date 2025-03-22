@@ -4,6 +4,7 @@ import seedu.internsprint.internship.GeneralInternship;
 import seedu.internsprint.internship.Internship;
 
 import java.util.Set;
+import java.util.logging.Level;
 
 public class AddGeneralCommand extends AddCommand {
     public static final String COMMAND_WORD = "add general";
@@ -11,9 +12,10 @@ public class AddGeneralCommand extends AddCommand {
             + "    Parameters: " + "/c COMPANY_NAME " + "/r ROLE " + "/dept DEPARTMENT\n"
             + "    Example: " + COMMAND_WORD + " /c Google " + "/r Human Resource " + "/dept HR";
     public static final String[] REQUIRED_PARAMETERS = {"/c", "/r", "/dept"};
+    public static final String[] OPTIONAL_PARAMETERS = {"/eli", "/ex", "/status","/desc"};
 
     public AddGeneralCommand() {
-        super(Set.of(REQUIRED_PARAMETERS));
+        super(Set.of(REQUIRED_PARAMETERS),Set.of(OPTIONAL_PARAMETERS));
     }
 
     @Override
@@ -23,6 +25,24 @@ public class AddGeneralCommand extends AddCommand {
 
     @Override
     protected Internship createInternship() {
-        return new GeneralInternship(parameters.get("/c"), parameters.get("/r"), parameters.get("/dept"));
+        logger.log(Level.INFO, "Creating General Internship");
+        String companyName = parameters.get("/c");
+        String role = parameters.get("/r");
+        String department = parameters.get("/dept");
+        String eligibility = parameters.get("/eli");  //this will return null if user doesn't provide the same
+        String description = parameters.get("/desc");
+        String status = parameters.get("/status");
+        String expectations = parameters.get("/ex");
+
+        return new GeneralInternship(
+                companyName,
+                role,
+                department,
+                eligibility != null ? eligibility : "",
+                description != null ? description : "",
+                status != null ? status : "",
+                expectations != null ? expectations : ""
+        );
     }
+
 }
