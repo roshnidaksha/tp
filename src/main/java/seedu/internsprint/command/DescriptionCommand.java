@@ -1,6 +1,6 @@
 package seedu.internsprint.command;
 
-import seedu.internsprint.handler.Parser;
+import seedu.internsprint.handler.CommandParser;
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
 
@@ -41,7 +41,7 @@ public class DescriptionCommand extends Command {
 
         String[] validIndex;
         try {
-            validIndex = Parser.validateIndex(parameters.get("/index"), internships);
+            validIndex = CommandParser.validateIndex(parameters.get("/index"), internships);
         } catch (IllegalArgumentException e) {
             feedback.add(e.getMessage());
             result = new CommandResult(feedback);
