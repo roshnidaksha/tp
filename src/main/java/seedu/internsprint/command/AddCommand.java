@@ -2,6 +2,7 @@ package seedu.internsprint.command;
 
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
+import seedu.internsprint.util.InternSprintLogger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ import static seedu.internsprint.util.InternSprintMessages.LIST_COUNT_MESSAGE;
  * Represents a command to add an internship.
  */
 public abstract class AddCommand extends Command {
-    protected static Logger logger = Logger.getLogger(AddCommand.class.getName());
+    protected static Logger logger = InternSprintLogger.getLogger();
     protected final Set<String> requiredParameters;
     protected final Set<String> optionalParameters;
 
