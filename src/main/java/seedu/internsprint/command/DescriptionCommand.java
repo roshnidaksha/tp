@@ -15,14 +15,26 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.DESC_UNABLE_
 import static seedu.internsprint.util.InternSprintMessages.DESC_MESSAGE_SUCCESS;
 
 public class DescriptionCommand extends Command {
+    /** The command word to trigger the description command. */
     public static final String COMMAND_WORD = "desc";
+
+    /** Usage instructions of the description command for users **/
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Shows the description of a particular internship.\n"
             + "    Parameter: " + "/index INDEX_OF_INTERNSHIP\n"
             + "    Example: " + COMMAND_WORD + " /index 1 ";
+
+    /** Required parameter keys for the description command. */
     public static final String[] REQUIRED_PARAMETERS = {"/index"};
     private static final Logger logger = Logger.getLogger(DescriptionCommand.class.getName());
 
+    /**
+     * Checks whether the parameters provided for the description command are valid.
+     * This method ensures the parameters map contains exactly the required parameters
+     * specifically the "/index" parameter.
+     *
+     * @return true if the parameters are valid, false otherwise
+     */
     @Override
     protected boolean isValidParameters() {
         logger.log(Level.INFO, "Entering check for parameters in description command.");
@@ -30,12 +42,19 @@ public class DescriptionCommand extends Command {
             && parameters.containsKey(REQUIRED_PARAMETERS[0]);
     }
 
+    /**
+     * Executes the description command.
+     *
+     * @param internships InternshipList object.
+     * @return CommandResult object containing the result of the command execution.
+     */
     @Override
     public CommandResult execute(InternshipList internships) {
         logger.log(Level.INFO, "Executing description command.");
         CommandResult result;
         List<String> feedback = new ArrayList<>();
 
+        // Validate the parameters for the description command
         if (!isValidParameters()) {
             logger.log(Level.WARNING, "Invalid parameters in description command.");
             feedback.add(DESC_INVALID_PARAMS);
@@ -47,6 +66,7 @@ public class DescriptionCommand extends Command {
 
         String[] validIndex;
         try {
+            // Validate and retrieve the index and internship type of the required internship using the parser
             validIndex = Parser.validateIndex(parameters.get("/index"), internships);
         } catch (IllegalArgumentException e) {
             logger.log(Level.WARNING, "Index for description command is out of range.", e);
@@ -56,12 +76,17 @@ public class DescriptionCommand extends Command {
             return result;
         }
 
+        // Convert the validated index string to an integer
         int index = Integer.parseInt(validIndex[1]);
-        String type = validIndex[0];
+        String internshipType = validIndex[0];
 
+        // Retrieve the internship map from the internship list.
         HashMap<String, ArrayList<Internship>> internshipMap = internships.getInternshipMap();
-        Internship foundInternship = internshipMap.get(type).get(index);
 
+        //Retrieve the specific internship based on the type of internship and index in the list.
+        Internship foundInternship = internshipMap.get(internshipType).get(index);
+
+        // If no internship is found, return an unsuccessful commandResult.
         if (foundInternship == null) {
             logger.log(Level.WARNING, "Internship not found.");
             result = new CommandResult(DESC_UNABLE_TO_FIND_INTERNSHIP);
@@ -69,6 +94,7 @@ public class DescriptionCommand extends Command {
             return result;
         }
 
+        // Build feedback with the internship description.
         logger.log(Level.INFO, "Description of internship successfully shown to user");
         feedback.add(DESC_MESSAGE_SUCCESS);
         feedback.addAll(foundInternship.toDescription());

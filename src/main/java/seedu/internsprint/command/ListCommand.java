@@ -11,19 +11,33 @@ import java.util.logging.Logger;
 import static seedu.internsprint.util.InternSprintMessages.LIST_MESSAGE_SUCCESS;
 
 public class ListCommand extends Command {
+    /** The command word that triggers the list command */
     public static final String COMMAND_WORD = "list";
+
+    /** Usage instructions of the list command for users */
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Lists every saved internship in your list, arranged "
             + "by categories\n"
             + "    Parameters: None\n"
             + "    Example: " + COMMAND_WORD;
     private static final Logger logger = Logger.getLogger(ListCommand.class.getName());
 
+    /**
+     * Checks if the parameters provided to the lost command are valid.
+     *
+     * @return True if no parameters are provided, false otherwise.
+     */
     @Override
     protected boolean isValidParameters() {
         logger.log(Level.INFO, "Entering into the check for parameters in list command");
         return parameters.isEmpty();
     }
 
+    /**
+     * Executes the command to list internships.
+     *
+     * @param internshipList InternshipList object.
+     * @return CommandResult object containing the result of the command execution.
+     */
     @Override
     public CommandResult execute(InternshipList internshipList) {
         logger.log(Level.INFO, "Executing list command");
@@ -33,18 +47,21 @@ public class ListCommand extends Command {
         int count = 1;
         feedback.add(LIST_MESSAGE_SUCCESS);
 
+        // Convert each Software Internship to strings to store inside feedback ArrayList.
         feedback.add("Software Internships:");
         for (Internship everyInternship : internshipList.getInternshipMap().get("software")) {
             feedback.add("  " + count + ". " + everyInternship.toString());
             count++;
         }
 
+        // Convert each Hardware Internship to strings to store inside feedback ArrayList.
         feedback.add("Hardware Internships:");
         for (Internship everyInternship : internshipList.getInternshipMap().get("hardware")) {
             feedback.add("  " + count + ". " + everyInternship.toString());
             count++;
         }
 
+        // Convert each General Internship to strings to store inside feedback ArrayList.
         feedback.add("General Internships:");
         for (Internship everyInternship : internshipList.getInternshipMap().get("general")) {
             feedback.add("  " + count + ". " + everyInternship.toString());
