@@ -65,7 +65,6 @@ public class DescriptionCommand extends Command {
 
         String[] validIndex;
         try {
-            // Validate and retrieve the index and internship type of the required internship using the parser
             validIndex = Parser.validateIndex(parameters.get("/index"), internships);
         } catch (IllegalArgumentException e) {
             logger.log(Level.WARNING, "Index for description command is out of range.", e);
@@ -80,7 +79,6 @@ public class DescriptionCommand extends Command {
 
         HashMap<String, ArrayList<Internship>> internshipMap = internships.getInternshipMap();
 
-        //Retrieve the specific internship based on the type of internship and index in the list.
         Internship foundInternship = internshipMap.get(internshipType).get(index);
 
         if (foundInternship == null) {
@@ -96,6 +94,5 @@ public class DescriptionCommand extends Command {
         result = new CommandResult(feedback);
         result.setSuccessful(true);
         return result;
-
     }
 }

@@ -47,21 +47,18 @@ public class ListCommand extends Command {
         int count = 1;
         feedback.add(LIST_MESSAGE_SUCCESS);
 
-        // Convert each Software Internship to strings to store inside feedback ArrayList.
         feedback.add("Software Internships:");
         for (Internship everyInternship : internshipList.getInternshipMap().get("software")) {
             feedback.add("  " + count + ". " + everyInternship.toString());
             count++;
         }
 
-        // Convert each Hardware Internship to strings to store inside feedback ArrayList.
         feedback.add("Hardware Internships:");
         for (Internship everyInternship : internshipList.getInternshipMap().get("hardware")) {
             feedback.add("  " + count + ". " + everyInternship.toString());
             count++;
         }
 
-        // Convert each General Internship to strings to store inside feedback ArrayList.
         feedback.add("General Internships:");
         for (Internship everyInternship : internshipList.getInternshipMap().get("general")) {
             feedback.add("  " + count + ". " + everyInternship.toString());
@@ -72,7 +69,6 @@ public class ListCommand extends Command {
         result = new CommandResult(feedback);
         result.setSuccessful(true);
         return result;
-
     }
 }
 
