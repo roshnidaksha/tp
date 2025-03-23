@@ -38,7 +38,7 @@ class DateTimeParserTest {
             DateTimeParser.parseDateTimeInput("tomorrow 5pm").toString());
 
         assertEquals(today.with(TemporalAdjusters.next(DayOfWeek.FRIDAY)).atTime(9, 0).toString(),
-            DateTimeParser.parseDateTimeInput("next friday 9am").toString());
+            DateTimeParser.parseDateTimeInput("coming friday 9am").toString());
 
         assertEquals(today.withDayOfMonth(12).plusMonths(1).atTime(15, 0).toString(),
             DateTimeParser.parseDateTimeInput("12th of next month 3pm").toString());
