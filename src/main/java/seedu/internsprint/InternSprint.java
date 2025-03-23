@@ -5,6 +5,7 @@ import seedu.internsprint.command.CommandResult;
 import seedu.internsprint.handler.Parser;
 import seedu.internsprint.handler.StorageHandler;
 import seedu.internsprint.internship.InternshipList;
+import seedu.internsprint.userProfile.UserProfile;
 import seedu.internsprint.util.Ui;
 
 import java.util.logging.Logger;
@@ -17,16 +18,18 @@ import java.util.logging.Level;
 public class InternSprint {
     private static final Logger logger = Logger.getLogger(InternSprint.class.getName());
     private final InternshipList internships;
+    private final UserProfile user;
 
     public InternSprint() {
         internships = new InternshipList();
+        user = new UserProfile();
     }
 
     /**
      * Main entry-point for the InternSprint application.
      */
     public static void main(String[] args) {
-        //Logger.getLogger("").setLevel(Level.OFF);
+        Logger.getLogger("").setLevel(Level.OFF);
         new InternSprint().run();
     }
 
@@ -58,7 +61,7 @@ public class InternSprint {
                 Command command = Parser.parseCommand(userCommand);
                 logger.log(Level.INFO, "Parsed Command: " + command);
 
-                result = command.execute(internships);
+                result = command.execute(internships, user);
                 logger.log(Level.INFO, "Command executed successfully");
 
                 Ui.showResultToUser(result);

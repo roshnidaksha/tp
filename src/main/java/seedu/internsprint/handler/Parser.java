@@ -1,22 +1,12 @@
 package seedu.internsprint.handler;
 
-import seedu.internsprint.command.AddGeneralCommand;
-import seedu.internsprint.command.AddHardwareCommand;
-import seedu.internsprint.command.AddSoftwareCommand;
-import seedu.internsprint.command.ByeCommand;
-import seedu.internsprint.command.Command;
-import seedu.internsprint.command.DescriptionCommand;
-import seedu.internsprint.command.EditCommand;
-import seedu.internsprint.command.DeleteCommand;
+import seedu.internsprint.command.*;
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
-import seedu.internsprint.command.HelpCommand;
-import seedu.internsprint.command.ListCommand;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -79,6 +69,9 @@ public class Parser {
         case "delete":
             command = new DeleteCommand();
             break;
+        case "my":
+            command = new UserProfileCommand();
+            break;
         default:
             throw new IllegalArgumentException(String.format(INVALID_COMMAND_TYPE, commandType));
         }
@@ -93,8 +86,8 @@ public class Parser {
      * @return Array containing the command type and the parameters.
      */
     private static String[] splitCommandTypeAndParams(String userInput) {
-        String[] multiWordCommands = {"add software", "add hardware", "add general", "edit"};
-        for (String command : multiWordCommands) {
+        String[] flagCommands = {"add software", "add hardware", "add general", "edit","my"};
+        for (String command : flagCommands) {
             if (userInput.startsWith(command)) {
                 return new String[]{command, userInput.substring(command.length()).trim()};
             }

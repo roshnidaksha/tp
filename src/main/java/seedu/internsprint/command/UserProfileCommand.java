@@ -68,7 +68,7 @@ public class UserProfileCommand extends Command{
             user.setYearlyGoals(parameters.get("/ygoals"));
         }
         if(parameters.containsKey("/mgoals")){
-            user.setYearlyGoals(parameters.get("/mgoals"));
+            user.setMonthlyGoals(parameters.get("/mgoals"));
         }
         if(parameters.containsKey("/c")){
             user.setPreferredCompanies(parameters.get("/c"));
