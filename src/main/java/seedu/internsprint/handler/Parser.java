@@ -16,8 +16,10 @@ import seedu.internsprint.command.ListCommand;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.ILLEGAL_VALUE_INPUT;
 import static seedu.internsprint.util.InternSprintExceptionMessages.INVALID_COMMAND_TYPE;
@@ -142,10 +144,22 @@ public class Parser {
             if (value.contains("/")) {
                 throw new IllegalArgumentException(ILLEGAL_VALUE_INPUT);
             }
+
             keyValueMap.put(key, value);
         }
 
         command.setParameters(keyValueMap);
+    }
+
+    /**
+     * Splits the input string from the user into individual words for user profile class
+     * @param input
+     * @return
+     */
+    public static ArrayList<String> splitToWords(String input) {
+        return Arrays.stream(input.split("\\s*,\\s*|\\s+"))
+                .filter(s -> !s.isEmpty())
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 
     /**

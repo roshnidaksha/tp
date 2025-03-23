@@ -1,6 +1,7 @@
 package seedu.internsprint.command;
 
 import seedu.internsprint.internship.InternshipList;
+import seedu.internsprint.userProfile.UserProfile;
 import seedu.internsprint.util.InternSprintExceptionMessages;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,7 +36,7 @@ public class HelpCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(InternshipList internships) {
+    public CommandResult execute(InternshipList internships, UserProfile user) {
         String feedback;
         boolean isSuccess = false;
         assert parameters.isEmpty() || parameters.size() == 1 : "HelpCommand should have at most one parameter";

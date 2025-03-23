@@ -1,6 +1,7 @@
 package seedu.internsprint.command;
 
 import seedu.internsprint.internship.InternshipList;
+import seedu.internsprint.userProfile.UserProfile;
 
 import java.util.HashMap;
 
@@ -34,5 +35,5 @@ public abstract class Command {
      * @param internships InternshipList object.
      * @return CommandResult object.
      */
-    public abstract CommandResult execute(InternshipList internships);
+    public abstract CommandResult execute(InternshipList internships, UserProfile user);
 }

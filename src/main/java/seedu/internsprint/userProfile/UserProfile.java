@@ -2,11 +2,14 @@ package seedu.internsprint.userProfile;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
+
+import seedu.internsprint.handler.Parser;
 
 public class UserProfile {
     public static String name;
     public static String yearlyGoals;
-    public static String monthlyTarget;
+    public static String monthlyGoals;
     public static ArrayList<String> preferredIndustries;
     public static ArrayList<String> preferredCompanies;
     public static ArrayList<String> preferredRoles;
@@ -16,67 +19,76 @@ public class UserProfile {
     public UserProfile() {
     }
 
-    public static String getName() {
+    public String getName() {
         return name;
     }
 
-    public static void setName(String name) {
+    public void setName(String name) {
         UserProfile.name = name;
     }
 
-    public static String getYearlyGoals() {
+    public String getYearlyGoals() {
         return yearlyGoals;
     }
 
-    public static void setYearlyGoals(String yearlyGoals) {
+    public void setYearlyGoals(String yearlyGoals) {
         UserProfile.yearlyGoals = yearlyGoals;
     }
 
-    public static String getMonthlyTarget() {
-        return monthlyTarget;
+    public String getMonthlyGoals() {
+        return monthlyGoals;
     }
 
-    public static void setMonthlyTarget(String monthlyTarget) {
-        UserProfile.monthlyTarget = monthlyTarget;
+    public void setMonthlyGoals(String monthlyGoals) {
+        UserProfile.monthlyGoals = monthlyGoals;
     }
 
-    public static ArrayList<String> getPreferredIndustries() {
+    public ArrayList<String> getPreferredIndustries() {
         return preferredIndustries;
     }
 
-    public static void setPreferredIndustries(ArrayList<String> preferredIndustries) {
-        UserProfile.preferredIndustries = preferredIndustries;
+    public void setPreferredIndustries(String preferredIndustriesString) {
+        UserProfile.preferredIndustries = Parser.splitToWords(preferredIndustriesString);
     }
 
-    public static ArrayList<String> getPreferredCompanies() {
+    public ArrayList<String> getPreferredCompanies() {
         return preferredCompanies;
     }
 
-    public static void setPreferredCompanies(ArrayList<String> preferredCompanies) {
-        UserProfile.preferredCompanies = preferredCompanies;
+    public void setPreferredCompanies(String preferredCompaniesString) {
+        UserProfile.preferredCompanies = Parser.splitToWords(preferredCompaniesString);
     }
 
-    public static ArrayList<String> getPreferredRoles() {
+    public ArrayList<String> getPreferredRoles() {
         return preferredRoles;
     }
 
-    public static void setPreferredRoles(ArrayList<String> preferredRoles) {
-        UserProfile.preferredRoles = preferredRoles;
+    public void setPreferredRoles(String preferredRolesString) {
+        UserProfile.preferredRoles = Parser.splitToWords(preferredRolesString);
     }
 
-    public static String getTargetStipendRange() {
+    public String getTargetStipendRange() {
         return targetStipendRange;
     }
 
-    public static void setTargetStipendRange(String targetStipendRange) {
+    public void setTargetStipendRange(String targetStipendRange) {
         UserProfile.targetStipendRange = targetStipendRange;
     }
 
-    public static LocalDateTime[] getInternshipDateRange() {
+    public LocalDateTime[] getInternshipDateRange() {
         return internshipDateRange;
     }
 
-    public static void setInternshipDateRange(LocalDateTime[] internshipDateRange) {
+    public void setInternshipDateRange(LocalDateTime[] internshipDateRange) {
         UserProfile.internshipDateRange = internshipDateRange;
+    }
+
+    public String toString() {
+        return "Name: " + name + ", Preferred Industries: " + preferredIndustries
+                + ", Preferred Companies: " + preferredCompanies + ", Preferred Roles: " + preferredRoles
+                + ",  Target Stipend Range: " + targetStipendRange
+                + ",  Internship Date Range: " + Arrays.toString(internshipDateRange)
+                + ",  Monthly Goals: " + monthlyGoals
+                + ",  Yearly Goals: " + yearlyGoals;
     }
 }

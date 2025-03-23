@@ -2,6 +2,7 @@ package seedu.internsprint.command;
 
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
+import seedu.internsprint.userProfile.UserProfile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ public class ListCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(InternshipList internshipList) {
+    public CommandResult execute(InternshipList internshipList, UserProfile user) {
         logger.log(Level.INFO, "Executing list command");
         CommandResult result;
         List<String> feedback = new ArrayList<>();

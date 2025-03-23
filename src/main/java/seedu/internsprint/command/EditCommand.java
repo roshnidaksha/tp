@@ -6,6 +6,7 @@ import seedu.internsprint.internship.HardwareInternship;
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
 import seedu.internsprint.internship.SoftwareInternship;
+import seedu.internsprint.userProfile.UserProfile;
 import seedu.internsprint.util.InternSprintMessages;
 
 import java.util.ArrayList;
@@ -53,7 +54,7 @@ public class EditCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(InternshipList internships) {
+    public CommandResult execute(InternshipList internships, UserProfile user) {
         logger.log(Level.INFO, "Entering execute for edit command...");
         CommandResult result;
         List<String> feedback = new ArrayList<>();

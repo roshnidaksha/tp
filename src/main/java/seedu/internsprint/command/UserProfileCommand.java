@@ -32,7 +32,7 @@ public class UserProfileCommand extends Command{
     }
 
     @Override
-    public CommandResult execute(InternshipList internships) {
+    public CommandResult execute(InternshipList internships, UserProfile user) {
         CommandResult result;
         List<String> feedback = new ArrayList<>();
         if (!isValidParameters()) {
@@ -42,39 +42,39 @@ public class UserProfileCommand extends Command{
             result.setSuccessful(false);
             return result;
         }
-        setUserProfileAttributes();
+        setUserProfileAttributes(user);
         feedback.add(USER_UPDATE_SUCCESS_MESSAGE);
-       // feedback.add(UserProfile.toString());
+        feedback.add(user.toString());
         result = new CommandResult(feedback);
         result.setSuccessful(true);
         return result;
     }
 
-    private void setUserProfileAttributes() {
+    private void setUserProfileAttributes(UserProfile user) {
         if(parameters.containsKey("/name")){
-            UserProfile.setName(parameters.get("/name"));
+            user.setName(parameters.get("/name"));
         }
         if(parameters.containsKey("/pay")){
-            UserProfile.setTargetStipendRange(parameters.get("/pay"));
+            user.setTargetStipendRange(parameters.get("/pay"));
         }
         if(parameters.containsKey("/ind")){
-           // UserProfile.setPreferredIndustries(parameters.get("/ind"));
+            user.setPreferredIndustries(parameters.get("/ind"));
         }
-        if(parameters.containsKey("/time")){
+        //if(parameters.containsKey("/time")){
             //to be edited to work with date time parser
            // UserProfile.setInternshipDateRange(parameters.get("/time"));
-        }
+        //}
         if(parameters.containsKey("/ygoals")){
-            UserProfile.setYearlyGoals(parameters.get("/ygoals"));
+            user.setYearlyGoals(parameters.get("/ygoals"));
         }
         if(parameters.containsKey("/mgoals")){
-            UserProfile.setYearlyGoals(parameters.get("/mgoals"));
+            user.setYearlyGoals(parameters.get("/mgoals"));
         }
         if(parameters.containsKey("/c")){
-         //   UserProfile.setPreferredCompanies(parameters.get("/c"));
+            user.setPreferredCompanies(parameters.get("/c"));
         }
         if(parameters.containsKey("/r")){
-           // UserProfile.setPreferredRoles(parameters.get("/r"));
+            user.setPreferredRoles(parameters.get("/r"));
         }
     }
 }
