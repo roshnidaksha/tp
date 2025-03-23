@@ -39,4 +39,5 @@ public class InternSprintMessages {
             "    You can view the list of internships at data/internships.txt";
     public static final String LIST_COUNT_MESSAGE = "Now you have %d internships in the list";
     public static final String SUCCESSFUL_DELETE = "Successfully deleted internship: %s";
+    public static final String USER_UPDATE_SUCCESS_MESSAGE = "Successfully updated your user profile as shown below:";
 }

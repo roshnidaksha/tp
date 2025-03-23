@@ -1,12 +1,14 @@
 package seedu.internsprint.command;
 
 import seedu.internsprint.internship.InternshipList;
+import seedu.internsprint.userProfile.UserProfile;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.USERPROFILE_INVALID_PARAMS;
+import static seedu.internsprint.util.InternSprintMessages.USER_UPDATE_SUCCESS_MESSAGE;
 
 public class UserProfileCommand extends Command{
     public static final String COMMAND_WORD = "my";
@@ -40,6 +42,39 @@ public class UserProfileCommand extends Command{
             result.setSuccessful(false);
             return result;
         }
-        return null;
+        setUserProfileAttributes();
+        feedback.add(USER_UPDATE_SUCCESS_MESSAGE);
+       // feedback.add(UserProfile.toString());
+        result = new CommandResult(feedback);
+        result.setSuccessful(true);
+        return result;
+    }
+
+    private void setUserProfileAttributes() {
+        if(parameters.containsKey("/name")){
+            UserProfile.setName(parameters.get("/name"));
+        }
+        if(parameters.containsKey("/pay")){
+            UserProfile.setTargetStipendRange(parameters.get("/pay"));
+        }
+        if(parameters.containsKey("/ind")){
+           // UserProfile.setPreferredIndustries(parameters.get("/ind"));
+        }
+        if(parameters.containsKey("/time")){
+            //to be edited to work with date time parser
+           // UserProfile.setInternshipDateRange(parameters.get("/time"));
+        }
+        if(parameters.containsKey("/ygoals")){
+            UserProfile.setYearlyGoals(parameters.get("/ygoals"));
+        }
+        if(parameters.containsKey("/mgoals")){
+            UserProfile.setYearlyGoals(parameters.get("/mgoals"));
+        }
+        if(parameters.containsKey("/c")){
+         //   UserProfile.setPreferredCompanies(parameters.get("/c"));
+        }
+        if(parameters.containsKey("/r")){
+           // UserProfile.setPreferredRoles(parameters.get("/r"));
+        }
     }
 }
