@@ -1,6 +1,7 @@
 package seedu.internsprint.util;
 
 import seedu.internsprint.command.CommandResult;
+import seedu.internsprint.internship.Internship;
 
 import java.util.List;
 import java.util.Scanner;
@@ -50,11 +51,21 @@ public class Ui {
             for (String feedback : result.getFeedbackToUser()) {
                 System.out.println("    " + feedback);
             }
+            if (result.getRelevantInternships() != null) {
+                showRelevantInternshipsToUser(result.getRelevantInternships());
+            }
             System.out.println(DIVIDER);
         } else {
             System.out.println(DIVIDER);
             showError(result.getFeedbackToUser());
             System.out.println(DIVIDER);
+        }
+    }
+
+    public static void showRelevantInternshipsToUser(List<Internship> relevantInternships) {
+        System.out.println("    Here is the list of relevant internships:");
+        for (int i = 0; i < relevantInternships.size(); i++) {
+            System.out.println("    " + (i + 1) + ". " + relevantInternships.get(i));
         }
     }
 
