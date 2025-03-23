@@ -15,7 +15,7 @@ class AddHardwareCommandTest {
         AddHardwareCommand addHardwareCommand = new AddHardwareCommand();
         addHardwareCommand.parameters.put("/c", "Google");
         addHardwareCommand.parameters.put("/r", "Hardware Engineer");
-        addHardwareCommand.parameters.put("/tech", "C, C++");
+        addHardwareCommand.parameters.put("/hardtech", "C, C++");
         Internship internship = addHardwareCommand.createInternship();
         assertEquals("Google", internship.getCompanyName());
         assertEquals("Hardware Engineer", internship.getRole());

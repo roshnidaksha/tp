@@ -1,59 +1,85 @@
 package seedu.internsprint.command;
 
+import seedu.internsprint.handler.Parser;
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
 import seedu.internsprint.util.InternSprintMessages;
-import seedu.internsprint.util.InternSprintExceptionMessages;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+
+import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_INDEX;
 
 public class DeleteCommand extends Command {
     public static final String COMMAND_WORD = "delete";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes an internship " +
-            "based on its category and index.\n"
-            + "     Parameters: " + "CATEGORY INDEX\n"
-            + "     Example: " + COMMAND_WORD + " software 2";
-
-
-    public static final Set<String> VALID_CATEGORIES = Set.of("software", "hardware", "general");
-    private final String category;
-    private final int index;
-
-    public DeleteCommand(String category, int index) {
-        this.category = category.toLowerCase();
-        this.index = index;
-    }
+        "based on its category and index.\n"
+        + "    Parameters: " + "/index INDEX_OF_INTERNSHIP \n"
+        + "    Example: " + COMMAND_WORD + " /index 2";
+    public static final String[] REQUIRED_PARAMETERS = {"/index"};
+    private static Logger logger = Logger.getLogger("Delete");
 
     @Override
     protected boolean isValidParameters() {
-        return VALID_CATEGORIES.contains(category);
+        return parameters.size() == REQUIRED_PARAMETERS.length
+            && parameters.containsKey(REQUIRED_PARAMETERS[0]);
     }
 
     @Override
     public CommandResult execute(InternshipList internships) {
-        String feedback;
-        boolean isSuccess = false;
+        assert internships != null : "InternshipList should not be null";
+        CommandResult result;
+        List<String> feedback = new ArrayList<>();
+        logger.log(Level.INFO, "Starting Delete Command processing");
+        logger.log(Level.INFO, "Parameters in DeleteCommand: " + parameters.toString());
+        assert parameters != null : "parameters should not be null";
 
         if (!isValidParameters()) {
-            feedback = InternSprintExceptionMessages.INVALID_CATEGORY_ERROR;
-        } else {
-            int adjustedIndex = index - 1;
-
-            if (adjustedIndex < 0 || adjustedIndex >= internships.getInternshipMap().get(category).size()) {
-                feedback = InternSprintExceptionMessages.INVALID_INDEX_ERROR;
-            } else {
-                Internship internshipToDelete = internships.getInternshipMap().get(category).get(adjustedIndex);
-                internships.getInternshipMap().get(category).remove(adjustedIndex);
-                internships.decrementInternshipCount();
-
-                feedback = String.format(InternSprintMessages.SUCCESSFUL_DELETE, internshipToDelete);
-                isSuccess = true;
-            }
+            feedback.add(MISSING_INDEX);
+            feedback.add(MESSAGE_USAGE);
+            result = new CommandResult(feedback);
+            result.setSuccessful(false);
+            logger.log(Level.WARNING, "Missing index processing error");
+            return result;
         }
 
-        CommandResult result = new CommandResult(feedback);
-        result.setSuccessful(isSuccess);
+        String[] validIndex;
+        try {
+            validIndex = Parser.validateIndex(parameters.get("/index"), internships);
+            assert validIndex.length == 2 : "Parser.validateIndex should return a valid type and index";
+        } catch (IllegalArgumentException e) {
+            feedback.add(e.getMessage());
+            result = new CommandResult(feedback);
+            result.setSuccessful(false);
+            logger.log(Level.WARNING, "Invalid index processing error");
+            return result;
+        }
 
+        int index = Integer.parseInt(validIndex[1]);
+        String type = validIndex[0];
+
+        Internship internshipToDelete = internships.getInternshipMap().get(type).get(index);
+        assert internshipToDelete != null : "Internship to delete should not be null";
+
+        internships.deleteInternship(type, index);
+
+        try {
+            internships.saveInternships();
+            feedback.add(InternSprintMessages.SAVE_SUCCESS_MESSAGE);
+        } catch (Exception e) {
+            feedback.add(e.getMessage());
+            result = new CommandResult(feedback);
+            result.setSuccessful(false);
+            logger.log(Level.WARNING, "Save processing error");
+            return result;
+        }
+
+        feedback.add(String.format(InternSprintMessages.SUCCESSFUL_DELETE, internshipToDelete));
+        result = new CommandResult(feedback);
+        result.setSuccessful(true);
+        logger.log(Level.INFO, "End of Delete Command processing");
         return result;
     }
 }
