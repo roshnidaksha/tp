@@ -27,7 +27,7 @@ public class InternSprintLogger {
 
         // Create a ConsoleHandler for output to the console
         ConsoleHandler consoleHandler = new ConsoleHandler();
-        consoleHandler.setLevel(Level.INFO);
+        consoleHandler.setLevel(Level.OFF);
         consoleHandler.setFormatter(new SimpleFormatter());
         rootLogger.addHandler(consoleHandler);
 
