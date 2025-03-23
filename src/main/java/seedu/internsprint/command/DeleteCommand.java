@@ -3,6 +3,7 @@ package seedu.internsprint.command;
 import seedu.internsprint.handler.Parser;
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
+import seedu.internsprint.util.InternSprintLogger;
 import seedu.internsprint.util.InternSprintMessages;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,7 +20,7 @@ public class DeleteCommand extends Command {
         + "    Parameters: " + "/index INDEX_OF_INTERNSHIP \n"
         + "    Example: " + COMMAND_WORD + " /index 2";
     public static final String[] REQUIRED_PARAMETERS = {"/index"};
-    private static Logger logger = Logger.getLogger("Delete");
+    private static Logger logger = InternSprintLogger.getLogger();
 
     @Override
     protected boolean isValidParameters() {

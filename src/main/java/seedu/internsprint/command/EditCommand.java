@@ -6,6 +6,7 @@ import seedu.internsprint.internship.HardwareInternship;
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
 import seedu.internsprint.internship.SoftwareInternship;
+import seedu.internsprint.util.InternSprintLogger;
 import seedu.internsprint.util.InternSprintMessages;
 
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class EditCommand extends Command {
             + "    Example: " + COMMAND_WORD + " /index 1 /c Google /r Hardware Engineer /tech C, C++";
     public static final String[] POSSIBLE_PARAMETERS = {"/c", "/r", "/dept", "/eli",
         "/ex", "/tech", "/desc", "/hardtech"};
-    private static final Logger logger = Logger.getLogger(EditCommand.class.getName());
+    private static final Logger logger = InternSprintLogger.getLogger();
 
     @Override
     protected boolean isValidParameters() {

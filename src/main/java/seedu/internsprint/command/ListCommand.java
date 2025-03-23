@@ -2,6 +2,7 @@ package seedu.internsprint.command;
 
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
+import seedu.internsprint.util.InternSprintLogger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ public class ListCommand extends Command {
             + "by categories\n"
             + "    Parameters: None\n"
             + "    Example: " + COMMAND_WORD;
-    private static final Logger logger = Logger.getLogger(ListCommand.class.getName());
+    private static final Logger logger = InternSprintLogger.getLogger();
 
     /**
      * Checks if the parameters provided to the lost command are valid.

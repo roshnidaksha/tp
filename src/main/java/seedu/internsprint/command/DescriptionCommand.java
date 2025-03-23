@@ -3,6 +3,7 @@ package seedu.internsprint.command;
 import seedu.internsprint.handler.Parser;
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
+import seedu.internsprint.util.InternSprintLogger;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,7 +27,7 @@ public class DescriptionCommand extends Command {
 
     /** Required parameter keys for the description command. */
     public static final String[] REQUIRED_PARAMETERS = {"/index"};
-    private static final Logger logger = Logger.getLogger(DescriptionCommand.class.getName());
+    private static final Logger logger = InternSprintLogger.getLogger();
 
     /**
      * Checks whether the parameters provided for the description command are valid.
