@@ -51,7 +51,8 @@ public class SoftwareProject extends Project {
      */
     @Override
     public String toString() {
-        return "Project: " + projectName + ", Role: " + role + ", Programming Languages: " + String.join(", ", programmingLanguages);
+        return "Project: " + projectName + ", Role: " + role +
+            ", Programming Languages: " + String.join(", ", programmingLanguages);
     }
 
     /**

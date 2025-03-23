@@ -51,7 +51,8 @@ public class HardwareProject extends Project {
      */
     @Override
     public String toString() {
-        return "Project: " + projectName + ", Role: " + role + ", Hardware Components: " + String.join(", ", hardwareComponents);
+        return "Project: " + projectName + ", Role: " + role +
+            ", Hardware Components: " + String.join(", ", hardwareComponents);
     }
 
     /**
