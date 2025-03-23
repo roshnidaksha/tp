@@ -10,7 +10,7 @@ import java.util.List;
 import static seedu.internsprint.util.InternSprintExceptionMessages.USERPROFILE_INVALID_PARAMS;
 import static seedu.internsprint.util.InternSprintMessages.USER_UPDATE_SUCCESS_MESSAGE;
 
-public class UserProfileCommand extends Command{
+public class UserProfileCommand extends Command<UserProfile>{
     public static final String COMMAND_WORD = "my";
     public static final String MESSAGE_USAGE = "    " + COMMAND_WORD + ": Edits your user profile to save details about"
             + "yourself.\n"+ "     Parameters: " + "/c COMPANIES_YOU_PREFER /r ROLES_YOU_PREFER /ygoals YEARLY_GOALS"
@@ -20,6 +20,11 @@ public class UserProfileCommand extends Command{
             + " /pay 2000-3000";
     public static final String[] OPTIONAL_PARAMETERS = {"/pay", "/ind", "/time", "/name",
                                                         "/ygoals", "/mgoals", "/c", "/r"};
+    @Override
+    public String getCommandType(){
+        return "user";
+    }
+
     @Override
     protected boolean isValidParameters() {
         for (String key : parameters.keySet()) {
@@ -32,7 +37,7 @@ public class UserProfileCommand extends Command{
     }
 
     @Override
-    public CommandResult execute(InternshipList internships, UserProfile user) {
+    public CommandResult execute(UserProfile user) {
         CommandResult result;
         List<String> feedback = new ArrayList<>();
         if (!isValidParameters()) {

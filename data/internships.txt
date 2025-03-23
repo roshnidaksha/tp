@@ -1,7 +1,15 @@
-[{
-    "description": "to do",
-    "role": "IT Intern",
-    "type": "general",
-    "department": "IT",
-    "companyName": "UBS"
-}]
+[
+    {
+        "description": "to do",
+        "role": "IT Intern",
+        "type": "general",
+        "department": "IT",
+        "companyName": "UBS"
+    },
+    {
+        "role": "Human Resource",
+        "type": "general",
+        "department": "HR",
+        "companyName": "Google"
+    }
+]

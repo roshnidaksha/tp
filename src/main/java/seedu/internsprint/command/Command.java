@@ -8,7 +8,7 @@ import java.util.HashMap;
 /**
  * Represents a command to be executed.
  */
-public abstract class Command {
+public abstract class Command<T> {
     /**
      * Key-value pairs of arguments entered by user.
      */
@@ -32,8 +32,10 @@ public abstract class Command {
     /**
      * Executes the command.
      *
-     * @param internships InternshipList object.
+     * @param entity InternshipList or UserProfile object.
      * @return CommandResult object.
      */
-    public abstract CommandResult execute(InternshipList internships, UserProfile user);
+    public abstract CommandResult execute(T entity);
+
+    public abstract String getCommandType();
 }

@@ -22,7 +22,7 @@ import static seedu.internsprint.util.InternSprintMessages.MESSAGE_DUPLICATE_INT
 import java.util.logging.Logger;
 import java.util.logging.Level;
 
-public class EditCommand extends Command {
+public class EditCommand extends Command<InternshipList> {
     public static final String COMMAND_WORD = "edit";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the parameters of an internship.\n"
             + "    Parameters: " + "/c COMPANY_NAME /r ROLE /ex EXPECTATIONS /eli ELIGIBILITY\n"
@@ -31,6 +31,11 @@ public class EditCommand extends Command {
     public static final String[] POSSIBLE_PARAMETERS = {"/c", "/r", "/dept", "/eli",
         "/ex", "/tech", "/desc", "/hardtech"};
     private static final Logger logger = Logger.getLogger(EditCommand.class.getName());
+
+    @Override
+    public String getCommandType(){
+        return "internship";
+    }
 
     @Override
     protected boolean isValidParameters() {
@@ -54,7 +59,7 @@ public class EditCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(InternshipList internships, UserProfile user) {
+    public CommandResult execute(InternshipList internships) {
         logger.log(Level.INFO, "Entering execute for edit command...");
         CommandResult result;
         List<String> feedback = new ArrayList<>();

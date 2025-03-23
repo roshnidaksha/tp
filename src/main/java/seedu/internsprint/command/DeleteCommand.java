@@ -14,7 +14,7 @@ import java.util.List;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_INDEX;
 
-public class DeleteCommand extends Command {
+public class DeleteCommand extends Command<InternshipList> {
     public static final String COMMAND_WORD = "delete";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes an internship " +
             "based on its category and index.\n"
@@ -28,9 +28,13 @@ public class DeleteCommand extends Command {
         return parameters.size() == REQUIRED_PARAMETERS.length
                 && parameters.containsKey(REQUIRED_PARAMETERS[0]);
     }
+    @Override
+    public String getCommandType(){
+        return "internship";
+    }
 
     @Override
-    public CommandResult execute(InternshipList internships, UserProfile user) {
+    public CommandResult execute(InternshipList internships) {
         assert internships != null : "InternshipList should not be null";
         CommandResult result;
         List<String> feedback = new ArrayList<>();

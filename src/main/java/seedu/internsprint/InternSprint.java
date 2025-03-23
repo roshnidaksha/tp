@@ -57,11 +57,14 @@ public class InternSprint {
             try {
                 String userCommand = Ui.getUserCommand();
                 logger.log(Level.INFO, "User command: " + userCommand);
-
-                Command command = Parser.parseCommand(userCommand);
+                Command<?>  command = Parser.parseCommand(userCommand);
                 logger.log(Level.INFO, "Parsed Command: " + command);
+                if (command.getCommandType().equals("internship")) {
+                    result = ((Command<InternshipList>) command).execute(internships);
 
-                result = command.execute(internships, user);
+                }else if (command.getCommandType().equals("user")){
+                    result = ((Command<UserProfile>) command).execute(user);
+                }
                 logger.log(Level.INFO, "Command executed successfully");
 
                 Ui.showResultToUser(result);

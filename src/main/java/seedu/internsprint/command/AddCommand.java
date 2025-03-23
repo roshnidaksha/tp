@@ -17,7 +17,7 @@ import static seedu.internsprint.util.InternSprintMessages.LIST_COUNT_MESSAGE;
 /**
  * Represents a command to add an internship.
  */
-public abstract class AddCommand extends Command {
+public abstract class AddCommand extends Command<InternshipList> {
     protected static Logger logger = Logger.getLogger(AddCommand.class.getName());
     protected final Set<String> requiredParameters;
     protected final Set<String> optionalParameters;
@@ -26,7 +26,10 @@ public abstract class AddCommand extends Command {
         this.requiredParameters = requiredParameters;
         this.optionalParameters = optionalParameters;
     }
-
+    @Override
+    public String getCommandType(){
+        return "internship";
+    }
     /**
      * Checks if the parameters entered by the user are valid.
      *
@@ -58,7 +61,7 @@ public abstract class AddCommand extends Command {
      * @return CommandResult object.
      */
     @Override
-    public CommandResult execute(InternshipList internships,  UserProfile user) {
+    public CommandResult execute(InternshipList internships) {
         logger.log(Level.INFO, "Executing add command");
         CommandResult result;
         if (!isValidParameters()) {

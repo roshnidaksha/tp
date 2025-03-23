@@ -30,7 +30,7 @@ public class Parser {
      * @param userInput User input string.
      * @return Command object corresponding to the user input.
      */
-    public static Command parseCommand(String userInput) {
+    public static Command<?> parseCommand(String userInput) {
         logger.log(Level.INFO, String.format("User command inside parseCommand: %s", userInput));
         assert userInput != null : "User input should not be null";
 
@@ -40,7 +40,7 @@ public class Parser {
         String commandType = commandTypeAndParams[0];
         String params = commandTypeAndParams.length > 1 ? commandTypeAndParams[1] : "";
 
-        Command command;
+        Command<?> command;
         switch (commandType) {
         case "add software":
             command = new AddSoftwareCommand();
@@ -105,7 +105,7 @@ public class Parser {
      * @param params Parameters string.
      * @param command Command object.
      */
-    protected static void parseKeyValuePairs(String params, Command command) {
+    protected static void parseKeyValuePairs(String params, Command<?> command) {
         HashMap<String, String> keyValueMap = new HashMap<>();
 
         if (params.isEmpty()) {

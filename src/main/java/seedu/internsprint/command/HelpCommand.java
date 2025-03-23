@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 import java.util.LinkedHashMap;
 
-public class HelpCommand extends Command {
+public class HelpCommand extends Command<InternshipList> {
     public static final String COMMAND_WORD = "help";
     public static final String MESSAGE_USAGE = COMMAND_WORD + " : Shows information on how to use a specific command " +
             "or a list of all commands.\n"
@@ -31,12 +31,17 @@ public class HelpCommand extends Command {
     }
 
     @Override
+    public String getCommandType(){
+        return "internship";
+    }
+
+    @Override
     protected boolean isValidParameters() {
         return parameters.isEmpty() || parameters.size() == 1;
     }
 
     @Override
-    public CommandResult execute(InternshipList internships, UserProfile user) {
+    public CommandResult execute(InternshipList internships) {
         String feedback;
         boolean isSuccess = false;
         assert parameters.isEmpty() || parameters.size() == 1 : "HelpCommand should have at most one parameter";
