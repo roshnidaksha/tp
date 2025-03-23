@@ -83,12 +83,20 @@ public class UserProfile {
         UserProfile.internshipDateRange = internshipDateRange;
     }
 
+    @Override
     public String toString() {
-        return "Name: " + name + ", Preferred Industries: " + preferredIndustries
-                + ", Preferred Companies: " + preferredCompanies + ", Preferred Roles: " + preferredRoles
-                + ",  Target Stipend Range: " + targetStipendRange
-                + ",  Internship Date Range: " + Arrays.toString(internshipDateRange)
-                + ",  Monthly Goals: " + monthlyGoals
-                + ",  Yearly Goals: " + yearlyGoals;
+        StringBuilder sb = new StringBuilder();
+        if (name != null) sb.append("Name: ").append(name);
+        if (preferredIndustries != null) sb.append(", Preferred Industries: ").append(preferredIndustries);
+        if (preferredCompanies != null) sb.append(", Preferred Companies: ").append(preferredCompanies);
+        if (preferredRoles != null) sb.append(", Preferred Roles: ").append(preferredRoles);
+        if (targetStipendRange != null) sb.append(", Target Stipend Range: ").append(targetStipendRange);
+        if (internshipDateRange != null) sb.append(", Internship Date Range: ")
+                                            .append(Arrays.toString(internshipDateRange));
+        if (monthlyGoals != null) sb.append(", Monthly Goals: ").append(monthlyGoals);
+        if (yearlyGoals != null) sb.append(", Yearly Goals: ").append(yearlyGoals);
+        return sb.toString();
     }
+
+
 }
