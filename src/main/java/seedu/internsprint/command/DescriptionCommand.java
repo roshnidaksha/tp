@@ -54,7 +54,6 @@ public class DescriptionCommand extends Command {
         CommandResult result;
         List<String> feedback = new ArrayList<>();
 
-        // Validate the parameters for the description command
         if (!isValidParameters()) {
             logger.log(Level.WARNING, "Invalid parameters in description command.");
             feedback.add(DESC_INVALID_PARAMS);
@@ -76,17 +75,14 @@ public class DescriptionCommand extends Command {
             return result;
         }
 
-        // Convert the validated index string to an integer
         int index = Integer.parseInt(validIndex[1]);
         String internshipType = validIndex[0];
 
-        // Retrieve the internship map from the internship list.
         HashMap<String, ArrayList<Internship>> internshipMap = internships.getInternshipMap();
 
         //Retrieve the specific internship based on the type of internship and index in the list.
         Internship foundInternship = internshipMap.get(internshipType).get(index);
 
-        // If no internship is found, return an unsuccessful commandResult.
         if (foundInternship == null) {
             logger.log(Level.WARNING, "Internship not found.");
             result = new CommandResult(DESC_UNABLE_TO_FIND_INTERNSHIP);
@@ -94,7 +90,6 @@ public class DescriptionCommand extends Command {
             return result;
         }
 
-        // Build feedback with the internship description.
         logger.log(Level.INFO, "Description of internship successfully shown to user");
         feedback.add(DESC_MESSAGE_SUCCESS);
         feedback.addAll(foundInternship.toDescription());
