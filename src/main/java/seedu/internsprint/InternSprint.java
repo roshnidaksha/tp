@@ -29,7 +29,7 @@ public class InternSprint {
     public static void main(String[] args) {
         //Logger.getLogger("").setLevel(Level.OFF);
         // Set up centralized logger configuration at startup.
-        InternSprintLogger.setUpLogger();
+        InternSprintLogger.getLogger();
         new InternSprint().run();
     }
 
