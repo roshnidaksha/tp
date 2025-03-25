@@ -79,19 +79,23 @@ and easily tracking status of your applications.
 ## Features 
 
 ### Help: `help`
-Adds a new item to the list of todo items.
+Allows users to view the usage of all the available commands, or the usage of a specific command.
 
-Format: `todo n/TODO_NAME d/DEADLINE`
+Format: `help` OR `help COMMAND`
 
-* The `DEADLINE` can be in a natural language format.
-* The `TODO_NAME` cannot contain punctuation.
+* `help` is used to view the usage of all commands.
+* `help COMMAND` is used to view the usage of the specific command.
 
 Example of usage:
 
-`todo n/Write the rest of the User Guide d/next week`
-
-`todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
-
+```
+> help add general
+------------------------------------------------------------------------------------------------------------------------
+    -> add general: Adds a general internship to the internship list.
+    Parameters: /c COMPANY_NAME /r ROLE /dept DEPARTMENT
+    Example: add general /c Google /r Human Resource /dept HR
+------------------------------------------------------------------------------------------------------------------------
+```
 ---
 
 ### Listing all internships: `list`
@@ -251,19 +255,22 @@ Example of usage:
 ---
 
 ### Deleting an internship: `delete`
-Adds a new item to the list of todo items.
+Allows users to delete an internship from the list of internship applications.
 
-Format: `todo n/TODO_NAME d/DEADLINE`
+Format: `delete /index INDEX_OF_INTERNSHIP`
 
-* The `DEADLINE` can be in a natural language format.
-* The `TODO_NAME` cannot contain punctuation.
+* The `INDEX_OF_INTERNSHIP` should noy be out of range of the internship list.
 
 Example of usage:
 
-`todo n/Write the rest of the User Guide d/next week`
-
-`todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
-
+```
+> delete /index 1
+------------------------------------------------------------------------------------------------------------------------
+    Internships saved successfully
+    You can view the list of internships at data/internships.txt
+    Successfully deleted internship: Company: Mavericks, Role: Consultant, Dept: Technical Consultation
+------------------------------------------------------------------------------------------------------------------------
+```
 ---
 
 ### Viewing extended description of a specific internship: `desc`
@@ -304,6 +311,7 @@ Advanced users are welcome to update data directly by editing that data file.
 > The data file has particular `.json` formatting, any change to this file that violates this formatting could **corrupt the
 data** and would require the data file to be deleted
 > and started again. Therefore, edit the data file only if you are confident that you can update it correctly.
+
 
 ---
 
