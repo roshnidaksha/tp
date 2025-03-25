@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 import static seedu.internsprint.util.InternSprintMessages.BYE_MESSAGE;
 import static seedu.internsprint.util.InternSprintMessages.SAVE_SUCCESS_MESSAGE;
 
-public class ByeCommand extends Command<InternshipList> {
+public class ByeCommand extends Command {
     public static final String COMMAND_WORD = "bye";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Exits the program.\n"
             + "    Parameters: None\n"
@@ -24,12 +24,12 @@ public class ByeCommand extends Command<InternshipList> {
     }
 
     @Override
-    public String getCommandType(){
+    public String getCommandType() {
         return "internship";
     }
 
     @Override
-    public CommandResult execute(InternshipList internships) {
+    public CommandResult execute(InternshipList internships, UserProfile user) {
         CommandResult result;
         List<String> feedback = new ArrayList<>();
 

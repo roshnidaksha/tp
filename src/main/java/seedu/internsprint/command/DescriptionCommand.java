@@ -15,7 +15,7 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.DESC_INVALID
 import static seedu.internsprint.util.InternSprintExceptionMessages.DESC_UNABLE_TO_FIND_INTERNSHIP;
 import static seedu.internsprint.util.InternSprintMessages.DESC_MESSAGE_SUCCESS;
 
-public class DescriptionCommand extends Command<InternshipList> {
+public class DescriptionCommand extends Command {
     public static final String COMMAND_WORD = "desc";
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Shows the description of a particular internship.\n"
@@ -32,12 +32,12 @@ public class DescriptionCommand extends Command<InternshipList> {
     }
 
     @Override
-    public String getCommandType(){
+    public String getCommandType() {
         return "internship";
     }
 
     @Override
-    public CommandResult execute(InternshipList internships) {
+    public CommandResult execute(InternshipList internships, UserProfile user) {
         logger.log(Level.INFO, "Executing description command.");
         CommandResult result;
         List<String> feedback = new ArrayList<>();

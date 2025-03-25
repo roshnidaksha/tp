@@ -12,7 +12,7 @@ public class AddSoftwareCommand extends AddCommand {
             + "    Parameters: " + "/c COMPANY_NAME " + "/r ROLE " + "/tech TECHNOLOGIES\n"
             + "    Example: " + COMMAND_WORD + " /c Google " + "/r Software Engineer " + "/tech Java, Python";
     public static final String[] REQUIRED_PARAMETERS = {"/c", "/r", "/tech"};
-    public static final String[] OPTIONAL_PARAMETERS = {"/eli", "/ex", "/status","/desc"};
+    public static final String[] OPTIONAL_PARAMETERS = {"/eli", "/ex", "/status", "/desc"};
 
     public AddSoftwareCommand() {
         super(Set.of(REQUIRED_PARAMETERS), Set.of(OPTIONAL_PARAMETERS));

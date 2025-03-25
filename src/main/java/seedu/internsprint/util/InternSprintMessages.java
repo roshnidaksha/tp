@@ -40,4 +40,6 @@ public class InternSprintMessages {
     public static final String LIST_COUNT_MESSAGE = "Now you have %d internships in the list";
     public static final String SUCCESSFUL_DELETE = "Successfully deleted internship: %s";
     public static final String USER_UPDATE_SUCCESS_MESSAGE = "Successfully updated your user profile as shown below:";
+    public static final String USER_VIEW_SUCCESS_MESSAGE = "Your personalized profile information as shown below:";
+
 }

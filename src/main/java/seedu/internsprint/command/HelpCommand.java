@@ -3,12 +3,13 @@ package seedu.internsprint.command;
 import seedu.internsprint.internship.InternshipList;
 import seedu.internsprint.userProfile.UserProfile;
 import seedu.internsprint.util.InternSprintExceptionMessages;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import java.util.LinkedHashMap;
 
-public class HelpCommand extends Command<InternshipList> {
+public class HelpCommand extends Command {
     public static final String COMMAND_WORD = "help";
     public static final String MESSAGE_USAGE = COMMAND_WORD + " : Shows information on how to use a specific command " +
             "or a list of all commands.\n"
@@ -31,7 +32,7 @@ public class HelpCommand extends Command<InternshipList> {
     }
 
     @Override
-    public String getCommandType(){
+    public String getCommandType() {
         return "internship";
     }
 
@@ -41,7 +42,7 @@ public class HelpCommand extends Command<InternshipList> {
     }
 
     @Override
-    public CommandResult execute(InternshipList internships) {
+    public CommandResult execute(InternshipList internships, UserProfile user) {
         String feedback;
         boolean isSuccess = false;
         assert parameters.isEmpty() || parameters.size() == 1 : "HelpCommand should have at most one parameter";
@@ -62,7 +63,7 @@ public class HelpCommand extends Command<InternshipList> {
             String commandName = parameters.values().iterator().next();
             assert commandName != null && !commandName.isBlank() : "Command name should not be null or empty";
             if (COMMAND_HELP_MESSAGES.containsKey(commandName)) {
-                feedback = "-> "+ COMMAND_HELP_MESSAGES.get(commandName);
+                feedback = "-> " + COMMAND_HELP_MESSAGES.get(commandName);
                 isSuccess = true;
                 logger.log(Level.INFO, "End of Help Command processing");
             } else {

@@ -30,7 +30,7 @@ public class Parser {
      * @param userInput User input string.
      * @return Command object corresponding to the user input.
      */
-    public static Command<?> parseCommand(String userInput) {
+    public static Command parseCommand(String userInput) {
         logger.log(Level.INFO, String.format("User command inside parseCommand: %s", userInput));
         assert userInput != null : "User input should not be null";
 
@@ -40,7 +40,7 @@ public class Parser {
         String commandType = commandTypeAndParams[0];
         String params = commandTypeAndParams.length > 1 ? commandTypeAndParams[1] : "";
 
-        Command<?> command;
+        Command command;
         switch (commandType) {
         case "add software":
             command = new AddSoftwareCommand();
@@ -71,6 +71,9 @@ public class Parser {
             break;
         case "my":
             command = new UserProfileCommand();
+            break;
+        case "view":
+            command = new ViewUserCommand();
             break;
         default:
             throw new IllegalArgumentException(String.format(INVALID_COMMAND_TYPE, commandType));
@@ -105,7 +108,7 @@ public class Parser {
      * @param params Parameters string.
      * @param command Command object.
      */
-    protected static void parseKeyValuePairs(String params, Command<?> command) {
+    protected static void parseKeyValuePairs(String params, Command command) {
         HashMap<String, String> keyValueMap = new HashMap<>();
 
         if (params.isEmpty()) {
@@ -146,11 +149,12 @@ public class Parser {
 
     /**
      * Splits the input string from the user into individual words for user profile class
-     * @param input
-     * @return
+     * @param input string in key-value pair to be split into words
+     * @return Array list of individual words in a string
      */
     public static ArrayList<String> splitToWords(String input) {
-        return Arrays.stream(input.split("\\s*,\\s*|\\s+"))
+        return Arrays.stream(input.split("\\s*,\\s*"))
+                .map(String::trim)
                 .filter(s -> !s.isEmpty())
                 .collect(Collectors.toCollection(ArrayList::new));
     }

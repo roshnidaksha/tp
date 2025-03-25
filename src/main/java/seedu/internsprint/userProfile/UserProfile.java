@@ -92,9 +92,87 @@ public class UserProfile {
         if (preferredRoles != null) sb.append(", Preferred Roles: ").append(preferredRoles);
         if (targetStipendRange != null) sb.append(", Target Stipend Range: ").append(targetStipendRange);
         if (internshipDateRange != null) sb.append(", Internship Date Range: ")
-                                            .append(Arrays.toString(internshipDateRange));
+                .append(Arrays.toString(internshipDateRange));
         if (monthlyGoals != null) sb.append(", Monthly Goals: ").append(monthlyGoals);
         if (yearlyGoals != null) sb.append(", Yearly Goals: ").append(yearlyGoals);
+        return sb.toString().replaceFirst("^,\\s*", "");
+    }
+
+    public String toExtendedString() {
+        StringBuilder sb = new StringBuilder();
+
+        // Add Name Section
+        if (name != null) {
+            sb.append("--------------------------------------------------\n");
+            sb.append("Name: ").append(name).append("\n");
+            sb.append("--------------------------------------------------\n");
+        }
+
+        // Add Preferred Industries Section
+        if (preferredIndustries != null && !preferredIndustries.isEmpty()) {
+            sb.append("\nPreferred Industries:\n");
+            sb.append("--------------------------------------------------\n");
+            for (String industry : preferredIndustries) {
+                sb.append(String.format("| %-40s |\n", industry.trim()));
+            }
+            sb.append("--------------------------------------------------\n");
+        }
+
+        // Add Preferred Companies Section
+        if (preferredCompanies != null && !preferredCompanies.isEmpty()) {
+            sb.append("\nPreferred Companies:\n");
+            sb.append("--------------------------------------------------\n");
+            for (String company : preferredCompanies) {
+                sb.append(String.format("| %-40s |\n", company.trim()));
+            }
+            sb.append("--------------------------------------------------\n");
+        }
+
+        // Add Preferred Roles Section
+        if (preferredRoles != null && !preferredRoles.isEmpty()) {
+            sb.append("\nPreferred Roles:\n");
+            sb.append("--------------------------------------------------\n");
+            for (String role : preferredRoles) {
+                sb.append(String.format("| %-40s |\n", role.trim()));
+            }
+            sb.append("--------------------------------------------------\n");
+        }
+
+        // Add Target Stipend Range Section
+        if (targetStipendRange != null) {
+            sb.append("\nTarget Stipend Range:\n");
+            sb.append("--------------------------------------------------\n");
+            sb.append(String.format("| %-40s |\n", targetStipendRange));
+            sb.append("--------------------------------------------------\n");
+        }
+
+        // Add Internship Date Range Section
+        if (internshipDateRange != null) {
+            sb.append("\nInternship Date Range:\n");
+            sb.append("--------------------------------------------------\n");
+            sb.append(String.format("| %-40s |\n", Arrays.toString(internshipDateRange)));
+            sb.append("--------------------------------------------------\n");
+        }
+
+        // Add Monthly Goals Section
+        if (monthlyGoals != null && !monthlyGoals.isEmpty()) {
+            sb.append("\nMonthly Goals:\n");
+            sb.append("--------------------------------------------------\n");
+
+            sb.append(String.format("| %-40s |\n", monthlyGoals.trim()));
+
+            sb.append("--------------------------------------------------\n");
+        }
+
+        // Add Yearly Goals Section
+        if (yearlyGoals != null && !yearlyGoals.isEmpty()) {
+            sb.append("\nYearly Goals:\n");
+            sb.append("--------------------------------------------------\n");
+            sb.append(String.format("| %-40s |\n", yearlyGoals.trim()));
+
+            sb.append("--------------------------------------------------\n");
+        }
+
         return sb.toString();
     }
 

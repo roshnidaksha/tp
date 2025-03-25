@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 import static seedu.internsprint.util.InternSprintMessages.LIST_MESSAGE_SUCCESS;
 
-public class ListCommand extends Command<InternshipList> {
+public class ListCommand extends Command {
     public static final String COMMAND_WORD = "list";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Lists every saved internship in your list, arranged "
             + "by categories\n"
@@ -20,7 +20,7 @@ public class ListCommand extends Command<InternshipList> {
     private static final Logger logger = Logger.getLogger(ListCommand.class.getName());
 
     @Override
-    public String getCommandType(){
+    public String getCommandType() {
         return "internship";
     }
 
@@ -31,7 +31,7 @@ public class ListCommand extends Command<InternshipList> {
     }
 
     @Override
-    public CommandResult execute(InternshipList internshipList) {
+    public CommandResult execute(InternshipList internshipList, UserProfile user) {
         logger.log(Level.INFO, "Executing list command");
         CommandResult result;
         List<String> feedback = new ArrayList<>();
