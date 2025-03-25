@@ -12,7 +12,7 @@ class AddSoftwareCommandTest {
 
     @Test
     void createInternship_validParameters_correctlyConstructed() {
-        AddSoftwareCommand addSoftwareCommand = new AddSoftwareCommand();
+        AddSoftwareInternshipCommand addSoftwareCommand = new AddSoftwareInternshipCommand();
         addSoftwareCommand.parameters.put("/c", "Google");
         addSoftwareCommand.parameters.put("/r", "Software Engineer");
         addSoftwareCommand.parameters.put("/tech", "Java, Python");
@@ -27,7 +27,7 @@ class AddSoftwareCommandTest {
     void createInternship_invalidTechStack_throwsException() {
         final String[] invalidTechStacks = {null, "", " ", "  "};
         for (String techStack : invalidTechStacks) {
-            AddSoftwareCommand addSoftwareCommand = new AddSoftwareCommand();
+            AddSoftwareInternshipCommand addSoftwareCommand = new AddSoftwareInternshipCommand();
             addSoftwareCommand.parameters.put("/c", "Google");
             addSoftwareCommand.parameters.put("/r", "Software Engineer");
             addSoftwareCommand.parameters.put("/tech", techStack);

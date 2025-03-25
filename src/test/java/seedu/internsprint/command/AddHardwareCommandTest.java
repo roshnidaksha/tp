@@ -12,7 +12,7 @@ class AddHardwareCommandTest {
 
     @Test
     void createInternship_validParameters_correctlyConstructed() {
-        AddHardwareCommand addHardwareCommand = new AddHardwareCommand();
+        AddHardwareInternshipCommand addHardwareCommand = new AddHardwareInternshipCommand();
         addHardwareCommand.parameters.put("/c", "Google");
         addHardwareCommand.parameters.put("/r", "Hardware Engineer");
         addHardwareCommand.parameters.put("/hardtech", "C, C++");
@@ -27,7 +27,7 @@ class AddHardwareCommandTest {
     void createInternship_invalidEmbeddedSystems_throwsException() {
         final String[] invalidEmbeddedSystems = {null, "", " ", "  "};
         for (String embeddedSystems : invalidEmbeddedSystems) {
-            AddHardwareCommand addHardwareCommand = new AddHardwareCommand();
+            AddHardwareInternshipCommand addHardwareCommand = new AddHardwareInternshipCommand();
             addHardwareCommand.parameters.put("/c", "Google");
             addHardwareCommand.parameters.put("/r", "Hardware Engineer");
             addHardwareCommand.parameters.put("/tech", embeddedSystems);

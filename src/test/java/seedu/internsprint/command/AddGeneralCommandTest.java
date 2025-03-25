@@ -12,7 +12,7 @@ class AddGeneralCommandTest {
 
     @Test
     void createInternship_validParameters_correctlyConstructed() {
-        AddGeneralCommand addGeneralCommand = new AddGeneralCommand();
+        AddGeneralInternshipCommand addGeneralCommand = new AddGeneralInternshipCommand();
         addGeneralCommand.parameters.put("/c", "Google");
         addGeneralCommand.parameters.put("/r", "Software Engineer");
         addGeneralCommand.parameters.put("/dept", "Engineering");
@@ -27,7 +27,7 @@ class AddGeneralCommandTest {
     void createInternship_invalidCompanyName_throwsException() {
         final String[] invalidCompanyNames = {null, "", " ", "  "};
         for (String companyName : invalidCompanyNames) {
-            AddGeneralCommand addGeneralCommand = new AddGeneralCommand();
+            AddGeneralInternshipCommand addGeneralCommand = new AddGeneralInternshipCommand();
             addGeneralCommand.parameters.put("/c", companyName);
             addGeneralCommand.parameters.put("/r", "Software Engineer");
             addGeneralCommand.parameters.put("/dept", "Engineering");
@@ -39,7 +39,7 @@ class AddGeneralCommandTest {
     void createInternship_invalidRole_throwsException() {
         final String[] invalidRoles = {null, "", " ", "  "};
         for (String role : invalidRoles) {
-            AddGeneralCommand addGeneralCommand = new AddGeneralCommand();
+            AddGeneralInternshipCommand addGeneralCommand = new AddGeneralInternshipCommand();
             addGeneralCommand.parameters.put("/c", "Google");
             addGeneralCommand.parameters.put("/r", role);
             addGeneralCommand.parameters.put("/dept", "Engineering");
@@ -51,7 +51,7 @@ class AddGeneralCommandTest {
     void createInternship_invalidDepartment_throwsException() {
         final String[] invalidDepartments = {null, "", " ", "  "};
         for (String department : invalidDepartments) {
-            AddGeneralCommand addGeneralCommand = new AddGeneralCommand();
+            AddGeneralInternshipCommand addGeneralCommand = new AddGeneralInternshipCommand();
             addGeneralCommand.parameters.put("/c", "Google");
             addGeneralCommand.parameters.put("/r", "Software Engineer");
             addGeneralCommand.parameters.put("/dept", department);
