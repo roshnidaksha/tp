@@ -1,12 +1,13 @@
 package seedu.internsprint.command;
 
-import seedu.internsprint.handler.Parser;
+import seedu.internsprint.handler.CommandParser;
 import seedu.internsprint.internship.GeneralInternship;
 import seedu.internsprint.internship.HardwareInternship;
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
 import seedu.internsprint.internship.SoftwareInternship;
 import seedu.internsprint.userProfile.UserProfile;
+import seedu.internsprint.util.InternSprintLogger;
 import seedu.internsprint.util.InternSprintMessages;
 
 import java.util.ArrayList;
@@ -29,8 +30,8 @@ public class EditCommand extends Command {
             + "    /dept DEPARTMENT /hardtech HARDWARE TECHNOLOGIES /desc DESCRIPTION /tech TECHNOLOGIES\n"
             + "    Example: " + COMMAND_WORD + " /index 1 /c Google /r Hardware Engineer /tech C, C++";
     public static final String[] POSSIBLE_PARAMETERS = {"/c", "/r", "/dept", "/eli",
-            "/ex", "/tech", "/desc", "/hardtech"};
-    private static final Logger logger = Logger.getLogger(EditCommand.class.getName());
+        "/ex", "/tech", "/desc", "/hardtech"};
+    private static final Logger logger = InternSprintLogger.getLogger();
 
     @Override
     public String getCommandType() {
@@ -76,7 +77,7 @@ public class EditCommand extends Command {
 
         String[] validIndex;
         try {
-            validIndex = Parser.validateIndex(parameters.get("/index"), internships);
+            validIndex = CommandParser.validateIndex(parameters.get("/index"), internships);
         } catch (IllegalArgumentException e) {
             logger.log(Level.WARNING, "Index for edit command out of range...");
             feedback.add(e.getMessage());

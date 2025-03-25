@@ -1,6 +1,8 @@
 package seedu.internsprint.command;
 
 import seedu.internsprint.internship.Internship;
+import seedu.internsprint.util.InternSprintLogger;
+
 import java.util.logging.Logger;
 import java.util.logging.Level;
 
@@ -10,7 +12,7 @@ import java.util.List;
  * Represents the result of a command execution.
  */
 public class CommandResult {
-    private static final Logger logger = Logger.getLogger(CommandResult.class.getName());
+    private static final Logger logger = InternSprintLogger.getLogger();
     private final List<String> feedbackToUser;
     private final List<Internship> relevantInternships;
     private boolean isSuccessful;

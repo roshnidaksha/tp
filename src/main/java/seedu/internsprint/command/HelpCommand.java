@@ -3,6 +3,7 @@ package seedu.internsprint.command;
 import seedu.internsprint.internship.InternshipList;
 import seedu.internsprint.userProfile.UserProfile;
 import seedu.internsprint.util.InternSprintExceptionMessages;
+import seedu.internsprint.util.InternSprintLogger;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,7 +18,7 @@ public class HelpCommand extends Command {
             + "    Example: " + COMMAND_WORD + " add general";
 
     private static final LinkedHashMap<String, String> COMMAND_HELP_MESSAGES = new LinkedHashMap<>();
-    private static Logger logger = Logger.getLogger("Help");
+    private static Logger logger = InternSprintLogger.getLogger();
 
     static {
         COMMAND_HELP_MESSAGES.put("add general", AddGeneralCommand.MESSAGE_USAGE);
