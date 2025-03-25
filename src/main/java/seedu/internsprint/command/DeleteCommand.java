@@ -1,8 +1,9 @@
 package seedu.internsprint.command;
 
-import seedu.internsprint.handler.Parser;
+import seedu.internsprint.handler.CommandParser;
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
+import seedu.internsprint.util.InternSprintLogger;
 import seedu.internsprint.util.InternSprintMessages;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,7 +20,7 @@ public class DeleteCommand extends Command {
         + "    Parameters: " + "/index INDEX_OF_INTERNSHIP \n"
         + "    Example: " + COMMAND_WORD + " /index 2";
     public static final String[] REQUIRED_PARAMETERS = {"/index"};
-    private static Logger logger = Logger.getLogger("Delete");
+    private static Logger logger = InternSprintLogger.getLogger();
 
     @Override
     protected boolean isValidParameters() {
@@ -47,7 +48,7 @@ public class DeleteCommand extends Command {
 
         String[] validIndex;
         try {
-            validIndex = Parser.validateIndex(parameters.get("/index"), internships);
+            validIndex = CommandParser.validateIndex(parameters.get("/index"), internships);
             assert validIndex.length == 2 : "Parser.validateIndex should return a valid type and index";
         } catch (IllegalArgumentException e) {
             feedback.add(e.getMessage());

@@ -1,6 +1,7 @@
 package seedu.internsprint.command;
 
 import seedu.internsprint.internship.InternshipList;
+import seedu.internsprint.util.InternSprintLogger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ public class ByeCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Exits the program.\n"
             + "    Parameters: None\n"
             + "    Example: " + COMMAND_WORD;
-    private static Logger logger = Logger.getLogger(ByeCommand.class.getName());
+    private static Logger logger = InternSprintLogger.getLogger();
 
     @Override
     protected boolean isValidParameters() {
