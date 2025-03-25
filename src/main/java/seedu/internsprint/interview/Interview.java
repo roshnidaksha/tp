@@ -1,5 +1,9 @@
 package seedu.internsprint.interview;
 
+import seedu.internsprint.handler.DateTimeParser;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_REQUIRED_PARAMETERS;
@@ -7,9 +11,9 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_REQU
 public class Interview {
 
     /* Mandatory required parameters to create an Interview */
-    protected String interviewDate;
-    protected String interviewStartTime;
-    protected String interviewEndTime;
+    protected LocalDate interviewDate;
+    protected LocalTime interviewStartTime;
+    protected LocalTime interviewEndTime;
     protected String interviewType;
 
     protected ArrayList<Interview> nextRounds = new ArrayList<Interview>();
@@ -33,9 +37,9 @@ public class Interview {
                 "/date, /start, /end or /type"));
         }
 
-        this.interviewDate = interviewDate;
-        this.interviewStartTime = interviewStartTime;
-        this.interviewEndTime = interviewEndTime;
+        this.interviewDate = DateTimeParser.parseDateInput(interviewDate);
+        this.interviewStartTime = DateTimeParser.parseTimeInput(interviewStartTime);
+        this.interviewEndTime = DateTimeParser.parseTimeInput(interviewEndTime);
         this.interviewType = interviewType;
 
         setRoundCounter(this.roundCounter);
@@ -54,9 +58,9 @@ public class Interview {
                 "/date, /start, /end or /type"));
         }
 
-        this.interviewDate = interviewDate;
-        this.interviewStartTime = interviewStartTime;
-        this.interviewEndTime = interviewEndTime;
+        this.interviewDate = DateTimeParser.parseDateInput(interviewDate);
+        this.interviewStartTime = DateTimeParser.parseTimeInput(interviewStartTime);
+        this.interviewEndTime = DateTimeParser.parseTimeInput(interviewEndTime);
         this.interviewType = interviewType;
 
         if (interviewerEmail != null && !interviewerEmail.isBlank()) {
@@ -121,26 +125,26 @@ public class Interview {
     }
 
     public String getInterviewDate() {
-        return interviewDate;
+        return DateTimeParser.formatLocalDate(interviewDate);
     }
 
-    public void setInterviewDate(String interviewDate) {
+    public void setInterviewDate(LocalDate interviewDate) {
         this.interviewDate = interviewDate;
     }
 
     public String getInterviewStartTime() {
-        return interviewStartTime;
+        return DateTimeParser.formatLocalTime(interviewStartTime);
     }
 
-    public void setInterviewStartTime(String interviewStartTime) {
+    public void setInterviewStartTime(LocalTime interviewStartTime) {
         this.interviewStartTime = interviewStartTime;
     }
 
     public String getInterviewEndTime() {
-        return interviewEndTime;
+        return DateTimeParser.formatLocalTime(interviewEndTime);
     }
 
-    public void setInterviewEndTime(String interviewEndTime) {
+    public void setInterviewEndTime(LocalTime interviewEndTime) {
         this.interviewEndTime = interviewEndTime;
     }
 
