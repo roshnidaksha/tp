@@ -2,6 +2,7 @@ package seedu.internsprint.handler;
 
 import seedu.internsprint.command.AddSoftwareInternshipCommand;
 import seedu.internsprint.command.Command;
+import seedu.internsprint.internship.InternshipList;
 
 import org.junit.jupiter.api.Test;
 
@@ -86,5 +87,19 @@ class CommandParserTest {
         Command command = new AddSoftwareInternshipCommand();
         assertThrows(IllegalArgumentException.class,
             () -> CommandParser.parseKeyValuePairs("description /key1 val/ue1", command));
+    }
+
+    @Test
+    void validateIndex_emptyIndex_throwsIllegalArgumentException() {
+        InternshipList internships = new InternshipList();
+        assertThrows(IllegalArgumentException.class,
+            () -> CommandParser.validateIndex("", internships));
+    }
+
+    @Test
+    void validateIndex_invalidIndex_throwsIllegalArgumentException() {
+        InternshipList internships = new InternshipList();
+        assertThrows(IllegalArgumentException.class,
+            () -> CommandParser.validateIndex("0", internships));
     }
 }
