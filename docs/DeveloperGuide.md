@@ -3,31 +3,125 @@
 ## Table of Contents
 
 <!-- TOC -->
-* [Acknowledgements](#acknowledgements)
+* [**Acknowledgements**](#acknowledgements)
+* [**Setting Up and Getting Started**](#setting-up-and-getting-started)
+* [**Design**](#design)
+  * [Architecture](#architecture)
+  * [UI Component](#ui-component)
+  * [Logic Component](#logic-component)
+  * [Model Component](#model-component)
+  * [Storage Component](#storage-component)
+* [**Implementation**](#implementation)
+  * [Commands](#commands)
+    * [1. Add new Internship](#1-add-new-internship)
+    * [2. Edit an Internship](#2-edit-an-internship)
+    * [3. Delete an Internship](#3-delete-an-internship)
+    * [4. List all Internships](#4-list-all-internships)
+* [**Documentation, logging, testing, configuration and deployment**](#documentation-logging-testing-configuration-and-deployment)
+* [**Product scope**](#product-scope)
+  * [Target user profile](#target-user-profile)
+  * [Value proposition](#value-proposition)
+* [**User Stories**](#user-stories)
+* [**Non-Functional Requirements**](#non-functional-requirements)
+* [**Glossary**](#glossary)
+* [**Instructions for manual testing**](#instructions-for-manual-testing)
 
 ## Acknowledgements
 
 {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
 
-## Architecture
+**Third party libraries used:**
+
+* [JSON in Java](https://mvnrepository.com/artifact/org.json/json): Used to store and retrieve data from JSON files.
+* [PrettyTime](https://mvnrepository.com/artifact/org.ocpsoft.prettytime/prettytime): 
+Used to format timestamps in a human-readable format.
+* [Natty](https://mvnrepository.com/artifact/com.joestelmach/natty): 
+Used to parse natural language date and time strings.
+
+## Setting Up and Getting Started
+> **Caution:**
+Follow the steps in the following guide precisely. Things will not work out if you deviate in some steps.
+
+First, **fork** this repo, and **clone** the fork into your computer.
+
+If you plan to use Intellij IDEA (highly recommended):
+
+1. **Configure the JDK**: 
+Follow the guide [[se-edu/guides] IDEA: Configuring the JDK](https://se-education.org/guides/tutorials/intellijJdk.html)
+to ensure Intellij is configured to use **JDK 17**.
+2. **Import the project as a Gradle project**:
+Follow the guide [[se-edu/guides] IDEA: Importing a Gradle project]
+(https://se-education.org/guides/tutorials/intellijImportGradleProject.html) to import the project into IDEA.
+> Note: Importing a Gradle project is slightly different from importing a normal Java project.
+3. **Verify the setup:**
+   * Run the `seedu.internsprint.InternSprint` and try a few commands.
+   * Run the tests in the `src/test` directory to ensure everything is working as expected.
+
+## Design
+
+> **Tip:** The diagrams are created using [drawio](https://app.diagrams.net/). 
+> Refer to their website for more information.
+
+### Architecture
 
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
 
-### CommandParser
+The **Architecture Diagram** above shows the high-level implementation of the InternSprint application.
 
-_Input Parsing:_ The `CommandParser` class takes a single line of user input and splits it into a command word and 
-key value pairs. 
-  * The command word is used to determine the type of command that needs be executed, and creates the corresponding
-`Command` object (e.g., `AddCommand`, `DeleteCommand`, `ListCommand`).
-  * The key value pairs are stored in a `HashMap<String, String>` of the `Command` object. The key value pairs are 
-validated only during command execution in `isValidParameters()` method.
+Given below is a quick overview of our main components and their interactions.
 
-Here is the partial class diagram of the `CommandParser` class. The multiplicities of `*command` classes are 0 or 1, 
+**Main Components:**
+
+{Explain briefly the packaging structure and the main components of the product.}
+
+**How the components interact:**
+
+The *Sequence Diagram* below shows how the components interact with each other when a user deletes an internship by 
+issuing the command `delete /index 1`.
+
+{Insert Sequence diagram here and explanation here}
+
+### UI Component
+
+The UI component is responsible for handling user input and output.
+
+{Explain in better detail}
+
+### Logic Component
+
+Here is a partial class diagram of the Logic component:
+
+**CommandParser**
+
+_Input Parsing:_ The `CommandParser` class takes a single line of user input and splits it into a command word and
+key value pairs.
+* The command word is used to determine the type of command that needs be executed, and creates the corresponding
+  `Command` object (e.g., `AddCommand`, `DeleteCommand`, `ListCommand`).
+* The key value pairs are stored in a `HashMap<String, String>` of the `Command` object. The key value pairs are
+  validated only during command execution in `isValidParameters()` method.
+
+Here is the partial class diagram of the `CommandParser` class. The multiplicities of `*command` classes are 0 or 1,
 because the dependency is formed only when the command is executed.
 
 Insert command class diagram here
 
+{Insert partial class diagram here and explain in detail}
+
+### Model Component
+
+The Model component is responsible for storing and managing the data of the application.
+
+{Explain in better detail}
+
+### Storage Component
+
+The Storage component is responsible for reading and writing data to and from the disk.
+
+{Explain in better detail}
+
 ## Implementation
+
+This section describes some noteworthy details on how certain features are implemented.
 
 ### Commands
 
@@ -71,12 +165,17 @@ design principle.
 testing and debugging to be more focused and efficient.
 
 **Alternatives Considered:**
-* One way to store internships is to use a single list and store the type of internship as a field in the `Internship`.
-But this approach would require additional validation to ensure that the type of internship is consistent with the
-parameters provided by the user.
-* Another alternative is to use a single `AddCommand` class and use a switch statement to determine the type of internship.
-Then the `execute()` would need to have additional checks, making it too long and violating the 
-**SRP (Single Responsibility Principle)**.
+* **Alternative 1 (Current choice):** Use separate classes for each type of internship.
+  * Pros: Achieves **SoC (Separation of Concerns)** design principle.
+  * Cons: Requires additional classes and code to be written.
+
+* **Alternative 2:** Use a single `AddCommand` class and use a switch statement to determine the type of internship.
+  * Pros: Reduces the number of classes and code to be written.
+  * Cons: Violates the **SRP (Single Responsibility Principle)**.
+* **Alternative 3:** Use a single `AddCommand` class and store the type of internship as a field in the `Internship`.
+  * Pros: Reduces the number of classes and code to be written.
+  * Cons: Requires additional validation to ensure that the type of internship is consistent with the parameters provided
+  by the user.
 
 **Sequence Diagram:**
 
@@ -85,7 +184,16 @@ or hardware internship.
 
 Add sequence diagram for adding a software internship here
 
+### 2. Edit an Internship
+
+### 3. Delete an Internship
+
+### 4. List all Internships
+
+## Documentation, logging, testing, configuration and deployment
+
 ## Product scope
+
 ### Target user profile
 
 This product is designed for NUS Computer Engineering undergraduates, especially students applying for internships 
@@ -113,11 +221,41 @@ ensuring a seamless and efficient job hunt.
 ## Non-Functional Requirements
 
 {Give non-functional requirements}
+* Should work on any *mainsteam OS* as long as it has Java 17 or above installed.
+* A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be 
+able to accomplish most of the tasks faster using commands than using a mouse.
 
 ## Glossary
 
 * *glossary item* - Definition
+* *Mainstream OS* - Windows, Linux, Unix, MacOS
 
 ## Instructions for manual testing
 
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+
+> **Note:** These instructions only provide a starting point for testers to work on; testers are expected to do more 
+> exploratory testing.
+
+### 1. Start InternSprint Application
+
+1. Follow the instructions given in our 
+[User Guide Quick Start](https://ay2425s2-cs2113-t11a-3.github.io/tp/UserGuide.html#quick-start)
+ to set up the application.
+
+2. Expected: A welcome message and a prompt for user input.
+
+### 2. Test Cases
+
+**2.1 Initial State**
+
+**2.2 Add a new internship**
+
+**2.3 List all internships**
+
+**2.4 Delete an internship**
+
+**2.5 Edit an internship**
+
+**2.7 Describe an internship**
+
