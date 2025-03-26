@@ -41,4 +41,5 @@ public class InternSprintMessages {
     public static final String SUCCESSFUL_DELETE = "Successfully deleted internship: %s";
     public static final String NO_INTERNSHIPS_FOUND = "No internships found";
     public static final String NUMBER_OF_INTERNSHIPS_FOUND = "Number of internships found: %d";
+    public static final String ADD_INTERVIEW_MESSAGE_SUCCESS = "New interview added\n%s";
 }

@@ -14,11 +14,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-class AddCommandTest {
+class AddInternshipCommandTest {
 
     @Test
     void execute_internshipListAlreadyContainsInternship_throwsException() {
-        AddCommand addCommand = new AddSoftwareCommand();
+        AddInternshipCommand addCommand = new AddSoftwareInternshipCommand();
         addCommand.setParameters(new HashMap<>(Map.of(
             "/c", "Google",
             "/r", "Software Engineer",
