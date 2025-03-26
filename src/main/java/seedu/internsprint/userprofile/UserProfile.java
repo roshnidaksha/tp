@@ -1,10 +1,9 @@
-package seedu.internsprint.userProfile;
+package seedu.internsprint.userprofile;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 
-import seedu.internsprint.handler.Parser;
+import seedu.internsprint.handler.CommandParser;
+import seedu.internsprint.project.ProjectList;
 
 public class UserProfile {
     public static String name;
@@ -14,9 +13,11 @@ public class UserProfile {
     public static ArrayList<String> preferredCompanies;
     public static ArrayList<String> preferredRoles;
     public static String targetStipendRange;
-    public static LocalDateTime[] internshipDateRange;
+    public static String internshipDateRange;
+    public final ProjectList projects;
 
     public UserProfile() {
+        projects = new ProjectList();
     }
 
     public String getName() {
@@ -48,7 +49,7 @@ public class UserProfile {
     }
 
     public void setPreferredIndustries(String preferredIndustriesString) {
-        UserProfile.preferredIndustries = Parser.splitToWords(preferredIndustriesString);
+        UserProfile.preferredIndustries = CommandParser.splitToWords(preferredIndustriesString);
     }
 
     public ArrayList<String> getPreferredCompanies() {
@@ -56,7 +57,7 @@ public class UserProfile {
     }
 
     public void setPreferredCompanies(String preferredCompaniesString) {
-        UserProfile.preferredCompanies = Parser.splitToWords(preferredCompaniesString);
+        UserProfile.preferredCompanies = CommandParser.splitToWords(preferredCompaniesString);
     }
 
     public ArrayList<String> getPreferredRoles() {
@@ -64,7 +65,7 @@ public class UserProfile {
     }
 
     public void setPreferredRoles(String preferredRolesString) {
-        UserProfile.preferredRoles = Parser.splitToWords(preferredRolesString);
+        UserProfile.preferredRoles = CommandParser.splitToWords(preferredRolesString);
     }
 
     public String getTargetStipendRange() {
@@ -75,26 +76,41 @@ public class UserProfile {
         UserProfile.targetStipendRange = targetStipendRange;
     }
 
-    public LocalDateTime[] getInternshipDateRange() {
+    public String getInternshipDateRange() {
         return internshipDateRange;
     }
 
-    public void setInternshipDateRange(LocalDateTime[] internshipDateRange) {
+    public void setInternshipDateRange(String internshipDateRange) {
         UserProfile.internshipDateRange = internshipDateRange;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        if (name != null) sb.append("Name: ").append(name);
-        if (preferredIndustries != null) sb.append(", Preferred Industries: ").append(preferredIndustries);
-        if (preferredCompanies != null) sb.append(", Preferred Companies: ").append(preferredCompanies);
-        if (preferredRoles != null) sb.append(", Preferred Roles: ").append(preferredRoles);
-        if (targetStipendRange != null) sb.append(", Target Stipend Range: ").append(targetStipendRange);
-        if (internshipDateRange != null) sb.append(", Internship Date Range: ")
-                .append(Arrays.toString(internshipDateRange));
-        if (monthlyGoals != null) sb.append(", Monthly Goals: ").append(monthlyGoals);
-        if (yearlyGoals != null) sb.append(", Yearly Goals: ").append(yearlyGoals);
+        if (name != null){
+            sb.append("Name: ").append(name);
+        }
+        if (preferredIndustries != null){
+            sb.append(", Preferred Industries: ").append(preferredIndustries);
+        }
+        if (preferredCompanies != null){
+            sb.append(", Preferred Companies: ").append(preferredCompanies);
+        }
+        if (preferredRoles != null){
+            sb.append(", Preferred Roles: ").append(preferredRoles);
+        }
+        if (targetStipendRange != null){
+            sb.append(", Target Stipend Range: ").append(targetStipendRange);
+        }
+        if (internshipDateRange != null){
+            sb.append(", Internship Date Range: ").append(internshipDateRange);
+        }
+        if (monthlyGoals != null){
+            sb.append(", Monthly Goals: ").append(monthlyGoals);
+        }
+        if (yearlyGoals != null){
+            sb.append(", Yearly Goals: ").append(yearlyGoals);
+        }
         return sb.toString().replaceFirst("^,\\s*", "");
     }
 
@@ -150,7 +166,7 @@ public class UserProfile {
         if (internshipDateRange != null) {
             sb.append("\nInternship Date Range:\n");
             sb.append("--------------------------------------------------\n");
-            sb.append(String.format("| %-40s |\n", Arrays.toString(internshipDateRange)));
+            sb.append(String.format("| %-40s |\n", internshipDateRange));
             sb.append("--------------------------------------------------\n");
         }
 

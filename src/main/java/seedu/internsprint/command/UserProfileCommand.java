@@ -1,7 +1,7 @@
 package seedu.internsprint.command;
 
 import seedu.internsprint.internship.InternshipList;
-import seedu.internsprint.userProfile.UserProfile;
+import seedu.internsprint.userprofile.UserProfile;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class UserProfileCommand extends Command {
             + "     Example: " + COMMAND_WORD + " /name John Doe /c Google,Java /r Hardware Engineer, Automation Intern"
             + " /pay 2000-3000";
     public static final String[] OPTIONAL_PARAMETERS = {"/pay", "/ind", "/time", "/name",
-            "/ygoals", "/mgoals", "/c", "/r"};
+                                                        "/ygoals", "/mgoals", "/c", "/r"};
 
     @Override
     public String getCommandType() {
@@ -66,10 +66,10 @@ public class UserProfileCommand extends Command {
         if (parameters.containsKey("/ind")) {
             user.setPreferredIndustries(parameters.get("/ind"));
         }
-        //if(parameters.containsKey("/time")){
-        //to be edited to work with date time parser
-        // UserProfile.setInternshipDateRange(parameters.get("/time"));
-        //}
+        if (parameters.containsKey("/time")) {
+            //to be edited to work with date time parser
+            user.setInternshipDateRange(parameters.get("/time"));
+        }
         if (parameters.containsKey("/ygoals")) {
             user.setYearlyGoals(parameters.get("/ygoals"));
         }

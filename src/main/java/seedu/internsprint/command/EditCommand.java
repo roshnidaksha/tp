@@ -6,7 +6,7 @@ import seedu.internsprint.internship.HardwareInternship;
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
 import seedu.internsprint.internship.SoftwareInternship;
-import seedu.internsprint.userProfile.UserProfile;
+import seedu.internsprint.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintLogger;
 import seedu.internsprint.util.InternSprintMessages;
 
@@ -88,7 +88,8 @@ public class EditCommand extends Command {
 
         int index = Integer.parseInt(validIndex[1]);
         String type = validIndex[0];
-        assert (index >= 0 && index < internships.getInternshipCount()) : "index value should be within appropriate range";
+        assert (index >= 0 && index < internships.getInternshipCount()) : "index value should be " +
+                                                                            "within appropriate range";
 
         Internship foundInternship = internshipMap.get(type).get(index);
         Internship foundInternshipCopy = foundInternship.copy();

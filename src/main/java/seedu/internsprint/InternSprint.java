@@ -5,7 +5,7 @@ import seedu.internsprint.command.CommandResult;
 import seedu.internsprint.handler.CommandParser;
 import seedu.internsprint.handler.StorageHandler;
 import seedu.internsprint.internship.InternshipList;
-import seedu.internsprint.userProfile.UserProfile;
+import seedu.internsprint.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintLogger;
 import seedu.internsprint.util.Ui;
 
@@ -62,7 +62,7 @@ public class InternSprint {
                 logger.log(Level.INFO, "User command: " + userCommand);
                 Command command = CommandParser.parseCommand(userCommand);
                 logger.log(Level.INFO, "Parsed Command: " + command);
-                    result = command.execute(internships,user);
+                result = command.execute(internships, user);
                 logger.log(Level.INFO, "Command executed successfully");
 
                 Ui.showResultToUser(result);

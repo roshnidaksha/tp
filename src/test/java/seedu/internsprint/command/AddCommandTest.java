@@ -3,6 +3,7 @@ package seedu.internsprint.command;
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
 import seedu.internsprint.internship.SoftwareInternship;
+import seedu.internsprint.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintMessages;
 
 import java.util.HashMap;
@@ -25,10 +26,11 @@ class AddCommandTest {
             "/tech", "Java, Python")));
 
         InternshipList internships = new InternshipList();
+        UserProfile user = new UserProfile();
         Internship internship = new SoftwareInternship("Google", "Software Engineer", "Java, Python");
         internships.addInternship(internship);
 
-        CommandResult result = addCommand.execute(internships);
+        CommandResult result = addCommand.execute(internships, user);
 
         assertFalse(result.isSuccessful());
         assertEquals(List.of(InternSprintMessages.MESSAGE_DUPLICATE_INTERNSHIP), result.getFeedbackToUser());

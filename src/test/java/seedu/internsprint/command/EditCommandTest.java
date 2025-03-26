@@ -5,6 +5,8 @@ import seedu.internsprint.internship.SoftwareInternship;
 import seedu.internsprint.internship.GeneralInternship;
 import seedu.internsprint.internship.HardwareInternship;
 import seedu.internsprint.internship.InternshipList;
+import seedu.internsprint.userprofile.UserProfile;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -19,9 +21,9 @@ class EditCommandTest {
         editCommand.parameters.put("/index", "1");
         editCommand.parameters.put("/c", "Java");
         editCommand.parameters.put("/eli", "Y3 students");
-        editCommand.parameters.put("/r","/Automation Testing Intern");
+        editCommand.parameters.put("/r", "/Automation Testing Intern");
         editCommand.parameters.put("/tech", "Java, C, C++");
-        editCommand.parameters.put("/dept","Quality Assurance");
+        editCommand.parameters.put("/dept", "Quality Assurance");
         assertTrue(editCommand.isValidParameters());
     }
 
@@ -30,9 +32,9 @@ class EditCommandTest {
         EditCommand editCommand = new EditCommand();
         editCommand.parameters.put("/c", "Java");
         editCommand.parameters.put("/eli", "Y3 students");
-        editCommand.parameters.put("/r","/Automation Testing Intern");
+        editCommand.parameters.put("/r", "/Automation Testing Intern");
         editCommand.parameters.put("/tech", "Java, C, C++");
-        editCommand.parameters.put("/dept","Quality Assurance");
+        editCommand.parameters.put("/dept", "Quality Assurance");
         assertFalse(editCommand.isValidParameters());
     }
 
@@ -41,9 +43,9 @@ class EditCommandTest {
         EditCommand editCommand = new EditCommand();
         editCommand.parameters.put("/c", "Java");
         editCommand.parameters.put("/eli", "Y3 students");
-        editCommand.parameters.put("/r","/Automation Testing Intern");
+        editCommand.parameters.put("/r", "/Automation Testing Intern");
         editCommand.parameters.put("/tech", "Java, C, C++");
-        editCommand.parameters.put("/deadline","27th January");
+        editCommand.parameters.put("/deadline", "27th January");
         assertFalse(editCommand.isValidParameters());
     }
 
@@ -52,11 +54,11 @@ class EditCommandTest {
         EditCommand editCommand = new EditCommand();
         editCommand.parameters.put("/index", "1");
         editCommand.parameters.put("/c", "Java");
-        editCommand.parameters.put("/r","Automation Testing Intern");
-        SoftwareInternship internship = new SoftwareInternship("Facebook","Software Engineering", "SWE");
+        editCommand.parameters.put("/r", "Automation Testing Intern");
+        SoftwareInternship internship = new SoftwareInternship("Facebook", "Software Engineering", "SWE");
         InternshipList internshipList = new InternshipList();
         internshipList.addInternship(internship);
-        editCommand.execute(internshipList);
+        editCommand.execute(internshipList, new UserProfile());
         assertEquals("Java", internship.getCompanyName());
         assertEquals("Automation Testing Intern", internship.getRole());
         assertEquals("software", internship.getType());
@@ -67,11 +69,11 @@ class EditCommandTest {
         EditCommand editCommand = new EditCommand();
         editCommand.parameters.put("/index", "1");
         editCommand.parameters.put("/c", "UBS");
-        editCommand.parameters.put("/r","IT Intern");
-        GeneralInternship internship = new GeneralInternship("Facebook","Tech Support", "IT");
+        editCommand.parameters.put("/r", "IT Intern");
+        GeneralInternship internship = new GeneralInternship("Facebook", "Tech Support", "IT");
         InternshipList internshipList = new InternshipList();
         internshipList.addInternship(internship);
-        editCommand.execute(internshipList);
+        editCommand.execute(internshipList, new UserProfile());
         assertEquals("UBS", internship.getCompanyName());
         assertEquals("IT Intern", internship.getRole());
         assertEquals("general", internship.getType());
@@ -82,11 +84,11 @@ class EditCommandTest {
         EditCommand editCommand = new EditCommand();
         editCommand.parameters.put("/index", "1");
         editCommand.parameters.put("/c", "Xilinx");
-        editCommand.parameters.put("/r","Engineering Intern");
-        HardwareInternship internship = new HardwareInternship("Facebook","Automation Expert", "C");
+        editCommand.parameters.put("/r", "Engineering Intern");
+        HardwareInternship internship = new HardwareInternship("Facebook", "Automation Expert", "C");
         InternshipList internshipList = new InternshipList();
         internshipList.addInternship(internship);
-        editCommand.execute(internshipList);
+        editCommand.execute(internshipList, new UserProfile());
         assertEquals("Xilinx", internship.getCompanyName());
         assertEquals("Engineering Intern", internship.getRole());
         assertEquals("hardware", internship.getType());
@@ -96,13 +98,13 @@ class EditCommandTest {
     void execute_multipleInternships_editsCorrectly() {
         EditCommand editCommand = new EditCommand();
         editCommand.parameters.put("/index", "2");
-        editCommand.parameters.put("/eli","Good knowledge of microcontrollers");
-        SoftwareInternship internship = new SoftwareInternship("Facebook","Automation Intern", "C");
-        HardwareInternship internship2 = new HardwareInternship("AMD","Engineer", "Arduino");
+        editCommand.parameters.put("/eli", "Good knowledge of microcontrollers");
+        SoftwareInternship internship = new SoftwareInternship("Facebook", "Automation Intern", "C");
+        HardwareInternship internship2 = new HardwareInternship("AMD", "Engineer", "Arduino");
         InternshipList internshipList = new InternshipList();
         internshipList.addInternship(internship);
         internshipList.addInternship(internship2);
-        editCommand.execute(internshipList);
+        editCommand.execute(internshipList, new UserProfile());
         assertEquals("Good knowledge of microcontrollers", internship2.getEligibility());
         assertEquals("AMD", internship2.getCompanyName());
     }
@@ -112,11 +114,11 @@ class EditCommandTest {
         EditCommand editCommand = new EditCommand();
         editCommand.parameters.put("/index", "1");
         editCommand.parameters.put("/c", "Java");
-        editCommand.parameters.put("/dept","SWE Intern");
-        SoftwareInternship internship = new SoftwareInternship("Facebook","Automation Intern", "C");
+        editCommand.parameters.put("/dept", "SWE Intern");
+        SoftwareInternship internship = new SoftwareInternship("Facebook", "Automation Intern", "C");
         InternshipList internshipList = new InternshipList();
         internshipList.addInternship(internship);
-        editCommand.execute(internshipList);
+        editCommand.execute(internshipList, new UserProfile());
         assertEquals("Java", internship.getCompanyName());
         assertEquals("Automation Intern", internship.getRole());
         assertEquals("C", internship.getTechStack());
@@ -128,13 +130,13 @@ class EditCommandTest {
         EditCommand editCommand = new EditCommand();
         editCommand.parameters.put("/index", "1");
         editCommand.parameters.put("/c", "Google");
-        editCommand.parameters.put("/r","SDE Intern");
-        SoftwareInternship internship = new SoftwareInternship("Facebook","Automation Intern", "C");
-        SoftwareInternship internship2 = new SoftwareInternship("Google","SDE Intern", "C");
+        editCommand.parameters.put("/r", "SDE Intern");
+        SoftwareInternship internship = new SoftwareInternship("Facebook", "Automation Intern", "C");
+        SoftwareInternship internship2 = new SoftwareInternship("Google", "SDE Intern", "C");
         InternshipList internshipList = new InternshipList();
         internshipList.addInternship(internship);
         internshipList.addInternship(internship2);
-        CommandResult result = editCommand.execute(internshipList);
+        CommandResult result = editCommand.execute(internshipList, new UserProfile());
         assertFalse(result.isSuccessful());
         assertEquals(MESSAGE_DUPLICATE_INTERNSHIP, result.getFeedbackToUser().get(0));
         assertEquals("Facebook", internshipList.getInternshipMap().get("software").get(0).getCompanyName());
@@ -154,13 +156,13 @@ class EditCommandTest {
     void execute_provideCorrectOptionalFlags_editsCorrectly() {
         EditCommand editCommand = new EditCommand();
         editCommand.parameters.put("/index", "1");
-        editCommand.parameters.put("/eli","Year 3 students");
-        editCommand.parameters.put("/ex","Should be fast learner");
-        SoftwareInternship internship = new SoftwareInternship("Facebook","Software Engineering",
-                                                        "SWE");
+        editCommand.parameters.put("/eli", "Year 3 students");
+        editCommand.parameters.put("/ex", "Should be fast learner");
+        SoftwareInternship internship = new SoftwareInternship("Facebook", "Software Engineering",
+                "SWE");
         InternshipList internshipList = new InternshipList();
         internshipList.addInternship(internship);
-        editCommand.execute(internshipList);
+        editCommand.execute(internshipList, new UserProfile());
         assertEquals("Year 3 students", internship.getEligibility());
         assertEquals("Should be fast learner", internship.getExpectations());
     }

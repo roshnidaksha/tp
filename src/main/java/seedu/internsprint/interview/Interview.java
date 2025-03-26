@@ -25,8 +25,7 @@ public class Interview {
     public Interview(String interviewDate, String interviewStartTime, String interviewEndTime, String interviewerEmail,
                      String roundName) {
         if (interviewDate == null || interviewStartTime == null || interviewEndTime == null || interviewerEmail == null
-                || roundName == null)
-        {
+                || roundName == null) {
             throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS, "/d, /str, /end or /em"));
         }
 
@@ -44,11 +43,10 @@ public class Interview {
         setRoundCounter(this.roundCounter);
     }
 
-    public Interview(String interviewDate, String interviewStartTime, String interviewEndTime,  String interviewerEmail,
-                     String roundName, String interviewerName,int interviewerContactNumber, String notes) {
+    public Interview(String interviewDate, String interviewStartTime, String interviewEndTime, String interviewerEmail,
+                     String roundName, String interviewerName, int interviewerContactNumber, String notes) {
         if (interviewDate == null || interviewStartTime == null || interviewEndTime == null || interviewerEmail == null
-                || roundName == null)
-        {
+                || roundName == null) {
             throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS, "/d, /str, /end or /em"));
         }
 
