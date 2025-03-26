@@ -2,15 +2,20 @@ package seedu.internsprint.command;
 
 import seedu.internsprint.internship.InternshipList;
 import seedu.internsprint.userprofile.UserProfile;
+import seedu.internsprint.util.InternSprintLogger;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static seedu.internsprint.util.InternSprintMessages.USER_VIEW_SUCCESS_MESSAGE;
 
 public class ViewUserCommand extends Command {
+    private static final Logger logger = InternSprintLogger.getLogger();
     @Override
     protected boolean isValidParameters() {
+        assert parameters.isEmpty():"There should be no flags in this command.";
         return true;
     }
 
@@ -19,8 +24,14 @@ public class ViewUserCommand extends Command {
         return "user";
     }
 
+    /**
+     * Showcases CV-formatted version of user profile
+     * @param user refers to user saved in session
+     * @return formatted profile string or error message in CommandResult type
+     */
     @Override
     public CommandResult execute(InternshipList internships, UserProfile user) {
+        logger.log(Level.INFO, "Entering execute in view user profile command...");
         CommandResult result;
         List<String> feedback = new ArrayList<>();
         feedback.add(USER_VIEW_SUCCESS_MESSAGE);

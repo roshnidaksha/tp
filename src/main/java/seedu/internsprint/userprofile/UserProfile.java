@@ -1,10 +1,16 @@
 package seedu.internsprint.userprofile;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import seedu.internsprint.handler.CommandParser;
 import seedu.internsprint.project.ProjectList;
+import seedu.internsprint.util.InternSprintLogger;
 
+/**
+ * Stores basic user profile to customize application for user.
+ */
 public class UserProfile {
     public static String name;
     public static String yearlyGoals;
@@ -14,6 +20,7 @@ public class UserProfile {
     public static ArrayList<String> preferredRoles;
     public static String targetStipendRange;
     public static String internshipDateRange;
+    private static final Logger logger = InternSprintLogger.getLogger();
     public final ProjectList projects;
 
     public UserProfile() {
@@ -84,8 +91,14 @@ public class UserProfile {
         UserProfile.internshipDateRange = internshipDateRange;
     }
 
+    /**
+     * Return basic formatted string of User Profile to user for updates
+     * @return String of user profile
+     */
     @Override
     public String toString() {
+        logger.log(Level.INFO, "Returning basic string for user profile");
+
         StringBuilder sb = new StringBuilder();
         if (name != null){
             sb.append("Name: ").append(name);
@@ -114,17 +127,20 @@ public class UserProfile {
         return sb.toString().replaceFirst("^,\\s*", "");
     }
 
+    /**
+     * Returns more CV-style formatted string to user in terminal
+     * @return CV-formatted string to user
+     */
     public String toExtendedString() {
+        logger.log(Level.INFO, "Returning advanced formatted string for user profile");
         StringBuilder sb = new StringBuilder();
 
-        // Add Name Section
         if (name != null) {
             sb.append("--------------------------------------------------\n");
             sb.append("Name: ").append(name).append("\n");
             sb.append("--------------------------------------------------\n");
         }
 
-        // Add Preferred Industries Section
         if (preferredIndustries != null && !preferredIndustries.isEmpty()) {
             sb.append("\nPreferred Industries:\n");
             sb.append("--------------------------------------------------\n");
@@ -134,7 +150,6 @@ public class UserProfile {
             sb.append("--------------------------------------------------\n");
         }
 
-        // Add Preferred Companies Section
         if (preferredCompanies != null && !preferredCompanies.isEmpty()) {
             sb.append("\nPreferred Companies:\n");
             sb.append("--------------------------------------------------\n");
@@ -144,7 +159,6 @@ public class UserProfile {
             sb.append("--------------------------------------------------\n");
         }
 
-        // Add Preferred Roles Section
         if (preferredRoles != null && !preferredRoles.isEmpty()) {
             sb.append("\nPreferred Roles:\n");
             sb.append("--------------------------------------------------\n");
@@ -154,7 +168,6 @@ public class UserProfile {
             sb.append("--------------------------------------------------\n");
         }
 
-        // Add Target Stipend Range Section
         if (targetStipendRange != null) {
             sb.append("\nTarget Stipend Range:\n");
             sb.append("--------------------------------------------------\n");
@@ -162,7 +175,6 @@ public class UserProfile {
             sb.append("--------------------------------------------------\n");
         }
 
-        // Add Internship Date Range Section
         if (internshipDateRange != null) {
             sb.append("\nInternship Date Range:\n");
             sb.append("--------------------------------------------------\n");
@@ -170,7 +182,6 @@ public class UserProfile {
             sb.append("--------------------------------------------------\n");
         }
 
-        // Add Monthly Goals Section
         if (monthlyGoals != null && !monthlyGoals.isEmpty()) {
             sb.append("\nMonthly Goals:\n");
             sb.append("--------------------------------------------------\n");
@@ -180,7 +191,6 @@ public class UserProfile {
             sb.append("--------------------------------------------------\n");
         }
 
-        // Add Yearly Goals Section
         if (yearlyGoals != null && !yearlyGoals.isEmpty()) {
             sb.append("\nYearly Goals:\n");
             sb.append("--------------------------------------------------\n");
