@@ -1,9 +1,12 @@
 package seedu.internsprint.userprofile;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.json.JSONObject;
 import seedu.internsprint.handler.CommandParser;
 import seedu.internsprint.project.ProjectList;
 import seedu.internsprint.util.InternSprintLogger;
@@ -201,6 +204,19 @@ public class UserProfile {
 
         return sb.toString();
     }
-
+    
+    public JSONObject toJson() {
+        Map<String, Object> orderedMap = new LinkedHashMap<>();
+        orderedMap.put("type", "user");
+        orderedMap.put("name", name);
+        orderedMap.put("role", preferredRoles);
+        orderedMap.put("companies", preferredCompanies);
+        orderedMap.put("industries", preferredIndustries);
+        orderedMap.put("monthly goals", monthlyGoals);
+        orderedMap.put("yearly goals", yearlyGoals);
+        orderedMap.put("pay", targetStipendRange);
+        orderedMap.put("date", internshipDateRange);
+        return new JSONObject(orderedMap);
+    }
 
 }
