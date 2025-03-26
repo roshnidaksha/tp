@@ -23,6 +23,7 @@ class AddSoftwareCommandTest {
         assertEquals("software", internship.getType());
     }
 
+    @Test
     void createInternship_validOptionalParameters_correctlyConstructed() {
         AddSoftwareInternshipCommand addSoftwareCommand = new AddSoftwareInternshipCommand();
         addSoftwareCommand.parameters.put("/c", "Google");
