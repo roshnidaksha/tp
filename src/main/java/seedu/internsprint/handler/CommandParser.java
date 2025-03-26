@@ -8,6 +8,7 @@ import seedu.internsprint.command.Command;
 import seedu.internsprint.command.DescriptionCommand;
 import seedu.internsprint.command.EditCommand;
 import seedu.internsprint.command.DeleteCommand;
+import seedu.internsprint.command.FindCommand;
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
 import seedu.internsprint.command.HelpCommand;
@@ -67,6 +68,9 @@ public class CommandParser {
             break;
         case "list":
             command = new ListCommand();
+            break;
+        case "find":
+            command = new FindCommand();
             break;
         case "desc":
             command = new DescriptionCommand();
