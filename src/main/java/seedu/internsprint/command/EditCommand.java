@@ -25,11 +25,11 @@ import java.util.logging.Level;
 public class EditCommand extends Command {
     public static final String COMMAND_WORD = "edit";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the parameters of an internship.\n"
-        + "    Parameters: " + "/index INDEX_OF_INTERNSHIP /c COMPANY_NAME /r ROLE /ex EXPECTATIONS /eli ELIGIBILITY\n"
-        + "    /dept DEPARTMENT /hardtech HARDWARE TECHNOLOGIES /desc DESCRIPTION /tech TECHNOLOGIES\n"
-        + "    Example: " + COMMAND_WORD + " /index 1 /c Google /r Hardware Engineer /tech C, C++";
+            + "    Parameters: " + "/c COMPANY_NAME /r ROLE /ex EXPECTATIONS /eli ELIGIBILITY /status STATUS\n"
+            + "    /dept DEPARTMENT /hardtech HARDWARE TECHNOLOGIES /desc DESCRIPTION /tech TECHNOLOGIES\n"
+            + "    Example: " + COMMAND_WORD + " /index 1 /c Google /r Hardware Engineer /tech C, C++";
     public static final String[] POSSIBLE_PARAMETERS = {"/c", "/r", "/dept", "/eli",
-        "/ex", "/tech", "/desc", "/hardtech"};
+        "/ex", "/tech", "/desc", "/hardtech", "/status"};
     private static final Logger logger = InternSprintLogger.getLogger();
 
     @Override
@@ -132,6 +132,9 @@ public class EditCommand extends Command {
         }
         if (parameters.containsKey("/r")) {
             foundInternship.setRole(parameters.get("/r"));
+        }
+        if (parameters.containsKey("/status")) {
+            foundInternship.setStatus(parameters.get("/status"));
         }
         if (parameters.containsKey("/dept") && foundInternship.getType().equals("general")) {
             ((GeneralInternship) foundInternship).setDepartment(parameters.get("/dept"));

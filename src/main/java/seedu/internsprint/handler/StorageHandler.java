@@ -119,6 +119,7 @@ public class StorageHandler {
             }
         } catch (IOException e) {
             result = errorReadingFile();
+            logger.log(Level.SEVERE, "Error reading file");
             return result;
         }
 
