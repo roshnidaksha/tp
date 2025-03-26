@@ -1,5 +1,7 @@
 package seedu.internsprint.internship;
 
+import seedu.internsprint.interview.Interview;
+
 import java.util.ArrayList;
 
 import org.json.JSONObject;
@@ -20,6 +22,8 @@ public abstract class Internship {
     protected String eligibility = null;
     protected String status = null;
     protected String expectations = null;
+
+    protected Interview interview;
 
     public Internship(String companyName, String role) {
         if (companyName == null || role == null || companyName.isBlank() || role.isBlank()) {
@@ -48,6 +52,20 @@ public abstract class Internship {
         }
         if (expectations != null && !expectations.isBlank()) {
             this.expectations = expectations;
+        }
+    }
+
+    /**
+     * Adds an interview to the internship.
+     * If the internship already has an interview, the interview is added as the next round.
+     *
+     * @param interview Interview to add.
+     */
+    public void addInterview(Interview interview) {
+        if (this.interview == null) {
+            this.interview = interview;
+        } else {
+            this.interview.addInterviewRound(interview);
         }
     }
 
@@ -87,6 +105,9 @@ public abstract class Internship {
         }
         if (expectations != null && !expectations.isBlank()) {
             internshipString.add("Expectations: " + expectations);
+        }
+        if (interview != null) {
+            internshipString.addAll(interview.toDescription());
         }
         return internshipString;
     }

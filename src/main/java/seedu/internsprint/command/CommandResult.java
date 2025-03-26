@@ -55,6 +55,19 @@ public class CommandResult {
         this.isExit = false;
     }
 
+    /**
+     * Constructs a {@code CommandResult} with one feedback and relevant internships.
+     *
+     * @param feedbackToUser Feedback to be shown to the user.
+     * @param relevantInternships Internships relevant to the command.
+     */
+    public CommandResult(String feedbackToUser, List<Internship> relevantInternships) {
+        logger.log(Level.INFO, "One line of feedback provided to user alongside some relevant internship...");
+        this.feedbackToUser = List.of(feedbackToUser);
+        this.relevantInternships = relevantInternships;
+        this.isExit = false;
+    }
+
     public List<String> getFeedbackToUser() {
         return feedbackToUser;
     }

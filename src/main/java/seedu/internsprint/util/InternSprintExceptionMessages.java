@@ -23,6 +23,8 @@ public class InternSprintExceptionMessages {
             " Check that /index is provided with a valid index reference.";
     public static final String EDIT_INVALID_PARAMS = "You have not entered a valid parameter to edit.\n"
             + "    The edit command works as mentioned below:";
+    public static final String ADD_INTERVIEW_INVALID_PARAMS = "You have not entered a valid parameter.\n"
+            + "    The addition of an interview command works as mentioned below:";
 
     public static final String MISSING_INDEX = "Missing index: Please enter an index to reference the internship.";
     public static final String INVALID_INDEX_RANGE = "Invalid index range: Please enter a valid index within the list.";
