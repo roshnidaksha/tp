@@ -219,7 +219,7 @@ details for a specific internship application.
 Basic Format: `edit /index INDEX_NUMBER /c COMPANY_NAME /r ROLE`
 
 Extended Format (with optional parameters): `edit /index INDEX_NUMBER /c COMPANY_NAME /r ROLE /ex EXPECTATIONS /eli ELIGIBILITY /dept DEPARTMENT 
-        /hardtech HARDWARE_TECHNOLOGIES /desc DESCRIPTION /tech TECHNOLOGIES`
+        /hardtech HARDWARE_TECHNOLOGIES /desc DESCRIPTION /tech TECHNOLOGIES /status STATUS`
 
 > This format shows you all the possible flags or parameters you can set for an internship, however they are optional 
 > (as-needed basis) -

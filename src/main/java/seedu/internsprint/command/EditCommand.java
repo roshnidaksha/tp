@@ -1,11 +1,12 @@
 package seedu.internsprint.command;
 
-import seedu.internsprint.handler.Parser;
+import seedu.internsprint.handler.CommandParser;
 import seedu.internsprint.internship.GeneralInternship;
 import seedu.internsprint.internship.HardwareInternship;
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
 import seedu.internsprint.internship.SoftwareInternship;
+import seedu.internsprint.util.InternSprintLogger;
 import seedu.internsprint.util.InternSprintMessages;
 
 import java.util.ArrayList;
@@ -24,12 +25,12 @@ import java.util.logging.Level;
 public class EditCommand extends Command {
     public static final String COMMAND_WORD = "edit";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the parameters of an internship.\n"
-            + "    Parameters: " + "/c COMPANY_NAME /r ROLE /ex EXPECTATIONS /eli ELIGIBILITY\n"
+            + "    Parameters: " + "/c COMPANY_NAME /r ROLE /ex EXPECTATIONS /eli ELIGIBILITY /status STATUS\n"
             + "    /dept DEPARTMENT /hardtech HARDWARE TECHNOLOGIES /desc DESCRIPTION /tech TECHNOLOGIES\n"
             + "    Example: " + COMMAND_WORD + " /index 1 /c Google /r Hardware Engineer /tech C, C++";
     public static final String[] POSSIBLE_PARAMETERS = {"/c", "/r", "/dept", "/eli",
-        "/ex", "/tech", "/desc", "/hardtech"};
-    private static final Logger logger = Logger.getLogger(EditCommand.class.getName());
+        "/ex", "/tech", "/desc", "/hardtech", "/status"};
+    private static final Logger logger = InternSprintLogger.getLogger();
 
     @Override
     protected boolean isValidParameters() {
@@ -38,7 +39,7 @@ public class EditCommand extends Command {
             logger.log(Level.WARNING, "There is no specified index.");
             return false;
         }
-        assert  parameters.containsKey("/index"): "/index flag should be present in the edit command";
+        assert parameters.containsKey("/index") : "/index flag should be present in the edit command";
         for (String key : parameters.keySet()) {
             if (!key.equals("/index") && !Arrays.asList(POSSIBLE_PARAMETERS).contains(key)) {
                 logger.log(Level.WARNING, "There is a flag that is out of specified optional parameters.");
@@ -47,8 +48,8 @@ public class EditCommand extends Command {
             }
         }
         assert parameters.keySet().stream().allMatch(key -> key.equals("/index")
-                                                    || Arrays.asList(POSSIBLE_PARAMETERS).contains(key))
-                : "All flags should be members of set of predefined valid flags";
+            || Arrays.asList(POSSIBLE_PARAMETERS).contains(key))
+            : "All flags should be members of set of predefined valid flags";
         return true;
     }
 
@@ -70,7 +71,7 @@ public class EditCommand extends Command {
 
         String[] validIndex;
         try {
-            validIndex = Parser.validateIndex(parameters.get("/index"), internships);
+            validIndex = CommandParser.validateIndex(parameters.get("/index"), internships);
         } catch (IllegalArgumentException e) {
             logger.log(Level.WARNING, "Index for edit command out of range...");
             feedback.add(e.getMessage());
@@ -81,7 +82,7 @@ public class EditCommand extends Command {
 
         int index = Integer.parseInt(validIndex[1]);
         String type = validIndex[0];
-        assert  (index>=0 && index< internships.getInternshipCount()): "index value should be within appropriate range";
+        assert (index >= 0 && index < internships.getInternshipCount()) : "index value is within appropriate range";
 
         Internship foundInternship = internshipMap.get(type).get(index);
         Internship foundInternshipCopy = foundInternship.copy();
@@ -115,7 +116,7 @@ public class EditCommand extends Command {
             return result;
         }
         logger.log(Level.INFO, "Finished processing for exit command");
-        assert foundInternship!=null: "Internship should not be a null value.";
+        assert foundInternship != null : "Internship should not be a null value.";
         feedback.add(EDIT_MESSAGE_SUCCESS);
         feedback.add(String.valueOf(foundInternship.toDescription()));
         result = new CommandResult(feedback);
@@ -131,6 +132,9 @@ public class EditCommand extends Command {
         }
         if (parameters.containsKey("/r")) {
             foundInternship.setRole(parameters.get("/r"));
+        }
+        if (parameters.containsKey("/status")) {
+            foundInternship.setStatus(parameters.get("/status"));
         }
         if (parameters.containsKey("/dept") && foundInternship.getType().equals("general")) {
             ((GeneralInternship) foundInternship).setDepartment(parameters.get("/dept"));

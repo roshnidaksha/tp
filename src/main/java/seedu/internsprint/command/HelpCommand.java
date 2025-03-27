@@ -2,6 +2,8 @@ package seedu.internsprint.command;
 
 import seedu.internsprint.internship.InternshipList;
 import seedu.internsprint.util.InternSprintExceptionMessages;
+import seedu.internsprint.util.InternSprintLogger;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,14 +17,16 @@ public class HelpCommand extends Command {
             + "    Example: " + COMMAND_WORD + " add general";
 
     private static final LinkedHashMap<String, String> COMMAND_HELP_MESSAGES = new LinkedHashMap<>();
-    private static Logger logger = Logger.getLogger("Help");
+    private static Logger logger = InternSprintLogger.getLogger();
 
     static {
-        COMMAND_HELP_MESSAGES.put("add general", AddGeneralCommand.MESSAGE_USAGE);
-        COMMAND_HELP_MESSAGES.put("add software", AddSoftwareCommand.MESSAGE_USAGE);
-        COMMAND_HELP_MESSAGES.put("add hardware", AddHardwareCommand.MESSAGE_USAGE);
+        COMMAND_HELP_MESSAGES.put("add general", AddGeneralInternshipCommand.MESSAGE_USAGE);
+        COMMAND_HELP_MESSAGES.put("add software", AddSoftwareInternshipCommand.MESSAGE_USAGE);
+        COMMAND_HELP_MESSAGES.put("add hardware", AddHardwareInternshipCommand.MESSAGE_USAGE);
+        COMMAND_HELP_MESSAGES.put("interviewfor", AddInterviewCommand.MESSAGE_USAGE);
         COMMAND_HELP_MESSAGES.put("list", ListCommand.MESSAGE_USAGE);
         COMMAND_HELP_MESSAGES.put("description", DescriptionCommand.MESSAGE_USAGE);
+        COMMAND_HELP_MESSAGES.put("find", FindCommand.MESSAGE_USAGE);
         COMMAND_HELP_MESSAGES.put("delete", DeleteCommand.MESSAGE_USAGE);
         COMMAND_HELP_MESSAGES.put("edit", EditCommand.MESSAGE_USAGE);
         COMMAND_HELP_MESSAGES.put("help", HelpCommand.MESSAGE_USAGE);

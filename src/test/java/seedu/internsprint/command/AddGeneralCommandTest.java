@@ -12,7 +12,7 @@ class AddGeneralCommandTest {
 
     @Test
     void createInternship_validParameters_correctlyConstructed() {
-        AddGeneralCommand addGeneralCommand = new AddGeneralCommand();
+        AddGeneralInternshipCommand addGeneralCommand = new AddGeneralInternshipCommand();
         addGeneralCommand.parameters.put("/c", "Google");
         addGeneralCommand.parameters.put("/r", "Software Engineer");
         addGeneralCommand.parameters.put("/dept", "Engineering");
@@ -24,10 +24,31 @@ class AddGeneralCommandTest {
     }
 
     @Test
+    void createInternship_validOptionalParameters_correctlyConstructed() {
+        AddGeneralInternshipCommand addGeneralCommand = new AddGeneralInternshipCommand();
+        addGeneralCommand.parameters.put("/c", "Google");
+        addGeneralCommand.parameters.put("/r", "Software Engineer");
+        addGeneralCommand.parameters.put("/dept", "Engineering");
+        addGeneralCommand.parameters.put("/eli", "NUS");
+        addGeneralCommand.parameters.put("/desc", "Software Engineer Intern");
+        addGeneralCommand.parameters.put("/status", "Open");
+        addGeneralCommand.parameters.put("/ex", "Software Engineer Intern");
+        Internship internship = addGeneralCommand.createInternship();
+        assertEquals("Google", internship.getCompanyName());
+        assertEquals("Software Engineer", internship.getRole());
+        assertEquals("Engineering", ((GeneralInternship) internship).getDepartment());
+        assertEquals("NUS", internship.getEligibility());
+        assertEquals("Software Engineer Intern", internship.getDescription());
+        assertEquals("Open", internship.getStatus());
+        assertEquals("Software Engineer Intern", internship.getExpectations());
+        assertEquals("general", internship.getType());
+    }
+
+    @Test
     void createInternship_invalidCompanyName_throwsException() {
         final String[] invalidCompanyNames = {null, "", " ", "  "};
         for (String companyName : invalidCompanyNames) {
-            AddGeneralCommand addGeneralCommand = new AddGeneralCommand();
+            AddGeneralInternshipCommand addGeneralCommand = new AddGeneralInternshipCommand();
             addGeneralCommand.parameters.put("/c", companyName);
             addGeneralCommand.parameters.put("/r", "Software Engineer");
             addGeneralCommand.parameters.put("/dept", "Engineering");
@@ -39,7 +60,7 @@ class AddGeneralCommandTest {
     void createInternship_invalidRole_throwsException() {
         final String[] invalidRoles = {null, "", " ", "  "};
         for (String role : invalidRoles) {
-            AddGeneralCommand addGeneralCommand = new AddGeneralCommand();
+            AddGeneralInternshipCommand addGeneralCommand = new AddGeneralInternshipCommand();
             addGeneralCommand.parameters.put("/c", "Google");
             addGeneralCommand.parameters.put("/r", role);
             addGeneralCommand.parameters.put("/dept", "Engineering");
@@ -51,7 +72,7 @@ class AddGeneralCommandTest {
     void createInternship_invalidDepartment_throwsException() {
         final String[] invalidDepartments = {null, "", " ", "  "};
         for (String department : invalidDepartments) {
-            AddGeneralCommand addGeneralCommand = new AddGeneralCommand();
+            AddGeneralInternshipCommand addGeneralCommand = new AddGeneralInternshipCommand();
             addGeneralCommand.parameters.put("/c", "Google");
             addGeneralCommand.parameters.put("/r", "Software Engineer");
             addGeneralCommand.parameters.put("/dept", department);

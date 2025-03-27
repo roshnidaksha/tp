@@ -1,17 +1,20 @@
 package seedu.internsprint.handler;
 
-import seedu.internsprint.command.AddGeneralCommand;
-import seedu.internsprint.command.AddHardwareCommand;
-import seedu.internsprint.command.AddSoftwareCommand;
+import seedu.internsprint.command.AddGeneralInternshipCommand;
+import seedu.internsprint.command.AddHardwareInternshipCommand;
+import seedu.internsprint.command.AddInterviewCommand;
+import seedu.internsprint.command.AddSoftwareInternshipCommand;
 import seedu.internsprint.command.ByeCommand;
 import seedu.internsprint.command.Command;
 import seedu.internsprint.command.DescriptionCommand;
 import seedu.internsprint.command.EditCommand;
 import seedu.internsprint.command.DeleteCommand;
+import seedu.internsprint.command.FindCommand;
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
 import seedu.internsprint.command.HelpCommand;
 import seedu.internsprint.command.ListCommand;
+import seedu.internsprint.util.InternSprintLogger;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,8 +32,8 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_VALU
 /**
  * Parses user input.
  */
-public class Parser {
-    private static Logger logger = Logger.getLogger(Parser.class.getName());
+public class CommandParser {
+    private static Logger logger = InternSprintLogger.getLogger();
 
     /**
      * Parses the user input and returns the corresponding Command object.
@@ -51,13 +54,16 @@ public class Parser {
         Command command;
         switch (commandType) {
         case "add software":
-            command = new AddSoftwareCommand();
+            command = new AddSoftwareInternshipCommand();
             break;
         case "add hardware":
-            command = new AddHardwareCommand();
+            command = new AddHardwareInternshipCommand();
             break;
         case "add general":
-            command = new AddGeneralCommand();
+            command = new AddGeneralInternshipCommand();
+            break;
+        case "interviewfor":
+            command = new AddInterviewCommand();
             break;
         case "bye":
             command = new ByeCommand();
@@ -67,6 +73,9 @@ public class Parser {
             break;
         case "list":
             command = new ListCommand();
+            break;
+        case "find":
+            command = new FindCommand();
             break;
         case "desc":
             command = new DescriptionCommand();

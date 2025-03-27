@@ -13,12 +13,29 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class AddCommandTest {
+class AddInternshipCommandTest {
+
+    @Test
+    void execute_internshipListDoesNotContainInternship_internshipAdded() {
+        AddInternshipCommand addCommand = new AddSoftwareInternshipCommand();
+        addCommand.setParameters(new HashMap<>(Map.of(
+            "/c", "Google",
+            "/r", "Software Engineer",
+            "/tech", "Java, Python")));
+
+        InternshipList internships = new InternshipList();
+        CommandResult result = addCommand.execute(internships);
+
+        assertTrue(result.isSuccessful());
+        assertEquals(InternSprintMessages.ADD_MESSAGE_SUCCESS, result.getFeedbackToUser().get(0));
+        assertEquals(1, internships.getInternshipCount());
+    }
 
     @Test
     void execute_internshipListAlreadyContainsInternship_throwsException() {
-        AddCommand addCommand = new AddSoftwareCommand();
+        AddInternshipCommand addCommand = new AddSoftwareInternshipCommand();
         addCommand.setParameters(new HashMap<>(Map.of(
             "/c", "Google",
             "/r", "Software Engineer",
