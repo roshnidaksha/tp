@@ -3,8 +3,10 @@ package seedu.internsprint.command;
 import seedu.internsprint.handler.CommandParser;
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
+import seedu.internsprint.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintLogger;
 import seedu.internsprint.util.InternSprintMessages;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,20 +18,24 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_INDE
 public class DeleteCommand extends Command {
     public static final String COMMAND_WORD = "delete";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes an internship " +
-        "based on its category and index.\n"
-        + "    Parameters: " + "/index INDEX_OF_INTERNSHIP \n"
-        + "    Example: " + COMMAND_WORD + " /index 2";
+            "based on its category and index.\n"
+            + "    Parameters: " + "/index INDEX_OF_INTERNSHIP \n"
+            + "    Example: " + COMMAND_WORD + " /index 2";
     public static final String[] REQUIRED_PARAMETERS = {"/index"};
     private static Logger logger = InternSprintLogger.getLogger();
 
     @Override
     protected boolean isValidParameters() {
         return parameters.size() == REQUIRED_PARAMETERS.length
-            && parameters.containsKey(REQUIRED_PARAMETERS[0]);
+                && parameters.containsKey(REQUIRED_PARAMETERS[0]);
+    }
+    @Override
+    public String getCommandType(){
+        return "internship";
     }
 
     @Override
-    public CommandResult execute(InternshipList internships) {
+    public CommandResult execute(InternshipList internships, UserProfile user) {
         assert internships != null : "InternshipList should not be null";
         CommandResult result;
         List<String> feedback = new ArrayList<>();

@@ -37,6 +37,8 @@
 Used to format timestamps in a human-readable format.
 * [Natty](https://mvnrepository.com/artifact/com.joestelmach/natty): 
 Used to parse natural language date and time strings.
+* [ASCII Table](https://mvnrepository.com/artifact/de.vandermeer/asciitable): Use to render tabular view of information 
+in UI for user profile and projects.
 
 ## Setting Up and Getting Started
 > **Caution:**
@@ -185,6 +187,55 @@ or hardware internship.
 Add sequence diagram for adding a software internship here
 
 ### 2. Edit an Internship
+
+**Overview**:
+
+This command allows the user to edit the parameters of their prexisting internship in their list. This update  
+is immediately added to the `internships.txt` file at `../data/internships.txt`.
+
+**How the feature is implemented:**
+
+* The `EditCommand` class is an abstract class extends from the abstract class `Command`.
+* The user can specify different parameters they could edit: both the basic parameters for `general`, `software` or 
+`hardware` internships and additional extended parameters through the use of flags. All parameters are optional 
+and can be used on an as-needed basis.
+* The mandatory flag `/index` is required to be entered by the user, and checked for in `isValidParameters()`.
+This method also checks if all flags entered by user are predefined in `POSSIBLE_PARAMETERS` set.
+* The `execute()` method calls `editParametersForFoundInternships()` to validates the `\tech` and `\hardtech` 
+parameters of the command, depending on the type of internship and sets the edited parameters accordingly
+  * `parameters` is stored as key-value pairs(hash-map) within Command super class.
+
+**Why is it implemented this way:**
+* By making use of the `edit /index` format here, instead of `edit general /index` we aimed to make the user experience
+for simpler and more intuitive to understand. It may become tedious for the user to continue to retype lengthy 
+internship type every time, especially since the `list` command enumerates all internships as one list cohesively.
+This approach to improve simplicity and cohesion of updating internship list is maintained in other commands such as 
+`delete`.
+* By providing the user a range of possible extended parameters to edit and add, their experience is more streamlined
+in that when creating an internship they are limited to adding the necessary information, but more advanced users 
+can extend these capabilities through keys like `/status` or `/desc` for status and description respectively.
+
+
+**Alternatives Considered:**
+* **Alternative 1 (Current choice):** Use a single `EditCommand` class and allow user to edit the extended set of 
+optional parameters using flags
+  * Pros: Simpler, user-friendly command-line interface
+  * Cons:Requires additional validation to ensure that the type of internship is consistent with the parameters provided
+    by the user.
+
+* **Alternative 2:** Only allow user to edit the same set of parameters used when creating the internship
+  * Pros: Reduces the number of parameter checking, getting and setting code to be written.
+  * Cons: This limits the functionality for our users and the information that can be entered for each internship.
+* **Alternative 3:** Use separate classes for each type of internship.
+  * Pros: Achieves **SoC (Separation of Concerns)** design principle.
+  * Cons: Requires additional classes and code to be written.
+
+**Sequence Diagram:**
+
+Below is the sequence diagram for adding a new software internship. A similar sequence is followed for adding a general
+or hardware internship.
+
+![Edit-Command Sequence Diagram](images/Edit_command.drawio.png)
 
 ### 3. Delete an Internship
 

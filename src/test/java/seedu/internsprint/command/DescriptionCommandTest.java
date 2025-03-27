@@ -5,6 +5,7 @@ import seedu.internsprint.internship.GeneralInternship;
 import seedu.internsprint.internship.HardwareInternship;
 import seedu.internsprint.internship.InternshipList;
 import seedu.internsprint.internship.SoftwareInternship;
+import seedu.internsprint.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintExceptionMessages;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class DescriptionCommandTest {
     void isValidParameters_provideInvalidIndex_returnsFalse() {
         DescriptionCommand descriptioncommand = new DescriptionCommand();
         descriptioncommand.parameters.put("/index", "-1");
-        CommandResult commandResult = descriptioncommand.execute(new InternshipList());
+        CommandResult commandResult = descriptioncommand.execute(new InternshipList(), new UserProfile());
         assertEquals(InternSprintExceptionMessages.INVALID_INDEX_RANGE,
                 commandResult.getFeedbackToUser().get(0));
         assertFalse(commandResult.isSuccessful());
@@ -48,7 +49,7 @@ public class DescriptionCommandTest {
         internshipList.addInternship(internship2);
         internshipList.addInternship(internship3);
 
-        CommandResult commandResult = descriptioncommand.execute(internshipList);
+        CommandResult commandResult = descriptioncommand.execute(internshipList,new UserProfile());
         assertTrue(commandResult.isSuccessful());
         List<String> feedback = commandResult.getFeedbackToUser();
         assertEquals(4, feedback.size());
