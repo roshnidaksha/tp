@@ -239,6 +239,49 @@ or hardware internship.
 
 ### 3. Delete an Internship
 
+**Overview**:
+
+This command allows the user to delete an internship from the list of internships. The deleted internship is 
+immediately removed from the `internships.txt` file at `../data/internships.txt`.
+
+**How the feature is implemented:**
+
+* The `DeleteCommand` class is an abstract class extends from the abstract class `Command`. 
+* The user is required to specify the `/index` flag, which is a mandatory parameter to indicate which internship 
+should be deleted.
+* The `isValidParameters()` method ensures that the required `/index` flag is provided by the user before proceeding 
+with execution. 
+* The `execute()` method retrieves the internship entry from the internship list based on the provided index. 
+It then removes the internship entry from the list and attempts to save the updated internship list.
+Feedback messages indicating success or failure, including errors such as missing or invalid indices are returned.
+  * `index parameter` is stored as a key-value pair in the `parameters` Hashmap.
+   
+**Why is it implemented this way:**
+
+* The /index flag is made mandatory to ensure users specify exactly which internship to delete, 
+preventing accidental removals.
+* By making use of the `delete /index` format here, instead of `delete general /index` we aimed to make the user 
+experience for simpler and more intuitive to understand. It may become tedious for the user to continue to retype 
+lengthy internship type every time, especially since the `list` command enumerates all internships as 
+one list cohesively. This approach to improve simplicity and cohesion of updating internship list 
+is maintained in other commands such as `edit`.
+
+**Alternatives Considered:**
+* **Alternative 1 (Current choice):** Use a single `DeleteCommand` class and allow user to delete an internship from
+the internship list.
+  * Pros: Simpler, user-friendly command-line interface
+  * Cons: Deletion is irreversible, meaning accidental deletions cannot be undone without re-entering 
+the internship details manually.
+
+* **Alternative 2:** Use separate classes for each type of internship.
+  * Pros: Achieves **SoC (Separation of Concerns)** design principle.
+  * Cons: Requires additional classes and code to be written.
+
+**Sequence Diagram:**
+
+Below is the sequence diagram for deleting an internship.
+Add sequence diagram for deleting an internship here.
+
 ### 4. List all Internships
 
 ## Documentation, logging, testing, configuration and deployment
