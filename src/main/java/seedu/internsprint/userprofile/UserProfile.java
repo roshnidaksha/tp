@@ -149,7 +149,6 @@ public class UserProfile {
                         String.join(", ", getPreferredIndustries()) : "N/A");
         at.addRule();
 
-        // Add Preferred Companies Section
         at.addRow("Preferred Companies",
                 getPreferredCompanies() != null && !getPreferredCompanies().isEmpty() ?
                         String.join(", ", getPreferredCompanies()) : "N/A");
