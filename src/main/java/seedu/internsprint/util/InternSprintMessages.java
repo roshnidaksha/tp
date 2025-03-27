@@ -42,4 +42,7 @@ public class InternSprintMessages {
     public static final String USER_UPDATE_SUCCESS_MESSAGE = "Successfully updated your user profile as shown below:";
     public static final String USER_VIEW_SUCCESS_MESSAGE = "Your personalized profile information as shown below:";
 
+    public static final String NO_INTERNSHIPS_FOUND = "No internships found";
+    public static final String NUMBER_OF_INTERNSHIPS_FOUND = "Number of internships found: %d";
+    public static final String ADD_INTERVIEW_MESSAGE_SUCCESS = "New interview added\n%s";
 }

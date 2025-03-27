@@ -23,7 +23,7 @@ public class HelpCommandTest {
         helpCommand.parameters.put("command", "add general");
         CommandResult result = helpCommand.execute(new InternshipList(), new UserProfile());
         assertTrue(result.isSuccessful());
-        assertEquals("-> " + AddGeneralCommand.MESSAGE_USAGE, result.getFeedbackToUser().get(0));
+        assertEquals("-> "+ AddGeneralInternshipCommand.MESSAGE_USAGE, result.getFeedbackToUser().get(0));
     }
 
     @Test

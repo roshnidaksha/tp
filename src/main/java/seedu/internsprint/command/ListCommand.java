@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static seedu.internsprint.util.InternSprintMessages.LIST_MESSAGE_SUCCESS;
+import static seedu.internsprint.util.InternSprintMessages.NO_INTERNSHIPS_FOUND;
 
 public class ListCommand extends Command {
     /** The command word that triggers the list command */
@@ -70,6 +71,13 @@ public class ListCommand extends Command {
         for (Internship everyInternship : internshipList.getInternshipMap().get("general")) {
             feedback.add("  " + count + ". " + everyInternship.toString());
             count++;
+        }
+
+        if (count == 1) {
+            result = new CommandResult(NO_INTERNSHIPS_FOUND);
+            result.setSuccessful(true);
+            logger.log(Level.INFO, "No internships found in the list");
+            return result;
         }
 
         logger.log(Level.INFO, "Internships listed successfully");

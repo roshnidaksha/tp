@@ -12,7 +12,7 @@ class AddSoftwareCommandTest {
 
     @Test
     void createInternship_validParameters_correctlyConstructed() {
-        AddSoftwareCommand addSoftwareCommand = new AddSoftwareCommand();
+        AddSoftwareInternshipCommand addSoftwareCommand = new AddSoftwareInternshipCommand();
         addSoftwareCommand.parameters.put("/c", "Google");
         addSoftwareCommand.parameters.put("/r", "Software Engineer");
         addSoftwareCommand.parameters.put("/tech", "Java, Python");
@@ -24,10 +24,30 @@ class AddSoftwareCommandTest {
     }
 
     @Test
+    void createInternship_validOptionalParameters_correctlyConstructed() {
+        AddSoftwareInternshipCommand addSoftwareCommand = new AddSoftwareInternshipCommand();
+        addSoftwareCommand.parameters.put("/c", "Google");
+        addSoftwareCommand.parameters.put("/r", "Software Engineer");
+        addSoftwareCommand.parameters.put("/tech", "Java, Python");
+        addSoftwareCommand.parameters.put("/eli", "Eligibility");
+        addSoftwareCommand.parameters.put("/desc", "Description");
+        addSoftwareCommand.parameters.put("/status", "Status");
+        addSoftwareCommand.parameters.put("/ex", "Expectations");
+        Internship internship = addSoftwareCommand.createInternship();
+        assertEquals("Google", internship.getCompanyName());
+        assertEquals("Software Engineer", internship.getRole());
+        assertEquals("Java, Python", ((SoftwareInternship) internship).getTechStack());
+        assertEquals("Eligibility", internship.getEligibility());
+        assertEquals("Description", internship.getDescription());
+        assertEquals("Status", internship.getStatus());
+        assertEquals("Expectations", internship.getExpectations());
+    }
+
+    @Test
     void createInternship_invalidTechStack_throwsException() {
         final String[] invalidTechStacks = {null, "", " ", "  "};
         for (String techStack : invalidTechStacks) {
-            AddSoftwareCommand addSoftwareCommand = new AddSoftwareCommand();
+            AddSoftwareInternshipCommand addSoftwareCommand = new AddSoftwareInternshipCommand();
             addSoftwareCommand.parameters.put("/c", "Google");
             addSoftwareCommand.parameters.put("/r", "Software Engineer");
             addSoftwareCommand.parameters.put("/tech", techStack);

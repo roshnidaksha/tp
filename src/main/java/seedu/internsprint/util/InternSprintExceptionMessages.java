@@ -28,6 +28,8 @@ public class InternSprintExceptionMessages {
     public static final String INVALID_CATEGORY_ERROR = "Invalid category: Valid categories are: " +
             "software, hardware, general.";
     public static final String INVALID_INDEX_ERROR = "Invalid index: Please enter a valid index within the list.";
+    public static final String ADD_INTERVIEW_INVALID_PARAMS = "You have not entered a valid parameter.\n"
+            + "    The addition of an interview command works as mentioned below:";
     public static final String MISSING_INDEX = "Missing index: Please enter an index to reference the internship.";
     public static final String INVALID_INDEX_RANGE = "Invalid index range: Please enter a valid index within the list.";
     public static final String INVALID_INDEX = "Invalid index: Please enter a valid number as index.";

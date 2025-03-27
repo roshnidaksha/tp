@@ -1,5 +1,9 @@
 package seedu.internsprint.interview;
 
+import seedu.internsprint.handler.DateTimeParser;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_REQUIRED_PARAMETERS;
@@ -7,109 +11,141 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_REQU
 public class Interview {
 
     /* Mandatory required parameters to create an Interview */
-    protected String interviewDate;
-    protected String interviewStartTime;
-    protected String interviewEndTime;
-    protected String interviewerEmail;
-    protected String roundName;
+    protected LocalDate interviewDate;
+    protected LocalTime interviewStartTime;
+    protected LocalTime interviewEndTime;
+    protected String interviewType;
 
-    protected ArrayList<Interview> interviewRounds = new ArrayList<Interview>();
+    protected ArrayList<Interview> nextRounds = new ArrayList<Interview>();
 
     /*Optional Parameters to create an Interview */
-    protected String interviewerName;
-    protected int interviewerContactNumber;
+    protected String interviewerEmail;
     protected String notes;
 
     protected int roundCounter = 0;
 
-    public Interview(String interviewDate, String interviewStartTime, String interviewEndTime, String interviewerEmail,
-                     String roundName) {
-        if (interviewDate == null || interviewStartTime == null || interviewEndTime == null || interviewerEmail == null
-                || roundName == null) {
-            throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS, "/d, /str, /end or /em"));
+
+    public Interview(String interviewDate, String interviewStartTime, String interviewEndTime,
+                     String interviewType) {
+        if (interviewDate == null || interviewStartTime == null || interviewEndTime == null || interviewType == null) {
+            throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS,
+                "/date, /start, /end or /type"));
         }
 
         if (interviewDate.isBlank() || interviewStartTime.isBlank() || interviewEndTime.isBlank() ||
-                interviewerEmail.isBlank() || roundName.isBlank()) {
-            throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS, "/d, /str, /end or /em"));
+            interviewType.isBlank()) {
+            throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS,
+                "/date, /start, /end or /type"));
         }
 
-        this.interviewDate = interviewDate;
-        this.interviewStartTime = interviewStartTime;
-        this.interviewEndTime = interviewEndTime;
-        this.interviewerEmail = interviewerEmail;
-        this.roundName = roundName;
+        this.interviewDate = DateTimeParser.parseDateInput(interviewDate);
+        this.interviewStartTime = DateTimeParser.parseTimeInput(interviewStartTime);
+        this.interviewEndTime = DateTimeParser.parseTimeInput(interviewEndTime);
+        this.interviewType = interviewType;
 
         setRoundCounter(this.roundCounter);
     }
 
-    public Interview(String interviewDate, String interviewStartTime, String interviewEndTime, String interviewerEmail,
-                     String roundName, String interviewerName, int interviewerContactNumber, String notes) {
-        if (interviewDate == null || interviewStartTime == null || interviewEndTime == null || interviewerEmail == null
-                || roundName == null) {
-            throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS, "/d, /str, /end or /em"));
+    public Interview(String interviewDate, String interviewStartTime, String interviewEndTime, String interviewType,
+                     String interviewerEmail, String notes) {
+        if (interviewDate == null || interviewStartTime == null || interviewEndTime == null || interviewType == null) {
+            throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS,
+                "/date, /start, /end or /type"));
         }
 
         if (interviewDate.isBlank() || interviewStartTime.isBlank() || interviewEndTime.isBlank() ||
-                interviewerEmail.isBlank() || roundName.isBlank()) {
-            throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS, "/d, /str, /end or /em"));
+            interviewType.isBlank()) {
+            throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS,
+                "/date, /start, /end or /type"));
         }
 
-        this.interviewDate = interviewDate;
-        this.interviewStartTime = interviewStartTime;
-        this.interviewEndTime = interviewEndTime;
-        this.interviewerEmail = interviewerEmail;
-        this.roundName = roundName;
+        this.interviewDate = DateTimeParser.parseDateInput(interviewDate);
+        this.interviewStartTime = DateTimeParser.parseTimeInput(interviewStartTime);
+        this.interviewEndTime = DateTimeParser.parseTimeInput(interviewEndTime);
+        this.interviewType = interviewType;
 
-        if (interviewerName != null && !interviewerName.isBlank()) {
-            this.interviewerName = interviewerName;
-        }
-
-        if (String.valueOf(interviewerContactNumber).length() == 8) {
-            this.interviewerContactNumber = interviewerContactNumber;
+        if (interviewerEmail != null && !interviewerEmail.isBlank()) {
+            this.interviewerEmail = interviewerEmail;
         }
 
         if (notes != null && !notes.isBlank()) {
             this.notes = notes;
         }
 
-        setRoundCounter(this.roundCounter);
+        this.roundCounter = 0;
     }
 
     @Override
     public String toString() {
-        return "Interview Date: " + interviewDate + ", Start Time: " + interviewStartTime + ", End Time: "
-                + interviewEndTime + ", Interviewer Email: " + interviewerEmail + ", Round Name: " + roundName
-                + ", Interviewer Name: ";
+        String interviewString = "    Interview Date: " + interviewDate +
+            ", Start Time: " + interviewStartTime +
+            ", End Time: " + interviewEndTime +
+            ", Round Name: " + interviewType;
+        if (interviewerEmail != null) {
+            interviewString += ", Interviewer Email: " + interviewerEmail;
+        }
+        if (notes != null) {
+            interviewString += ", Notes: " + notes;
+        }
+        return interviewString;
+    }
+
+    public ArrayList<String> toDescription() {
+        ArrayList<String> interviewString = new ArrayList<>();
+        if (roundCounter == 0) {
+            interviewString.add("Interview Details:");
+        } else {
+            interviewString.add("Round 1 Interview Details:");
+        }
+        interviewString.add("    Date: " + interviewDate);
+        interviewString.add("    Start Time: " + interviewStartTime);
+        interviewString.add("    End Time: " + interviewEndTime);
+        interviewString.add("    Interview Type: " + interviewType);
+        if (interviewerEmail != null) {
+            interviewString.add("    Interviewer Email: " + interviewerEmail);
+        }
+        if (notes != null) {
+            interviewString.add("    Notes: " + notes);
+        }
+
+        if (roundCounter != 0) {
+            for (int i = 0; i < nextRounds.size(); i++) {
+                interviewString.add("Round " + (i + 2) + " Interview Details:");
+                interviewString.add("    " + nextRounds.get(i).toDescription());
+            }
+        }
+
+        return interviewString;
     }
 
     public void addInterviewRound(Interview round) {
         if (round != null) {
-            this.interviewRounds.add(round);
+            this.nextRounds.add(round);
         }
+        roundCounter++;
     }
 
     public String getInterviewDate() {
-        return interviewDate;
+        return DateTimeParser.formatLocalDate(interviewDate);
     }
 
-    public void setInterviewDate(String interviewDate) {
+    public void setInterviewDate(LocalDate interviewDate) {
         this.interviewDate = interviewDate;
     }
 
     public String getInterviewStartTime() {
-        return interviewStartTime;
+        return DateTimeParser.formatLocalTime(interviewStartTime);
     }
 
-    public void setInterviewStartTime(String interviewStartTime) {
+    public void setInterviewStartTime(LocalTime interviewStartTime) {
         this.interviewStartTime = interviewStartTime;
     }
 
     public String getInterviewEndTime() {
-        return interviewEndTime;
+        return DateTimeParser.formatLocalTime(interviewEndTime);
     }
 
-    public void setInterviewEndTime(String interviewEndTime) {
+    public void setInterviewEndTime(LocalTime interviewEndTime) {
         this.interviewEndTime = interviewEndTime;
     }
 
@@ -121,28 +157,12 @@ public class Interview {
         this.interviewerEmail = interviewerEmail;
     }
 
-    public String getRoundName() {
-        return roundName;
+    public String getInterviewType() {
+        return interviewType;
     }
 
-    public void setRoundName(String roundName) {
-        this.roundName = roundName;
-    }
-
-    public String getInterviewerName() {
-        return interviewerName;
-    }
-
-    public void setInterviewerName(String interviewerName) {
-        this.interviewerName = interviewerName;
-    }
-
-    public int getInterviewerContactNumber() {
-        return interviewerContactNumber;
-    }
-
-    public void setInterviewerContactNumber(int interviewerContactNumber) {
-        this.interviewerContactNumber = interviewerContactNumber;
+    public void setInterviewType(String interviewType) {
+        this.interviewType = interviewType;
     }
 
     public String getNotes() {

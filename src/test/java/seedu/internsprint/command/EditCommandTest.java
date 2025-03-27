@@ -158,6 +158,7 @@ class EditCommandTest {
         editCommand.parameters.put("/index", "1");
         editCommand.parameters.put("/eli", "Year 3 students");
         editCommand.parameters.put("/ex", "Should be fast learner");
+        editCommand.parameters.put("/status", "Stage 1");
         SoftwareInternship internship = new SoftwareInternship("Facebook", "Software Engineering",
                 "SWE");
         InternshipList internshipList = new InternshipList();
@@ -165,5 +166,6 @@ class EditCommandTest {
         editCommand.execute(internshipList, new UserProfile());
         assertEquals("Year 3 students", internship.getEligibility());
         assertEquals("Should be fast learner", internship.getExpectations());
+        assertEquals("Stage 1", internship.getStatus());
     }
 }

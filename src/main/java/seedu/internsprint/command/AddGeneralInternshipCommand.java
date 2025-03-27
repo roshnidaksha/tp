@@ -6,7 +6,7 @@ import seedu.internsprint.internship.Internship;
 import java.util.Set;
 import java.util.logging.Level;
 
-public class AddGeneralCommand extends AddCommand {
+public class AddGeneralInternshipCommand extends AddInternshipCommand {
     public static final String COMMAND_WORD = "add general";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a general internship to the internship list.\n"
             + "    Parameters: " + "/c COMPANY_NAME " + "/r ROLE " + "/dept DEPARTMENT\n"
@@ -14,7 +14,7 @@ public class AddGeneralCommand extends AddCommand {
     public static final String[] REQUIRED_PARAMETERS = {"/c", "/r", "/dept"};
     public static final String[] OPTIONAL_PARAMETERS = {"/eli", "/ex", "/status","/desc"};
 
-    public AddGeneralCommand() {
+    public AddGeneralInternshipCommand() {
         super(Set.of(REQUIRED_PARAMETERS),Set.of(OPTIONAL_PARAMETERS));
     }
 

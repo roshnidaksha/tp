@@ -13,11 +13,11 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 class DeleteCommandTest {
     @Test
     void deleteCommand_provideCorrectIndex_returnsValid() {
-        AddGeneralCommand addGeneralCommand1 = new AddGeneralCommand();
+        AddGeneralInternshipCommand addGeneralCommand1 = new AddGeneralInternshipCommand();
         addGeneralCommand1.parameters.put("/c", "Google");
         addGeneralCommand1.parameters.put("/r", "Software Engineer");
         addGeneralCommand1.parameters.put("/dept", "Engineering");
-        AddGeneralCommand addGeneralCommand2 = new AddGeneralCommand();
+        AddGeneralInternshipCommand addGeneralCommand2 = new AddGeneralInternshipCommand();
         addGeneralCommand2.parameters.put("/c", "JP Morgan");
         addGeneralCommand2.parameters.put("/r", "Data Engineer");
         addGeneralCommand2.parameters.put("/dept", "Engineering");
@@ -47,13 +47,13 @@ class DeleteCommandTest {
     void deleteCommand_provideOutOfBoundsIndex_returnsInvalid() {
         InternshipList internshipList = new InternshipList();
         UserProfile user = new UserProfile();
-        AddHardwareCommand addHardwareCommand1 = new AddHardwareCommand();
+        AddHardwareInternshipCommand addHardwareCommand1 = new AddHardwareInternshipCommand();
         addHardwareCommand1.parameters.put("/c", "Google");
         addHardwareCommand1.parameters.put("/r", "Firmware Engineer");
         addHardwareCommand1.parameters.put("/tech", "Engineering");
         addHardwareCommand1.execute(internshipList, user);
 
-        AddHardwareCommand addHardwareCommand2 = new AddHardwareCommand();
+        AddHardwareInternshipCommand addHardwareCommand2 = new AddHardwareInternshipCommand();
         addHardwareCommand2.parameters.put("/c", "Google");
         addHardwareCommand2.parameters.put("/r", "Software Engineer");
         addHardwareCommand2.parameters.put("/tech", "Engineering");
