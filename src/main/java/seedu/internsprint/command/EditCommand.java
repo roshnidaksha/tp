@@ -6,6 +6,7 @@ import seedu.internsprint.internship.HardwareInternship;
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
 import seedu.internsprint.internship.SoftwareInternship;
+import seedu.internsprint.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintLogger;
 import seedu.internsprint.util.InternSprintMessages;
 
@@ -33,6 +34,11 @@ public class EditCommand extends Command {
     private static final Logger logger = InternSprintLogger.getLogger();
 
     @Override
+    public String getCommandType() {
+        return "internship";
+    }
+
+    @Override
     protected boolean isValidParameters() {
         logger.log(Level.INFO, "Entering check for parameters in edit command.");
         if (!parameters.containsKey("/index")) {
@@ -48,13 +54,14 @@ public class EditCommand extends Command {
             }
         }
         assert parameters.keySet().stream().allMatch(key -> key.equals("/index")
-            || Arrays.asList(POSSIBLE_PARAMETERS).contains(key))
-            : "All flags should be members of set of predefined valid flags";
+                || Arrays.asList(POSSIBLE_PARAMETERS).contains(key))
+                : "All flags should be members of set of predefined valid flags";
+
         return true;
     }
 
     @Override
-    public CommandResult execute(InternshipList internships) {
+    public CommandResult execute(InternshipList internships, UserProfile user) {
         logger.log(Level.INFO, "Entering execute for edit command...");
         CommandResult result;
         List<String> feedback = new ArrayList<>();
@@ -82,8 +89,8 @@ public class EditCommand extends Command {
 
         int index = Integer.parseInt(validIndex[1]);
         String type = validIndex[0];
-        assert (index >= 0 && index < internships.getInternshipCount()) : "index value is within appropriate range";
-
+        assert (index >= 0 && index < internships.getInternshipCount()) : "index value should be " +
+                                                                            "within appropriate range";
         Internship foundInternship = internshipMap.get(type).get(index);
         Internship foundInternshipCopy = foundInternship.copy();
         boolean checkWrongTypeOfInternship = editParametersForFoundInternships(foundInternship);
@@ -96,8 +103,8 @@ public class EditCommand extends Command {
         }
 
         long count = internshipMap.values().stream().flatMap(List::stream)
-            .filter(internship -> internship.equals(foundInternship))
-            .count();
+                .filter(internship -> internship.equals(foundInternship))
+                .count();
         if (count >= 2) {
             internshipMap.get(type).set(index, foundInternshipCopy);
             feedback.add(MESSAGE_DUPLICATE_INTERNSHIP);

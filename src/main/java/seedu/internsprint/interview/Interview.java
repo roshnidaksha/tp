@@ -24,6 +24,7 @@ public class Interview {
 
     protected int roundCounter = 0;
 
+
     public Interview(String interviewDate, String interviewStartTime, String interviewEndTime,
                      String interviewType) {
         if (interviewDate == null || interviewStartTime == null || interviewEndTime == null || interviewType == null) {

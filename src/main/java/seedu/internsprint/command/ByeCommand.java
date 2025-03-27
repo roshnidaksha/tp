@@ -1,6 +1,7 @@
 package seedu.internsprint.command;
 
 import seedu.internsprint.internship.InternshipList;
+import seedu.internsprint.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintLogger;
 
 import java.util.ArrayList;
@@ -24,7 +25,12 @@ public class ByeCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(InternshipList internships) {
+    public String getCommandType() {
+        return "internship";
+    }
+
+    @Override
+    public CommandResult execute(InternshipList internships, UserProfile user) {
         CommandResult result;
         List<String> feedback = new ArrayList<>();
 

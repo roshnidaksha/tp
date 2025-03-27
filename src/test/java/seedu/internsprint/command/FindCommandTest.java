@@ -6,6 +6,7 @@ import seedu.internsprint.internship.SoftwareInternship;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import seedu.internsprint.userprofile.UserProfile;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -43,7 +44,7 @@ class FindCommandTest {
     void execute_provideOnlyDescription_executesSuccessfully() {
         FindCommand findCommand = new FindCommand();
         findCommand.getParameters().put("description", "software");
-        CommandResult result = findCommand.execute(internshipList);
+        CommandResult result = findCommand.execute(internshipList, new UserProfile());
         String feedback = String.format(NUMBER_OF_INTERNSHIPS_FOUND, 1);
         assertTrue(result.isSuccessful());
         assertEquals(feedback, result.getFeedbackToUser().get(0));
@@ -53,7 +54,7 @@ class FindCommandTest {
     void execute_provideOnlyCompanyName_returnsTrue() {
         FindCommand findCommand = new FindCommand();
         findCommand.getParameters().put("/c", "Facebook");
-        CommandResult result = findCommand.execute(internshipList);
+        CommandResult result = findCommand.execute(internshipList, new UserProfile());
         assertTrue(result.isSuccessful());
     }
 
@@ -61,7 +62,7 @@ class FindCommandTest {
     void execute_provideOnlyRole_returnsTrue() {
         FindCommand findCommand = new FindCommand();
         findCommand.getParameters().put("/r", "software Intern");
-        CommandResult result = findCommand.execute(internshipList);
+        CommandResult result = findCommand.execute(internshipList,  new UserProfile());
         assertTrue(result.isSuccessful());
     }
 
@@ -69,7 +70,7 @@ class FindCommandTest {
     void execute_provideKeyWithNoRelevantInternships_returnsEmptyList() {
         FindCommand findCommand = new FindCommand();
         findCommand.getParameters().put("description", "general");
-        CommandResult result = findCommand.execute(internshipList);
+        CommandResult result = findCommand.execute(internshipList,  new UserProfile());
         assertTrue(result.isSuccessful());
         assertEquals(NO_INTERNSHIPS_FOUND, result.getFeedbackToUser().get(0));
     }
@@ -77,7 +78,7 @@ class FindCommandTest {
     @Test
     void execute_provideNoValidInput_returnsFalse() {
         FindCommand findCommand = new FindCommand();
-        CommandResult result = findCommand.execute(internshipList);
+        CommandResult result = findCommand.execute(internshipList,  new UserProfile());
         assertFalse(result.isSuccessful());
     }
 
@@ -87,7 +88,7 @@ class FindCommandTest {
         findCommand.getParameters().put("description", " ");
         findCommand.getParameters().put("/c", " ");
         findCommand.getParameters().put("/r", " ");
-        CommandResult result = findCommand.execute(internshipList);
+        CommandResult result = findCommand.execute(internshipList,  new UserProfile());
         assertFalse(result.isSuccessful());
     }
 }
