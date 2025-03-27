@@ -5,15 +5,18 @@ import seedu.internsprint.command.AddHardwareInternshipCommand;
 import seedu.internsprint.command.AddInterviewCommand;
 import seedu.internsprint.command.AddSoftwareInternshipCommand;
 import seedu.internsprint.command.ByeCommand;
-import seedu.internsprint.command.Command;
-import seedu.internsprint.command.DescriptionCommand;
 import seedu.internsprint.command.EditCommand;
+import seedu.internsprint.command.UserProfileCommand;
 import seedu.internsprint.command.DeleteCommand;
-import seedu.internsprint.command.FindCommand;
+import seedu.internsprint.command.DescriptionCommand;
+import seedu.internsprint.command.ViewUserCommand;
+import seedu.internsprint.command.ListCommand;
+import seedu.internsprint.command.HelpCommand;
+import seedu.internsprint.command.Command;
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
-import seedu.internsprint.command.HelpCommand;
-import seedu.internsprint.command.ListCommand;
+import seedu.internsprint.command.FindCommand;
+
 import seedu.internsprint.util.InternSprintLogger;
 
 import java.util.ArrayList;
@@ -21,6 +24,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.ILLEGAL_VALUE_INPUT;
 import static seedu.internsprint.util.InternSprintExceptionMessages.INVALID_COMMAND_TYPE;
@@ -86,6 +90,12 @@ public class CommandParser {
         case "delete":
             command = new DeleteCommand();
             break;
+        case "my":
+            command = new UserProfileCommand();
+            break;
+        case "view":
+            command = new ViewUserCommand();
+            break;
         default:
             throw new IllegalArgumentException(String.format(INVALID_COMMAND_TYPE, commandType));
         }
@@ -100,8 +110,8 @@ public class CommandParser {
      * @return Array containing the command type and the parameters.
      */
     private static String[] splitCommandTypeAndParams(String userInput) {
-        String[] multiWordCommands = {"add software", "add hardware", "add general", "edit"};
-        for (String command : multiWordCommands) {
+        String[] flagCommands = {"add software", "add hardware", "add general", "edit","my"};
+        for (String command : flagCommands) {
             if (userInput.startsWith(command)) {
                 return new String[]{command, userInput.substring(command.length()).trim()};
             }
@@ -151,10 +161,23 @@ public class CommandParser {
             if (value.contains("/")) {
                 throw new IllegalArgumentException(ILLEGAL_VALUE_INPUT);
             }
+
             keyValueMap.put(key, value);
         }
 
         command.setParameters(keyValueMap);
+    }
+
+    /**
+     * Splits the input string from the user into individual words for user profile class
+     * @param input string in key-value pair to be split into words
+     * @return Array list of individual words in a string
+     */
+    public static ArrayList<String> splitToWords(String input) {
+        return Arrays.stream(input.split("\\s*,\\s*"))
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 
     /**
