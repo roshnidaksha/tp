@@ -3,6 +3,7 @@ package seedu.internsprint.command;
 import org.junit.jupiter.api.Test;
 import seedu.internsprint.internship.InternshipList;
 import seedu.internsprint.internship.SoftwareInternship;
+import seedu.internsprint.userprofile.UserProfile;
 
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class ListCommandTest {
         internshipList.addInternship(internship1);
         internshipList.addInternship(internship2);
 
-        CommandResult result = listcommand.execute(internshipList);
+        CommandResult result = listcommand.execute(internshipList, new UserProfile());
         assertTrue(result.isSuccessful());
         List<String> feedback = result.getFeedbackToUser();
         assertEquals(6, feedback.size());

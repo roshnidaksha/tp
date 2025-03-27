@@ -2,6 +2,7 @@ package seedu.internsprint.command;
 
 import org.junit.jupiter.api.Test;
 import seedu.internsprint.internship.InternshipList;
+import seedu.internsprint.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintExceptionMessages;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -12,7 +13,7 @@ public class HelpCommandTest {
     @Test
     public void helpCommand_provideEmptyParameter_returnsValid() {
         HelpCommand helpCommand = new HelpCommand();
-        CommandResult result = helpCommand.execute(new InternshipList());
+        CommandResult result = helpCommand.execute(new InternshipList(), new UserProfile());
         assertTrue(result.isSuccessful());
     }
 
@@ -20,7 +21,7 @@ public class HelpCommandTest {
     public void helpCommand_provideCommandParameter_returnsValid() {
         HelpCommand helpCommand = new HelpCommand();
         helpCommand.parameters.put("command", "add general");
-        CommandResult result = helpCommand.execute(new InternshipList());
+        CommandResult result = helpCommand.execute(new InternshipList(), new UserProfile());
         assertTrue(result.isSuccessful());
         assertEquals("-> "+ AddGeneralInternshipCommand.MESSAGE_USAGE, result.getFeedbackToUser().get(0));
     }
@@ -29,7 +30,7 @@ public class HelpCommandTest {
     public void helpCommand_provideInvalidCommand_returnsInvalid() {
         HelpCommand helpCommand = new HelpCommand();
         helpCommand.parameters.put("command", "randomCommand");
-        CommandResult result = helpCommand.execute(new InternshipList());
+        CommandResult result = helpCommand.execute(new InternshipList(), new UserProfile());
         assertFalse(result.isSuccessful());
         assertEquals(InternSprintExceptionMessages.HELP_INVALID_PARAMETERS, result.getFeedbackToUser().get(0));
     }

@@ -24,6 +24,27 @@ class AddGeneralCommandTest {
     }
 
     @Test
+    void createInternship_validOptionalParameters_correctlyConstructed() {
+        AddGeneralInternshipCommand addGeneralCommand = new AddGeneralInternshipCommand();
+        addGeneralCommand.parameters.put("/c", "Google");
+        addGeneralCommand.parameters.put("/r", "Software Engineer");
+        addGeneralCommand.parameters.put("/dept", "Engineering");
+        addGeneralCommand.parameters.put("/eli", "NUS");
+        addGeneralCommand.parameters.put("/desc", "Software Engineer Intern");
+        addGeneralCommand.parameters.put("/status", "Open");
+        addGeneralCommand.parameters.put("/ex", "Software Engineer Intern");
+        Internship internship = addGeneralCommand.createInternship();
+        assertEquals("Google", internship.getCompanyName());
+        assertEquals("Software Engineer", internship.getRole());
+        assertEquals("Engineering", ((GeneralInternship) internship).getDepartment());
+        assertEquals("NUS", internship.getEligibility());
+        assertEquals("Software Engineer Intern", internship.getDescription());
+        assertEquals("Open", internship.getStatus());
+        assertEquals("Software Engineer Intern", internship.getExpectations());
+        assertEquals("general", internship.getType());
+    }
+
+    @Test
     void createInternship_invalidCompanyName_throwsException() {
         final String[] invalidCompanyNames = {null, "", " ", "  "};
         for (String companyName : invalidCompanyNames) {

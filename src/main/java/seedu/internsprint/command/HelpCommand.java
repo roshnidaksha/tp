@@ -1,6 +1,7 @@
 package seedu.internsprint.command;
 
 import seedu.internsprint.internship.InternshipList;
+import seedu.internsprint.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintExceptionMessages;
 import seedu.internsprint.util.InternSprintLogger;
 
@@ -34,12 +35,17 @@ public class HelpCommand extends Command {
     }
 
     @Override
+    public String getCommandType() {
+        return "internship";
+    }
+
+    @Override
     protected boolean isValidParameters() {
         return parameters.isEmpty() || parameters.size() == 1;
     }
 
     @Override
-    public CommandResult execute(InternshipList internships) {
+    public CommandResult execute(InternshipList internships, UserProfile user) {
         String feedback;
         boolean isSuccess = false;
         assert parameters.isEmpty() || parameters.size() == 1 : "HelpCommand should have at most one parameter";
@@ -60,7 +66,7 @@ public class HelpCommand extends Command {
             String commandName = parameters.values().iterator().next();
             assert commandName != null && !commandName.isBlank() : "Command name should not be null or empty";
             if (COMMAND_HELP_MESSAGES.containsKey(commandName)) {
-                feedback = "-> "+ COMMAND_HELP_MESSAGES.get(commandName);
+                feedback = "-> " + COMMAND_HELP_MESSAGES.get(commandName);
                 isSuccess = true;
                 logger.log(Level.INFO, "End of Help Command processing");
             } else {
