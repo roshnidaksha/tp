@@ -1,7 +1,6 @@
 package seedu.internsprint.project;
 
 import java.util.ArrayList;
-
 import org.json.JSONObject;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_REQUIRED_PARAMETERS;
@@ -44,15 +43,8 @@ public abstract class Project {
      *
      * @return String representation of the project.
      */
-    public ArrayList<String> toDescription() {
-        ArrayList<String> projectString = new ArrayList<>();
-        projectString.add("Project: " + projectName);
-        projectString.add("Role: " + role);
-        projectString.add("Objectives: " + objectives);
-        projectString.add("Description: " + description);
-        projectString.add("Duration: " + duration);
-        return projectString;
-    }
+
+    public abstract String toDescription();
 
     /**
      * Creates a copy of the project.

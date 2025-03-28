@@ -7,6 +7,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.json.JSONObject;
+import de.vandermeer.asciitable.AsciiTable;
+
 import seedu.internsprint.handler.CommandParser;
 import seedu.internsprint.project.ProjectList;
 import seedu.internsprint.util.InternSprintLogger;
@@ -103,28 +105,28 @@ public class UserProfile {
         logger.log(Level.INFO, "Returning basic string for user profile");
 
         StringBuilder sb = new StringBuilder();
-        if (name != null){
+        if (name != null) {
             sb.append("Name: ").append(name);
         }
-        if (preferredIndustries != null){
+        if (preferredIndustries != null) {
             sb.append(", Preferred Industries: ").append(preferredIndustries);
         }
-        if (preferredCompanies != null){
+        if (preferredCompanies != null) {
             sb.append(", Preferred Companies: ").append(preferredCompanies);
         }
-        if (preferredRoles != null){
+        if (preferredRoles != null) {
             sb.append(", Preferred Roles: ").append(preferredRoles);
         }
-        if (targetStipendRange != null){
+        if (targetStipendRange != null) {
             sb.append(", Target Stipend Range: ").append(targetStipendRange);
         }
-        if (internshipDateRange != null){
+        if (internshipDateRange != null) {
             sb.append(", Internship Date Range: ").append(internshipDateRange);
         }
-        if (monthlyGoals != null){
+        if (monthlyGoals != null) {
             sb.append(", Monthly Goals: ").append(monthlyGoals);
         }
-        if (yearlyGoals != null){
+        if (yearlyGoals != null) {
             sb.append(", Yearly Goals: ").append(yearlyGoals);
         }
         return sb.toString().replaceFirst("^,\\s*", "");
@@ -135,74 +137,46 @@ public class UserProfile {
      * @return CV-formatted string to user
      */
     public String toExtendedString() {
-        logger.log(Level.INFO, "Returning advanced formatted string for user profile");
-        StringBuilder sb = new StringBuilder();
+        AsciiTable at = new AsciiTable();
+        at.addRule();
 
-        if (name != null) {
-            sb.append("--------------------------------------------------\n");
-            sb.append("Name: ").append(name).append("\n");
-            sb.append("--------------------------------------------------\n");
-        }
+        String name = getName() != null ? getName() : "N/A";
+        at.addRow("Name", name);
+        at.addRule();
 
-        if (preferredIndustries != null && !preferredIndustries.isEmpty()) {
-            sb.append("\nPreferred Industries:\n");
-            sb.append("--------------------------------------------------\n");
-            for (String industry : preferredIndustries) {
-                sb.append(String.format("| %-40s |\n", industry.trim()));
-            }
-            sb.append("--------------------------------------------------\n");
-        }
+        at.addRow("Preferred Industries",
+                getPreferredIndustries() != null && !getPreferredIndustries().isEmpty() ?
+                        String.join(", ", getPreferredIndustries()) : "N/A");
+        at.addRule();
 
-        if (preferredCompanies != null && !preferredCompanies.isEmpty()) {
-            sb.append("\nPreferred Companies:\n");
-            sb.append("--------------------------------------------------\n");
-            for (String company : preferredCompanies) {
-                sb.append(String.format("| %-40s |\n", company.trim()));
-            }
-            sb.append("--------------------------------------------------\n");
-        }
+        at.addRow("Preferred Companies",
+                getPreferredCompanies() != null && !getPreferredCompanies().isEmpty() ?
+                        String.join(", ", getPreferredCompanies()) : "N/A");
+        at.addRule();
 
-        if (preferredRoles != null && !preferredRoles.isEmpty()) {
-            sb.append("\nPreferred Roles:\n");
-            sb.append("--------------------------------------------------\n");
-            for (String role : preferredRoles) {
-                sb.append(String.format("| %-40s |\n", role.trim()));
-            }
-            sb.append("--------------------------------------------------\n");
-        }
+        at.addRow("Preferred Roles",
+                getPreferredRoles() != null && !getPreferredRoles().isEmpty() ?
+                        String.join(", ", getPreferredRoles()) : "N/A");
+        at.addRule();
 
-        if (targetStipendRange != null) {
-            sb.append("\nTarget Stipend Range:\n");
-            sb.append("--------------------------------------------------\n");
-            sb.append(String.format("| %-40s |\n", targetStipendRange));
-            sb.append("--------------------------------------------------\n");
-        }
+        at.addRow("Target Stipend Range",
+                getTargetStipendRange() != null ? getTargetStipendRange() : "N/A");
+        at.addRule();
 
-        if (internshipDateRange != null) {
-            sb.append("\nInternship Date Range:\n");
-            sb.append("--------------------------------------------------\n");
-            sb.append(String.format("| %-40s |\n", internshipDateRange));
-            sb.append("--------------------------------------------------\n");
-        }
+        at.addRow("Internship Date Range", getInternshipDateRange() != null ?
+                getInternshipDateRange() : "N/A");
+        at.addRule();
 
-        if (monthlyGoals != null && !monthlyGoals.isEmpty()) {
-            sb.append("\nMonthly Goals:\n");
-            sb.append("--------------------------------------------------\n");
+        at.addRow("Monthly Goals", getMonthlyGoals() != null && !getMonthlyGoals().isEmpty() ?
+                getMonthlyGoals().trim() : "N/A");
+        at.addRule();
 
-            sb.append(String.format("| %-40s |\n", monthlyGoals.trim()));
+        at.addRow("Yearly Goals", getYearlyGoals() != null && !getYearlyGoals().isEmpty() ?
+                getYearlyGoals().trim() : "N/A");
+        at.addRule();
 
-            sb.append("--------------------------------------------------\n");
-        }
+        return "\n" + at.render();
 
-        if (yearlyGoals != null && !yearlyGoals.isEmpty()) {
-            sb.append("\nYearly Goals:\n");
-            sb.append("--------------------------------------------------\n");
-            sb.append(String.format("| %-40s |\n", yearlyGoals.trim()));
-
-            sb.append("--------------------------------------------------\n");
-        }
-
-        return sb.toString();
     }
     
     public JSONObject toJson() {
