@@ -1,6 +1,5 @@
 package seedu.internsprint.command;
 
-import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
 import seedu.internsprint.project.Project;
 import seedu.internsprint.userprofile.UserProfile;
@@ -12,7 +11,9 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static seedu.internsprint.util.InternSprintMessages.*;
+import static seedu.internsprint.util.InternSprintMessages.MESSAGE_DUPLICATE_PROJECT;
+import static seedu.internsprint.util.InternSprintMessages.PROJECT_ADD_MESSAGE_SUCCESS;
+import static seedu.internsprint.util.InternSprintMessages.PROJECT_LIST_COUNT_MESSAGE;
 
 /**
  * Represents a command to add an project.

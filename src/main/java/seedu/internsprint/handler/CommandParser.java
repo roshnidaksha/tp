@@ -1,8 +1,27 @@
 package seedu.internsprint.handler;
 
-import seedu.internsprint.command.*;
+import seedu.internsprint.command.AddGeneralInternshipCommand;
+import seedu.internsprint.command.AddHardwareInternshipCommand;
+import seedu.internsprint.command.AddInterviewCommand;
+import seedu.internsprint.command.AddSoftwareInternshipCommand;
+import seedu.internsprint.command.ByeCommand;
+import seedu.internsprint.command.EditCommand;
+import seedu.internsprint.command.UserProfileCommand;
+import seedu.internsprint.command.DeleteCommand;
+import seedu.internsprint.command.DescriptionCommand;
+import seedu.internsprint.command.ViewUserCommand;
+import seedu.internsprint.command.ListCommand;
+import seedu.internsprint.command.HelpCommand;
+import seedu.internsprint.command.Command;
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
+import seedu.internsprint.command.FindCommand;
+import seedu.internsprint.command.ProjectGeneralCommand;
+import seedu.internsprint.command.ProjectHardwareCommand;
+import seedu.internsprint.command.ProjectSoftwareCommand;
+import seedu.internsprint.command.ViewHardwareProjectsCommand;
+import seedu.internsprint.command.ViewSoftwareProjectsCommand;
+import seedu.internsprint.command.ViewGeneralProjectsCommand;
 
 import seedu.internsprint.util.InternSprintLogger;
 
@@ -116,8 +135,8 @@ public class CommandParser {
      */
     private static String[] splitCommandTypeAndParams(String userInput) {
         String[] flagCommands = {"add software", "add hardware", "add general", "edit","my","project general",
-                                "project software","project hardware", "view software", "view hardware","view general",
-                                "view user"};
+            "project software","project hardware", "view software", "view hardware","view general",
+            "view user"};
         for (String command : flagCommands) {
             if (userInput.startsWith(command)) {
                 return new String[]{command, userInput.substring(command.length()).trim()};

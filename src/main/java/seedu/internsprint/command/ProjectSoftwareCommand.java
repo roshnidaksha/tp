@@ -1,9 +1,6 @@
 package seedu.internsprint.command;
 
 import seedu.internsprint.handler.CommandParser;
-import seedu.internsprint.internship.GeneralInternship;
-import seedu.internsprint.internship.Internship;
-import seedu.internsprint.project.GeneralProject;
 import seedu.internsprint.project.Project;
 import seedu.internsprint.project.SoftwareProject;
 

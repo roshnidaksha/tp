@@ -1,6 +1,5 @@
 package seedu.internsprint.project;
 
-import java.util.ArrayList;
 import org.json.JSONObject;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_REQUIRED_PARAMETERS;
