@@ -1,21 +1,8 @@
 package seedu.internsprint.handler;
 
-import seedu.internsprint.command.AddGeneralInternshipCommand;
-import seedu.internsprint.command.AddHardwareInternshipCommand;
-import seedu.internsprint.command.AddInterviewCommand;
-import seedu.internsprint.command.AddSoftwareInternshipCommand;
-import seedu.internsprint.command.ByeCommand;
-import seedu.internsprint.command.EditCommand;
-import seedu.internsprint.command.UserProfileCommand;
-import seedu.internsprint.command.DeleteCommand;
-import seedu.internsprint.command.DescriptionCommand;
-import seedu.internsprint.command.ViewUserCommand;
-import seedu.internsprint.command.ListCommand;
-import seedu.internsprint.command.HelpCommand;
-import seedu.internsprint.command.Command;
+import seedu.internsprint.command.*;
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
-import seedu.internsprint.command.FindCommand;
 
 import seedu.internsprint.util.InternSprintLogger;
 
@@ -96,6 +83,15 @@ public class CommandParser {
         case "view":
             command = new ViewUserCommand();
             break;
+        case "project general":
+            command = new ProjectGeneralCommand();
+            break;
+        case "project software":
+            command = new ProjectSoftwareCommand();
+            break;
+        case "project hardware":
+            command = new ProjectHardwareCommand();
+            break;
         default:
             throw new IllegalArgumentException(String.format(INVALID_COMMAND_TYPE, commandType));
         }
@@ -110,7 +106,8 @@ public class CommandParser {
      * @return Array containing the command type and the parameters.
      */
     private static String[] splitCommandTypeAndParams(String userInput) {
-        String[] flagCommands = {"add software", "add hardware", "add general", "edit","my"};
+        String[] flagCommands = {"add software", "add hardware", "add general", "edit","my","project general",
+                                "project software","project hardware"};
         for (String command : flagCommands) {
             if (userInput.startsWith(command)) {
                 return new String[]{command, userInput.substring(command.length()).trim()};

@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.json.JSONObject;
+
 import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_REQUIRED_PARAMETERS;
 
 /**
@@ -18,13 +20,14 @@ public class SoftwareProject extends Project {
                            String description, String duration) {
         super(projectName, role, objectives, description, duration);
         if (programmingLanguages == null || programmingLanguages.isEmpty()) {
-            throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS, "/tech"));
+            throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS, "/pro"));
         }
         this.programmingLanguages = programmingLanguages;
     }
 
     /**
      * Creates a copy of the software project.
+     *
      * @return Copy of the software project.
      */
     @Override
@@ -35,17 +38,20 @@ public class SoftwareProject extends Project {
 
     /**
      * Returns a string representation of the software project.
+     *
      * @return String representation of the software project.
      */
     @Override
     public String toString() {
         return "Project: " + projectName + ", Role: " + role +
-            ", Programming Languages: " + String.join(", ", programmingLanguages);
+                ", Programming Languages: " + String.join(", ", programmingLanguages)
+                + ", Objectives: " + objectives + ", Duration: " + duration + ", Description: " + description;
     }
 
     /**
      * Returns a string representation of the software project.
      * Shows all details of the software project.
+     *
      * @return String representation of the software project.
      */
     @Override
@@ -57,6 +63,7 @@ public class SoftwareProject extends Project {
 
     /**
      * Returns true if the software project is equal to another object.
+     *
      * @param obj Object to compare to.
      * @return True if the software project is equal to the object, false otherwise.
      */
@@ -74,6 +81,7 @@ public class SoftwareProject extends Project {
 
     /**
      * Converts the software project to a JSON object.
+     *
      * @return JSON object representing the software project.
      */
     @Override
@@ -104,6 +112,7 @@ public class SoftwareProject extends Project {
 
     /**
      * Returns a SoftwareProject object from a JSON object.
+     *
      * @param json JSON object representing the software project.
      * @return SoftwareProject object.
      */

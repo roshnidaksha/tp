@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.json.JSONObject;
+
 import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_REQUIRED_PARAMETERS;
 
 /**
@@ -18,34 +20,38 @@ public class HardwareProject extends Project {
                            String description, String duration) {
         super(projectName, role, objectives, description, duration);
         if (hardwareComponents == null || hardwareComponents.isEmpty()) {
-            throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS, "/tech"));
+            throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS, "/hcomp"));
         }
         this.hardwareComponents = hardwareComponents;
     }
 
     /**
      * Creates a copy of the hardware project.
+     *
      * @return Copy of the hardware project.
      */
     @Override
     public HardwareProject copy() {
         return new HardwareProject(projectName, role, hardwareComponents,
-            objectives, description, duration);
+                objectives, description, duration);
     }
 
     /**
      * Returns a string representation of the hardware project.
+     *
      * @return String representation of the hardware project.
      */
     @Override
     public String toString() {
         return "Project: " + projectName + ", Role: " + role +
-            ", Hardware Components: " + String.join(", ", hardwareComponents);
+                ", Hardware Components: " + String.join(", ", hardwareComponents) + ", Objectives: " + objectives
+                + ", Duration: " + duration + ", Description: " + description;
     }
 
     /**
      * Returns a string representation of the hardware project.
      * Shows all details of the hardware project.
+     *
      * @return String representation of the hardware project.
      */
     @Override
@@ -57,6 +63,7 @@ public class HardwareProject extends Project {
 
     /**
      * Returns true if the hardware project is equal to another object.
+     *
      * @param obj Object to compare to.
      * @return True if the hardware project is equal to the object, false otherwise.
      */
@@ -74,6 +81,7 @@ public class HardwareProject extends Project {
 
     /**
      * Converts the hardware project to a JSON object.
+     *
      * @return JSON object representing the hardware project.
      */
     @Override
@@ -104,6 +112,7 @@ public class HardwareProject extends Project {
 
     /**
      * Returns a HardwareProject object from a JSON object.
+     *
      * @param json JSON object representing the hardware project.
      * @return HardwareProject object.
      */

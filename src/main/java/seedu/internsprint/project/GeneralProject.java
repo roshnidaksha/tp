@@ -41,7 +41,8 @@ public class GeneralProject extends Project {
      */
     @Override
     public String toString() {
-        return "Project: " + projectName + ", Role: " + role + ", Dept: " + department;
+        return "Project: " + projectName + ", Role: " + role + ", Dept: " + department + ", Objectives: " + objectives
+                + ", Duration: " + duration + ", Description: " + description;
     }
 
     /**

@@ -1,6 +1,7 @@
 package seedu.internsprint.project;
 
 import java.util.ArrayList;
+
 import org.json.JSONObject;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_REQUIRED_PARAMETERS;
@@ -10,39 +11,23 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_REQU
  */
 public abstract class Project {
 
-    /* Mandatory parameters to create a project */
     protected String projectName;
     protected String role;
+    protected String objectives;
+    protected String description;
+    protected String duration;
 
-    /* Optional parameters to create a project */
-    protected String objectives = null;
-    protected String description = null;
-    protected String duration = null;
-
-    public Project(String projectName, String role) {
-        if (projectName == null || role == null || projectName.isBlank() || role.isBlank()) {
-            throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS, "/p or /l"));
-        }
-        this.projectName = projectName;
-        this.role = role;
-    }
 
     public Project(String projectName, String role, String objectives, String description, String duration) {
         if (projectName == null || role == null || projectName.isBlank() || role.isBlank()) {
-            throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS, "/p or /l"));
+            throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS, "/n or /r or /dur or /desc" +
+                    " or /obj"));
         }
         this.projectName = projectName;
         this.role = role;
-
-        if (objectives != null && !objectives.isBlank()) {
-            this.objectives = objectives;
-        }
-        if (description != null && !description.isBlank()) {
-            this.description = description;
-        }
-        if (duration != null && !duration.isBlank()) {
-            this.duration = duration;
-        }
+        this.objectives = objectives;
+        this.description = description;
+        this.duration = duration;
     }
 
     /**
@@ -63,15 +48,9 @@ public abstract class Project {
         ArrayList<String> projectString = new ArrayList<>();
         projectString.add("Project: " + projectName);
         projectString.add("Role: " + role);
-        if (objectives != null && !objectives.isBlank()) {
-            projectString.add("Objectives: " + objectives);
-        }
-        if (description != null && !description.isBlank()) {
-            projectString.add("Description: " + description);
-        }
-        if (duration != null && !duration.isBlank()) {
-            projectString.add("Duration: " + duration);
-        }
+        projectString.add("Objectives: " + objectives);
+        projectString.add("Description: " + description);
+        projectString.add("Duration: " + duration);
         return projectString;
     }
 
@@ -81,6 +60,7 @@ public abstract class Project {
      * @return Copy of the project.
      */
     public abstract Project copy();
+
     /**
      * Returns true if the project is equal to another object.
      *

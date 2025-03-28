@@ -45,7 +45,7 @@ public class InternSprintMessages {
                                                             + "is a duplicate.";
     public static final String PROJECT_ADD_MESSAGE_SUCCESS = "Project successfully added to user profile. Below" +
             " are the details for the same: \n";
-    public static final String PROJECT_LIST_COUNT_MESSAGE = "ow you have %d projects in your user profile";
+    public static final String PROJECT_LIST_COUNT_MESSAGE = "Now you have %d projects in your user profile.";
     public static final String NO_INTERNSHIPS_FOUND = "No internships found";
     public static final String NUMBER_OF_INTERNSHIPS_FOUND = "Number of internships found: %d";
     public static final String ADD_INTERVIEW_MESSAGE_SUCCESS = "New interview added\n%s";
