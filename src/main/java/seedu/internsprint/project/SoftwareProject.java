@@ -13,18 +13,6 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_REQU
 public class SoftwareProject extends Project {
     private List<String> programmingLanguages;
 
-    public SoftwareProject(String projectName, String role, List<String> programmingLanguages) {
-        super(projectName, role);
-        if (programmingLanguages == null || programmingLanguages.isEmpty()) {
-            throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS, "/tech"));
-        }
-        for (String language : programmingLanguages) {
-            if (language == null || language.isBlank()) {
-                throw new IllegalArgumentException("Programming languages must not be null or blank.");
-            }
-        }
-        this.programmingLanguages = programmingLanguages;
-    }
 
     public SoftwareProject(String projectName, String role, List<String> programmingLanguages, String objectives,
                            String description, String duration) {

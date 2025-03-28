@@ -13,18 +13,6 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_REQU
 public class HardwareProject extends Project {
     private List<String> hardwareComponents;
 
-    public HardwareProject(String projectName, String role, List<String> hardwareComponents) {
-        super(projectName, role);
-        if (hardwareComponents == null || hardwareComponents.isEmpty()) {
-            throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS, "/tech"));
-        }
-        for (String component : hardwareComponents) {
-            if (component == null || component.isBlank()) {
-                throw new IllegalArgumentException("Hardware component names must not be null or blank.");
-            }
-        }
-        this.hardwareComponents = hardwareComponents;
-    }
 
     public HardwareProject(String projectName, String role, List<String> hardwareComponents, String objectives,
                            String description, String duration) {
