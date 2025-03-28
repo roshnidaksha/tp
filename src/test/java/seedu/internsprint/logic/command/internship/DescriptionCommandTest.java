@@ -10,6 +10,7 @@ import seedu.internsprint.model.internship.SoftwareInternship;
 import seedu.internsprint.model.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintExceptionMessages;
 
+import java.util.HashMap;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -21,14 +22,18 @@ public class DescriptionCommandTest {
     @Test
     void isValidParameters_provideValidIndex_returnsTrue() {
         DescriptionCommand descriptioncommand = new DescriptionCommand();
-        descriptioncommand.parameters.put("/index", "1");
+        HashMap<String, String> parameters = descriptioncommand.getParameters();
+        parameters.put("/index", "1");
+        descriptioncommand.setParameters(parameters);
         assertTrue(descriptioncommand.isValidParameters());
     }
 
     @Test
     void isValidParameters_provideInvalidIndex_returnsFalse() {
         DescriptionCommand descriptioncommand = new DescriptionCommand();
-        descriptioncommand.parameters.put("/index", "-1");
+        HashMap<String, String> parameters = descriptioncommand.getParameters();
+        parameters.put("/index", "-1");
+        descriptioncommand.setParameters(parameters);
         CommandResult commandResult = descriptioncommand.execute(new InternshipList(), new UserProfile());
         assertEquals(InternSprintExceptionMessages.INVALID_INDEX_RANGE,
                 commandResult.getFeedbackToUser().get(0));
@@ -38,7 +43,9 @@ public class DescriptionCommandTest {
     @Test
     void execute_descriptionOfIndex2Internship_returnsCorrectCommand() {
         DescriptionCommand descriptioncommand = new DescriptionCommand();
-        descriptioncommand.parameters.put("/index", "2");
+        HashMap<String, String> parameters = descriptioncommand.getParameters();
+        parameters.put("/index", "2");
+        descriptioncommand.setParameters(parameters);
 
         HardwareInternship internship1 = new HardwareInternship("HP", "Manufacturing Engineer",
                 "Embedded circuit design");

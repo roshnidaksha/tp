@@ -1,5 +1,6 @@
 package seedu.internsprint.logic.command.internship;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import seedu.internsprint.logic.command.CommandResult;
@@ -7,24 +8,42 @@ import seedu.internsprint.model.internship.InternshipList;
 import seedu.internsprint.model.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintExceptionMessages;
 
+import java.util.HashMap;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 
 class DeleteCommandTest {
+
+    InternshipList internshipList = new InternshipList();
+    UserProfile user = new UserProfile();
+    AddGeneralInternshipCommand addGeneralCommand1 = new AddGeneralInternshipCommand();
+    AddGeneralInternshipCommand addGeneralCommand2 = new AddGeneralInternshipCommand();
+
+    @BeforeEach
+    void setUp() {
+        HashMap<String, String> parameters1 = addGeneralCommand1.getParameters();
+        parameters1.put("/c", "Google");
+        parameters1.put("/r", "Software Engineer");
+        parameters1.put("/dept", "Engineering");
+        addGeneralCommand1.setParameters(parameters1);
+        addGeneralCommand1.execute(internshipList, user);
+
+        HashMap<String, String> parameters2 = addGeneralCommand2.getParameters();
+        parameters2.put("/c", "JP Morgan");
+        parameters2.put("/r", "Data Engineer");
+        parameters2.put("/dept", "Engineering");
+        addGeneralCommand2.setParameters(parameters2);
+        addGeneralCommand2.execute(internshipList, user);
+    }
+
     @Test
     void deleteCommand_provideCorrectIndex_returnsValid() {
-        AddGeneralInternshipCommand addGeneralCommand1 = new AddGeneralInternshipCommand();
-        addGeneralCommand1.parameters.put("/c", "Google");
-        addGeneralCommand1.parameters.put("/r", "Software Engineer");
-        addGeneralCommand1.parameters.put("/dept", "Engineering");
-        AddGeneralInternshipCommand addGeneralCommand2 = new AddGeneralInternshipCommand();
-        addGeneralCommand2.parameters.put("/c", "JP Morgan");
-        addGeneralCommand2.parameters.put("/r", "Data Engineer");
-        addGeneralCommand2.parameters.put("/dept", "Engineering");
         DeleteCommand deleteCommand = new DeleteCommand();
-        deleteCommand.parameters.put("/index", "1");
+        HashMap<String, String> parameters = deleteCommand.getParameters();
+        parameters.put("/index", "1");
         assertTrue(deleteCommand.isValidParameters());
     }
 
@@ -39,7 +58,9 @@ class DeleteCommandTest {
     @Test
     void deleteCommand_provideInvalidIndex_returnsInvalid() {
         DeleteCommand deleteCommand = new DeleteCommand();
-        deleteCommand.parameters.put("/index", "-1");
+        HashMap<String, String> parameters = deleteCommand.getParameters();
+        parameters.put("/index", "-1");
+        deleteCommand.setParameters(parameters);
         CommandResult result = deleteCommand.execute(new InternshipList(),new UserProfile());
         assertEquals(InternSprintExceptionMessages.INVALID_INDEX_RANGE, result.getFeedbackToUser().get(0));
         assertFalse(result.isSuccessful());
@@ -47,22 +68,10 @@ class DeleteCommandTest {
 
     @Test
     void deleteCommand_provideOutOfBoundsIndex_returnsInvalid() {
-        InternshipList internshipList = new InternshipList();
-        UserProfile user = new UserProfile();
-        AddHardwareInternshipCommand addHardwareCommand1 = new AddHardwareInternshipCommand();
-        addHardwareCommand1.parameters.put("/c", "Google");
-        addHardwareCommand1.parameters.put("/r", "Firmware Engineer");
-        addHardwareCommand1.parameters.put("/tech", "Engineering");
-        addHardwareCommand1.execute(internshipList, user);
-
-        AddHardwareInternshipCommand addHardwareCommand2 = new AddHardwareInternshipCommand();
-        addHardwareCommand2.parameters.put("/c", "Google");
-        addHardwareCommand2.parameters.put("/r", "Software Engineer");
-        addHardwareCommand2.parameters.put("/tech", "Engineering");
-        addHardwareCommand2.execute(internshipList, user);
-
         DeleteCommand deleteCommand = new DeleteCommand();
-        deleteCommand.parameters.put("/index", "3");
+        HashMap<String, String> parameters = deleteCommand.getParameters();
+        parameters.put("/index", "3");
+        deleteCommand.setParameters(parameters);
         CommandResult result = deleteCommand.execute(internshipList, user);
         assertEquals(InternSprintExceptionMessages.INVALID_INDEX_RANGE, result.getFeedbackToUser().get(0));
         assertFalse(result.isSuccessful());

@@ -7,6 +7,7 @@ import seedu.internsprint.model.internship.InternshipList;
 import seedu.internsprint.model.internship.SoftwareInternship;
 import seedu.internsprint.model.userprofile.UserProfile;
 
+import java.util.HashMap;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -24,7 +25,9 @@ public class ListCommandTest {
     @Test
     void isValidParameters_provideExtraParameters_returnsFalse() {
         ListCommand listcommand = new ListCommand();
-        listcommand.parameters.put("/c", "Shoppe");
+        HashMap<String, String> parameters = listcommand.getParameters();
+        parameters.put("/c", "Shoppe");
+        listcommand.setParameters(parameters);
         assertFalse(listcommand.isValidParameters());
     }
 
