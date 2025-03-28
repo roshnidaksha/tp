@@ -37,7 +37,7 @@ public class ViewSoftwareProjectsCommand extends Command {
         List<String> feedback = new ArrayList<>();
         feedback.add(PROJECTS_VIEW_SUCCESS_MESSAGE);
         for(Project gen:user.projects.getProjectMap().get("software")) {
-            feedback.add(gen.toString());
+            feedback.add(gen.toDescription());
         }
         result = new CommandResult(feedback);
         result.setSuccessful(true);
