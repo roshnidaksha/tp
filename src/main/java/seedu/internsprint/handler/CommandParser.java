@@ -80,11 +80,20 @@ public class CommandParser {
         case "my":
             command = new UserProfileCommand();
             break;
-        case "view":
+        case "view user":
             command = new ViewUserCommand();
             break;
         case "project general":
             command = new ProjectGeneralCommand();
+            break;
+        case "view general":
+            command = new ViewGeneralProjectsCommand();
+            break;
+        case "view software":
+            command = new ViewSoftwareProjectsCommand();
+            break;
+        case "view hardware":
+            command = new ViewHardwareProjectsCommand();
             break;
         case "project software":
             command = new ProjectSoftwareCommand();
@@ -107,7 +116,8 @@ public class CommandParser {
      */
     private static String[] splitCommandTypeAndParams(String userInput) {
         String[] flagCommands = {"add software", "add hardware", "add general", "edit","my","project general",
-                                "project software","project hardware"};
+                                "project software","project hardware", "view software", "view hardware","view general",
+                                "view user"};
         for (String command : flagCommands) {
             if (userInput.startsWith(command)) {
                 return new String[]{command, userInput.substring(command.length()).trim()};
