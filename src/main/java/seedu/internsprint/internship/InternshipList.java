@@ -1,6 +1,6 @@
 package seedu.internsprint.internship;
 
-import seedu.internsprint.handler.StorageHandler;
+import seedu.internsprint.storage.StorageHandler;
 
 import java.util.ArrayList;
 import java.util.HashMap;

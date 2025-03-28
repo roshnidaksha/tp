@@ -1,6 +1,6 @@
 package seedu.internsprint.interview;
 
-import seedu.internsprint.handler.DateTimeParser;
+import seedu.internsprint.logic.parser.DateTimeParser;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

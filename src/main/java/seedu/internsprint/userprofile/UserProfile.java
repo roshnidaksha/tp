@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 import org.json.JSONObject;
 import de.vandermeer.asciitable.AsciiTable;
 
-import seedu.internsprint.handler.CommandParser;
+import seedu.internsprint.logic.parser.CommandParser;
 import seedu.internsprint.project.ProjectList;
 import seedu.internsprint.util.InternSprintLogger;
 

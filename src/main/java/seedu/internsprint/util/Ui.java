@@ -1,6 +1,6 @@
 package seedu.internsprint.util;
 
-import seedu.internsprint.command.CommandResult;
+import seedu.internsprint.logic.command.CommandResult;
 import seedu.internsprint.internship.Internship;
 
 import java.util.List;

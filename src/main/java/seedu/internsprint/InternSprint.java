@@ -1,9 +1,9 @@
 package seedu.internsprint;
 
-import seedu.internsprint.command.Command;
-import seedu.internsprint.command.CommandResult;
-import seedu.internsprint.handler.CommandParser;
-import seedu.internsprint.handler.StorageHandler;
+import seedu.internsprint.logic.command.Command;
+import seedu.internsprint.logic.command.CommandResult;
+import seedu.internsprint.logic.parser.CommandParser;
+import seedu.internsprint.storage.StorageHandler;
 import seedu.internsprint.internship.InternshipList;
 import seedu.internsprint.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintLogger;
