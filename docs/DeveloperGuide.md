@@ -273,7 +273,7 @@ the internship list.
   * Cons: Deletion is irreversible, meaning accidental deletions cannot be undone without re-entering 
 the internship details manually.
 
-* **Alternative 2:** Use separate classes for each type of internship.
+* **Alternative 2:** Use separate classes for each type of internship.  
   * Pros: Achieves **SoC (Separation of Concerns)** design principle.
   * Cons: Requires additional classes and code to be written.
 
