@@ -3,12 +3,12 @@ package seedu.internsprint.logic.command.internship;
 import seedu.internsprint.logic.command.Command;
 import seedu.internsprint.logic.command.CommandResult;
 import seedu.internsprint.logic.parser.CommandParser;
-import seedu.internsprint.internship.GeneralInternship;
-import seedu.internsprint.internship.HardwareInternship;
-import seedu.internsprint.internship.Internship;
-import seedu.internsprint.internship.InternshipList;
-import seedu.internsprint.internship.SoftwareInternship;
-import seedu.internsprint.userprofile.UserProfile;
+import seedu.internsprint.model.internship.GeneralInternship;
+import seedu.internsprint.model.internship.HardwareInternship;
+import seedu.internsprint.model.internship.Internship;
+import seedu.internsprint.model.internship.InternshipList;
+import seedu.internsprint.model.internship.SoftwareInternship;
+import seedu.internsprint.model.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintLogger;
 import seedu.internsprint.util.InternSprintMessages;
 

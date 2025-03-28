@@ -1,15 +1,14 @@
 package seedu.internsprint.logic.command.internship;
 
 import seedu.internsprint.logic.command.CommandResult;
-import seedu.internsprint.internship.HardwareInternship;
-import seedu.internsprint.internship.InternshipList;
-import seedu.internsprint.internship.SoftwareInternship;
+import seedu.internsprint.model.internship.HardwareInternship;
+import seedu.internsprint.model.internship.InternshipList;
+import seedu.internsprint.model.internship.SoftwareInternship;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.internsprint.logic.command.internship.FindCommand;
-import seedu.internsprint.userprofile.UserProfile;
+import seedu.internsprint.model.userprofile.UserProfile;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;

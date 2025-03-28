@@ -1,4 +1,4 @@
-package seedu.internsprint.interview;
+package seedu.internsprint.model.internship.interview;
 
 import seedu.internsprint.logic.parser.DateTimeParser;
 

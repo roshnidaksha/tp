@@ -1,6 +1,6 @@
-package seedu.internsprint.internship;
+package seedu.internsprint.model.internship;
 
-import seedu.internsprint.interview.Interview;
+import seedu.internsprint.model.internship.interview.Interview;
 
 import java.util.ArrayList;
 

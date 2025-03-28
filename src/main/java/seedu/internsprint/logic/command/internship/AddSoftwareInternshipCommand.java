@@ -1,7 +1,7 @@
 package seedu.internsprint.logic.command.internship;
 
-import seedu.internsprint.internship.Internship;
-import seedu.internsprint.internship.SoftwareInternship;
+import seedu.internsprint.model.internship.Internship;
+import seedu.internsprint.model.internship.SoftwareInternship;
 
 import java.util.Set;
 import java.util.logging.Level;

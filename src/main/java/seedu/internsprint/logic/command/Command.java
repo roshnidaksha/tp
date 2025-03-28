@@ -1,7 +1,7 @@
 package seedu.internsprint.logic.command;
 
-import seedu.internsprint.internship.InternshipList;
-import seedu.internsprint.userprofile.UserProfile;
+import seedu.internsprint.model.internship.InternshipList;
+import seedu.internsprint.model.userprofile.UserProfile;
 
 import java.util.HashMap;
 

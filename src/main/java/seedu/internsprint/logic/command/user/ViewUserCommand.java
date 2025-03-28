@@ -2,8 +2,8 @@ package seedu.internsprint.logic.command.user;
 
 import seedu.internsprint.logic.command.Command;
 import seedu.internsprint.logic.command.CommandResult;
-import seedu.internsprint.internship.InternshipList;
-import seedu.internsprint.userprofile.UserProfile;
+import seedu.internsprint.model.internship.InternshipList;
+import seedu.internsprint.model.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintLogger;
 
 import java.util.ArrayList;

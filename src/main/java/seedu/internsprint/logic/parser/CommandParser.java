@@ -13,8 +13,8 @@ import seedu.internsprint.logic.command.user.ViewUserCommand;
 import seedu.internsprint.logic.command.internship.ListCommand;
 import seedu.internsprint.logic.command.internship.HelpCommand;
 import seedu.internsprint.logic.command.Command;
-import seedu.internsprint.internship.Internship;
-import seedu.internsprint.internship.InternshipList;
+import seedu.internsprint.model.internship.Internship;
+import seedu.internsprint.model.internship.InternshipList;
 import seedu.internsprint.logic.command.internship.FindCommand;
 
 import seedu.internsprint.util.InternSprintLogger;

@@ -1,4 +1,4 @@
-package seedu.internsprint.project;
+package seedu.internsprint.model.userprofile.project;
 
 import org.json.JSONObject;
 

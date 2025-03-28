@@ -3,12 +3,11 @@ package seedu.internsprint.logic.command.internship;
 import org.junit.jupiter.api.Test;
 
 import seedu.internsprint.logic.command.CommandResult;
-import seedu.internsprint.internship.GeneralInternship;
-import seedu.internsprint.internship.HardwareInternship;
-import seedu.internsprint.internship.InternshipList;
-import seedu.internsprint.internship.SoftwareInternship;
-import seedu.internsprint.logic.command.internship.DescriptionCommand;
-import seedu.internsprint.userprofile.UserProfile;
+import seedu.internsprint.model.internship.GeneralInternship;
+import seedu.internsprint.model.internship.HardwareInternship;
+import seedu.internsprint.model.internship.InternshipList;
+import seedu.internsprint.model.internship.SoftwareInternship;
+import seedu.internsprint.model.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintExceptionMessages;
 
 import java.util.List;

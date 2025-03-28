@@ -1,12 +1,10 @@
 package seedu.internsprint.logic.command.internship;
 
 import seedu.internsprint.logic.command.CommandResult;
-import seedu.internsprint.internship.Internship;
-import seedu.internsprint.internship.InternshipList;
-import seedu.internsprint.internship.SoftwareInternship;
-import seedu.internsprint.logic.command.internship.AddInternshipCommand;
-import seedu.internsprint.logic.command.internship.AddSoftwareInternshipCommand;
-import seedu.internsprint.userprofile.UserProfile;
+import seedu.internsprint.model.internship.Internship;
+import seedu.internsprint.model.internship.InternshipList;
+import seedu.internsprint.model.internship.SoftwareInternship;
+import seedu.internsprint.model.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintMessages;
 
 import java.util.HashMap;

@@ -2,7 +2,7 @@ package seedu.internsprint.logic.parser;
 
 import seedu.internsprint.logic.command.internship.AddSoftwareInternshipCommand;
 import seedu.internsprint.logic.command.Command;
-import seedu.internsprint.internship.InternshipList;
+import seedu.internsprint.model.internship.InternshipList;
 
 import org.junit.jupiter.api.Test;
 

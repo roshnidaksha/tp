@@ -3,8 +3,8 @@ package seedu.internsprint.logic.command.internship;
 import seedu.internsprint.logic.command.ByeCommand;
 import seedu.internsprint.logic.command.Command;
 import seedu.internsprint.logic.command.CommandResult;
-import seedu.internsprint.internship.InternshipList;
-import seedu.internsprint.userprofile.UserProfile;
+import seedu.internsprint.model.internship.InternshipList;
+import seedu.internsprint.model.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintExceptionMessages;
 import seedu.internsprint.util.InternSprintLogger;
 

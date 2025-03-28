@@ -1,4 +1,4 @@
-package seedu.internsprint.internship;
+package seedu.internsprint.model.internship;
 
 import seedu.internsprint.storage.StorageHandler;
 

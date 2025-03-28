@@ -1,4 +1,10 @@
-package seedu.internsprint.internship;
+package seedu.internsprint.model.internship;
+
+import seedu.internsprint.model.internship.GeneralInternship;
+import seedu.internsprint.model.internship.HardwareInternship;
+import seedu.internsprint.model.internship.Internship;
+import seedu.internsprint.model.internship.InternshipList;
+import seedu.internsprint.model.internship.SoftwareInternship;
 
 import java.util.ArrayList;
 import java.util.HashMap;

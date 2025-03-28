@@ -1,4 +1,4 @@
-package seedu.internsprint.userprofile;
+package seedu.internsprint.model.userprofile;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -10,7 +10,7 @@ import org.json.JSONObject;
 import de.vandermeer.asciitable.AsciiTable;
 
 import seedu.internsprint.logic.parser.CommandParser;
-import seedu.internsprint.project.ProjectList;
+import seedu.internsprint.model.userprofile.project.ProjectList;
 import seedu.internsprint.util.InternSprintLogger;
 
 /**

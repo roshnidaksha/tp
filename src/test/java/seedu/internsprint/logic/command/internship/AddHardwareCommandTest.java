@@ -1,8 +1,7 @@
 package seedu.internsprint.logic.command.internship;
 
-import seedu.internsprint.internship.HardwareInternship;
-import seedu.internsprint.internship.Internship;
-import seedu.internsprint.logic.command.internship.AddHardwareInternshipCommand;
+import seedu.internsprint.model.internship.HardwareInternship;
+import seedu.internsprint.model.internship.Internship;
 
 import org.junit.jupiter.api.Test;
 

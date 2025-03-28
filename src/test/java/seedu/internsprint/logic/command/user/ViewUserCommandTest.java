@@ -2,9 +2,8 @@ package seedu.internsprint.logic.command.user;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.internsprint.internship.InternshipList;
-import seedu.internsprint.logic.command.user.ViewUserCommand;
-import seedu.internsprint.userprofile.UserProfile;
+import seedu.internsprint.model.internship.InternshipList;
+import seedu.internsprint.model.userprofile.UserProfile;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 

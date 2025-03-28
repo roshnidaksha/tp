@@ -1,10 +1,10 @@
 package seedu.internsprint.storage;
 
 import seedu.internsprint.logic.command.CommandResult;
-import seedu.internsprint.internship.GeneralInternship;
-import seedu.internsprint.internship.HardwareInternship;
-import seedu.internsprint.internship.SoftwareInternship;
-import seedu.internsprint.internship.InternshipList;
+import seedu.internsprint.model.internship.GeneralInternship;
+import seedu.internsprint.model.internship.HardwareInternship;
+import seedu.internsprint.model.internship.SoftwareInternship;
+import seedu.internsprint.model.internship.InternshipList;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

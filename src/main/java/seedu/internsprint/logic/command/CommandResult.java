@@ -1,6 +1,6 @@
 package seedu.internsprint.logic.command;
 
-import seedu.internsprint.internship.Internship;
+import seedu.internsprint.model.internship.Internship;
 import seedu.internsprint.util.InternSprintLogger;
 
 import java.util.logging.Logger;
