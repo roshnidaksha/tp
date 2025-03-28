@@ -1,8 +1,9 @@
 package seedu.internsprint.project;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+
+import de.vandermeer.asciitable.AsciiTable;
 import org.json.JSONObject;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_REQUIRED_PARAMETERS;
@@ -58,10 +59,29 @@ public class GeneralProject extends Project {
      * @return String representation of the general project.
      */
     @Override
-    public ArrayList<String> toDescription() {
-        ArrayList<String> projectString = super.toDescription();
-        projectString.add("Department: " + department);
-        return projectString;
+    public String toDescription() {
+        AsciiTable at = new AsciiTable();
+        at.addRule();
+
+        String name = getProjectName() != null ? getProjectName() : "N/A";
+        at.addRow("Project: ", name);
+        at.addRule();
+
+        at.addRow("Role: ", getRole() != null ? getRole() : "N/A");
+        at.addRule();
+
+        at.addRow("Objectives:", getObjectives() != null ? getObjectives() : "N/A");
+        at.addRule();
+
+        at.addRow("Description:", getDescription() != null ? getDescription() : "N/A");
+        at.addRule();
+
+        at.addRow("Duration: ", getDuration() !=null? getDuration(): "N/A");
+        at.addRule();
+        at.addRow("Department: ", getDepartment() !=null? getDepartment(): "N/A");
+        at.addRule();
+
+        return "\n" + at.render();
     }
 
     /**
