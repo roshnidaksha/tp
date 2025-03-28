@@ -101,7 +101,7 @@ Here is a partial class diagram of the Logic component:
 _Input Parsing:_ The `CommandParser` class takes a single line of user input and splits it into a command word and
 key value pairs.
 * The command word is used to determine the type of command that needs be executed, and creates the corresponding
-  `Command` object (e.g., `AddCommand`, `DeleteCommand`, `ListCommand`).
+  `*Command` object (e.g., `AddCommand`, `DeleteCommand`, `ListCommand`).
 * The key value pairs are stored in a `HashMap<String, String>` of the `Command` object. The key value pairs are
   validated only during command execution in `isValidParameters()` method.
 
@@ -134,13 +134,16 @@ The `Command` class is an abstract class that represents a command that the user
 It provides an additional layer of abstraction between the user input and the actual execution of the command,
 achieving the **SoC (Separation of Concerns)** design principle.
 
-The partial class structure of the `Command` class is shown below:
+The overview of how `Command` classes are instantiated and executed is shown in the partial sequence diagram below.
 
-Insert command class diagram here
+![CommandClassOverview](images/CommandClassOverview.png)
 
 The abstract `Command` class has the following abstract methods:
-* `isValidParameters()`: Validates the parameters of the command.
+* `isValidParameters()`: Validates the parameters of the command. The parameters are set by `CommandParser` class while
+parsing the user input.
 * `execute()`: Executes the command.
+
+These methods override the abstract methods of the `Command` class through **polymorphism**.
 
 ### 1. Add new Internship
 
