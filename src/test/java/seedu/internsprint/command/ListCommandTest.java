@@ -3,7 +3,6 @@ package seedu.internsprint.command;
 import org.junit.jupiter.api.Test;
 import seedu.internsprint.internship.GeneralInternship;
 import seedu.internsprint.internship.HardwareInternship;
-import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
 import seedu.internsprint.internship.SoftwareInternship;
 import seedu.internsprint.userprofile.UserProfile;
