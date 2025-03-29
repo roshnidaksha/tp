@@ -22,7 +22,7 @@ public class SortInterviewCommand extends Command {
     private static final Logger logger = InternSprintLogger.getLogger();
 
     @Override
-    public String getCommandType(){
+    public String getCommandType() {
         return "interview";
     }
 
@@ -37,9 +37,9 @@ public class SortInterviewCommand extends Command {
         List<InterviewEntry> allEntries = collectAllInterviews(internships);
 
         allEntries.sort(Comparator.comparing(entry -> LocalDateTime.of(
-              entry.getInterview().getUnformattedInterviewDate(),
-              entry.getInterview().getUnformattedInterviewStartTime()
-        )
+                        entry.getInterview().getUnformattedInterviewDate(),
+                        entry.getInterview().getUnformattedInterviewStartTime()
+                )
         ));
 
         if (allEntries.isEmpty()) {
@@ -74,25 +74,25 @@ public class SortInterviewCommand extends Command {
     }
 
     private List<InterviewEntry> collectAllInterviews(InternshipList internshipList) {
-       List<InterviewEntry> allInterviews = new ArrayList<>();
+        List<InterviewEntry> allInterviews = new ArrayList<>();
 
-       for (ArrayList<Internship> internships: internshipList.getInternshipMap().values()) {
-           for (Internship internship: internships) {
-               Interview interview = internship.getInterview();
-               if (interview != null) {
-                   allInterviews.add(new InterviewEntry(internship, interview));
-                   collectNextRounds(internship, interview.getNextRounds(), allInterviews);
-               }
-           }
-       }
-       return allInterviews;
-   }
+        for (ArrayList<Internship> internships : internshipList.getInternshipMap().values()) {
+            for (Internship internship : internships) {
+                Interview interview = internship.getInterview();
+                if (interview != null) {
+                    allInterviews.add(new InterviewEntry(internship, interview));
+                    collectNextRounds(internship, interview.getNextRounds(), allInterviews);
+                }
+            }
+        }
+        return allInterviews;
+    }
 
-   private void collectNextRounds(Internship internship, List<Interview> rounds, List<InterviewEntry> result) {
-       for (Interview round: rounds) {
-           result.add(new InterviewEntry(internship, round));
-           collectNextRounds(internship, round.getNextRounds(), result);
-       }
-   }
+    private void collectNextRounds(Internship internship, List<Interview> rounds, List<InterviewEntry> result) {
+        for (Interview round : rounds) {
+            result.add(new InterviewEntry(internship, round));
+            collectNextRounds(internship, round.getNextRounds(), result);
+        }
+    }
 
 }
