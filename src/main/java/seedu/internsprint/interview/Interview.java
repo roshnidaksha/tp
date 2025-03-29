@@ -24,7 +24,6 @@ public class Interview {
 
     protected int roundCounter = 0;
 
-
     public Interview(String interviewDate, String interviewStartTime, String interviewEndTime,
                      String interviewType) {
         if (interviewDate == null || interviewStartTime == null || interviewEndTime == null || interviewType == null) {
@@ -179,5 +178,25 @@ public class Interview {
 
     public void setRoundCounter(int roundCounter) {
         this.roundCounter += roundCounter;
+    }
+
+    public void setNextRounds(ArrayList<Interview> nextRounds) {
+        this.nextRounds = nextRounds;
+    }
+
+    public ArrayList<Interview> getNextRounds() {
+        return nextRounds;
+    }
+
+    public LocalDate getUnformattedInterviewDate() {
+        return interviewDate;
+    }
+
+    public LocalTime getUnformattedInterviewStartTime() {
+        return interviewStartTime;
+    }
+
+    public LocalTime getUnformattedInterviewEndTime() {
+        return interviewEndTime;
     }
 }
