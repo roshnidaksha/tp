@@ -18,8 +18,6 @@ public class ListCommandTest {
     private static SoftwareInternship internship1 = new SoftwareInternship("Facebook", "software Intern", "C++");
     private static SoftwareInternship internship2 = new SoftwareInternship("Google", "SWE Intern", "Java");
     private static HardwareInternship internship3 = new HardwareInternship("Accenture", "hardware Intern", "baremetal");
-    private static HardwareInternship internship5 = new HardwareInternship("HPU", "Systems engineer", "Security");
-    private static GeneralInternship internship4= new GeneralInternship("NUS", "TA", "CS2113");
     private static UserProfile userProfile = new UserProfile();
 
     @Test
