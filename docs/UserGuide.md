@@ -33,6 +33,7 @@ and easily tracking status of your applications.
     * [Exit `bye`](#exit-bye)
   * [Saving the data](#saving-the-data)
   * [Editing the data file](#editing-the-data-file)
+  * [Date and Time Formats](#date-and-time-formats)
   * [FAQ](#faq)
   * [Command Summary](#command-summary)
 <!-- TOC -->
@@ -291,7 +292,9 @@ Example of usage:
 
 ### Exit `bye`
 
-Exits the program.
+Exits the program. A user can exit the program at any time by typing `bye` in the command line.
+If the first word of user input is `bye`, the program will terminate automatically without checking the rest of the
+inputs.
 
 ---
 
@@ -312,6 +315,21 @@ Advanced users are welcome to update data directly by editing that data file.
 data** and would require the data file to be deleted
 > and started again. Therefore, edit the data file only if you are confident that you can update it correctly.
 
+---
+
+## Date and Time Formats
+
+InternSprint uses `Natty` library to parse dates and times.
+Acceptable formats include but is not limited to the following:
+- 1st of January 2020
+- January 1st 2020
+- 1/1/2020
+
+Relative dates are also accepted:
+- next week
+- next month
+- tomorrow
+- next Friday
 
 ---
 
@@ -328,4 +346,15 @@ should be only one `internships.txt` in the location.
 ## Command Summary
 
 {Give a 'cheat sheet' of commands here once v2.0 goes out}
+
+| Command             | Format                                                                 |
+|---------------------|------------------------------------------------------------------------|
+| Internship Commands |
+| `add general`       | `add general /c COMPANY_NAME /r ROLE /dept DEPARTMENT`                 |
+| `add software`      | `add software /c COMPANY_NAME /r ROLE /tech TECHNOLOGIES`              |
+| `add hardware`      | `add hardware /c COMPANY_NAME /r ROLE /hardtech HARDWARE_TECHNOLOGIES` |
+| ...                 | ...                                                                    |
+| `find`              | `find [TYPE] [/c COMPANY_NAME] [\r ROLE]`                              |
+| `bye'               | `bye`                                                                  |
+| User Commands       |                                                                        |
 
