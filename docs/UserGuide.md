@@ -346,3 +346,14 @@ should be only one `internships.txt` in the location.
 
 {Give a 'cheat sheet' of commands here once v2.0 goes out}
 
+| Command             | Format                                                                 |
+|---------------------|------------------------------------------------------------------------|
+| Internship Commands |
+| `add general`       | `add general /c COMPANY_NAME /r ROLE /dept DEPARTMENT`                 |
+| `add software`      | `add software /c COMPANY_NAME /r ROLE /tech TECHNOLOGIES`              |
+| `add hardware`      | `add hardware /c COMPANY_NAME /r ROLE /hardtech HARDWARE_TECHNOLOGIES` |
+| ...                 | ...                                                                    |
+| `find`              | `find [TYPE] [/c COMPANY_NAME] [\r ROLE]`                              |
+| `bye'               | `bye`                                                                  |
+| User Commands       |                                                                        |
+
