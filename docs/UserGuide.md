@@ -274,6 +274,26 @@ Example of usage:
 ```
 ---
 
+### Finding internships: `find`
+Allows users to find internships based on the internship type, company name or role.
+
+Format: `find [TYPE] [/c COMPANY_NAME] [/r ROLE]`
+
+* `TYPE` can be `general`, `software`, or `hardware`.
+* `TYPE`, `COMPANY_NAME` and `ROLE` are optional parameters.
+* It is required to specify at least one of the parameters.
+
+Example of usage:
+
+```
+> find software /c Google
+------------------------------------------------------------------------------------------------------------------------
+    Here are the matching internships in your list:
+    1. Company: Google, Role: Software Engineer, Eligibility: Y3 student, Expectations: Fast Learner, Tech Stack: C, C++
+------------------------------------------------------------------------------------------------------------------------
+```
+---
+
 ### Viewing extended description of a specific internship: `desc`
 Adds a new item to the list of todo items.
 
