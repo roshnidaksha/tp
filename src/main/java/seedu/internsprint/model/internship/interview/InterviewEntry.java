@@ -1,6 +1,6 @@
 package seedu.internsprint.model.internship.interview;
 
-import seedu.internsprint.model.internship.Internship;;
+import seedu.internsprint.model.internship.Internship;
 
 public class InterviewEntry {
     private final Internship internship;

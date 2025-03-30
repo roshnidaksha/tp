@@ -1,4 +1,4 @@
-package seedu.internsprint.interview;
+package seedu.internsprint.model.internship.interview;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
