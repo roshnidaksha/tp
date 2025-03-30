@@ -101,17 +101,23 @@ Example of usage:
 ### Listing all internships: `list`
 Adds a new item to the list of todo items.
 
-Format: `todo n/TODO_NAME d/DEADLINE`
+Format: `list`
 
-* The `DEADLINE` can be in a natural language format.
-* The `TODO_NAME` cannot contain punctuation.
+* `list` is used to view the list of all added internships.
 
 Example of usage:
 
-`todo n/Write the rest of the User Guide d/next week`
-
-`todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
-
+```
+> list
+------------------------------------------------------------------------------------------------------------------------
+  Here is your internship list!
+    Software Internships:
+      1. Company: google, Role: intern, Tech: c++
+    Hardware Internships:
+    General Internships:
+      2. Company: UBS, Role: IT Intern, Dept: IT
+------------------------------------------------------------------------------------------------------------------------
+```
 ---
 
 ### Adding a general category of internship: `add general`
@@ -259,7 +265,7 @@ Allows users to delete an internship from the list of internship applications.
 
 Format: `delete /index INDEX_OF_INTERNSHIP`
 
-* The `INDEX_OF_INTERNSHIP` should noy be out of range of the internship list.
+* The `INDEX_OF_INTERNSHIP` should not be out of range of the internship list.
 
 Example of usage:
 
@@ -274,19 +280,49 @@ Example of usage:
 ---
 
 ### Viewing extended description of a specific internship: `desc`
-Adds a new item to the list of todo items.
+Allows users to view the description of an internship from the list of internship applications.
 
-Format: `todo n/TODO_NAME d/DEADLINE`
+Format: `desc /index INDEX_OF_INTERNSHIP`
 
-* The `DEADLINE` can be in a natural language format.
-* The `TODO_NAME` cannot contain punctuation.
+* The `INDEX_OF_INTERNSHIP` should not be out of range of the internship list.
 
 Example of usage:
 
-`todo n/Write the rest of the User Guide d/next week`
+```
+> desc /index 1
+------------------------------------------------------------------------------------------------------------------------
+    Here is your internship description!
+    Company: google
+    Role: intern
+    Tech Stack: c++
+------------------------------------------------------------------------------------------------------------------------
+```
+---
 
-`todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
+### Sorting all rounds of interviews added across multiple internships by date: `sortInterviews`
+Allows users to view a sorted list of all upcoming interviews.
 
+Format: `sortInterviews`
+
+Example of usage:
+
+```
+> sortInterviews
+------------------------------------------------------------------------------------------------------------------------
+    Here are your interviews sorted by date and time:
+    1. google - intern
+        Date: 2025-10-01
+        Start: 10:00
+        End: 11:00
+        Type: Coding
+    
+    2. google - intern
+        Date: 2025-10-01
+        Start: 15:00
+        End: 17:00
+        Type: HR  
+------------------------------------------------------------------------------------------------------------------------
+```
 ---
 
 ### Exit `bye`
