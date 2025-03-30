@@ -66,6 +66,8 @@ Follow the guide [[se-edu/guides] IDEA: Importing a Gradle project]
 
 > **Tip:** The diagrams are created using [drawio](https://app.diagrams.net/). 
 > Refer to their website for more information.
+> All our `drawio` source files are accessible through the link 
+> [here](https://drive.google.com/drive/folders/1hVXLhsZNU8a1vo4MaV5R5RIYIZGSaXSu?usp=drive_link)
 
 ### Architecture
 
