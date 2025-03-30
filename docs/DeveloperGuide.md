@@ -153,8 +153,6 @@ model
 
 ---
 
-
-
 ### Storage Component
 
 The Storage component is responsible for reading and writing data to and from the disk.
