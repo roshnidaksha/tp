@@ -33,6 +33,7 @@ and easily tracking status of your applications.
     * [Exit `bye`](#exit-bye)
   * [Saving the data](#saving-the-data)
   * [Editing the data file](#editing-the-data-file)
+  * [Date and Time Formats](#date-and-time-formats)
   * [FAQ](#faq)
   * [Command Summary](#command-summary)
 <!-- TOC -->
