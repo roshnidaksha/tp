@@ -291,7 +291,9 @@ Example of usage:
 
 ### Exit `bye`
 
-Exits the program.
+Exits the program. A user can exit the program at any time by typing `bye` in the command line.
+If the first word of user input is `bye`, the program will terminate automatically without checking the rest of the
+inputs.
 
 ---
 
@@ -312,6 +314,21 @@ Advanced users are welcome to update data directly by editing that data file.
 data** and would require the data file to be deleted
 > and started again. Therefore, edit the data file only if you are confident that you can update it correctly.
 
+---
+
+## Date and Time Formats
+
+InternSprint uses `Natty` library to parse dates and times.
+Acceptable formats include but is not limited to the following:
+- 1st of January 2020
+- January 1st 2020
+- 1/1/2020
+
+Relative dates are also accepted:
+- next week
+- next month
+- tomorrow
+- next Friday
 
 ---
 
