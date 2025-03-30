@@ -45,7 +45,7 @@ public class SortInterviewCommand extends Command {
         if (allEntries.isEmpty()) {
             feedback.add("You have no interviews scheduled");
         } else {
-            feedback.add("Here are yout interviews sorted by date and time:");
+            feedback.add("Here are your interviews sorted by date and time:");
             for (int i = 0; i < allEntries.size(); i++) {
                 InterviewEntry entry = allEntries.get(i);
                 Interview interview = entry.getInterview();
