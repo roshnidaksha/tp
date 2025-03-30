@@ -16,8 +16,8 @@ public class FindCommand extends Command {
     public static final String COMMAND_WORD = "find";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all internships of a particular type, "
         + "company name or role \n"
-        + "Parameters: [TYPE] [/c COMPANY_NAME] [/r ROLE] \n"
-        + "Example: " + COMMAND_WORD + " software";
+        + "    Parameters: [TYPE] [/c COMPANY_NAME] [/r ROLE] \n"
+        + "    Example: " + COMMAND_WORD + " software";
     public static final String[] PARAMETERS = {"/description", "/c", "/r"};
     private static final Logger logger = InternSprintLogger.getLogger();
 
