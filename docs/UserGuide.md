@@ -29,6 +29,7 @@ and easily tracking status of your applications.
     * [Adding a hardware category of internship: `add harware`](#adding-a-hardware-category-of-internship-add-harware)
     * [Editing an internship: `edit`](#editing-an-internship-edit)
     * [Deleting an internship: `delete`](#deleting-an-internship-delete)
+    * [Finding internships: `find`](#finding-internships-find)
     * [Viewing extended description of a specific internship: `desc`](#viewing-extended-description-of-a-specific-internship-desc)
     * [Exit `bye`](#exit-bye)
   * [Saving the data](#saving-the-data)
