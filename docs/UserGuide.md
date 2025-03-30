@@ -26,7 +26,7 @@ and easily tracking status of your applications.
     * [Listing all internships: `list`](#listing-all-internships-list)
     * [Adding a general category of internship: `add general`](#adding-a-general-category-of-internship-add-general)
     * [Adding a software category of internship: `add software`](#adding-a-software-category-of-internship-add-software)
-    * [Adding a hardware category of internship: `add harware`](#adding-a-hardware-category-of-internship-add-harware)
+    * [Adding a hardware category of internship: `add hardware`](#adding-a-hardware-category-of-internship-add-hardware)
     * [Editing an internship: `edit`](#editing-an-internship-edit)
     * [Deleting an internship: `delete`](#deleting-an-internship-delete)
     * [Viewing extended description of a specific internship: `desc`](#viewing-extended-description-of-a-specific-internship-desc)
@@ -39,7 +39,7 @@ and easily tracking status of your applications.
 
 ## Quick Start
 
-1. Ensure you have **Java 17** or above installed in your Computer and it is compatible with your device operating
+1. Ensure you have **Java 17** or above installed in your Computer, and it is compatible with your device operating
    system (Mac or Windows).
 
 2. Download the latest `.jar` file from https://github.com/AY2425S2-CS2113-T11a-3/tp/releases under latest release.
