@@ -1,11 +1,13 @@
 package seedu.internsprint.interview;
 
+import seedu.internsprint.exceptions.DuplicateEntryException;
 import seedu.internsprint.handler.DateTimeParser;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
+import static seedu.internsprint.util.InternSprintExceptionMessages.DUPLICATE_INTERVIEW;
 import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_REQUIRED_PARAMETERS;
 
 public class Interview {
@@ -117,7 +119,24 @@ public class Interview {
         return interviewString;
     }
 
-    public void addInterviewRound(Interview round) {
+    public boolean equals(Interview interview) {
+        if (interview == null) {
+            return false;
+        }
+        return interviewDate.equals(interview.interviewDate)
+            && interviewStartTime.equals(interview.interviewStartTime)
+            && interviewEndTime.equals(interview.interviewEndTime);
+    }
+
+    public void addInterviewRound(Interview round) throws DuplicateEntryException {
+        if (this.equals(round)) {
+            throw new DuplicateEntryException(DUPLICATE_INTERVIEW);
+        }
+        for (Interview nextRound : nextRounds) {
+            if (nextRound.equals(round)) {
+                throw new DuplicateEntryException(DUPLICATE_INTERVIEW);
+            }
+        }
         if (round != null) {
             this.nextRounds.add(round);
         }

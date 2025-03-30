@@ -1,5 +1,6 @@
 package seedu.internsprint.command;
 
+import seedu.internsprint.exceptions.DuplicateEntryException;
 import seedu.internsprint.handler.CommandParser;
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
@@ -103,12 +104,11 @@ public class AddInterviewCommand extends Command {
             parameters.getOrDefault("/notes", "")
         );
 
-        internship.addInterview(interview);
-
         try {
+            internship.addInterview(interview);
             internships.saveInternships();
             feedback.add(InternSprintMessages.SAVE_SUCCESS_MESSAGE);
-        } catch (Exception e) {
+        } catch (RuntimeException | DuplicateEntryException e) {
             feedback.add(e.getMessage());
             result = new CommandResult(feedback);
             result.setSuccessful(false);
