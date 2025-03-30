@@ -6,6 +6,7 @@ import seedu.internsprint.logic.command.internship.AddInterviewCommand;
 import seedu.internsprint.logic.command.internship.AddSoftwareInternshipCommand;
 import seedu.internsprint.logic.command.ByeCommand;
 import seedu.internsprint.logic.command.internship.EditCommand;
+import seedu.internsprint.logic.command.internship.SortInterviewCommand;
 import seedu.internsprint.logic.command.user.UserProfileCommand;
 import seedu.internsprint.logic.command.internship.DeleteCommand;
 import seedu.internsprint.logic.command.internship.DescriptionCommand;
@@ -37,7 +38,7 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_VALU
  * Parses user input.
  */
 public class CommandParser {
-    private static Logger logger = InternSprintLogger.getLogger();
+    private static final Logger logger = InternSprintLogger.getLogger();
 
     /**
      * Parses the user input and returns the corresponding Command object.
@@ -68,6 +69,9 @@ public class CommandParser {
             break;
         case "interviewfor":
             command = new AddInterviewCommand();
+            break;
+        case "sortInterviews":
+            command = new SortInterviewCommand();
             break;
         case "bye":
             command = new ByeCommand();
