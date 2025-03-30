@@ -26,9 +26,9 @@ public class InterviewTest {
 
     @Test
     void constructor_basicRequiredFields_shouldParseAllCompulsaryFields() {
-        assertEquals(LocalDate.of(2025, 7, 1), interviewBasic.getInterviewDateAsLocalDate());
-        assertEquals(LocalTime.of(10, 0), interviewBasic.getInterviewStartTimeAsLocalTime());
-        assertEquals(LocalTime.of(11, 0), interviewBasic.getInterviewEndTimeAsLocalTime());
+        assertEquals(LocalDate.of(2025, 7, 1), interviewBasic.getUnformattedInterviewDate());
+        assertEquals(LocalTime.of(10, 0), interviewBasic.getUnformattedInterviewStartTime());
+        assertEquals(LocalTime.of(11, 0), interviewBasic.getUnformattedInterviewEndTime());
         assertEquals("Technical", interviewBasic.getInterviewType());
         assertNull(interviewBasic.getInterviewerEmail());
         assertNull(interviewBasic.getNotes());
@@ -50,9 +50,9 @@ public class InterviewTest {
 
     @Test
     void constructor_fullRequiredFields_shouldParseAllOptionalFields() {
-        assertEquals(LocalDate.of(2025, 8, 2), interviewFull.getInterviewDateAsLocalDate());
-        assertEquals(LocalTime.of(14, 0), interviewFull.getInterviewStartTimeAsLocalTime());
-        assertEquals(LocalTime.of(15, 0), interviewFull.getInterviewEndTimeAsLocalTime());
+        assertEquals(LocalDate.of(2025, 8, 2), interviewFull.getUnformattedInterviewDate());
+        assertEquals(LocalTime.of(14, 0), interviewFull.getUnformattedInterviewStartTime());
+        assertEquals(LocalTime.of(15, 0), interviewFull.getUnformattedInterviewEndTime());
         assertEquals("Coding Test", interviewFull.getInterviewType());
         assertEquals("hr@123.com", interviewFull.getInterviewerEmail());
         assertEquals("Prepare C++ script", interviewFull.getNotes());
