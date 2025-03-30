@@ -2,6 +2,7 @@ package seedu.internsprint.command;
 
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
+import seedu.internsprint.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintLogger;
 
 import java.util.ArrayList;
@@ -25,6 +26,11 @@ public abstract class AddInternshipCommand extends Command {
     public AddInternshipCommand(Set<String> requiredParameters, Set<String> optionalParameters) {
         this.requiredParameters = requiredParameters;
         this.optionalParameters = optionalParameters;
+    }
+
+    @Override
+    public String getCommandType() {
+        return "internship";
     }
 
     /**
@@ -58,7 +64,7 @@ public abstract class AddInternshipCommand extends Command {
      * @return CommandResult object.
      */
     @Override
-    public CommandResult execute(InternshipList internships) {
+    public CommandResult execute(InternshipList internships, UserProfile user) {
         logger.log(Level.INFO, "Executing add command");
         CommandResult result;
         if (!isValidParameters()) {

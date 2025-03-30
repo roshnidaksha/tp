@@ -2,6 +2,7 @@ package seedu.internsprint.command;
 
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
+import seedu.internsprint.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintLogger;
 
 import java.util.ArrayList;
@@ -15,8 +16,8 @@ public class FindCommand extends Command {
     public static final String COMMAND_WORD = "find";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all internships of a particular type, "
         + "company name or role \n"
-        + "Parameters: [TYPE] [/c COMPANY_NAME] [/r ROLE] \n"
-        + "Example: " + COMMAND_WORD + " software";
+        + "    Parameters: [TYPE] [/c COMPANY_NAME] [/r ROLE] \n"
+        + "    Example: " + COMMAND_WORD + " software";
     public static final String[] PARAMETERS = {"/description", "/c", "/r"};
     private static final Logger logger = InternSprintLogger.getLogger();
 
@@ -26,7 +27,7 @@ public class FindCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(InternshipList internships) {
+    public CommandResult execute(InternshipList internships,  UserProfile user) {
         CommandResult result;
         logger.info("Starting Find Command processing");
         logger.info("Parameters in FindCommand: " + parameters.toString());
@@ -72,5 +73,10 @@ public class FindCommand extends Command {
         result.setSuccessful(true);
         logger.info("Internships found successfully");
         return result;
+    }
+
+    @Override
+    public String getCommandType() {
+        return "internship";
     }
 }

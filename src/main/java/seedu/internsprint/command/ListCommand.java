@@ -2,6 +2,7 @@ package seedu.internsprint.command;
 
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
+import seedu.internsprint.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintLogger;
 
 import java.util.ArrayList;
@@ -29,6 +30,11 @@ public class ListCommand extends Command {
      * @return True if no parameters are provided, false otherwise.
      */
     @Override
+    public String getCommandType() {
+        return "internship";
+    }
+
+    @Override
     protected boolean isValidParameters() {
         logger.log(Level.INFO, "Entering into the check for parameters in list command");
         return parameters.isEmpty();
@@ -41,7 +47,7 @@ public class ListCommand extends Command {
      * @return CommandResult object containing the result of the command execution.
      */
     @Override
-    public CommandResult execute(InternshipList internshipList) {
+    public CommandResult execute(InternshipList internshipList, UserProfile user) {
         logger.log(Level.INFO, "Executing list command");
         CommandResult result;
         List<String> feedback = new ArrayList<>();

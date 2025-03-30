@@ -5,6 +5,7 @@ import seedu.internsprint.handler.CommandParser;
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
 import seedu.internsprint.interview.Interview;
+import seedu.internsprint.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintLogger;
 import seedu.internsprint.util.InternSprintMessages;
 
@@ -55,7 +56,12 @@ public class AddInterviewCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(InternshipList internships) {
+    public String getCommandType() {
+        return "internship";
+    }
+
+    @Override
+    public CommandResult execute(InternshipList internships, UserProfile user) {
         logger.info("Executing add interview command...");
         CommandResult result;
         List<String> feedback = new ArrayList<>();

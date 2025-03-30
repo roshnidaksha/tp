@@ -3,6 +3,7 @@ package seedu.internsprint.command;
 import seedu.internsprint.handler.CommandParser;
 import seedu.internsprint.internship.Internship;
 import seedu.internsprint.internship.InternshipList;
+import seedu.internsprint.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintLogger;
 
 import java.util.ArrayList;
@@ -40,9 +41,14 @@ public class DescriptionCommand extends Command {
     protected boolean isValidParameters() {
         logger.log(Level.INFO, "Entering check for parameters in description command.");
         return parameters.size() == REQUIRED_PARAMETERS.length
-            && parameters.containsKey(REQUIRED_PARAMETERS[0]);
+                && parameters.containsKey(REQUIRED_PARAMETERS[0]);
     }
 
+
+    @Override
+    public String getCommandType() {
+        return "internship";
+    }
     /**
      * Executes the description command.
      *
@@ -50,7 +56,7 @@ public class DescriptionCommand extends Command {
      * @return CommandResult object containing the result of the command execution.
      */
     @Override
-    public CommandResult execute(InternshipList internships) {
+    public CommandResult execute(InternshipList internships, UserProfile user) {
         logger.log(Level.INFO, "Executing description command.");
         CommandResult result;
         List<String> feedback = new ArrayList<>();

@@ -30,13 +30,13 @@ public class Interview {
                      String interviewType) {
         if (interviewDate == null || interviewStartTime == null || interviewEndTime == null || interviewType == null) {
             throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS,
-                "/date, /start, /end or /type"));
+                    "/date, /start, /end or /type"));
         }
 
         if (interviewDate.isBlank() || interviewStartTime.isBlank() || interviewEndTime.isBlank() ||
-            interviewType.isBlank()) {
+                interviewType.isBlank()) {
             throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS,
-                "/date, /start, /end or /type"));
+                    "/date, /start, /end or /type"));
         }
 
         this.interviewDate = DateTimeParser.parseDateInput(interviewDate);
@@ -51,13 +51,13 @@ public class Interview {
                      String interviewerEmail, String notes) {
         if (interviewDate == null || interviewStartTime == null || interviewEndTime == null || interviewType == null) {
             throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS,
-                "/date, /start, /end or /type"));
+                    "/date, /start, /end or /type"));
         }
 
         if (interviewDate.isBlank() || interviewStartTime.isBlank() || interviewEndTime.isBlank() ||
-            interviewType.isBlank()) {
+                interviewType.isBlank()) {
             throw new IllegalArgumentException(String.format(MISSING_REQUIRED_PARAMETERS,
-                "/date, /start, /end or /type"));
+                    "/date, /start, /end or /type"));
         }
 
         this.interviewDate = DateTimeParser.parseDateInput(interviewDate);
@@ -79,9 +79,9 @@ public class Interview {
     @Override
     public String toString() {
         String interviewString = "    Interview Date: " + interviewDate +
-            ", Start Time: " + interviewStartTime +
-            ", End Time: " + interviewEndTime +
-            ", Round Name: " + interviewType;
+                ", Start Time: " + interviewStartTime +
+                ", End Time: " + interviewEndTime +
+                ", Round Name: " + interviewType;
         if (interviewerEmail != null) {
             interviewString += ", Interviewer Email: " + interviewerEmail;
         }
@@ -201,5 +201,21 @@ public class Interview {
 
     public void setRoundCounter(int roundCounter) {
         this.roundCounter += roundCounter;
+    }
+
+    public void setNextRounds(ArrayList<Interview> nextRounds) {
+        this.nextRounds = nextRounds;
+    }
+
+    public LocalDate getUnformattedInterviewDate() {
+        return interviewDate;
+    }
+
+    public LocalTime getUnformattedInterviewStartTime() {
+        return interviewStartTime;
+    }
+
+    public LocalTime getUnformattedInterviewEndTime() {
+        return interviewEndTime;
     }
 }
