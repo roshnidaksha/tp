@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.internsprint.model.userprofile.UserProfile;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -25,8 +26,8 @@ class FindCommandTest {
         SoftwareInternship internship1 = new SoftwareInternship("Facebook", "software Intern", "C++");
         HardwareInternship internship2 = new HardwareInternship("Google", "hardware Intern", "Java");
         internshipList = new InternshipList();
-        internshipList.addInternship(internship1);
-        internshipList.addInternship(internship2);
+        assertDoesNotThrow(() -> internshipList.addInternship(internship1));
+        assertDoesNotThrow(() -> internshipList.addInternship(internship2));
     }
 
     @Test

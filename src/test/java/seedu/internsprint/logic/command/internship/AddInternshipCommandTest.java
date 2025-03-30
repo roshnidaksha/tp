@@ -13,9 +13,11 @@ import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.internsprint.util.InternSprintExceptionMessages.DUPLICATE_INTERNSHIP;
 
 class AddInternshipCommandTest {
 
@@ -46,11 +48,11 @@ class AddInternshipCommandTest {
         InternshipList internships = new InternshipList();
         UserProfile user = new UserProfile();
         Internship internship = new SoftwareInternship("Google", "Software Engineer", "Java, Python");
-        internships.addInternship(internship);
+        assertDoesNotThrow(() -> internships.addInternship(internship));
 
         CommandResult result = addCommand.execute(internships, user);
 
         assertFalse(result.isSuccessful());
-        assertEquals(List.of(InternSprintMessages.MESSAGE_DUPLICATE_INTERNSHIP), result.getFeedbackToUser());
+        assertEquals(List.of(DUPLICATE_INTERNSHIP), result.getFeedbackToUser());
     }
 }
