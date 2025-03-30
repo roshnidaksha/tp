@@ -14,7 +14,7 @@ public class InternSprintLogger {
     private static final String FILE_PATH = "./log/InternSprint.log";
     private static boolean isConfigured = false;
 
-    public static void setUpLogger() {
+    private static void setUpLogger() {
         if (isConfigured) {
             return;
         }
