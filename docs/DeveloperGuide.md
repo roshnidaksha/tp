@@ -111,9 +111,49 @@ Insert command class diagram here
 
 ### Model Component
 
-The Model component is responsible for storing and managing the data of the application.
+The **Model** component is responsible for storing and managing and providing access to all the data used by the 
+InternSprint . It represents the internal state of the application and is updated based on commands entered by the user.
 
-{Explain in better detail}
+---
+
+#### ⚙️ Responsibilities
+- Store internship information (company name, role, description, etc.)
+- Support three internship types: Software, Hardware and General.
+- Store and manage interviews (including multiple rounds per internship)
+- Handle user information and goals via the `UserProfile`
+
+---
+#### 📦 Package Structure
+
+```
+model
+├── internship
+│   ├── Interview.java          # Represents a single interview (including optional rounds)
+│   ├── InterviewEntry.java     # Wrapper class pairing an Interview with its Internship
+│   ├── GeneralInternship.java  # Internship subclass for general roles
+│   ├── HardwareInternship.java # Internship subclass for hardware roles
+│   ├── SoftwareInternship.java # Internship subclass for software roles
+│   ├── Internship.java         # Abstract class defining an internship's structure
+│   └── InternshipList.java     # Contains and manages the internship collection
+└── userprofile
+    └── UserProfile.java        # Stores user preferences (companies, roles, goals, etc.)
+```
+---
+
+#### 🧱 Key Classes and Their Roles
+
+| Class                                 | Role                                                              |
+|---------------------------------------|-------------------------------------------------------------------|
+| `Internship`                          | Abstract base class for internships                               |
+| `General/Software/HardwareInternship` | Specific implementations depending on type                        |
+| `InternshipList`                      | Stores internships in a HashMap by category (`software`, etc.)    |
+| `Interview`                           | Represents one interview round, with optional next rounds         |
+| `InterviewEntry`                      | A wrapper for pairing an `Interview` with its parent `Internship` |
+| `UserProfile`                         | Stores user preferences for use across the application            |
+
+---
+
+
 
 ### Storage Component
 
