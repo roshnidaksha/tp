@@ -139,8 +139,8 @@ public class Interview {
         }
         if (round != null) {
             this.nextRounds.add(round);
+            roundCounter++;
         }
-        roundCounter++;
     }
 
     public String getInterviewDate() {
@@ -189,6 +189,10 @@ public class Interview {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public ArrayList<Interview> getNextRounds() {
+        return nextRounds;
     }
 
     public int getRoundCounter() {
