@@ -120,8 +120,8 @@ public class Interview {
     public void addInterviewRound(Interview round) {
         if (round != null) {
             this.nextRounds.add(round);
+            roundCounter++;
         }
-        roundCounter++;
     }
 
     public String getInterviewDate() {
