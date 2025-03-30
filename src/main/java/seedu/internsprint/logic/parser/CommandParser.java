@@ -17,6 +17,12 @@ import seedu.internsprint.logic.command.Command;
 import seedu.internsprint.model.internship.Internship;
 import seedu.internsprint.model.internship.InternshipList;
 import seedu.internsprint.logic.command.internship.FindCommand;
+import seedu.internsprint.logic.command.user.ProjectGeneralCommand;
+import seedu.internsprint.logic.command.user.ProjectHardwareCommand;
+import seedu.internsprint.logic.command.user.ProjectSoftwareCommand;
+import seedu.internsprint.logic.command.user.ViewHardwareProjectsCommand;
+import seedu.internsprint.logic.command.user.ViewSoftwareProjectsCommand;
+import seedu.internsprint.logic.command.user.ViewGeneralProjectsCommand;
 
 import seedu.internsprint.util.InternSprintLogger;
 
@@ -97,8 +103,26 @@ public class CommandParser {
         case "my":
             command = new UserProfileCommand();
             break;
-        case "view":
+        case "view user":
             command = new ViewUserCommand();
+            break;
+        case "project general":
+            command = new ProjectGeneralCommand();
+            break;
+        case "view general":
+            command = new ViewGeneralProjectsCommand();
+            break;
+        case "view software":
+            command = new ViewSoftwareProjectsCommand();
+            break;
+        case "view hardware":
+            command = new ViewHardwareProjectsCommand();
+            break;
+        case "project software":
+            command = new ProjectSoftwareCommand();
+            break;
+        case "project hardware":
+            command = new ProjectHardwareCommand();
             break;
         default:
             throw new IllegalArgumentException(String.format(INVALID_COMMAND_TYPE, commandType));
@@ -114,7 +138,9 @@ public class CommandParser {
      * @return Array containing the command type and the parameters.
      */
     private static String[] splitCommandTypeAndParams(String userInput) {
-        String[] flagCommands = {"add software", "add hardware", "add general", "edit","my"};
+        String[] flagCommands = {"add software", "add hardware", "add general", "edit", "my", "project general",
+            "project software", "project hardware", "view software", "view hardware", "view general",
+            "view user"};
         for (String command : flagCommands) {
             if (userInput.startsWith(command)) {
                 return new String[]{command, userInput.substring(command.length()).trim()};
@@ -130,7 +156,7 @@ public class CommandParser {
     /**
      * Parses the key-value pairs in the parameters string and sets them in the Command object.
      *
-     * @param params Parameters string.
+     * @param params  Parameters string.
      * @param command Command object.
      */
     protected static void parseKeyValuePairs(String params, Command command) {
@@ -174,20 +200,21 @@ public class CommandParser {
 
     /**
      * Splits the input string from the user into individual words for user profile class
+     *
      * @param input string in key-value pair to be split into words
      * @return Array list of individual words in a string
      */
     public static ArrayList<String> splitToWords(String input) {
         return Arrays.stream(input.split("\\s*,\\s*"))
-                .map(String::trim)
-                .filter(s -> !s.isEmpty())
-                .collect(Collectors.toCollection(ArrayList::new));
+            .map(String::trim)
+            .filter(s -> !s.isEmpty())
+            .collect(Collectors.toCollection(ArrayList::new));
     }
 
     /**
      * Validates the index input by the user.
      *
-     * @param index Index input by the user.
+     * @param index       Index input by the user.
      * @param internships InternshipList object.
      * @return Array containing the type and index of the internship.
      */
