@@ -1,5 +1,6 @@
 package seedu.internsprint.storage;
 
+import seedu.internsprint.exceptions.DuplicateEntryException;
 import seedu.internsprint.logic.command.CommandResult;
 import seedu.internsprint.model.internship.GeneralInternship;
 import seedu.internsprint.model.internship.HardwareInternship;
@@ -164,18 +165,22 @@ public class StorageHandler {
      * @param internshipJson JSON object representing the internship.
      */
     private static void addInternshipToList(InternshipList internships, JSONObject internshipJson) {
-        switch (internshipJson.getString("type")) {
-        case "general":
-            internships.addInternship(GeneralInternship.fromJson(internshipJson));
-            break;
-        case "software":
-            internships.addInternship(SoftwareInternship.fromJson(internshipJson));
-            break;
-        case "hardware":
-            internships.addInternship(HardwareInternship.fromJson(internshipJson));
-            break;
-        default:
-            break;
+        try {
+            switch (internshipJson.getString("type")) {
+            case "general":
+                internships.addInternship(GeneralInternship.fromJson(internshipJson));
+                break;
+            case "software":
+                internships.addInternship(SoftwareInternship.fromJson(internshipJson));
+                break;
+            case "hardware":
+                internships.addInternship(HardwareInternship.fromJson(internshipJson));
+                break;
+            default:
+                break;
+            }
+        } catch (DuplicateEntryException e) {
+            throw new RuntimeException(e.getMessage() + "\n" + "Please check the file for duplicate entries");
         }
     }
 }

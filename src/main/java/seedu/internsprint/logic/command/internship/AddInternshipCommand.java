@@ -1,5 +1,6 @@
 package seedu.internsprint.logic.command.internship;
 
+import seedu.internsprint.exceptions.DuplicateEntryException;
 import seedu.internsprint.logic.command.Command;
 import seedu.internsprint.logic.command.CommandResult;
 import seedu.internsprint.model.internship.Internship;
@@ -14,7 +15,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static seedu.internsprint.util.InternSprintMessages.ADD_MESSAGE_SUCCESS;
-import static seedu.internsprint.util.InternSprintMessages.MESSAGE_DUPLICATE_INTERNSHIP;
 import static seedu.internsprint.util.InternSprintMessages.LIST_COUNT_MESSAGE;
 
 /**
@@ -79,26 +79,13 @@ public abstract class AddInternshipCommand extends Command {
         Internship toAdd;
         toAdd = createInternship();
 
-        if (internships.contains(toAdd)) {
-            result = new CommandResult(MESSAGE_DUPLICATE_INTERNSHIP);
-            result.setSuccessful(false);
-            return result;
-        }
-        assert !internships.contains(toAdd) : "Internship should not be present in the list";
-
         List<String> feedback = new ArrayList<>();
 
-        internships.addInternship(toAdd);
-        assert internships.contains(toAdd) : "Internship should be present in the list";
-
-        feedback.add(ADD_MESSAGE_SUCCESS);
-        feedback.add(toAdd.toString());
-        feedback.add(String.format(LIST_COUNT_MESSAGE, internships.getInternshipCount()));
-
         try {
+            internships.addInternship(toAdd);
             internships.saveInternships();
             //feedback.add(InternSprintMessages.SAVE_SUCCESS_MESSAGE);
-        } catch (Exception e) {
+        } catch (RuntimeException | DuplicateEntryException e) {
             logger.log(Level.WARNING, "Error saving internships after adding an internship");
             feedback.add(e.getMessage());
             result = new CommandResult(feedback);
@@ -107,6 +94,9 @@ public abstract class AddInternshipCommand extends Command {
         }
 
         logger.log(Level.INFO, "Internship added successfully and saved to file");
+        feedback.add(ADD_MESSAGE_SUCCESS);
+        feedback.add(toAdd.toString());
+        feedback.add(String.format(LIST_COUNT_MESSAGE, internships.getInternshipCount()));
         result = new CommandResult(feedback);
         result.setSuccessful(true);
         return result;

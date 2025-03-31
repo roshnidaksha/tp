@@ -11,6 +11,7 @@ import seedu.internsprint.model.userprofile.UserProfile;
 import java.util.HashMap;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -41,8 +42,8 @@ public class ListCommandTest {
     void execute_listTwoInternship_returnsCorrectCommand() {
         ListCommand listcommand = new ListCommand();
         InternshipList internshipList = new InternshipList();
-        internshipList.addInternship(internship1);
-        internshipList.addInternship(internship2);
+        assertDoesNotThrow(() -> internshipList.addInternship(internship1));
+        assertDoesNotThrow(() -> internshipList.addInternship(internship2));
 
         CommandResult result = listcommand.execute(internshipList, new UserProfile());
         assertTrue(result.isSuccessful());
@@ -65,7 +66,7 @@ public class ListCommandTest {
     void execute_onlyHardwareInternshipPresent_outputsCorrectlyIncludingEmptyCategories() {
         ListCommand listcommand = new ListCommand();
         InternshipList internshipList = new InternshipList();
-        internshipList.addInternship(internship3);
+        assertDoesNotThrow(() -> internshipList.addInternship(internship3));
         CommandResult result = listcommand.execute(internshipList, userProfile);
         List<String> feedback = result.getFeedbackToUser();
 

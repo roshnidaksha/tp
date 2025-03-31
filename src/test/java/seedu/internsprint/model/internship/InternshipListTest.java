@@ -6,6 +6,7 @@ import java.util.HashMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -27,17 +28,17 @@ class InternshipListTest {
 
     @Test
     void addInternship() {
-        internshipList.addInternship(generalInternship);
+        assertDoesNotThrow(() -> internshipList.addInternship(generalInternship));
         assertEquals(1, internshipList.getInternshipCount());
-        internshipList.addInternship(softwareInternship);
+        assertDoesNotThrow(() -> internshipList.addInternship(softwareInternship));
         assertEquals(2, internshipList.getInternshipCount());
-        internshipList.addInternship(hardwareInternship);
+        assertDoesNotThrow(() -> internshipList.addInternship(hardwareInternship));
         assertEquals(3, internshipList.getInternshipCount());
     }
 
     @Test
     void contains_internshipAlreadyInList_returnsTrue() {
-        internshipList.addInternship(generalInternship);
+        assertDoesNotThrow(() -> internshipList.addInternship(generalInternship));
         assertTrue(internshipList.contains(generalInternship));
         assertFalse(internshipList.contains(softwareInternship));
         assertFalse(internshipList.contains(hardwareInternship));
@@ -45,9 +46,9 @@ class InternshipListTest {
 
     @Test
     void getInternshipMap() {
-        internshipList.addInternship(generalInternship);
-        internshipList.addInternship(softwareInternship);
-        internshipList.addInternship(hardwareInternship);
+        assertDoesNotThrow(() -> internshipList.addInternship(generalInternship));
+        assertDoesNotThrow(() -> internshipList.addInternship(softwareInternship));
+        assertDoesNotThrow(() -> internshipList.addInternship(hardwareInternship));
         HashMap<String, ArrayList<Internship>> internshipMap = internshipList.getInternshipMap();
 
         HashMap<String, ArrayList<Internship>> expectedMap = new HashMap<>();
