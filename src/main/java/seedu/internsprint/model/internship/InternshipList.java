@@ -1,12 +1,15 @@
 package seedu.internsprint.model.internship;
 
 import seedu.internsprint.exceptions.DuplicateEntryException;
+import seedu.internsprint.storage.InternshipStorageHandler;
 import seedu.internsprint.storage.StorageManager;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.DUPLICATE_INTERNSHIP;
+import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_WRITE_FILE;
 
 /**
  * Represents the list of internships.
@@ -64,8 +67,12 @@ public class InternshipList {
     /**
      * Saves the internships to the storage.
      */
-    public void saveInternships() {
-        storageManager.saveInternshipData(this);
+    public void saveInternships() throws IOException {
+        try {
+            storageManager.saveInternshipData(this);
+        } catch (IOException e) {
+            throw new IOException(String.format(UNABLE_TO_WRITE_FILE, InternshipStorageHandler.FILE_PATH));
+        }
     }
 
     public HashMap<String, ArrayList<Internship>> getInternshipMap() {

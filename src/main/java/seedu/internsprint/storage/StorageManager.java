@@ -3,6 +3,8 @@ package seedu.internsprint.storage;
 import seedu.internsprint.logic.command.CommandResult;
 import seedu.internsprint.model.internship.InternshipList;
 
+import java.io.IOException;
+
 /**
  * Manages the storage of data in the application.
  * <p>
@@ -30,7 +32,7 @@ public class StorageManager {
 
     // ================= Internship methods =================
 
-    public void saveInternshipData(InternshipList internships) {
+    public void saveInternshipData(InternshipList internships) throws IOException {
         internshipStorageHandler.save(internships);
     }
 

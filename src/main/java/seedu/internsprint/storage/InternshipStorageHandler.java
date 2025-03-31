@@ -25,7 +25,6 @@ import java.util.logging.Logger;
 import static seedu.internsprint.util.InternSprintExceptionMessages.FILE_ALREADY_EXISTS;
 import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_CREATE_DIRECTORY;
 import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_CREATE_FILE;
-import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_WRITE_FILE;
 import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_READ_FILE;
 
 import static seedu.internsprint.util.InternSprintMessages.LOADING_DATA_SUCCESS;
@@ -35,7 +34,7 @@ import static seedu.internsprint.util.InternSprintMessages.LOADING_DATA_FIRST_TI
  * Handles the storage of internship data.
  */
 public class InternshipStorageHandler implements Storage<InternshipList> {
-    private static final String FILE_PATH = Paths.get("data", "internships.txt").toString();
+    public static final String FILE_PATH = Paths.get("data", "internships.txt").toString();
     private static File file;
     private static final Logger logger = InternSprintLogger.getLogger();
 
@@ -73,7 +72,7 @@ public class InternshipStorageHandler implements Storage<InternshipList> {
      *
      * @param internships List of internships to be saved.
      */
-    public void save(InternshipList internships) {
+    public void save(InternshipList internships) throws IOException {
         logger.log(Level.INFO, "Saving Internships to file ...");
         JSONArray jsonArray = new JSONArray();
         internships.getInternshipMap().forEach((type, list) -> {
@@ -85,15 +84,11 @@ public class InternshipStorageHandler implements Storage<InternshipList> {
         }
         assert file.exists() : "File should exist at this point";
 
-        try (FileWriter fileWriter = new FileWriter(file)) {
-            fileWriter.write(jsonArray.toString(4));
-            logger.log(Level.INFO, String.format("Successfully saved %s Internships to file %s",
-                jsonArray.length(), file.getAbsolutePath()));
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, String.format("Unable to save Internships to file %s", file.getAbsolutePath()));
-            throw new RuntimeException(String.format(UNABLE_TO_WRITE_FILE,
-                    file.getAbsolutePath()));
-        }
+        FileWriter fileWriter = new FileWriter(file);
+        fileWriter.write(jsonArray.toString(4));
+        logger.log(Level.INFO, String.format("Successfully saved %s Internships to file %s",
+            jsonArray.length(), file.getAbsolutePath()));
+
     }
 
     /**
@@ -111,7 +106,7 @@ public class InternshipStorageHandler implements Storage<InternshipList> {
             result.setSuccessful(true);
             return result;
         }
-        assert file.length()!=0 : "File should not be an empty file at this point";
+        assert file.length() != 0 : "File should not be an empty file at this point";
 
         StringBuilder jsonData = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {

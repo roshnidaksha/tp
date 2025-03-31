@@ -12,6 +12,7 @@ import seedu.internsprint.model.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintLogger;
 import seedu.internsprint.util.InternSprintMessages;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -118,12 +119,13 @@ public class EditCommand extends Command {
         try {
             internships.saveInternships();
             feedback.add(InternSprintMessages.SAVE_SUCCESS_MESSAGE);
-        } catch (Exception e) {
+        } catch (IOException e) {
             feedback.add(e.getMessage());
             result = new CommandResult(feedback);
             result.setSuccessful(false);
             return result;
         }
+
         logger.log(Level.INFO, "Finished processing for exit command");
         assert foundInternship != null : "Internship should not be a null value.";
         feedback.add(EDIT_MESSAGE_SUCCESS);
