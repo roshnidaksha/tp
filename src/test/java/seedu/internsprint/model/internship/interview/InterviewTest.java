@@ -1,11 +1,14 @@
 package seedu.internsprint.model.internship.interview;
 
+import seedu.internsprint.exceptions.DuplicateEntryException;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -78,8 +81,8 @@ public class InterviewTest {
                 "CEO Test");
         Interview round3 = new Interview("2025-06-06", "09:00", "10:00",
                 "Final");
-        interviewBasic.addInterviewRound(round2);
-        interviewBasic.addInterviewRound(round3);
+        assertDoesNotThrow(() -> interviewBasic.addInterviewRound(round2));
+        assertDoesNotThrow(() -> interviewBasic.addInterviewRound(round3));
 
         assertEquals(2, interviewBasic.getNextRounds().size());
         assertEquals("Final", interviewBasic.getNextRounds().get(1).getInterviewType());
@@ -88,8 +91,25 @@ public class InterviewTest {
     @Test
     void addInterviewRound_nullInterview_shouldNotAddToList() {
         int originalSize = interviewBasic.getNextRounds().size();
-        interviewBasic.addInterviewRound(null);
+        assertDoesNotThrow(() -> interviewBasic.addInterviewRound(null));
         assertEquals(originalSize, interviewBasic.getNextRounds().size());
+    }
+
+    @Test
+    void addInterviewRound_provideDuplicateInterview_throwsDuplicateEntryException() {
+        Interview mainInterview = new Interview("2023-10-01", "10:00", "11:00", "Technical");
+        Interview duplicateRound = new Interview("2023-10-01", "10:00", "11:00", "Verbal");
+
+        assertThrows(DuplicateEntryException.class, () -> mainInterview.addInterviewRound(duplicateRound));
+    }
+
+    @Test
+    void addInterviewRound_provideDuplicateRound_throwsDuplicateEntryException() {
+        Interview mainInterview = new Interview("2023-10-01", "10:00", "11:00", "Technical");
+        Interview firstRound = new Interview("2023-10-01", "12:00", "13:00", "Verbal");
+        Interview duplicateRound = new Interview("2023-10-01", "12:00", "13:00", "Verbal");
+        assertDoesNotThrow(() -> mainInterview.addInterviewRound(firstRound));
+        assertThrows(DuplicateEntryException.class, () -> mainInterview.addInterviewRound(duplicateRound));
     }
 
     @Test
@@ -112,5 +132,19 @@ public class InterviewTest {
         assertTrue(result.contains("Technical"));
         assertFalse(result.contains("Email"));
         assertFalse(result.contains("Notes"));
+    }
+
+    @Test
+    void testEquals_provideMatchingMainInterview_returnsTrue() {
+        Interview interview1 = new Interview("2023-10-01", "10:00", "11:00", "Technical");
+        Interview interview2 = new Interview("2023-10-01", "10:00", "11:00", "Verbal");
+        assertTrue(interview1.equals(interview2));
+    }
+
+    @Test
+    void testEquals_provideDifferentMainInterview_returnsFalse() {
+        Interview interview1 = new Interview("2023-10-01", "10:00", "11:00", "Technical");
+        Interview interview2 = new Interview("2023-10-02", "10:00", "11:00", "Technical");
+        assertFalse(interview1.equals(interview2));
     }
 }
