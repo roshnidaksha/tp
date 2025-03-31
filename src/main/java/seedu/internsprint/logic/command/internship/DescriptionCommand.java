@@ -9,6 +9,7 @@ import seedu.internsprint.model.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintLogger;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
@@ -60,6 +61,9 @@ public class DescriptionCommand extends Command {
     @Override
     public CommandResult execute(InternshipList internships, UserProfile user) {
         logger.log(Level.INFO, "Executing description command.");
+        assert internships != null: "internships is null.";
+        assert user != null: "user is null.";
+
         CommandResult result;
         List<String> feedback = new ArrayList<>();
 
@@ -85,6 +89,10 @@ public class DescriptionCommand extends Command {
 
         int index = Integer.parseInt(validIndex[1]);
         String internshipType = validIndex[0];
+        List<String> validTypes = Arrays.asList("software", "general", "hardware");
+        assert validTypes.contains(internshipType) : "Invalid internship type: " + internshipType;
+        assert index >= 1 && index <= internships.getInternshipCount()
+                : "Index " + index + " is out of range for internships";
 
         HashMap<String, ArrayList<Internship>> internshipMap = internships.getInternshipMap();
 
