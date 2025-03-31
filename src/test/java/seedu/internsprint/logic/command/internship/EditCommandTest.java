@@ -11,6 +11,7 @@ import seedu.internsprint.model.userprofile.UserProfile;
 
 import java.util.HashMap;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -69,7 +70,7 @@ class EditCommandTest {
         editCommand.setParameters(parameters);
         SoftwareInternship internship = new SoftwareInternship("Facebook", "Software Engineering", "SWE");
         InternshipList internshipList = new InternshipList();
-        internshipList.addInternship(internship);
+        assertDoesNotThrow(() -> internshipList.addInternship(internship));
         editCommand.execute(internshipList, new UserProfile());
         assertEquals("Java", internship.getCompanyName());
         assertEquals("Automation Testing Intern", internship.getRole());
@@ -86,7 +87,7 @@ class EditCommandTest {
         editCommand.setParameters(parameters);
         GeneralInternship internship = new GeneralInternship("Facebook", "Tech Support", "IT");
         InternshipList internshipList = new InternshipList();
-        internshipList.addInternship(internship);
+        assertDoesNotThrow(() -> internshipList.addInternship(internship));
         editCommand.execute(internshipList, new UserProfile());
         assertEquals("UBS", internship.getCompanyName());
         assertEquals("IT Intern", internship.getRole());
@@ -103,7 +104,7 @@ class EditCommandTest {
         editCommand.setParameters(parameters);
         HardwareInternship internship = new HardwareInternship("Facebook", "Automation Expert", "C");
         InternshipList internshipList = new InternshipList();
-        internshipList.addInternship(internship);
+        assertDoesNotThrow(() -> internshipList.addInternship(internship));
         editCommand.execute(internshipList, new UserProfile());
         assertEquals("Xilinx", internship.getCompanyName());
         assertEquals("Engineering Intern", internship.getRole());
@@ -120,8 +121,8 @@ class EditCommandTest {
         SoftwareInternship internship = new SoftwareInternship("Facebook", "Automation Intern", "C");
         HardwareInternship internship2 = new HardwareInternship("AMD", "Engineer", "Arduino");
         InternshipList internshipList = new InternshipList();
-        internshipList.addInternship(internship);
-        internshipList.addInternship(internship2);
+        assertDoesNotThrow(() -> internshipList.addInternship(internship));
+        assertDoesNotThrow(() -> internshipList.addInternship(internship2));
         editCommand.execute(internshipList, new UserProfile());
         assertEquals("Good knowledge of microcontrollers", internship2.getEligibility());
         assertEquals("AMD", internship2.getCompanyName());
@@ -137,7 +138,7 @@ class EditCommandTest {
         editCommand.setParameters(parameters);
         SoftwareInternship internship = new SoftwareInternship("Facebook", "Automation Intern", "C");
         InternshipList internshipList = new InternshipList();
-        internshipList.addInternship(internship);
+        assertDoesNotThrow(() -> internshipList.addInternship(internship));
         editCommand.execute(internshipList, new UserProfile());
         assertEquals("Java", internship.getCompanyName());
         assertEquals("Automation Intern", internship.getRole());
@@ -156,8 +157,8 @@ class EditCommandTest {
         SoftwareInternship internship = new SoftwareInternship("Facebook", "Automation Intern", "C");
         SoftwareInternship internship2 = new SoftwareInternship("Google", "SDE Intern", "C");
         InternshipList internshipList = new InternshipList();
-        internshipList.addInternship(internship);
-        internshipList.addInternship(internship2);
+        assertDoesNotThrow(() -> internshipList.addInternship(internship));
+        assertDoesNotThrow(() -> internshipList.addInternship(internship2));
         CommandResult result = editCommand.execute(internshipList, new UserProfile());
         assertFalse(result.isSuccessful());
         assertEquals(MESSAGE_DUPLICATE_INTERNSHIP, result.getFeedbackToUser().get(0));
@@ -188,7 +189,7 @@ class EditCommandTest {
         SoftwareInternship internship = new SoftwareInternship("Facebook", "Software Engineering",
                 "SWE");
         InternshipList internshipList = new InternshipList();
-        internshipList.addInternship(internship);
+        assertDoesNotThrow(() -> internshipList.addInternship(internship));
         editCommand.execute(internshipList, new UserProfile());
         assertEquals("Year 3 students", internship.getEligibility());
         assertEquals("Should be fast learner", internship.getExpectations());

@@ -13,6 +13,7 @@ import seedu.internsprint.util.InternSprintExceptionMessages;
 import java.util.HashMap;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -54,9 +55,9 @@ public class DescriptionCommandTest {
         SoftwareInternship internship3 = new SoftwareInternship("Google", "Software Engineer",
                 "Java");
         InternshipList internshipList = new InternshipList();
-        internshipList.addInternship(internship1);
-        internshipList.addInternship(internship2);
-        internshipList.addInternship(internship3);
+        assertDoesNotThrow(() -> internshipList.addInternship(internship1));
+        assertDoesNotThrow(() -> internshipList.addInternship(internship2));
+        assertDoesNotThrow(() -> internshipList.addInternship(internship3));
 
         CommandResult commandResult = descriptioncommand.execute(internshipList,new UserProfile());
         assertTrue(commandResult.isSuccessful());

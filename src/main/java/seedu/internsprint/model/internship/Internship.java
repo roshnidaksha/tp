@@ -1,5 +1,6 @@
 package seedu.internsprint.model.internship;
 
+import seedu.internsprint.exceptions.DuplicateEntryException;
 import seedu.internsprint.model.internship.interview.Interview;
 
 import java.util.ArrayList;
@@ -61,7 +62,7 @@ public abstract class Internship {
      *
      * @param interview Interview to add.
      */
-    public void addInterview(Interview interview) {
+    public void addInterview(Interview interview) throws DuplicateEntryException {
         if (this.interview == null) {
             this.interview = interview;
         } else {
