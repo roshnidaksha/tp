@@ -41,7 +41,7 @@ public class SortInterviewCommand extends Command {
     @Override
     public CommandResult execute(InternshipList internships, UserProfile user) {
         logger.log(Level.INFO, "Executing sortInterviews command");
-        assert internships != null: "Internship list cannot be null";
+        assert internships != null : "Internship list cannot be null";
         assert user != null : "UserProfile cannot be null";
 
         List<String> feedback = new ArrayList<>();
@@ -52,7 +52,7 @@ public class SortInterviewCommand extends Command {
             logger.log(Level.WARNING, "There are invalid parameters so error result is output to user.");
             feedback.add(SORT_INTERVIEWS_INVALID_PARAMS);
             feedback.add(MESSAGE_USAGE);
-            result =  new CommandResult(feedback);
+            result = new CommandResult(feedback);
             result.setSuccessful(false);
             return result;
         }
@@ -73,8 +73,8 @@ public class SortInterviewCommand extends Command {
                 Interview interview = entry.getInterview();
                 Internship internship = entry.getInternship();
 
-                assert internship != null: "Internship cannot be null";
-                assert interview != null: "Interview cannot be null";
+                assert internship != null : "Internship cannot be null";
+                assert interview != null : "Interview cannot be null";
 
                 feedback.add((i + 1) + ". " + internship.getCompanyName() + " - " + internship.getRole());
                 feedback.add("    Date: " + interview.getUnformattedInterviewDate());
@@ -117,9 +117,9 @@ public class SortInterviewCommand extends Command {
     }
 
     private void collectNextRounds(Internship internship, List<Interview> rounds, List<InterviewEntry> result) {
-        logger.log(Level.FINE, "Entering collectNextRounds with " + rounds.size() + "rounds" );
+        logger.log(Level.FINE, "Entering collectNextRounds with " + rounds.size() + "rounds");
         for (Interview round : rounds) {
-            assert round != null: "Interview round cannot be null";
+            assert round != null : "Interview round cannot be null";
             result.add(new InterviewEntry(internship, round));
             collectNextRounds(internship, round.getNextRounds(), result);
         }

@@ -20,16 +20,22 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.DESC_UNABLE_
 import static seedu.internsprint.util.InternSprintMessages.DESC_MESSAGE_SUCCESS;
 
 public class DescriptionCommand extends Command {
-    /** The command word to trigger the description command. */
+    /**
+     * The command word to trigger the description command.
+     */
     public static final String COMMAND_WORD = "desc";
 
-    /** Usage instructions of the description command for users **/
+    /**
+     * Usage instructions of the description command for users
+     **/
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Shows the description of a particular internship.\n"
             + "    Parameter: " + "/index INDEX_OF_INTERNSHIP\n"
             + "    Example: " + COMMAND_WORD + " /index 1 ";
 
-    /** Required parameter keys for the description command. */
+    /**
+     * Required parameter keys for the description command.
+     */
     public static final String[] REQUIRED_PARAMETERS = {"/index"};
     private static final Logger logger = InternSprintLogger.getLogger();
 
@@ -52,6 +58,7 @@ public class DescriptionCommand extends Command {
     public String getCommandType() {
         return "internship";
     }
+
     /**
      * Executes the description command.
      *
@@ -61,8 +68,8 @@ public class DescriptionCommand extends Command {
     @Override
     public CommandResult execute(InternshipList internships, UserProfile user) {
         logger.log(Level.INFO, "Executing description command.");
-        assert internships != null: "internships is null.";
-        assert user != null: "user is null.";
+        assert internships != null : "internships is null.";
+        assert user != null : "user is null.";
 
         CommandResult result;
         List<String> feedback = new ArrayList<>();
@@ -91,7 +98,7 @@ public class DescriptionCommand extends Command {
         String internshipType = validIndex[0];
         List<String> validTypes = Arrays.asList("software", "general", "hardware");
         assert validTypes.contains(internshipType) : "Invalid internship type: " + internshipType;
-        assert index >= 1 && index <= internships.getInternshipCount()
+        assert index >= 0 && index <= internships.getInternshipCount()
                 : "Index " + index + " is out of range for internships";
 
         HashMap<String, ArrayList<Internship>> internshipMap = internships.getInternshipMap();

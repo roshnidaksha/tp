@@ -17,10 +17,14 @@ import static seedu.internsprint.util.InternSprintMessages.LIST_MESSAGE_SUCCESS;
 import static seedu.internsprint.util.InternSprintMessages.NO_INTERNSHIPS_FOUND;
 
 public class ListCommand extends Command {
-    /** The command word that triggers the list command */
+    /**
+     * The command word that triggers the list command
+     */
     public static final String COMMAND_WORD = "list";
 
-    /** Usage instructions of the list command for users */
+    /**
+     * Usage instructions of the list command for users
+     */
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Lists every saved internship in your list, arranged "
             + "by categories\n"
             + "    Parameters: None\n"
@@ -60,7 +64,7 @@ public class ListCommand extends Command {
         List<String> feedback = new ArrayList<>();
         int count = 1;
 
-        if(!isValidParameters()) {
+        if (!isValidParameters()) {
             logger.log(Level.WARNING, "There are invalid parameters so error result is output to user.");
             feedback.add(LIST_INVALID_PARAMS);
             feedback.add(MESSAGE_USAGE);
