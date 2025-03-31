@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static seedu.internsprint.util.InternSprintExceptionMessages.LIST_INVALID_PARAMS;
 import static seedu.internsprint.util.InternSprintMessages.LIST_MESSAGE_SUCCESS;
 import static seedu.internsprint.util.InternSprintMessages.NO_INTERNSHIPS_FOUND;
 
@@ -51,26 +52,47 @@ public class ListCommand extends Command {
     @Override
     public CommandResult execute(InternshipList internshipList, UserProfile user) {
         logger.log(Level.INFO, "Executing list command");
+        assert internshipList != null : "InternshipList should not be null";
+        assert user != null : "UserProfile should not be null";
+        assert internshipList.getInternshipMap() != null : "InternshipMap should not be null";
+
         CommandResult result;
         List<String> feedback = new ArrayList<>();
-
         int count = 1;
+
+        if(!isValidParameters()) {
+            logger.log(Level.WARNING, "There are invalid parameters so error result is output to user.");
+            feedback.add(LIST_INVALID_PARAMS);
+            feedback.add(MESSAGE_USAGE);
+            result = new CommandResult(feedback);
+            result.setSuccessful(false);
+            return result;
+        }
+
         feedback.add(LIST_MESSAGE_SUCCESS);
 
         feedback.add("Software Internships:");
+        assert internshipList.getInternshipMap().containsKey("software") : "Internship map should contain key " +
+                "'software'";
         for (Internship everyInternship : internshipList.getInternshipMap().get("software")) {
+            assert everyInternship != null : "A software internship entry should not be null";
             feedback.add("  " + count + ". " + everyInternship.toString());
             count++;
         }
 
         feedback.add("Hardware Internships:");
+        assert internshipList.getInternshipMap().containsKey("hardware") : "Internship map should contain key " +
+                "'hardware'";
         for (Internship everyInternship : internshipList.getInternshipMap().get("hardware")) {
+            assert everyInternship != null : "A hardware internship entry should not be null";
             feedback.add("  " + count + ". " + everyInternship.toString());
             count++;
         }
 
         feedback.add("General Internships:");
+        assert internshipList.getInternshipMap().containsKey("general") : "Internship map should contain key 'general'";
         for (Internship everyInternship : internshipList.getInternshipMap().get("general")) {
+            assert everyInternship != null : "A general internship entry should not be null";
             feedback.add("  " + count + ". " + everyInternship.toString());
             count++;
         }
@@ -82,7 +104,7 @@ public class ListCommand extends Command {
             return result;
         }
 
-        logger.log(Level.INFO, "Internships listed successfully");
+        logger.log(Level.INFO, "List command executed successfully");
         result = new CommandResult(feedback);
         result.setSuccessful(true);
         return result;
