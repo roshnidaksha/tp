@@ -1,9 +1,12 @@
 package seedu.internsprint.model.internship;
 
+import seedu.internsprint.exceptions.DuplicateEntryException;
 import seedu.internsprint.storage.StorageHandler;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import static seedu.internsprint.util.InternSprintExceptionMessages.DUPLICATE_INTERNSHIP;
 
 /**
  * Represents the list of internships.
@@ -24,8 +27,11 @@ public class InternshipList {
      *
      * @param internship Internship to be added.
      */
-    public void addInternship(Internship internship) {
+    public void addInternship(Internship internship) throws DuplicateEntryException {
         String type = internship.getType();
+        if (internshipMap.get(type).contains(internship)) {
+            throw new DuplicateEntryException(DUPLICATE_INTERNSHIP);
+        }
         internshipMap.get(type).add(internship);
         internshipCount++;
         assert contains(internship) : "Internship should be in the list";
