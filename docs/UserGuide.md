@@ -1,5 +1,4 @@
 # InternSprint User Guide
-
 ## Introduction
 
 ***InternSprint is your Ultimate Internship Application Assistant!***
@@ -17,12 +16,12 @@ and easily tracking status of your applications.
 
 *With InternSprint, you’ll never lose track of an application again!*
 
+
 ## Table of Contents
 
 <!-- TOC -->
-
-* [Quick Start](#quick-start)
-* [Features](#features-)
+  * [Quick Start](#quick-start)
+  * [Features](#features-)
     * [Help: `help`](#help-help)
     * [Listing all internships: `list`](#listing-all-internships-list)
     * [Adding a general category of internship: `add general`](#adding-a-general-category-of-internship-add-general)
@@ -35,11 +34,11 @@ and easily tracking status of your applications.
     * [Adding interviews for internships: `interviewfor`](#adding-interviews-for-internships-interviewfor)
     * [Sorting all interviews added by date: `sortInterviews`](#sorting-all-interviews-added-by-date-sortinterviews)
     * [Exit `bye`](#exit-bye)
-* [Saving the data](#saving-the-data)
-* [Editing the data file](#editing-the-data-file)
-* [FAQ](#faq)
-* [Command Summary](#command-summary)
-
+  * [Saving the data](#saving-the-data)
+  * [Editing the data file](#editing-the-data-file)
+  * [Date and Time Formats](#date-and-time-formats)
+  * [FAQ](#faq)
+  * [Command Summary](#command-summary)
 <!-- TOC -->
 
 ## Quick Start
@@ -86,7 +85,6 @@ and easily tracking status of your applications.
 ## Features
 
 ### Help: `help`
-
 Allows users to view the usage of all the available commands, or the usage of a specific command.
 
 Format: `help` OR `help COMMAND`
@@ -104,11 +102,9 @@ Example of usage:
     Example: add general /c Google /r Human Resource /dept HR
 ------------------------------------------------------------------------------------------------------------------------
 ```
-
 ---
 
 ### Listing all internships: `list`
-
 Adds a new item to the list of todo items.
 
 Format: `list`
@@ -132,7 +128,6 @@ Example of usage:
 ---
 
 ### Adding a general category of internship: `add general`
-
 Allows users to add a new general internship to their list of internship applications.
 
 Basic Format: `add general /c COMPANY_NAME /r ROLE /dept DEPARTMENT`
@@ -165,7 +160,6 @@ Examples of usage:
 ---
 
 ### Adding a software category of internship: `add software`
-
 Allows users to add a new software internship to their list of internship applications.
 
 Basic Format: `add software /c COMPANY_NAME /r ROLE /tech TECHNOLOGIES`
@@ -198,7 +192,6 @@ Examples of usage:
 ---
 
 ### Adding a hardware category of internship: `add hardware`
-
 Allows users to add a new hardware internship to their list of internship applications.
 
 Basic Format: `add hardware /c COMPANY_NAME /r ROLE /hardtech HARDWARE_TECHNOLOGIES`
@@ -232,7 +225,6 @@ Examples of usage:
 ---
 
 ### Editing an internship: `edit`
-
 Allows users to add (job description, eligibility, and expectations) or modify (company name, role,tech and status)
 details for a specific internship application.
 
@@ -275,7 +267,6 @@ Example of usage:
 ---
 
 ### Deleting an internship: `delete`
-
 Allows users to delete an internship from the list of internship applications.
 
 Format: `delete /index INDEX_OF_INTERNSHIP`
@@ -292,11 +283,9 @@ Example of usage:
     Successfully deleted internship: Company: Mavericks, Role: Consultant, Dept: Technical Consultation
 ------------------------------------------------------------------------------------------------------------------------
 ```
-
 ---
 
 ### Viewing extended description of a specific internship: `desc`
-
 Allows users to view the description of an internship from the list of internship applications.
 
 Format: `desc /index INDEX_OF_INTERNSHIP`
@@ -318,7 +307,6 @@ Example of usage:
 ---
 
 ### Adding interviews for internships: `interviewfor`
-
 Allows users to add multiple rounds of interviews for each internship added.
 
 Basic Format: `interviewfor /index INDEX_OF_INTERNSHIP /date DATE /start START_TIME /end END_TIME /type TYPE`
@@ -347,7 +335,6 @@ Example of usage:
 ---
 
 ### Sorting all interviews added by date: `sortInterviews`
-
 Allows users to sort all rounds of interviews added across multiple internships by date.
 
 Format: `sortInterviews`
@@ -376,7 +363,9 @@ Example of usage:
 
 ### Exit `bye`
 
-Exits the program.
+Exits the program. A user can exit the program at any time by typing `bye` in the command line.
+If the first word of user input is `bye`, the program will terminate automatically without checking the rest of the
+inputs.
 
 ---
 
@@ -398,6 +387,21 @@ the
 data** and would require the data file to be deleted
 > and started again. Therefore, edit the data file only if you are confident that you can update it correctly.
 
+---
+
+## Date and Time Formats
+
+InternSprint uses `Natty` library to parse dates and times.
+Acceptable formats include but is not limited to the following:
+- 1st of January 2020
+- January 1st 2020
+- 1/1/2020
+
+Relative dates are also accepted:
+- next week
+- next month
+- tomorrow
+- next Friday
 
 ---
 
@@ -414,4 +418,15 @@ should be only one `internships.txt` in the location.
 ## Command Summary
 
 {Give a 'cheat sheet' of commands here once v2.0 goes out}
+
+| Command             | Format                                                                 |
+|---------------------|------------------------------------------------------------------------|
+| Internship Commands |
+| `add general`       | `add general /c COMPANY_NAME /r ROLE /dept DEPARTMENT`                 |
+| `add software`      | `add software /c COMPANY_NAME /r ROLE /tech TECHNOLOGIES`              |
+| `add hardware`      | `add hardware /c COMPANY_NAME /r ROLE /hardtech HARDWARE_TECHNOLOGIES` |
+| ...                 | ...                                                                    |
+| `find`              | `find [TYPE] [/c COMPANY_NAME] [\r ROLE]`                              |
+| `bye'               | `bye`                                                                  |
+| User Commands       |                                                                        |
 
