@@ -137,8 +137,8 @@ public class CommandParser {
      * @param userInput User input string.
      * @return Array containing the command type and the parameters.
      */
-    private static String[] splitCommandTypeAndParams(String userInput) {
-        String[] flagCommands = {"add software", "add hardware", "add general", "edit", "my", "project general",
+    protected static String[] splitCommandTypeAndParams(String userInput) {
+        String[] flagCommands = {"add software", "add hardware", "add general", "project general",
             "project software", "project hardware", "view software", "view hardware", "view general",
             "view user"};
         for (String command : flagCommands) {
