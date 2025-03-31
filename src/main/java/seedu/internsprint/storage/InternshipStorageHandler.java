@@ -6,6 +6,7 @@ import seedu.internsprint.model.internship.GeneralInternship;
 import seedu.internsprint.model.internship.HardwareInternship;
 import seedu.internsprint.model.internship.SoftwareInternship;
 import seedu.internsprint.model.internship.InternshipList;
+import seedu.internsprint.util.InternSprintLogger;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -31,21 +32,21 @@ import static seedu.internsprint.util.InternSprintMessages.LOADING_DATA_SUCCESS;
 import static seedu.internsprint.util.InternSprintMessages.LOADING_DATA_FIRST_TIME;
 
 /**
- * Handles the reading and writing of data to the file.
+ * Handles the storage of internship data.
  */
-public class StorageHandler {
+public class InternshipStorageHandler implements Storage<InternshipList> {
     private static final String FILE_PATH = Paths.get("data", "internships.txt").toString();
     private static File file;
-    private static Logger logger = Logger.getLogger(StorageHandler.class.getName());
+    private static final Logger logger = InternSprintLogger.getLogger();
 
-    public StorageHandler() {
+    public InternshipStorageHandler() {
         file = new File(FILE_PATH);
     }
 
     /**
      * Creates the file if it does not exist.
      */
-    public static void createFile() {
+    public void createFile() {
         try {
             if (file.getParentFile() != null && !file.getParentFile().exists()) {
                 if (!file.getParentFile().mkdirs()) {
@@ -72,7 +73,7 @@ public class StorageHandler {
      *
      * @param internships List of internships to be saved.
      */
-    public void saveInternships(InternshipList internships) {
+    public void save(InternshipList internships) {
         logger.log(Level.INFO, "Saving Internships to file ...");
         JSONArray jsonArray = new JSONArray();
         internships.getInternshipMap().forEach((type, list) -> {
@@ -101,7 +102,7 @@ public class StorageHandler {
      * @param internships List of internships to be loaded.
      * @return CommandResult object indicating the success of the operation.
      */
-    public static CommandResult loadInternships(InternshipList internships) {
+    public CommandResult load(InternshipList internships) {
         logger.log(Level.INFO, "Beginning process to load internships from file ...");
         CommandResult result;
         if (!file.exists() || file.length() == 0) {

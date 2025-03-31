@@ -1,7 +1,7 @@
 package seedu.internsprint.model.internship;
 
 import seedu.internsprint.exceptions.DuplicateEntryException;
-import seedu.internsprint.storage.StorageHandler;
+import seedu.internsprint.storage.StorageManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,9 +14,9 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.DUPLICATE_IN
 public class InternshipList {
     protected final HashMap<String, ArrayList<Internship>> internshipMap = new HashMap<>();
     protected int internshipCount = 0;
-    private final StorageHandler storageHandler = new StorageHandler();
+    private final StorageManager storageManager = StorageManager.getInstance();
 
-    public InternshipList() {
+    public InternshipList( ) {
         internshipMap.put("software", new ArrayList<>());
         internshipMap.put("hardware", new ArrayList<>());
         internshipMap.put("general", new ArrayList<>());
@@ -65,7 +65,7 @@ public class InternshipList {
      * Saves the internships to the storage.
      */
     public void saveInternships() {
-        storageHandler.saveInternships(this);
+        storageManager.saveInternshipData(this);
     }
 
     public HashMap<String, ArrayList<Internship>> getInternshipMap() {
