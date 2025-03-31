@@ -29,6 +29,7 @@ and easily tracking status of your applications.
     * [Adding a hardware category of internship: `add hardware`](#adding-a-hardware-category-of-internship-add-hardware)
     * [Editing an internship: `edit`](#editing-an-internship-edit)
     * [Deleting an internship: `delete`](#deleting-an-internship-delete)
+    * [Finding internships: `find`](#finding-internships-find)
     * [Viewing extended description of a specific internship:
       `desc`](#viewing-extended-description-of-a-specific-internship-desc)
     * [Adding interviews for internships: `interviewfor`](#adding-interviews-for-internships-interviewfor)
@@ -285,6 +286,26 @@ Example of usage:
 ```
 ---
 
+### Finding internships: `find`
+Allows users to find internships based on the internship type, company name or role.
+
+Format: `find [TYPE] [/c COMPANY_NAME] [/r ROLE]`
+
+* `TYPE` can be `general`, `software`, or `hardware`.
+* `TYPE`, `COMPANY_NAME` and `ROLE` are optional parameters.
+* It is required to specify at least one of the parameters.
+
+Example of usage:
+
+```
+> find software /c Google
+------------------------------------------------------------------------------------------------------------------------
+    Here are the matching internships in your list:
+    1. Company: Google, Role: Software Engineer, Eligibility: Y3 student, Expectations: Fast Learner, Tech Stack: C, C++
+------------------------------------------------------------------------------------------------------------------------
+```
+---
+
 ### Viewing extended description of a specific internship: `desc`
 Allows users to view the description of an internship from the list of internship applications.
 
@@ -317,8 +338,6 @@ Extended Format (With optional parameters): `interviewfor /index INDEX_OF_INTERN
 * Duplicate interviews are not allowed. However, adding interviews with different parameters for the same index
   of internship is allowed as it will add multiple rounds of interviews for that particular internship.
 * The `INDEX_OF_INTERNSHIP` should not be out of range of the internship list.
-* `DATE` should be provided in LocalDate format
-* `START_TIME` and `END_TIME` should be provided in LocalTime format
 
 Example of usage:
 
