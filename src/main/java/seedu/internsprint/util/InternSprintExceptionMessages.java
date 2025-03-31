@@ -37,4 +37,7 @@ public class InternSprintExceptionMessages {
             "commands or 'help COMMAND' for specific command instructions.";
     public static final String DESC_INVALID_PARAMS = "You have not entered a valid index to show the description.\n"
             + "The desc command works as mentioned below:";
+    public static final String DUPLICATE_INTERNSHIP = "This internship already exists in your list.";
+    public static final String DUPLICATE_INTERVIEW = "An interview with the same date and time already exists for " +
+        "that internship.\n" + "    Please check your date and time or the internship you are referring to.";
 }
