@@ -23,6 +23,9 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.ADD_INTERVIE
 import static seedu.internsprint.util.InternSprintExceptionMessages.DESC_UNABLE_TO_FIND_INTERNSHIP;
 import static seedu.internsprint.util.InternSprintMessages.ADD_INTERVIEW_MESSAGE_SUCCESS;
 
+/*
+ * Represents a command to add an interview to an internship.
+ */
 public class AddInterviewCommand extends Command {
     public static final String COMMAND_WORD = "interviewfor";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an interview to the internship list.\n"
@@ -34,24 +37,29 @@ public class AddInterviewCommand extends Command {
 
     private static Logger logger = InternSprintLogger.getLogger();
 
+    /**
+     * Checks if the parameters entered by the user are valid.
+     *
+     * @return True if the parameters are valid, false otherwise.
+     */
     @Override
     protected boolean isValidParameters() {
         logger.info("Entering check for parameters in add interview command.");
         if (!parameters.containsKey(REQUIRED_PARAMETERS[0])) {
-            logger.warning("There is no specified index.");
+            logger.severe("There is no specified index.");
             return false;
         }
         assert parameters.containsKey(REQUIRED_PARAMETERS[0]) : "/index flag should be present in the command";
         for (String requiredParameter : REQUIRED_PARAMETERS) {
             if (!parameters.containsKey(requiredParameter)) {
-                logger.warning("There is a missing required parameter.");
+                logger.severe("There is a missing required parameter.");
                 return false;
             }
         }
         for (String parameter : parameters.keySet()) {
             if (!Arrays.asList(REQUIRED_PARAMETERS).contains(parameter)
                 && !Arrays.asList(OPTIONAL_PARAMETERS).contains(parameter)) {
-                logger.warning("There is a flag that is out of specified optional parameters.");
+                logger.severe("There is a flag that is out of specified optional parameters.");
                 return false;
             }
         }
@@ -93,17 +101,46 @@ public class AddInterviewCommand extends Command {
         String type = validIndex[0];
         assert (index >= 0 && index < internships.getInternshipCount()) : "index value is within appropriate range";
 
+        Internship internship = getInternship(feedback, internships, type, index);
+        if (internship == null) {
+            return new CommandResult(feedback, false);
+        }
+
+        return createAndAddInterview(feedback, internship, internships);
+    }
+
+    /**
+     * Gets the internship object from the internship list.
+     *
+     * @param feedback Feedback to be shown to the user.
+     * @param internships InternshipList object.
+     * @param type Type of internship.
+     * @param index Index of internship.
+     * @return Internship object.
+     */
+    private Internship getInternship(List<String> feedback, InternshipList internships, String type, int index) {
+        assert (index >= 0 && index < internships.getInternshipCount()) : "index value is within appropriate range";
+
         HashMap<String, ArrayList<Internship>> internshipMap = internships.getInternshipMap();
         Internship internship = internshipMap.get(type).get(index);
 
         if (internship == null) {
             logger.warning("Internship not found in add interview command.");
             feedback.add(DESC_UNABLE_TO_FIND_INTERNSHIP);
-            result = new CommandResult(feedback);
-            result.setSuccessful(false);
-            return result;
         }
+        return internship;
+    }
 
+    /**
+     * Creates an interview object and adds it to the internship.
+     *
+     * @param feedback Feedback to be shown to the user.
+     * @param internship Internship object.
+     * @param internships InternshipList object.
+     * @return CommandResult object.
+     */
+    private CommandResult createAndAddInterview(List<String> feedback, Internship internship,
+                                                InternshipList internships) {
         Interview interview = new Interview(
             parameters.get("/date"),
             parameters.get("/start"),
@@ -117,16 +154,17 @@ public class AddInterviewCommand extends Command {
             internship.addInterview(interview);
             internships.saveInternships();
             feedback.add(InternSprintMessages.SAVE_SUCCESS_MESSAGE);
-        } catch (IOException | DuplicateEntryException e) {
+        } catch (IOException e) {
+            logger.severe("Error saving internships to file after adding an interview.");
             feedback.add(e.getMessage());
-            result = new CommandResult(feedback);
-            result.setSuccessful(false);
-            return result;
+            return new CommandResult(feedback, false);
+        } catch (DuplicateEntryException e) {
+            logger.warning("Interview already exists in the internship.");
+            feedback.add(e.getMessage());
+            return new CommandResult(feedback, false);
         }
 
         feedback.add(String.format(ADD_INTERVIEW_MESSAGE_SUCCESS, interview));
-        result = new CommandResult(feedback);
-        result.setSuccessful(true);
-        return result;
+        return new CommandResult(feedback, true);
     }
 }
