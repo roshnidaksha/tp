@@ -1,12 +1,15 @@
 package seedu.internsprint.model.internship;
 
 import seedu.internsprint.exceptions.DuplicateEntryException;
-import seedu.internsprint.storage.StorageHandler;
+import seedu.internsprint.storage.InternshipStorageHandler;
+import seedu.internsprint.storage.StorageManager;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.DUPLICATE_INTERNSHIP;
+import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_WRITE_FILE;
 
 /**
  * Represents the list of internships.
@@ -14,9 +17,9 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.DUPLICATE_IN
 public class InternshipList {
     protected final HashMap<String, ArrayList<Internship>> internshipMap = new HashMap<>();
     protected int internshipCount = 0;
-    private final StorageHandler storageHandler = new StorageHandler();
+    private final StorageManager storageManager = StorageManager.getInstance();
 
-    public InternshipList() {
+    public InternshipList( ) {
         internshipMap.put("software", new ArrayList<>());
         internshipMap.put("hardware", new ArrayList<>());
         internshipMap.put("general", new ArrayList<>());
@@ -64,8 +67,12 @@ public class InternshipList {
     /**
      * Saves the internships to the storage.
      */
-    public void saveInternships() {
-        storageHandler.saveInternships(this);
+    public void saveInternships() throws IOException {
+        try {
+            storageManager.saveInternshipData(this);
+        } catch (IOException e) {
+            throw new IOException(String.format(UNABLE_TO_WRITE_FILE, InternshipStorageHandler.FILE_PATH));
+        }
     }
 
     public HashMap<String, ArrayList<Internship>> getInternshipMap() {

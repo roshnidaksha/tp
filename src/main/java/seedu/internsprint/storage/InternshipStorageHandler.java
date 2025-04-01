@@ -6,6 +6,7 @@ import seedu.internsprint.model.internship.GeneralInternship;
 import seedu.internsprint.model.internship.HardwareInternship;
 import seedu.internsprint.model.internship.SoftwareInternship;
 import seedu.internsprint.model.internship.InternshipList;
+import seedu.internsprint.util.InternSprintLogger;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -24,28 +25,27 @@ import java.util.logging.Logger;
 import static seedu.internsprint.util.InternSprintExceptionMessages.FILE_ALREADY_EXISTS;
 import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_CREATE_DIRECTORY;
 import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_CREATE_FILE;
-import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_WRITE_FILE;
 import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_READ_FILE;
 
 import static seedu.internsprint.util.InternSprintMessages.LOADING_DATA_SUCCESS;
 import static seedu.internsprint.util.InternSprintMessages.LOADING_DATA_FIRST_TIME;
 
 /**
- * Handles the reading and writing of data to the file.
+ * Handles the storage of internship data.
  */
-public class StorageHandler {
-    private static final String FILE_PATH = Paths.get("data", "internships.txt").toString();
+public class InternshipStorageHandler implements Storage<InternshipList> {
+    public static final String FILE_PATH = Paths.get("data", "internships.txt").toString();
     private static File file;
-    private static Logger logger = Logger.getLogger(StorageHandler.class.getName());
+    private static final Logger logger = InternSprintLogger.getLogger();
 
-    public StorageHandler() {
+    public InternshipStorageHandler() {
         file = new File(FILE_PATH);
     }
 
     /**
      * Creates the file if it does not exist.
      */
-    public static void createFile() {
+    public void createFile() {
         try {
             if (file.getParentFile() != null && !file.getParentFile().exists()) {
                 if (!file.getParentFile().mkdirs()) {
@@ -72,7 +72,7 @@ public class StorageHandler {
      *
      * @param internships List of internships to be saved.
      */
-    public void saveInternships(InternshipList internships) {
+    public void save(InternshipList internships) throws IOException {
         logger.log(Level.INFO, "Saving Internships to file ...");
         JSONArray jsonArray = new JSONArray();
         internships.getInternshipMap().forEach((type, list) -> {
@@ -84,15 +84,11 @@ public class StorageHandler {
         }
         assert file.exists() : "File should exist at this point";
 
-        try (FileWriter fileWriter = new FileWriter(file)) {
-            fileWriter.write(jsonArray.toString(4));
-            logger.log(Level.INFO, String.format("Successfully saved %s Internships to file %s",
-                jsonArray.length(), file.getAbsolutePath()));
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, String.format("Unable to save Internships to file %s", file.getAbsolutePath()));
-            throw new RuntimeException(String.format(UNABLE_TO_WRITE_FILE,
-                    file.getAbsolutePath()));
-        }
+        FileWriter fileWriter = new FileWriter(file);
+        fileWriter.write(jsonArray.toString(4));
+        logger.log(Level.INFO, String.format("Successfully saved %s Internships to file %s",
+            jsonArray.length(), file.getAbsolutePath()));
+
     }
 
     /**
@@ -101,7 +97,7 @@ public class StorageHandler {
      * @param internships List of internships to be loaded.
      * @return CommandResult object indicating the success of the operation.
      */
-    public static CommandResult loadInternships(InternshipList internships) {
+    public CommandResult load(InternshipList internships) {
         logger.log(Level.INFO, "Beginning process to load internships from file ...");
         CommandResult result;
         if (!file.exists() || file.length() == 0) {
@@ -110,7 +106,7 @@ public class StorageHandler {
             result.setSuccessful(true);
             return result;
         }
-        assert file.length()!=0 : "File should not be an empty file at this point";
+        assert file.length() != 0 : "File should not be an empty file at this point";
 
         StringBuilder jsonData = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
