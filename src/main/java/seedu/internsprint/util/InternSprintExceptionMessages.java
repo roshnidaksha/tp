@@ -13,7 +13,8 @@ public class InternSprintExceptionMessages {
     public static final String UNABLE_TO_CREATE_DIRECTORY = "Unable to create directory: %s";
     public static final String FILE_ALREADY_EXISTS = "File already exists: %s";
     public static final String UNABLE_TO_CREATE_FILE = "Unable to create file: %s";
-    public static final String UNABLE_TO_WRITE_FILE = "Unable to write to file: %s";
+    public static final String UNABLE_TO_WRITE_FILE = "Unable to write to file: %s.\n" +
+        "    Please check if the file is open in another program or the program will continue without saving.";
     public static final String UNABLE_TO_READ_FILE = "Unable to read file: %s";
 
     public static final String EDIT_UNABLE_TO_FIND_INTERNSHIP = """

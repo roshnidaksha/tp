@@ -11,6 +11,7 @@ import seedu.internsprint.model.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintLogger;
 import seedu.internsprint.util.InternSprintMessages;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -116,7 +117,7 @@ public class AddInterviewCommand extends Command {
             internship.addInterview(interview);
             internships.saveInternships();
             feedback.add(InternSprintMessages.SAVE_SUCCESS_MESSAGE);
-        } catch (RuntimeException | DuplicateEntryException e) {
+        } catch (IOException | DuplicateEntryException e) {
             feedback.add(e.getMessage());
             result = new CommandResult(feedback);
             result.setSuccessful(false);

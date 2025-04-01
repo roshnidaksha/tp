@@ -4,6 +4,7 @@ import seedu.internsprint.model.internship.InternshipList;
 import seedu.internsprint.model.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintLogger;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -37,7 +38,7 @@ public class ByeCommand extends Command {
         try {
             internships.saveInternships();
             feedback.add(SAVE_SUCCESS_MESSAGE);
-        } catch (Exception e) {
+        } catch (IOException e) {
             logger.log(Level.WARNING, "Error saving internships while exiting");
             feedback.add(e.getMessage());
             result = new CommandResult(feedback);

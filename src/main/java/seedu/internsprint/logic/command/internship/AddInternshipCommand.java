@@ -8,6 +8,7 @@ import seedu.internsprint.model.internship.InternshipList;
 import seedu.internsprint.model.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintLogger;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -85,7 +86,7 @@ public abstract class AddInternshipCommand extends Command {
             internships.addInternship(toAdd);
             internships.saveInternships();
             //feedback.add(InternSprintMessages.SAVE_SUCCESS_MESSAGE);
-        } catch (RuntimeException | DuplicateEntryException e) {
+        } catch (IOException | DuplicateEntryException e) {
             logger.log(Level.WARNING, "Error saving internships after adding an internship");
             feedback.add(e.getMessage());
             result = new CommandResult(feedback);
