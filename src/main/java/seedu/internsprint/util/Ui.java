@@ -27,11 +27,6 @@ public class Ui {
         System.out.println(DIVIDER);
     }
 
-    public static void showExitMessage() {
-        //System.out.println(BYE_MESSAGE);
-        //this is commented out since BYE Command sends in a command result for the same
-    }
-
     public static void showError(String message) {
         System.out.println(DIVIDER);
         System.out.println("    " + ERROR_PREFIX + message);

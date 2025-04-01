@@ -71,6 +71,13 @@ public class AddInterviewCommand extends Command {
         return "internship";
     }
 
+    /**
+     * Executes the command to add an interview to an internship.
+     *
+     * @param internships InternshipList or UserProfile user.
+     * @param user UserProfile object.
+     * @return CommandResult object.
+     */
     @Override
     public CommandResult execute(InternshipList internships, UserProfile user) {
         logger.info("Executing add interview command...");

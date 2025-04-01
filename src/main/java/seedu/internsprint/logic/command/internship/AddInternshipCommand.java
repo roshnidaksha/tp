@@ -60,10 +60,12 @@ public abstract class AddInternshipCommand extends Command {
      */
     protected abstract Internship createInternship();
 
+
     /**
      * Executes the command to add an internship.
      *
      * @param internships InternshipList object.
+     * @param user Userprofile object.
      * @return CommandResult object.
      */
     @Override

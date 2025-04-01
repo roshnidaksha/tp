@@ -61,6 +61,7 @@ public abstract class ProjectCommand extends Command {
      * Executes the command to add an internship.
      *
      * @param internships InternshipList object and user UserProfile object.
+     * @param user Userprofile object.
      * @return CommandResult object.
      */
     @Override
