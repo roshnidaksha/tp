@@ -334,6 +334,7 @@ Example of usage:
 
 ---
 
+
 ### Sorting all interviews added by date: `sortInterviews`
 Allows users to sort all rounds of interviews added across multiple internships by date.
 
@@ -361,6 +362,245 @@ Example of usage:
 
 ---
 
+
+### Updating user profile information: `my`
+Allows users to update user profile information with details such as name, or preferrred industries, roles
+or companies.
+Basic Format: `my /c COMPANIES_YOU_PREFER /r ROLES_YOU_PREFER /ygoals YEARLY_GOALS /mgoals MONTHLY_GOALS /pay PAY_RANGE
+                 /ind INDUSTRIES_YOU_PREFER /time TIME_RANGE /name YOUR_NAME`
+
+> This format shows you all the possible flags or parameters you can set for an internship, however they are ALL optional
+> (as-needed basis) -
+> i.e. you do not need to utilize all flags when using this command, only those relevant to you.
+
+* This feature is implemented to allow the user to be able to simply copy, paste, and use tabular-formatted user profile
+data for their CVs and job applications, hence all data is output in neat ASCII tables which can be copied and pasted into
+required contexts.
+
+Example of usage:
+
+```
+> my /name John Doe /ind Software /c Google /r Developer /mgoals 100 applications /ygoals 2 internships
+------------------------------------------------------------------------------------------------------------------------
+    Successfully updated your user profile as shown below:
+    Name: John Doe, Preferred Industries: [Software], Preferred Companies: [Google], Preferred Roles: [Developer], Monthly Goals: 100 applications, Yearly Goals: 2 internships
+------------------------------------------------------------------------------------------------------------------------
+```
+
+---
+
+
+### Viewing user profile information: `view user`
+Allows users to view user profile information with details such as name, or preferrred industries, roles
+or companies.
+Basic Format: `view user`
+
+* This feature is implemented to allow the user to be able to simply copy, paste, and use tabular-formatted user profile
+  data for their CVs and job applications, hence all data is output in neat ASCII tables which can be copied and pasted into
+  required contexts.
+
+Example of usage:
+
+```
+> view user
+------------------------------------------------------------------------------------------------------------------------
+    Your personalized profile information as shown below:
+    
+┌───────────────────────────────────────┬──────────────────────────────────────┐
+│Name                                   │John Doe                              │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│Preferred Industries                   │Software                              │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│Preferred Companies                    │Google                                │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│Preferred Roles                        │Developer                             │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│Target Stipend Range                   │N/A                                   │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│Internship Date Range                  │N/A                                   │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│Monthly Goals                          │100 applications                      │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│Yearly Goals                           │2 internships                         │
+└───────────────────────────────────────┴──────────────────────────────────────┘
+------------------------------------------------------------------------------------------------------------------------
+```
+
+---
+
+### Adding a general category of project: `project general`
+Allows users to add a new general project to their list of projects stored in their user profile. 
+This is useful for CV formatted project lists, and job applications.
+
+Basic Format: `project general /n PROJECT_NAME /r ROLE /dept DEPARTMENT /obj OBJECTIVES /desc DESCRIPTION /dur DURATION`
+
+* All parameters/flags are mandatory and must be present in the command string for successful execution.
+
+Examples of usage:
+
+```
+> project general /n Team Project for CS2113 /r Unit Tester /dept Software Engineering/obj To get an A+ /desc Worked at identifying feature flaws in app /dur May-August
+------------------------------------------------------------------------------------------------------------------------
+    Project successfully added to user profile. Below are the details for the same: 
+
+    Project: Team Project for CS2113, Role: Unit Tester, Dept: Software Engineering, Objectives: To get an A+, Duration: May-August, Description: Worked at identifying feature flaws in app
+    Now you have 1 projects in your user profile.
+------------------------------------------------------------------------------------------------------------------------
+```
+
+---
+
+### Adding a software category of internship: `project software`
+Allows users to add a new software project to their list of projects stored in their user profile.
+This
+
+Basic Format: `project software /n PROJECT_NAME /r ROLE /dept DEPARTMENT /pro PROGRAMMING_LANGUAGES /obj OBJECTIVES /desc DESCRIPTION /dur DURATION`
+
+* All parameters/flags are mandatory and must be present in the command string for successful execution.
+
+Examples of usage:
+
+```
+> project software /n Team Project for CS2113 /r Unit Tester /pro Java, C++/obj To get an A+ /desc Worked at identifying feature flaws in app /dur May-August
+------------------------------------------------------------------------------------------------------------------------
+    Project successfully added to user profile. Below are the details for the same: 
+
+    Project: Team Project for CS2113, Role: Unit Tester, Programming Languages: Java, C++, Objectives: To get an A+, Duration: May-August, Description: Worked at identifying feature flaws in app
+    Now you have 2 projects in your user profile.
+------------------------------------------------------------------------------------------------------------------------
+```
+
+---
+
+### Adding a hardware category of internship: `project hardware`
+Allows users to add a new hardware project to their list of projects stored in their user profile.
+This
+
+Basic Format: `project hardware /n PROJECT_NAME /r ROLE /dept DEPARTMENT /hcomp HARDWARE_COMPONENTS /obj OBJECTIVES /desc DESCRIPTION /dur DURATION`
+
+* All parameters/flags are mandatory and must be present in the command string for successful execution.
+
+Examples of usage:
+
+```
+> project hardware /n Team Project for EE2026 /r Ui Developer /hcomp Basys Board/obj To get an A+ /desc Worked at creating pixel art for the UI /dur May-August
+------------------------------------------------------------------------------------------------------------------------
+    Project successfully added to user profile. Below are the details for the same: 
+
+    Project: Team Project for EE2026, Role: Ui Developer, Hardware Components: Basys Board, Objectives: To get an A+, Duration: May-August, Description: Worked at creating pixel art for the UI
+    Now you have 3 projects in your user profile.
+------------------------------------------------------------------------------------------------------------------------
+
+```
+
+---
+
+
+### Viewing a general category of project: `view general`
+Allows users to view list of saved general projects.
+Basic Format: `view general`
+
+* This feature is implemented to allow the user to be able to simply copy, paste, and use tabular-formatted project
+  data for their CVs and job applications, hence all data is output in neat ASCII tables which can be copied and pasted into
+  required contexts.
+
+
+Examples of usage:
+
+```
+> view general
+------------------------------------------------------------------------------------------------------------------------
+    Your personalized projects information as shown below:
+    
+┌───────────────────────────────────────┬──────────────────────────────────────┐
+│Project:                               │Team Project for CS2113               │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│Role:                                  │Unit Tester                           │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│Objectives:                            │To get an A+                          │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│Description:                           │Worked at identifying feature flaws in│
+│                                       │app                                   │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│Duration:                              │May-August                            │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│Department:                            │Software Engineering                  │
+└───────────────────────────────────────┴──────────────────────────────────────┘
+------------------------------------------------------------------------------------------------------------------------
+```
+
+---
+
+### Viewing a software category of internship: `view software`
+Allows users to view list of saved software projects.
+Basic Format: `view software`
+
+* This feature is implemented to allow the user to be able to simply copy, paste, and use tabular-formatted project
+  data for their CVs and job applications, hence all data is output in neat ASCII tables which can be copied and pasted into
+  required contexts.
+
+Examples of usage:
+
+```
+> view software
+------------------------------------------------------------------------------------------------------------------------
+    Your personalized projects information as shown below:
+    
+┌───────────────────────────────────────┬──────────────────────────────────────┐
+│Project:                               │Team Project for CS2113               │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│Role:                                  │Unit Tester                           │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│Objectives:                            │To get an A+                          │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│Description:                           │Worked at identifying feature flaws in│
+│                                       │app                                   │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│Duration:                              │May-August                            │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│Programming Languages:                 │Java, C++                             │
+└───────────────────────────────────────┴──────────────────────────────────────┘
+------------------------------------------------------------------------------------------------------------------------
+
+```
+
+---
+
+### Viewing a hardware category of internship: `view hardware`
+Allows users to view list of saved hardware projects.
+Basic Format: `view hardware`
+
+* This feature is implemented to allow the user to be able to simply copy, paste, and use tabular-formatted project
+  data for their CVs and job applications, hence all data is output in neat ASCII tables which can be copied and pasted into
+  required contexts.
+
+
+Examples of usage:
+
+```
+> view hardware
+------------------------------------------------------------------------------------------------------------------------
+    Your personalized projects information as shown below:
+    
+┌───────────────────────────────────────┬──────────────────────────────────────┐
+│Project:                               │Team Project for EE2026               │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│Role:                                  │Ui Developer                          │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│Objectives:                            │To get an A+                          │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│Description:                           │Worked at creating pixel art  for  the│
+│                                       │UI                                    │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│Duration:                              │May-August                            │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│Hardware Components:                   │Basys Board                           │
+└───────────────────────────────────────┴──────────────────────────────────────┘
+------------------------------------------------------------------------------------------------------------------------
+
+```
+
+---
 ### Exit `bye`
 
 Exits the program. A user can exit the program at any time by typing `bye` in the command line.
