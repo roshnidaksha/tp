@@ -1,5 +1,6 @@
 package seedu.internsprint.model.internship.interview;
 
+import org.json.JSONObject;
 import seedu.internsprint.exceptions.DuplicateEntryException;
 import seedu.internsprint.logic.parser.DateTimeParser;
 
@@ -218,4 +219,36 @@ public class Interview {
     public LocalTime getUnformattedInterviewEndTime() {
         return interviewEndTime;
     }
+
+    public JSONObject toJson() {
+        JSONObject interviewJson = new JSONObject();
+        interviewJson.put("date", DateTimeParser.formatLocalDate(interviewDate));
+        interviewJson.put("startTime", DateTimeParser.formatLocalTime(interviewStartTime));
+        interviewJson.put("endTime", DateTimeParser.formatLocalTime(interviewEndTime));
+        interviewJson.put("type", interviewType);
+        if (interviewerEmail != null) {
+            interviewJson.put("interviewerEmail", interviewerEmail);
+        }
+        if (notes != null) {
+            interviewJson.put("notes", notes);
+        }
+        return interviewJson;
+    }
+
+    /**
+     * Returns an Interview object from a JSON object.
+     *
+     * @param json JSON object representing the interview.
+     * @return Interview object.
+     */
+    public static Interview fromJson(JSONObject json) {
+        return new Interview(
+                json.getString("interviewDate"),
+                json.getString("interviewStartTime"),
+                json.getString("interviewEndTime"),
+                json.optString("interviewType")
+        );
+    }
+
+
 }

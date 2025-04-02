@@ -178,6 +178,33 @@ public class UserProfile {
         return "\n" + at.render();
 
     }
+
+    /**
+     * Returns a formatted string representation of the user profile.
+     * This method presents the user's details in a structured, readable format,
+     * with each attribute displayed on a new line.
+     *
+     * @return A formatted string containing user profile details.
+     */
+    public String toFormattedString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("Name: ").append(name != null ? name : "N/A").append("\n");
+        sb.append("Yearly Goals: ").append(yearlyGoals != null ? yearlyGoals : "N/A").append("\n");
+        sb.append("Monthly Goals: ").append(monthlyGoals != null ? monthlyGoals : "N/A").append("\n");
+        sb.append("Preferred Industries: ").append(preferredIndustries != null ?
+                String.join(", ", preferredIndustries) : "N/A").append("\n");
+        sb.append("Preferred Companies: ").append(preferredCompanies != null ?
+                String.join(", ", preferredCompanies) : "N/A").append("\n");
+        sb.append("Preferred Roles: ").append(preferredRoles != null ?
+                String.join(", ", preferredRoles) : "N/A").append("\n");
+        sb.append("Target Stipend Range: ").append(targetStipendRange != null ?
+                targetStipendRange : "N/A").append("\n");
+        sb.append("Internship Date Range: ").append(internshipDateRange != null ?
+                internshipDateRange : "N/A").append("\n");
+
+        return sb.toString();
+    }
     
     public JSONObject toJson() {
         Map<String, Object> orderedMap = new LinkedHashMap<>();
