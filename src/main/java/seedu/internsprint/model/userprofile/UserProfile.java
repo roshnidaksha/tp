@@ -10,11 +10,9 @@ import java.util.logging.Logger;
 import org.json.JSONObject;
 import de.vandermeer.asciitable.AsciiTable;
 
-import seedu.internsprint.logic.command.Command;
 import seedu.internsprint.logic.command.CommandResult;
 import seedu.internsprint.logic.parser.CommandParser;
 import seedu.internsprint.model.userprofile.project.ProjectList;
-import seedu.internsprint.storage.InternshipStorageHandler;
 import seedu.internsprint.storage.ProfileStorageHandler;
 import seedu.internsprint.storage.StorageManager;
 import seedu.internsprint.util.InternSprintLogger;
@@ -33,9 +31,9 @@ public class UserProfile {
     public static ArrayList<String> preferredRoles;
     public static String targetStipendRange;
     public static String internshipDateRange;
+    private static final Logger logger = InternSprintLogger.getLogger();
     public final ProjectList projects;
 
-    private static final Logger logger = InternSprintLogger.getLogger();
     private final StorageManager storageManager = StorageManager.getInstance();
 
     public UserProfile() {

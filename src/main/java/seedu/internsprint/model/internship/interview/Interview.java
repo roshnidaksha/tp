@@ -13,8 +13,6 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_REQU
 
 public class Interview {
 
-    private int internshipId = -1;
-
     /* Mandatory required parameters to create an Interview */
     protected LocalDate interviewDate;
     protected LocalTime interviewStartTime;
@@ -22,12 +20,13 @@ public class Interview {
     protected String interviewType;
 
     protected ArrayList<Interview> nextRounds = new ArrayList<>();
+    protected int roundCounter = 0;
 
     /*Optional Parameters to create an Interview */
     protected String interviewerEmail;
     protected String notes;
 
-    protected int roundCounter = 0;
+    private int internshipId = -1;
 
     public Interview(String interviewDate, String interviewStartTime, String interviewEndTime,
                      String interviewType) {

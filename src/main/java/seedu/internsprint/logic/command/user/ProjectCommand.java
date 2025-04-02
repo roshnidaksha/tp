@@ -6,7 +6,6 @@ import seedu.internsprint.model.internship.InternshipList;
 import seedu.internsprint.model.userprofile.UserProfile;
 import seedu.internsprint.model.userprofile.project.Project;
 import seedu.internsprint.util.InternSprintLogger;
-import seedu.internsprint.util.InternSprintMessages;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,7 +17,6 @@ import java.util.logging.Logger;
 import static seedu.internsprint.util.InternSprintMessages.MESSAGE_DUPLICATE_PROJECT;
 import static seedu.internsprint.util.InternSprintMessages.PROJECT_ADD_MESSAGE_SUCCESS;
 import static seedu.internsprint.util.InternSprintMessages.PROJECT_LIST_COUNT_MESSAGE;
-import static seedu.internsprint.util.InternSprintMessages.SAVE_SUCCESS_MESSAGE;
 
 /**
  * Represents a command to add an project.
