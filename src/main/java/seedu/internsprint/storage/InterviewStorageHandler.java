@@ -1,8 +1,8 @@
 package seedu.internsprint.storage;
 
 import seedu.internsprint.logic.command.CommandResult;
+import seedu.internsprint.model.internship.InternshipList;
 import seedu.internsprint.model.internship.interview.Interview;
-import seedu.internsprint.model.internship.interview.InterviewList;
 import seedu.internsprint.util.InternSprintLogger;
 
 import org.json.JSONArray;
@@ -26,7 +26,7 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_RE
 import static seedu.internsprint.util.InternSprintMessages.LOADING_DATA_SUCCESS;
 import static seedu.internsprint.util.InternSprintMessages.LOADING_DATA_FIRST_TIME;
 
-public class InterviewStorageHandler implements Storage<InterviewList> {
+public class InterviewStorageHandler implements Storage<InternshipList> {
 
     public static final String FILE_PATH = Paths.get("data", "interviews.txt").toString();
     private static File file;
@@ -45,10 +45,11 @@ public class InterviewStorageHandler implements Storage<InterviewList> {
             if (file.getParentFile() != null && !file.getParentFile().exists()) {
                 if (!file.getParentFile().mkdirs()) {
                     throw new RuntimeException(String.format(UNABLE_TO_CREATE_DIRECTORY,
-                            file.getParentFile().getAbsolutePath()));
+                        file.getParentFile().getAbsolutePath()));
                 }
                 assert file.getParentFile().exists() : "Directory should exist at this point";
-
+            }
+            if (!file.exists()) {
                 if (!file.createNewFile()) {
                     throw new RuntimeException(String.format(FILE_ALREADY_EXISTS,
                             file.getAbsolutePath()));
@@ -65,33 +66,39 @@ public class InterviewStorageHandler implements Storage<InterviewList> {
     /**
      * Saves the interviews to the file.
      *
-     * @param interviews List of interviews to be saved.
+     * @param internships List of internships to be saved.
      */
     @Override
-    public void save(InterviewList interviews) throws IOException {
+    public void save(InternshipList internships) throws IOException {
         logger.log(Level.INFO, "Saving Interviews to file ...");
         JSONArray jsonArray = new JSONArray();
-        interviews.getInterviewList().forEach(interview -> jsonArray.put(interview.toJson()));
+        internships.getInterviewList().forEach(interview -> jsonArray.put(interview.toJson()));
 
         if (!file.exists()) {
             createFile();
         }
         assert file.exists() : "File should exist at this point";
 
-        FileWriter fileWriter = new FileWriter(file);
-        fileWriter.write(jsonArray.toString(4));
-        logger.log(Level.INFO, String.format("Successfully saved %s Interviews to file %s",
+        try (FileWriter fileWriter = new FileWriter(file)) {
+            fileWriter.write(jsonArray.toString(4));
+            logger.log(Level.INFO, String.format("Successfully saved %s Interviews to file %s",
                 jsonArray.length(), file.getAbsolutePath()));
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "Error writing to file");
+            throw new IOException(String.format(UNABLE_TO_CREATE_FILE,
+                    file.getAbsolutePath()));
+        }
+
     }
 
     /**
      * Loads the interviews from the file.
      *
-     * @param interviews List of interviews to be loaded.
+     * @param internships List of internships where interviews need to be loaded.
      * @return CommandResult object indicating the success of the operation.
      */
     @Override
-    public CommandResult load(InterviewList interviews) {
+    public CommandResult load(InternshipList internships) {
         logger.log(Level.INFO, "Beginning process to load interviews from file ...");
         CommandResult result;
         if (!file.exists() || file.length() == 0) {
@@ -126,7 +133,7 @@ public class InterviewStorageHandler implements Storage<InterviewList> {
 
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject interviewJson = jsonArray.getJSONObject(i);
-            addInterviewToList(interviews, interviewJson);
+            addInterviewToList(internships, interviewJson);
         }
         logger.log(Level.INFO, "Successfully added interviews from file to interview list in app");
         result = new CommandResult(LOADING_DATA_SUCCESS);
@@ -137,12 +144,12 @@ public class InterviewStorageHandler implements Storage<InterviewList> {
     /**
      * Adds the interview to the list of interviews.
      *
-     * @param interviews List of interviews.
+     * @param internships List of internships.
      * @param interviewJson JSON object representing the interview.
      */
-    private static void addInterviewToList(InterviewList interviews, JSONObject interviewJson) {
+    private static void addInterviewToList(InternshipList internships, JSONObject interviewJson) {
         Interview interview = Interview.fromJson(interviewJson);
-        interviews.addInterview(interview);
+        internships.addInterview(interview);
     }
 
     /**

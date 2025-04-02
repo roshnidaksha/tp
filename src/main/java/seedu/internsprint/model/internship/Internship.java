@@ -25,6 +25,7 @@ public abstract class Internship {
     protected String expectations = null;
 
     protected Interview interview;
+    protected int internshipId;
 
     public Internship(String companyName, String role) {
         if (companyName == null || role == null || companyName.isBlank() || role.isBlank()) {
@@ -185,5 +186,13 @@ public abstract class Internship {
 
     public void setInterview(Interview interview) {
         this.interview = interview;
+    }
+
+    public int getInternshipId() {
+        return internshipId;
+    }
+
+    public void setInternshipId(int internshipId) {
+        this.internshipId = internshipId;
     }
 }

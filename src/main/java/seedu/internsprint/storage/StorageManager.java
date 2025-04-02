@@ -2,7 +2,6 @@ package seedu.internsprint.storage;
 
 import seedu.internsprint.logic.command.CommandResult;
 import seedu.internsprint.model.internship.InternshipList;
-import seedu.internsprint.model.internship.interview.InterviewList;
 import seedu.internsprint.model.userprofile.UserProfile;
 import seedu.internsprint.model.userprofile.project.ProjectList;
 
@@ -51,12 +50,12 @@ public class StorageManager {
 
     // ================= Interview methods =================
 
-    public void saveInterviewData(InterviewList interviews) throws IOException {
-        interviewStorageHandler.save(interviews);
+    public void saveInterviewData(InternshipList internships) throws IOException {
+        interviewStorageHandler.save(internships);
     }
 
-    public CommandResult loadInterviewData(InterviewList interviews) {
-        return interviewStorageHandler.load(interviews);
+    public CommandResult loadInterviewData(InternshipList internships) {
+        return interviewStorageHandler.load(internships);
     }
 
     // ================== UserProfile methods =================

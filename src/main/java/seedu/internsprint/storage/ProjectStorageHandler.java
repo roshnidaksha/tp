@@ -49,13 +49,14 @@ public class ProjectStorageHandler implements Storage<ProjectList> {
             if (file.getParentFile() != null && !file.getParentFile().exists()) {
                 if (!file.getParentFile().mkdirs()) {
                     throw new RuntimeException(String.format(UNABLE_TO_CREATE_DIRECTORY,
-                            file.getParentFile().getAbsolutePath()));
+                        file.getParentFile().getAbsolutePath()));
                 }
                 assert file.getParentFile().exists() : "Directory should exist at this point";
-
+            }
+            if (!file.exists()) {
                 if (!file.createNewFile()) {
                     throw new RuntimeException(String.format(FILE_ALREADY_EXISTS,
-                            file.getAbsolutePath()));
+                        file.getAbsolutePath()));
                 }
                 assert file.exists() : "File should exist at this point";
             }

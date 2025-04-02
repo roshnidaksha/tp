@@ -32,8 +32,6 @@ public class InternSprint {
      * Main entry-point for the InternSprint application.
      */
     public static void main(String[] args) {
-        //Logger.getLogger("").setLevel(Level.OFF);
-        // Set up centralized logger configuration at startup.
         InternSprintLogger.getLogger();
         new InternSprint().run();
     }
@@ -49,14 +47,29 @@ public class InternSprint {
     }
 
     /**
+     * Loads data from storage.
+     */
+    private boolean loadData() {
+        logger.log(Level.INFO, "Loading data from storage");
+        CommandResult internshipResult = storageManager.loadInternshipData(internships);
+        CommandResult interviewResult = storageManager.loadInterviewData(internships);
+        Ui.showResultToUser(internshipResult);
+        return interviewResult.isSuccessful() && internshipResult.isSuccessful();
+    }
+
+    /**
      * Reads the user command and executes it, until the user issues the exit command.
      */
     private void runCommandLoopUntilExitCommand() {
         logger.log(Level.INFO, "Loading internships from storage");
-        CommandResult result = storageManager.loadInternshipData(internships);
-        Ui.showResultToUser(result);
-        logger.log(Level.INFO, "Internships loaded successfully");
+        boolean isLoadingSuccessful = loadData();
+        if (!isLoadingSuccessful) {
+            Ui.showError("Unable to load data from storage. Please check your file.");
+            return;
+        }
+        logger.log(Level.INFO, "Data loaded successfully");
 
+        CommandResult result;
         boolean isExit = false;
         while (!isExit) {
             try {
