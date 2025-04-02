@@ -3,6 +3,14 @@ package seedu.internsprint.logic.command.internship;
 import seedu.internsprint.logic.command.ByeCommand;
 import seedu.internsprint.logic.command.Command;
 import seedu.internsprint.logic.command.CommandResult;
+import seedu.internsprint.logic.command.user.ProjectGeneralCommand;
+import seedu.internsprint.logic.command.user.ProjectSoftwareCommand;
+import seedu.internsprint.logic.command.user.ProjectHardwareCommand;
+import seedu.internsprint.logic.command.user.UserProfileCommand;
+import seedu.internsprint.logic.command.user.ViewGeneralProjectsCommand;
+import seedu.internsprint.logic.command.user.ViewSoftwareProjectsCommand;
+import seedu.internsprint.logic.command.user.ViewHardwareProjectsCommand;
+import seedu.internsprint.logic.command.user.ViewUserCommand;
 import seedu.internsprint.model.internship.InternshipList;
 import seedu.internsprint.model.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintExceptionMessages;
@@ -28,12 +36,22 @@ public class HelpCommand extends Command {
         COMMAND_HELP_MESSAGES.put("add software", AddSoftwareInternshipCommand.MESSAGE_USAGE);
         COMMAND_HELP_MESSAGES.put("add hardware", AddHardwareInternshipCommand.MESSAGE_USAGE);
         COMMAND_HELP_MESSAGES.put("interviewfor", AddInterviewCommand.MESSAGE_USAGE);
+        COMMAND_HELP_MESSAGES.put("sortInterviews", SortInterviewCommand.MESSAGE_USAGE);
         COMMAND_HELP_MESSAGES.put("list", ListCommand.MESSAGE_USAGE);
         COMMAND_HELP_MESSAGES.put("description", DescriptionCommand.MESSAGE_USAGE);
         COMMAND_HELP_MESSAGES.put("find", FindCommand.MESSAGE_USAGE);
+        COMMAND_HELP_MESSAGES.put("desc", DescriptionCommand.MESSAGE_USAGE);
         COMMAND_HELP_MESSAGES.put("delete", DeleteCommand.MESSAGE_USAGE);
         COMMAND_HELP_MESSAGES.put("edit", EditCommand.MESSAGE_USAGE);
         COMMAND_HELP_MESSAGES.put("help", HelpCommand.MESSAGE_USAGE);
+        COMMAND_HELP_MESSAGES.put("my", UserProfileCommand.MESSAGE_USAGE);
+        COMMAND_HELP_MESSAGES.put("view user", ViewUserCommand.MESSAGE_USAGE);
+        COMMAND_HELP_MESSAGES.put("project general", ProjectGeneralCommand.MESSAGE_USAGE);
+        COMMAND_HELP_MESSAGES.put("project hardware", ProjectHardwareCommand.MESSAGE_USAGE);
+        COMMAND_HELP_MESSAGES.put("project software", ProjectSoftwareCommand.MESSAGE_USAGE);
+        COMMAND_HELP_MESSAGES.put("view general", ViewGeneralProjectsCommand.MESSAGE_USAGE);
+        COMMAND_HELP_MESSAGES.put("view hardware", ViewHardwareProjectsCommand.MESSAGE_USAGE);
+        COMMAND_HELP_MESSAGES.put("view software", ViewSoftwareProjectsCommand.MESSAGE_USAGE);
         COMMAND_HELP_MESSAGES.put("bye", ByeCommand.MESSAGE_USAGE);
     }
 

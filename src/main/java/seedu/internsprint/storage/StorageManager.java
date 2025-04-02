@@ -2,6 +2,9 @@ package seedu.internsprint.storage;
 
 import seedu.internsprint.logic.command.CommandResult;
 import seedu.internsprint.model.internship.InternshipList;
+import seedu.internsprint.model.internship.interview.InterviewList;
+import seedu.internsprint.model.userprofile.UserProfile;
+import seedu.internsprint.model.userprofile.project.ProjectList;
 
 import java.io.IOException;
 
@@ -17,9 +20,15 @@ public class StorageManager {
     private static boolean isConfigured = false;
 
     private final InternshipStorageHandler internshipStorageHandler;
+    private final ProjectStorageHandler projectStorageHandler;
+    private final ProfileStorageHandler profileStorageHandler;
+    private final InterviewStorageHandler interviewStorageHandler;
 
     private StorageManager() {
         this.internshipStorageHandler = new InternshipStorageHandler();
+        this.projectStorageHandler = new ProjectStorageHandler();
+        this.profileStorageHandler = new ProfileStorageHandler();
+        this.interviewStorageHandler = new InterviewStorageHandler();
         isConfigured = true;
     }
 
@@ -42,7 +51,30 @@ public class StorageManager {
 
     // ================= Interview methods =================
 
+    public void saveInterviewData(InterviewList interviews) throws IOException {
+        interviewStorageHandler.save(interviews);
+    }
+
+    public CommandResult loadInterviewData(InterviewList interviews) {
+        return interviewStorageHandler.load(interviews);
+    }
+
     // ================== UserProfile methods =================
 
+    public void saveUserProfileData(UserProfile userProfile) throws IOException {
+        profileStorageHandler.save(userProfile);
+    }
+
+    public CommandResult loadUserProfileData(UserProfile userProfile) {
+        return profileStorageHandler.load(userProfile);
+    }
     // ================== Project methods =================
+
+    public void saveProjectData(ProjectList projects) throws IOException {
+        projectStorageHandler.save(projects);
+    }
+
+    public CommandResult loadProjectData(ProjectList projects) {
+        return projectStorageHandler.load(projects);
+    }
 }
