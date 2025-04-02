@@ -41,6 +41,7 @@ public class UserProfileCommand extends Command {
 
     /**
      * Check that only predefined flags are entered by user
+     *
      * @return is valid flags or not
      */
     @Override
@@ -61,6 +62,8 @@ public class UserProfileCommand extends Command {
 
     /**
      * Iterates through parameters provided by user and updated according fields.
+     *
+     * @param internships InternshipList object
      * @param user refers to user saved in session
      * @return successful profile update or error message
      */

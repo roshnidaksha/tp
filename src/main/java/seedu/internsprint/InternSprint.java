@@ -83,7 +83,6 @@ public class InternSprint {
      */
     private void exit() {
         logger.log(Level.INFO, "Exiting InternSprint");
-        Ui.showExitMessage();
         System.exit(0);
     }
 }

@@ -63,6 +63,7 @@ public class DescriptionCommand extends Command {
      * Executes the description command.
      *
      * @param internships InternshipList object.
+     * @param user Userprofile object.
      * @return CommandResult object containing the result of the command execution.
      */
     @Override

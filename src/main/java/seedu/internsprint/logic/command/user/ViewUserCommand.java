@@ -28,6 +28,8 @@ public class ViewUserCommand extends Command {
 
     /**
      * Showcases CV-formatted version of user profile
+     *
+     * @param internships refers to the internship list
      * @param user refers to user saved in session
      * @return formatted profile string or error message in CommandResult type
      */
