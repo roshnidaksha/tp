@@ -29,6 +29,8 @@
 ## Acknowledgements
 
 {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
+Special thanks to the authors of [/addressbook-level3] https://se-education.org/addressbook-level3/DeveloperGuide.html#acknowledgements)
+for their Developer Guide, used here as a reference for the following DG:
 
 **Third party libraries used:**
 
@@ -43,6 +45,9 @@ in UI for user profile and projects.
 ## Setting Up and Getting Started
 > **Caution:**
 Follow the steps in the following guide precisely. Things will not work out if you deviate in some steps.
+
+> **Note:** `execute(InternshipList internships, UserProfile user)` will be referenced as `execute()` throughout 
+> the document for brevity. The sequence diagrams will still show the full method signature.
 
 First, **fork** this repo, and **clone** the fork into your computer.
 
@@ -63,6 +68,8 @@ Follow the guide [[se-edu/guides] IDEA: Importing a Gradle project]
 
 > **Tip:** The diagrams are created using [drawio](https://app.diagrams.net/). 
 > Refer to their website for more information.
+> All our `drawio` source files are accessible through the link 
+> [here](https://drive.google.com/drive/folders/1hVXLhsZNU8a1vo4MaV5R5RIYIZGSaXSu?usp=drive_link)
 
 ### Architecture
 
@@ -85,29 +92,80 @@ issuing the command `delete /index 1`.
 
 ### UI Component
 
-The UI component is responsible for handling user input and output.
+The text-based UI component for this app is responsible for handling user input and output. Stored under the `util` 
+package, the UI acts as the front-facing component for the application architecture. 
+The sequence diagram below shows how the components interact with each other highlighting the role and placement of 
+the UI component in our application as it:
+1. Reads in string from the user 
+2. Returns this string for command execution by the Logic component.
+3. Receives the result of command execution
+4. Displays these command result in a visually intuitive cohesive manner in the terminal window.
+   ![UIClassUML](images/ui_sequence_diagrams.png)
 
-{Explain in better detail}
+
+References to the UI component exists only in the InternSprint public class itself to reduce tight coupling
+and UI only deals in formatting and returning Strings from and to the user such that the Logic component does not have
+to print to terminal directly and can be isolated to parsing and command execution, ensuring separation of concerns.
+
+The below class diagram is a brief overview of the static and public methods contained in UI, and showcases class
+dependencies. This UML diagram omits certain class level members and attribute for Internship class among others to
+ensure clarity and conciseness. Essentially, UI is only referenced in one method of the InternSprint class and only holds a reference
+to the Internship class, illustrating avoidance of tight coupling and singularity of purpose for UI (no overlap between
+logic and UI).
+![UIClassUML2](images/ui-class-diagram.png)
+
 
 ### Logic Component
 
-Here is a partial class diagram of the Logic component:
+The `Logic` component consists of two main parts: the `Parser` and the `Command` classes.
 
-**CommandParser**
+**Parser:** Parser is made up of two classes: `CommandParser` and `DateTimeParser`.
 
-_Input Parsing:_ The `CommandParser` class takes a single line of user input and splits it into a command word and
-key value pairs.
-* The command word is used to determine the type of command that needs be executed, and creates the corresponding
-  `Command` object (e.g., `AddCommand`, `DeleteCommand`, `ListCommand`).
-* The key value pairs are stored in a `HashMap<String, String>` of the `Command` object. The key value pairs are
-  validated only during command execution in `isValidParameters()` method.
+1. **CommandParser:** The `CommandParser` class takes a single line of user input and splits it into a command word and key value pairs.
+   * The command word is used to determine the type of command that needs be executed, and creates the corresponding
+     `*Command` object (e.g., `AddInternshipCommand`, `DeleteCommand`, `ListCommand`).
+   * The key value pairs are stored in a `HashMap<String, String>` of the `Command` object. The key value pairs are
+     validated only during command execution in `isValidParameters()` method.
 
-Here is the partial class diagram of the `CommandParser` class. The multiplicities of `*command` classes are 0 or 1,
-because the dependency is formed only when the command is executed.
+2. **DateTimeParser:** This class is responsible for parsing natural language date and time strings entered by the user, and to
+display them in a human-readable format. It makes user of the `Natty` and `PrettyTime` libraries to parse and format
+date and time strings respectively.
 
-Insert command class diagram here
+**Command:** The `Command` class is an abstract class that represents a command that the user can execute.
+It provides an additional layer of abstraction between the user input and the actual execution of the command,
+achieving the **SoC (Separation of Concerns)** design principle.
 
-{Insert partial class diagram here and explain in detail}
+The abstract `Command` class has the following abstract methods:
+* `isValidParameters()`: Validates the parameters of the command. The parameters are set by `CommandParser` class while
+  parsing the user input.
+* `execute()`: Executes the command.
+
+These methods override the abstract methods of the `Command` class through **polymorphism**.
+
+Here is a partial class diagram of related classes in the Logic component:
+
+![CommandParserClassUML](images/CommandParserClassUML.png)
+
+`DateTimeParser` class is not shown in the diagram, as it is used by the model component to parse date and time strings.
+
+The sequence diagram below illustrates the interactions within the `Logic` component when `execute()` method is called
+for user input `delete /index 1`.
+
+![CommandClassOverview](images/CommandClassOverview.png)
+
+> **Note:** The purpose of the sequence diagram above is solely to illustrate the interactions between the classes in
+> logic component. Implementation details such as how the input is parsed, execution of command in `DeleteCommand` and
+> steps in deleting an internship in `Model` are omitted for clarity. You can take a look at the implementation section
+> of this Developer Guide for more details.
+
+**How the `Logic` Component works:**
+1. When user inputs a command, the `InternSprint` class calls the `parseCommand(String userInput)` method from 
+`CommandParser` class to parse the input.
+2. Depending on the first 1 - 2 words of the input, the `CommandParser` class creates a `Command` object (an object of
+one of its subclasses e.g., `DeleteCommand`).
+3. This command object communicates with the `Model` when it is executed through the `execute()` method.
+4. The result of the command execution is returned to the `InternSprint` class as a `CommandResult` object.
+
 
 ### Model Component
 
@@ -163,39 +221,25 @@ The Storage component is responsible for reading and writing data to and from th
 
 This section describes some noteworthy details on how certain features are implemented.
 
-### Commands
-
-The `Command` class is an abstract class that represents a command that the user can execute.
-It provides an additional layer of abstraction between the user input and the actual execution of the command,
-achieving the **SoC (Separation of Concerns)** design principle.
-
-The partial class structure of the `Command` class is shown below:
-
-Insert command class diagram here
-
-The abstract `Command` class has the following abstract methods:
-* `isValidParameters()`: Validates the parameters of the command.
-* `execute(InternshipList internships, UserProfile user)`: Executes the command.
-
 ### 1. Add new Internship
 
 **Overview**:
 
-This command allows the user to add a new internship to the list of internships. The new internship is immediately added
-to the `internships.txt` file at `../data/internships.txt`.
+This command allows the user to add a new internship to their list of internships. 
+The new internship is immediately added to the `internships.txt` file at `../data/internships.txt`.
 
 **How the feature is implemented:**
 
-* The `AddCommand` class is an abstract class extends from the abstract class `Command`.
-* The user can specify the type of internship as `general`, `software` or `hardware` as input.
+* The `AddInternshipCommand` class is an abstract class that extends from another the abstract class `Command`.
+* The user can specify the type of internship he wants to add as `general`, `software` or `hardware` in the input.
 Each type of internship has a separate class that extends the `AddCommand` class, 
-`AddGeneralCommand`, `AddSoftwareCommand`, and `AddHardwareCommand`.
-* These subclasses override the `isValidParameters()` and `execute()` methods to validate the parameters of the command,
-depending on the type of internship.
-* The `execute()` method of adds the internship to the list of internships stored in `InternshipList` which it obtains
-as a parameter.
-  * `InternshipList` class stores the list of internships as a HashMap. Each type of `*AddCommand` will insert the
-  internship into the correct list.
+`AddGeneralInternshipCommand`, `AddSoftwareInternshipCommand`, and `AddHardwareInternshipCommand`.
+* These subclasses override the `isValidParameters()` and `execute()` 
+methods to validate the parameters of the command, depending on the type of internship.
+* The `execute()` method adds the new internship to the list of internships 
+stored in `InternshipList` which it obtains as a parameter.
+  * `InternshipList` class stores the list of internships as a HashMap. Each type of `Add*InternshipCommand` will insert
+  the internship into the correct list.
 
 **Why is it implemented this way:**
 
@@ -214,15 +258,38 @@ testing and debugging to be more focused and efficient.
   * Cons: Violates the **SRP (Single Responsibility Principle)**.
 * **Alternative 3:** Use a single `AddCommand` class and store the type of internship as a field in the `Internship`.
   * Pros: Reduces the number of classes and code to be written.
-  * Cons: Requires additional validation to ensure that the type of internship is consistent with the parameters provided
-  by the user.
+  * Cons: Requires additional validation to ensure that the type of internship is consistent with the parameters 
+  provided by the user.
 
 **Sequence Diagram:**
 
-Below is the sequence diagram for adding a new software internship. A similar sequence is followed for adding a general
-or hardware internship.
+Below is the simplified sequence diagram for adding a new software internship. 
+A similar sequence is followed for adding a general or hardware internship.
 
-Add sequence diagram for adding a software internship here
+![AddCommandSequenceDiagramOverview](images/AddInternshipImages/AddCommandSequenceDiagramOverview.png)
+
+* `InternSprint.java` obtains the correct `*Command` object from the `CommandParser` class and calls the 
+`execute()` method of that `*Command` object.
+* `execute()` method first checks the validity of the provided parameters using the `isValidParameters()` method of
+the same `*Command` object. As mentioned above, this method is overridden in each subclass to validate the parameters 
+according to the type of internship.
+
+* If the parameters are not valid (as depicted in the sequence diagram below), then a `CommandResult` with the correct 
+usage message is returned to the user. The `isSuccessful` field of the `CommandResult` object is set to `false`.
+
+![AddCommandSequenceDiagramOverview](images/AddInternshipImages/AddCommandSequenceDiagramAlternateFrameOne.png)
+
+* If the parameters are valid (as depicted in the sequence diagram below), then a new internship 
+(here `SoftwareInternship`) is created.
+  * If the new internship already exists in the list, then a `CommandResult` with appropriate error message is returned.
+  * Else, the new internship is added to the list of internships. 
+  * Depending on whether the internships are successfully saved to the `internships.txt` file, 
+  a `CommandResult` is returned. The reference frame for saving internships is omitted in the diagram to focus on the
+  details of adding a new internship.
+
+![AddCommandSequenceDiagramOverview](images/AddInternshipImages/AddCommandSequenceDiagramAlternateFrameTwo.png)
+
+* Print calls, assert statements, logging, and other non-essential calls are omitted in the diagram for clarity.
 
 ### 2. Edit an Internship
 
@@ -270,10 +337,45 @@ optional parameters using flags
 
 **Sequence Diagram:**
 
-Below is the sequence diagram for adding a new software internship. A similar sequence is followed for adding a general
-or hardware internship.
+Below is the sequence diagram for editing internship. Note this is an overview sequence diagram in which method flow has 
+been simplified using reference frames, expanded on below to help aid in clarity. 
 
-![Edit-Command Sequence Diagram](images/Edit_command.drawio.png)
+* `InternSprint.java` obtains the correct `EditCommand` object from the `CommandParser` class and calls the
+  `execute()` method of that `EditCommand` object.
+* `execute()` method first checks the validity of the provided parameters using the `isValidParameters()` method of
+  the same `*Command` object. As mentioned above, this method is overridden in each subclass to validate the parameters
+required for that command. For the `EditCommand` this involves a check that flags are present in predefined set and index
+is present. 
+* If the parameters are not valid (as depicted in the sequence diagram below), then a `CommandResult` with the correct
+    usage message is returned to the user. The `isSuccessful` field of the `CommandResult` object is set to `false`.
+* If the parameters are valid (as depicted in the sequence diagram below), then the specified index is found in the 
+internship list. If the internship could not be found, or the user attempts to edit parameters incorrectly (e.g. they 
+try to edit hardware tech for a software role) an unsuccessful result is returned to the user
+* After making the required edits to the found internship, if there is a duplication of an existing internship is observed
+an unsuccessful result is returned to the user.
+* If no duplicates are found and execution of editParameters...() is successful, the edited internship is added to the list of internships
+and a successful execution result is returned to the user.
+* Depending on whether the internships are successfully saved to the `internships.txt` file,
+  a `CommandResult` is returned. The reference frame for saving internships is omitted in the diagram to focus on the
+  details of adding a new internship.
+
+![EditCommandSequenceDiagramOverview](images/edit_overview.png)
+
+Below are the expanded reference frames for successful and unsuccessful CommandResults returned by execute() method.
+
+![EditCommandSequenceDiagramOverview](images/edit_ref_1.png)
+![EditCommandSequenceDiagramOverview](images/edit_ref_2.png)
+
+
+* Print calls, assert statements, logging, and other non-essential calls are omitted in the diagram for clarity.
+For full clarity, note below is a comprehensive sequence diagram, combining all reference frames and expanding logic
+behind duplicate-checking for example. Note this is only added for completeness for this one Command class, and only
+to supplement an additional level of detail to above overview diagram (which should be sufficient for understanding).
+Such an expanded view will be isolated to this one command but execution logic resembles other Commands,
+hence can refer to this diagram for thoroughness for all such commands.
+
+
+![Edit-Command Sequence Diagram](images/edit_full_seq_diag.png)
 
 ### 3. Delete an Internship
 
@@ -321,6 +423,71 @@ Below is the sequence diagram for deleting an internship.
 Add sequence diagram for deleting an internship here.
 
 ### 4. List all Internships
+### 5. Create/Update User Profile
+
+**Overview**:
+
+This command allows the user to update their own user profile with their personal details to aid in 
+applications and CV creation/updating. The saved data  is immediately stored in the `userprofile.txt` file 
+at `../data/userprofile.txt`.
+
+**How the feature is implemented:**
+
+* The `UserProfileCommand` class extends from the abstract class `Command`.
+* The user is not required to specify any compulsory flags but can specify one of many optional flags such as `/name`
+or `/mgoals` to their preference.  
+* The `isValidParameters()` method ensures that the all provided flags match with predefined set of `OPTIONAL_PARAMETERS` 
+* The `execute()` method updates the associated parameters in the `UserProfile user` passed in as an argument to this method.
+  It then attempts to save the updated user profile.
+  Feedback messages indicating success or failure, including errors such as invalid indices are returned.
+
+**Why is it implemented this way:**
+
+* The flags are not mandatory to allow users greater flexibility in utilizing this feature of the app, since the goals would
+be to help them customize their CV and application processes. We aimed to make the user experience for simpler and more intuitive to understand,
+and emulated the sequence logic seen in `edit` command.
+
+### 5. Add/View Projects under User Profile
+
+**Overview**:
+
+This command allows the user to add a new project to their list of projects stored under their user profile.
+The new project is immediately added to the `userprofile.txt` file at `../data/userprofile.txt`.
+
+**How the feature is implemented:**
+
+* The `ProjectCommand` class is an abstract class that extends from another the abstract class `Command`.
+* The user can specify the type of project he wants to add as `general`, `software` or `hardware` in the input.
+  Each type of internship has a separate class that extends the `ProjectCommand` class,
+  `ProjectGeneralCommand`, `ProjectSoftwareCommand`, and `ProjectHardwareCommand`.
+* These subclasses override the `isValidParameters()` and `execute()`
+  methods to validate the parameters of the command, depending on the type of internship.
+* The `execute()` method adds the new project to the list of projects
+  stored in `UserProfile` which it obtains as a parameter.
+  * `ProjectList` class stores the list of internships as a HashMap. Each type of `Project*TypeCommand` will insert
+    the project into the correct list.
+
+**Why is it implemented this way:**
+
+* By abstracting each type of project into a separate class, the code achieves **SoC (Separation of Concerns)**
+  design principle.
+* Each subclass is now responsible for validating and executing the command for a specific type of project, enabling
+  testing and debugging to be more focused and efficient.
+* ***Note***: This implementation is modelled after the `AddInternshipCommand` structure, largely with only one exception -
+  all flags the user can enter are mandatory (to specify a project all essential information is required as per our design
+  requirements).
+
+
+**Sequence Diagram:**
+Keeping in mind the similarity to the `AddInternshipCommand` structure, to aid conciseness, the sequence diagrams for that
+class can be referenced to understand execution logic for these commands. However, to help understand inheritance for this
+command and how the three different project type classes extend from their superclasses, below is a class diagram for the same:
+
+
+![ProjectCommandUMLDiagram](images/projects-uml.png)
+
+* Certain non-essential attributes and class methods are omitted in the diagram for clarity.
+
 
 ## Documentation, logging, testing, configuration and deployment
 

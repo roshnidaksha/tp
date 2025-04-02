@@ -41,8 +41,17 @@ public class InternSprintMessages {
     public static final String SUCCESSFUL_DELETE = "Successfully deleted internship: %s";
     public static final String USER_UPDATE_SUCCESS_MESSAGE = "Successfully updated your user profile as shown below:";
     public static final String USER_VIEW_SUCCESS_MESSAGE = "Your personalized profile information as shown below:";
-
+    public static final String PROJECTS_VIEW_SUCCESS_MESSAGE = "Your personalized projects information as shown below:";
+    public static final String MESSAGE_DUPLICATE_PROJECT = "You have already entered this project in your profile. This"
+                                                            + " is a duplicate.";
+    public static final String PROJECT_ADD_MESSAGE_SUCCESS = "Project successfully added to user profile. Below" +
+            " are the details for the same: \n";
+    public static final String PROJECT_LIST_COUNT_MESSAGE = "Now you have %d projects in your user profile.";
     public static final String NO_INTERNSHIPS_FOUND = "No internships found";
+    public static final String NO_INTERVIEWS_SCHEDULED = "You have no interviews Scheduled";
     public static final String NUMBER_OF_INTERNSHIPS_FOUND = "Number of internships found: %d";
     public static final String ADD_INTERVIEW_MESSAGE_SUCCESS = "New interview added\n%s";
+    public static final String SORT_INTERVIEWS_MESSAGE_SUCCESS = "Here are your interviews sorted by date and time.";
+    public static final String SAVING_PROFILE_SUCCESS = "Successfully saved user profile to file %s";
+    public static final String LOADING_PROFILE_SUCCESS = "Successfully loaded user profile from file";
 }

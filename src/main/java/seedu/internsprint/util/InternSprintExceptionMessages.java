@@ -13,7 +13,8 @@ public class InternSprintExceptionMessages {
     public static final String UNABLE_TO_CREATE_DIRECTORY = "Unable to create directory: %s";
     public static final String FILE_ALREADY_EXISTS = "File already exists: %s";
     public static final String UNABLE_TO_CREATE_FILE = "Unable to create file: %s";
-    public static final String UNABLE_TO_WRITE_FILE = "Unable to write to file: %s";
+    public static final String UNABLE_TO_WRITE_FILE = "Unable to write to file: %s.\n" +
+        "    Please check if the file is open in another program or the program will continue without saving.";
     public static final String UNABLE_TO_READ_FILE = "Unable to read file: %s";
 
     public static final String EDIT_UNABLE_TO_FIND_INTERNSHIP = """
@@ -23,6 +24,10 @@ public class InternSprintExceptionMessages {
             " Check that /index is provided with a valid index reference.";
     public static final String EDIT_INVALID_PARAMS = "You have not entered a valid parameter to edit.\n"
             + "    The edit command works as mentioned below:";
+    public static final String LIST_INVALID_PARAMS = "You have entered invalid parameters to the list command.\n"
+            + "    The list command works as mentioned below:";
+    public static final String SORT_INTERVIEWS_INVALID_PARAMS = "You have entered invalid parameters to the sort " +
+            "command.\n The sortInterviews command works as mentioned below:";
     public static final String USERPROFILE_INVALID_PARAMS = "You have not entered a valid parameter to user profile.\n"
             + "    The user profile command works as mentioned below:";
     public static final String INVALID_CATEGORY_ERROR = "Invalid category: Valid categories are: " +
@@ -37,4 +42,9 @@ public class InternSprintExceptionMessages {
             "commands or 'help COMMAND' for specific command instructions.";
     public static final String DESC_INVALID_PARAMS = "You have not entered a valid index to show the description.\n"
             + "The desc command works as mentioned below:";
+    public static final String DUPLICATE_INTERNSHIP = "This internship already exists in your list.";
+    public static final String DUPLICATE_INTERVIEW = "An interview with the same date and time already exists for " +
+        "that internship.\n" + "    Please check your date and time or the internship you are referring to.";
+    public static final String UNABLE_TO_SAVE_PROFILE = "Unable to save user profile to file %s";
+    public static final String UNABLE_TO_LOAD_PROFILE = "Unable to read user profile file";
 }

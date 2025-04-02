@@ -1,11 +1,11 @@
 package seedu.internsprint;
 
-import seedu.internsprint.command.Command;
-import seedu.internsprint.command.CommandResult;
-import seedu.internsprint.handler.CommandParser;
-import seedu.internsprint.handler.StorageHandler;
-import seedu.internsprint.internship.InternshipList;
-import seedu.internsprint.userprofile.UserProfile;
+import seedu.internsprint.logic.command.Command;
+import seedu.internsprint.logic.command.CommandResult;
+import seedu.internsprint.logic.parser.CommandParser;
+import seedu.internsprint.model.internship.InternshipList;
+import seedu.internsprint.model.userprofile.UserProfile;
+import seedu.internsprint.storage.StorageManager;
 import seedu.internsprint.util.InternSprintLogger;
 import seedu.internsprint.util.Ui;
 
@@ -18,10 +18,12 @@ import java.util.logging.Level;
  */
 public class InternSprint {
     private static final Logger logger = Logger.getLogger(InternSprint.class.getName());
+    private final StorageManager storageManager;
     private final InternshipList internships;
     private final UserProfile user;
 
     public InternSprint() {
+        storageManager = StorageManager.getInstance();
         internships = new InternshipList();
         user = new UserProfile();
     }
@@ -51,7 +53,7 @@ public class InternSprint {
      */
     private void runCommandLoopUntilExitCommand() {
         logger.log(Level.INFO, "Loading internships from storage");
-        CommandResult result = StorageHandler.loadInternships(internships);
+        CommandResult result = storageManager.loadInternshipData(internships);
         Ui.showResultToUser(result);
         logger.log(Level.INFO, "Internships loaded successfully");
 
@@ -81,7 +83,6 @@ public class InternSprint {
      */
     private void exit() {
         logger.log(Level.INFO, "Exiting InternSprint");
-        Ui.showExitMessage();
         System.exit(0);
     }
 }

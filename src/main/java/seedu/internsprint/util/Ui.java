@@ -1,7 +1,7 @@
 package seedu.internsprint.util;
 
-import seedu.internsprint.command.CommandResult;
-import seedu.internsprint.internship.Internship;
+import seedu.internsprint.logic.command.CommandResult;
+import seedu.internsprint.model.internship.Internship;
 
 import java.util.List;
 import java.util.Scanner;
@@ -25,11 +25,6 @@ public class Ui {
         System.out.println(LOGO);
         System.out.println(WELCOME_MESSAGE);
         System.out.println(DIVIDER);
-    }
-
-    public static void showExitMessage() {
-        //System.out.println(BYE_MESSAGE);
-        //this is commented out since BYE Command sends in a command result for the same
     }
 
     public static void showError(String message) {
