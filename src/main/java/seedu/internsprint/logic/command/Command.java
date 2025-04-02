@@ -33,6 +33,7 @@ public abstract class Command {
      * Executes the command.
      *
      * @param internships InternshipList or UserProfile user.
+     * @param user Userprofile object.
      * @return CommandResult object.
      */
     public abstract CommandResult execute(InternshipList internships, UserProfile user);

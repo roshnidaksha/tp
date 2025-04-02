@@ -29,6 +29,8 @@
 ## Acknowledgements
 
 {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
+Special thanks to the authors of [/addressbook-level3] https://se-education.org/addressbook-level3/DeveloperGuide.html#acknowledgements)
+for their Developer Guide, used here as a reference for the following DG:
 
 **Third party libraries used:**
 
@@ -90,9 +92,28 @@ issuing the command `delete /index 1`.
 
 ### UI Component
 
-The UI component is responsible for handling user input and output.
+The text-based UI component for this app is responsible for handling user input and output. Stored under the `util` 
+package, the UI acts as the front-facing component for the application architecture. 
+The sequence diagram below shows how the components interact with each other highlighting the role and placement of 
+the UI component in our application as it:
+1. Reads in string from the user 
+2. Returns this string for command execution by the Logic component.
+3. Receives the result of command execution
+4. Displays these command result in a visually intuitive cohesive manner in the terminal window.
+   ![UIClassUML](images/ui_sequence_diagrams.png)
 
-{Explain in better detail}
+
+References to the UI component exists only in the InternSprint public class itself to reduce tight coupling
+and UI only deals in formatting and returning Strings from and to the user such that the Logic component does not have
+to print to terminal directly and can be isolated to parsing and command execution, ensuring separation of concerns.
+
+The below class diagram is a brief overview of the static and public methods contained in UI, and showcases class
+dependencies. This UML diagram omits certain class level members and attribute for Internship class among others to
+ensure clarity and conciseness. Essentially, UI is only referenced in one method of the InternSprint class and only holds a reference
+to the Internship class, illustrating avoidance of tight coupling and singularity of purpose for UI (no overlap between
+logic and UI).
+![UIClassUML2](images/ui-class-diagram.png)
+
 
 ### Logic Component
 
@@ -148,9 +169,50 @@ one of its subclasses e.g., `DeleteCommand`).
 
 ### Model Component
 
-The Model component is responsible for storing and managing the data of the application.
+The **Model** component is responsible for storing and managing and providing access to all the data used by the 
+InternSprint . It represents the internal state of the application and is updated based on commands entered by the user.
 
-{Explain in better detail}
+---
+
+#### ⚙️ Responsibilities
+- Store internship information (company name, role, description, etc.)
+- Support three internship types: Software, Hardware and General.
+- Store and manage interviews (including multiple rounds per internship)
+- Handle user information and goals via the `UserProfile`
+
+---
+#### 📦 Package Structure
+
+```
+model
+├── internship
+│   ├── Interview.java          # Represents a single interview (including optional rounds)
+│   ├── InterviewEntry.java     # Wrapper class pairing an Interview with its Internship
+│   ├── GeneralInternship.java  # Internship subclass for general roles
+│   ├── HardwareInternship.java # Internship subclass for hardware roles
+│   ├── SoftwareInternship.java # Internship subclass for software roles
+│   ├── Internship.java         # Abstract class defining an internship's structure
+│   └── InternshipList.java     # Contains and manages the internship collection
+└── userprofile
+    └── UserProfile.java        # Stores user preferences (companies, roles, goals, etc.)
+```
+---
+
+#### 🧱 Key Classes and Their Roles
+
+| Class                                 | Role                                                              |
+|---------------------------------------|-------------------------------------------------------------------|
+| `Internship`                          | Abstract base class for internships                               |
+| `General/Software/HardwareInternship` | Specific implementations depending on type                        |
+| `InternshipList`                      | Stores internships in a HashMap by category (`software`, etc.)    |
+| `Interview`                           | Represents one interview round, with optional next rounds         |
+| `InterviewEntry`                      | A wrapper for pairing an `Interview` with its parent `Internship` |
+| `UserProfile`                         | Stores user preferences for use across the application            |
+
+---
+
+#### Model UML Diagram
+![Model_UML_diag.png](images/Model_UML_diag.png)
 
 ### Storage Component
 
@@ -278,10 +340,45 @@ optional parameters using flags
 
 **Sequence Diagram:**
 
-Below is the sequence diagram for adding a new software internship. A similar sequence is followed for adding a general
-or hardware internship.
+Below is the sequence diagram for editing internship. Note this is an overview sequence diagram in which method flow has 
+been simplified using reference frames, expanded on below to help aid in clarity. 
 
-![Edit-Command Sequence Diagram](images/Edit_command.drawio.png)
+* `InternSprint.java` obtains the correct `EditCommand` object from the `CommandParser` class and calls the
+  `execute()` method of that `EditCommand` object.
+* `execute()` method first checks the validity of the provided parameters using the `isValidParameters()` method of
+  the same `*Command` object. As mentioned above, this method is overridden in each subclass to validate the parameters
+required for that command. For the `EditCommand` this involves a check that flags are present in predefined set and index
+is present. 
+* If the parameters are not valid (as depicted in the sequence diagram below), then a `CommandResult` with the correct
+    usage message is returned to the user. The `isSuccessful` field of the `CommandResult` object is set to `false`.
+* If the parameters are valid (as depicted in the sequence diagram below), then the specified index is found in the 
+internship list. If the internship could not be found, or the user attempts to edit parameters incorrectly (e.g. they 
+try to edit hardware tech for a software role) an unsuccessful result is returned to the user
+* After making the required edits to the found internship, if there is a duplication of an existing internship is observed
+an unsuccessful result is returned to the user.
+* If no duplicates are found and execution of editParameters...() is successful, the edited internship is added to the list of internships
+and a successful execution result is returned to the user.
+* Depending on whether the internships are successfully saved to the `internships.txt` file,
+  a `CommandResult` is returned. The reference frame for saving internships is omitted in the diagram to focus on the
+  details of adding a new internship.
+
+![EditCommandSequenceDiagramOverview](images/edit_overview.png)
+
+Below are the expanded reference frames for successful and unsuccessful CommandResults returned by execute() method.
+
+![EditCommandSequenceDiagramOverview](images/edit_ref_1.png)
+![EditCommandSequenceDiagramOverview](images/edit_ref_2.png)
+
+
+* Print calls, assert statements, logging, and other non-essential calls are omitted in the diagram for clarity.
+For full clarity, note below is a comprehensive sequence diagram, combining all reference frames and expanding logic
+behind duplicate-checking for example. Note this is only added for completeness for this one Command class, and only
+to supplement an additional level of detail to above overview diagram (which should be sufficient for understanding).
+Such an expanded view will be isolated to this one command but execution logic resembles other Commands,
+hence can refer to this diagram for thoroughness for all such commands.
+
+
+![Edit-Command Sequence Diagram](images/edit_full_seq_diag.png)
 
 ### 3. Delete an Internship
 
@@ -329,6 +426,80 @@ Below is the sequence diagram for deleting an internship.
 Add sequence diagram for deleting an internship here.
 
 ### 4. List all Internships
+**Overview**:
+
+This command allows user to view a list of all added internships.
+Description of segment is yet to be updated. In the meantime, here are the diagrams for list command
+![list_full_seq_diag.png](images/ListImages/list_full_seq_diag.png)
+![list_overview.png](images/ListImages/list_overview.png)
+![list_ref_1.png](images/ListImages/list_ref_1.png)
+![list_ref_2.png](images/ListImages/list_ref_2.png)
+
+### 5. Create/Update User Profile
+
+**Overview**:
+
+This command allows the user to update their own user profile with their personal details to aid in 
+applications and CV creation/updating. The saved data  is immediately stored in the `userprofile.txt` file 
+at `../data/userprofile.txt`.
+
+**How the feature is implemented:**
+
+* The `UserProfileCommand` class extends from the abstract class `Command`.
+* The user is not required to specify any compulsory flags but can specify one of many optional flags such as `/name`
+or `/mgoals` to their preference.  
+* The `isValidParameters()` method ensures that the all provided flags match with predefined set of `OPTIONAL_PARAMETERS` 
+* The `execute()` method updates the associated parameters in the `UserProfile user` passed in as an argument to this method.
+  It then attempts to save the updated user profile.
+  Feedback messages indicating success or failure, including errors such as invalid indices are returned.
+
+**Why is it implemented this way:**
+
+* The flags are not mandatory to allow users greater flexibility in utilizing this feature of the app, since the goals would
+be to help them customize their CV and application processes. We aimed to make the user experience for simpler and more intuitive to understand,
+and emulated the sequence logic seen in `edit` command.
+
+### 5. Add/View Projects under User Profile
+
+**Overview**:
+
+This command allows the user to add a new project to their list of projects stored under their user profile.
+The new project is immediately added to the `userprofile.txt` file at `../data/userprofile.txt`.
+
+**How the feature is implemented:**
+
+* The `ProjectCommand` class is an abstract class that extends from another the abstract class `Command`.
+* The user can specify the type of project he wants to add as `general`, `software` or `hardware` in the input.
+  Each type of internship has a separate class that extends the `ProjectCommand` class,
+  `ProjectGeneralCommand`, `ProjectSoftwareCommand`, and `ProjectHardwareCommand`.
+* These subclasses override the `isValidParameters()` and `execute()`
+  methods to validate the parameters of the command, depending on the type of internship.
+* The `execute()` method adds the new project to the list of projects
+  stored in `UserProfile` which it obtains as a parameter.
+  * `ProjectList` class stores the list of internships as a HashMap. Each type of `Project*TypeCommand` will insert
+    the project into the correct list.
+
+**Why is it implemented this way:**
+
+* By abstracting each type of project into a separate class, the code achieves **SoC (Separation of Concerns)**
+  design principle.
+* Each subclass is now responsible for validating and executing the command for a specific type of project, enabling
+  testing and debugging to be more focused and efficient.
+* ***Note***: This implementation is modelled after the `AddInternshipCommand` structure, largely with only one exception -
+  all flags the user can enter are mandatory (to specify a project all essential information is required as per our design
+  requirements).
+
+
+**Sequence Diagram:**
+Keeping in mind the similarity to the `AddInternshipCommand` structure, to aid conciseness, the sequence diagrams for that
+class can be referenced to understand execution logic for these commands. However, to help understand inheritance for this
+command and how the three different project type classes extend from their superclasses, below is a class diagram for the same:
+
+
+![ProjectCommandUMLDiagram](images/projects-uml.png)
+
+* Certain non-essential attributes and class methods are omitted in the diagram for clarity.
+
 
 ## Documentation, logging, testing, configuration and deployment
 

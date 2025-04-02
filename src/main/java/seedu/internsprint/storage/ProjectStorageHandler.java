@@ -49,13 +49,14 @@ public class ProjectStorageHandler implements Storage<ProjectList> {
             if (file.getParentFile() != null && !file.getParentFile().exists()) {
                 if (!file.getParentFile().mkdirs()) {
                     throw new RuntimeException(String.format(UNABLE_TO_CREATE_DIRECTORY,
-                            file.getParentFile().getAbsolutePath()));
+                        file.getParentFile().getAbsolutePath()));
                 }
                 assert file.getParentFile().exists() : "Directory should exist at this point";
-
+            }
+            if (!file.exists()) {
                 if (!file.createNewFile()) {
                     throw new RuntimeException(String.format(FILE_ALREADY_EXISTS,
-                            file.getAbsolutePath()));
+                        file.getAbsolutePath()));
                 }
                 assert file.exists() : "File should exist at this point";
             }
@@ -83,10 +84,15 @@ public class ProjectStorageHandler implements Storage<ProjectList> {
         }
         assert file.exists() : "File should exist at this point";
 
-        FileWriter fileWriter = new FileWriter(file);
-        fileWriter.write(jsonArray.toString(4));
-        logger.log(Level.INFO, String.format("Successfully saved %s Projects to file %s",
+        try (FileWriter fileWriter = new FileWriter(file)) {
+            fileWriter.write(jsonArray.toString(4));
+            logger.log(Level.INFO, String.format("Successfully saved %s Projects to file %s",
                 jsonArray.length(), file.getAbsolutePath()));
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "Error writing to file {0}", file.getAbsolutePath());
+            throw new IOException(String.format(UNABLE_TO_CREATE_FILE,
+                file.getAbsolutePath()));
+        }
 
     }
 

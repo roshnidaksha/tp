@@ -60,10 +60,12 @@ public abstract class AddInternshipCommand extends Command {
      */
     protected abstract Internship createInternship();
 
+
     /**
      * Executes the command to add an internship.
      *
      * @param internships InternshipList object.
+     * @param user Userprofile object.
      * @return CommandResult object.
      */
     @Override
@@ -71,7 +73,7 @@ public abstract class AddInternshipCommand extends Command {
         logger.log(Level.INFO, "Executing add command");
         CommandResult result;
         if (!isValidParameters()) {
-            logger.log(Level.WARNING, "Invalid parameters entered");
+            logger.log(Level.SEVERE, "Invalid parameters entered");
             result = new CommandResult(getUsageMessage());
             result.setSuccessful(false);
             return result;
@@ -85,9 +87,14 @@ public abstract class AddInternshipCommand extends Command {
         try {
             internships.addInternship(toAdd);
             internships.saveInternships();
-            //feedback.add(InternSprintMessages.SAVE_SUCCESS_MESSAGE);
-        } catch (IOException | DuplicateEntryException e) {
-            logger.log(Level.WARNING, "Error saving internships after adding an internship");
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "Error saving internships to file after adding an internship");
+            feedback.add(e.getMessage());
+            result = new CommandResult(feedback);
+            result.setSuccessful(false);
+            return result;
+        } catch (DuplicateEntryException e) {
+            logger.log(Level.WARNING, "New internship is already present in the list");
             feedback.add(e.getMessage());
             result = new CommandResult(feedback);
             result.setSuccessful(false);

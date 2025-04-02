@@ -14,6 +14,9 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_REQU
 import static seedu.internsprint.util.InternSprintMessages.NO_INTERNSHIPS_FOUND;
 import static seedu.internsprint.util.InternSprintMessages.NUMBER_OF_INTERNSHIPS_FOUND;
 
+/**
+ * Represents a command to find internships based on type, company name, or role.
+ */
 public class FindCommand extends Command {
     public static final String COMMAND_WORD = "find";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all internships of a particular type, "
@@ -23,11 +26,23 @@ public class FindCommand extends Command {
     public static final String[] PARAMETERS = {"/description", "/c", "/r"};
     private static final Logger logger = InternSprintLogger.getLogger();
 
+    /**
+     * Checks if the parameters entered by the user are valid.
+     *
+     * @return True if the parameters are valid, false otherwise.
+     */
     @Override
     protected boolean isValidParameters() {
         return !parameters.isEmpty();
     }
 
+    /**
+     * Executes the FindCommand.
+     *
+     * @param internships InternshipList or UserProfile user.
+     * @param user UserProfile object.
+     * @return CommandResult object.
+     */
     @Override
     public CommandResult execute(InternshipList internships, UserProfile user) {
         CommandResult result;

@@ -1,6 +1,7 @@
 package seedu.internsprint.model.internship;
 
 import seedu.internsprint.exceptions.DuplicateEntryException;
+import seedu.internsprint.model.internship.interview.Interview;
 import seedu.internsprint.storage.InternshipStorageHandler;
 import seedu.internsprint.storage.StorageManager;
 
@@ -35,10 +36,21 @@ public class InternshipList {
         if (internshipMap.get(type).contains(internship)) {
             throw new DuplicateEntryException(DUPLICATE_INTERNSHIP);
         }
+        internship.setInternshipId(internshipCount);
         internshipMap.get(type).add(internship);
         internshipCount++;
         assert contains(internship) : "Internship should be in the list";
         assert internshipCount > 0 : "At least one internship should be in the list";
+    }
+
+    /**
+     * Assigns an interview to the internship.
+     *
+     * @param interview Interview to be assigned.
+     */
+    public void addInterview(Interview interview) {
+        int internshipId = interview.getInternshipId();
+        getInternshipById(internshipId).setInterview(interview);
     }
 
     /**
@@ -70,9 +82,44 @@ public class InternshipList {
     public void saveInternships() throws IOException {
         try {
             storageManager.saveInternshipData(this);
+            storageManager.saveInterviewData(this);
         } catch (IOException e) {
             throw new IOException(String.format(UNABLE_TO_WRITE_FILE, InternshipStorageHandler.FILE_PATH));
         }
+    }
+
+    /**
+     * Gets the internship by its ID.
+     *
+     * @param internshipId ID of the internship.
+     * @return Internship with the given ID.
+     */
+    public Internship getInternshipById(int internshipId) {
+        for (ArrayList<Internship> internships : internshipMap.values()) {
+            for (Internship internship : internships) {
+                if (internship.getInternshipId() == internshipId) {
+                    return internship;
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Gets the interview list of all internships.
+     *
+     * @return List of interviews.
+     */
+    public ArrayList<Interview> getInterviewList() {
+        ArrayList<Interview> interviewList = new ArrayList<>();
+        for (ArrayList<Internship> internships : internshipMap.values()) {
+            for (Internship internship : internships) {
+                if (internship.getInterview() != null) {
+                    interviewList.add(internship.getInterview());
+                }
+            }
+        }
+        return interviewList;
     }
 
     public HashMap<String, ArrayList<Internship>> getInternshipMap() {
