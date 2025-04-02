@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,7 +23,7 @@ import static seedu.internsprint.util.InternSprintMessages.SAVING_PROFILE_SUCCES
  * Handles the reading and writing of user profile data.
  */
 public class ProfileStorageHandler implements Storage<UserProfile> {
-    private static final String FILE_PATH = Paths.get("data", "user.txt").toString();
+    public static final String FILE_PATH = Paths.get("data", "user.txt").toString();
     private static final File userProfileFile = new File(FILE_PATH);
     private static final Logger logger = Logger.getLogger(ProfileStorageHandler.class.getName());
 
@@ -65,7 +66,7 @@ public class ProfileStorageHandler implements Storage<UserProfile> {
     public CommandResult load(UserProfile userProfile) {
         logger.log(Level.INFO, "Loading user profile from file...");
         if (!userProfileFile.exists() || userProfileFile.length() == 0) {
-            return new CommandResult("User profile file is empty.");
+            return new CommandResult(Collections.singletonList("User profile file is empty."), true);
         }
 
         try (BufferedReader reader = new BufferedReader(new FileReader(userProfileFile))) {
@@ -76,7 +77,7 @@ public class ProfileStorageHandler implements Storage<UserProfile> {
             }
 
             parseUserProfile(userProfile, profileData.toString());
-            return new CommandResult("User profile loaded successfully.");
+            return new CommandResult(Collections.singletonList("User profile loaded successfully."), true);
         } catch (IOException e) {
             logger.log(Level.SEVERE, UNABLE_TO_LOAD_PROFILE, e);
             throw new RuntimeException(UNABLE_TO_LOAD_PROFILE);
@@ -97,7 +98,7 @@ public class ProfileStorageHandler implements Storage<UserProfile> {
             } else if (line.startsWith("Preferred Companies: ")) {
                 userProfile.setPreferredCompanies(line.substring(21));
             } else if (line.startsWith("Preferred Roles: ")) {
-                userProfile.setPreferredRoles(line.substring(18));
+                userProfile.setPreferredRoles(line.substring(17));
             } else if (line.startsWith("Target Stipend Range: ")) {
                 userProfile.setTargetStipendRange(line.substring(22));
             } else if (line.startsWith("Internship Date Range: ")) {
