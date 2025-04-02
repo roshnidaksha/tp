@@ -21,7 +21,7 @@ and easily tracking status of your applications.
 
 <!-- TOC -->
   * [Quick Start](#quick-start)
-  * [Features](#features-)
+  * [Features](#features)
     * [Help: `help`](#help-help)
     * [Listing all internships: `list`](#listing-all-internships-list)
     * [Adding a general category of internship: `add general`](#adding-a-general-category-of-internship-add-general)
@@ -30,10 +30,17 @@ and easily tracking status of your applications.
     * [Editing an internship: `edit`](#editing-an-internship-edit)
     * [Deleting an internship: `delete`](#deleting-an-internship-delete)
     * [Finding internships: `find`](#finding-internships-find)
-    * [Viewing extended description of a specific internship:
-      `desc`](#viewing-extended-description-of-a-specific-internship-desc)
+    * [Viewing extended description of a specific internship: `desc`](#viewing-extended-description-of-a-specific-internship-desc)
     * [Adding interviews for internships: `interviewfor`](#adding-interviews-for-internships-interviewfor)
     * [Sorting all interviews added by date: `sortInterviews`](#sorting-all-interviews-added-by-date-sortinterviews)
+    * [Updating user profile information: `my`](#updating-user-profile-information-my)
+    * [Viewing user profile information: `view user`](#viewing-user-profile-information-view-user)
+    * [Adding a general category of project: `project general`](#adding-a-general-category-of-project-project-general)
+    * [Adding a software category of internship: `project software`](#adding-a-software-category-of-internship-project-software)
+    * [Adding a hardware category of internship: `project hardware`](#adding-a-hardware-category-of-internship-project-hardware)
+    * [Viewing a general category of project: `view general`](#viewing-a-general-category-of-project-view-general)
+    * [Viewing a software category of internship: `view software`](#viewing-a-software-category-of-internship-view-software)
+    * [Viewing a hardware category of internship: `view hardware`](#viewing-a-hardware-category-of-internship-view-hardware)
     * [Exit `bye`](#exit-bye)
   * [Saving the data](#saving-the-data)
   * [Editing the data file](#editing-the-data-file)
