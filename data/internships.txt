@@ -1,0 +1,7 @@
+[{
+    "role": "Human Resource",
+    "companyName": "Google",
+    "type": "general",
+    "department": "HR",
+    "internshipId": 0
+}]

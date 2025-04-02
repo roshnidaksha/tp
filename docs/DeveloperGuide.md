@@ -423,7 +423,9 @@ the internship details manually.
 **Sequence Diagram:**
 
 Below is the sequence diagram for deleting an internship.
-Add sequence diagram for deleting an internship here.
+
+![DeleteCommandOverview.drawio.png](images/DeleteCommandOverview.drawio.png)
+More diagrams detailing the DeleteCommand to be added here.
 
 ### 4. List all Internships
 **Overview**:
