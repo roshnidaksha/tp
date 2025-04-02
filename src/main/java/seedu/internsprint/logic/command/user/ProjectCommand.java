@@ -6,7 +6,9 @@ import seedu.internsprint.model.internship.InternshipList;
 import seedu.internsprint.model.userprofile.UserProfile;
 import seedu.internsprint.model.userprofile.project.Project;
 import seedu.internsprint.util.InternSprintLogger;
+import seedu.internsprint.util.InternSprintMessages;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -16,6 +18,7 @@ import java.util.logging.Logger;
 import static seedu.internsprint.util.InternSprintMessages.MESSAGE_DUPLICATE_PROJECT;
 import static seedu.internsprint.util.InternSprintMessages.PROJECT_ADD_MESSAGE_SUCCESS;
 import static seedu.internsprint.util.InternSprintMessages.PROJECT_LIST_COUNT_MESSAGE;
+import static seedu.internsprint.util.InternSprintMessages.SAVE_SUCCESS_MESSAGE;
 
 /**
  * Represents a command to add an project.
@@ -93,13 +96,10 @@ public abstract class ProjectCommand extends Command {
         feedback.add(PROJECT_ADD_MESSAGE_SUCCESS);
         feedback.add(toAdd.toString());
         feedback.add(String.format(PROJECT_LIST_COUNT_MESSAGE, user.projects.getProjectCount()));
-        //to be implemented later on when projects are saved
-        /*
-        try {
 
+        try {
             user.projects.saveProjects();
-            //feedback.add(InternSprintMessages.SAVE_SUCCESS_MESSAGE);
-        } catch (Exception e) {
+        } catch (IOException e) {
             logger.log(Level.WARNING, "Error saving project after adding an internship");
             feedback.add(e.getMessage());
             result = new CommandResult(feedback);
@@ -107,7 +107,7 @@ public abstract class ProjectCommand extends Command {
             return result;
         }
         logger.log(Level.INFO, "Internship added successfully and saved to file");
-         */
+
         result = new CommandResult(feedback);
         result.setSuccessful(true);
         return result;

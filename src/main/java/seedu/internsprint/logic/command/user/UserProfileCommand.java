@@ -4,8 +4,10 @@ import seedu.internsprint.logic.command.Command;
 import seedu.internsprint.logic.command.CommandResult;
 import seedu.internsprint.model.internship.InternshipList;
 import seedu.internsprint.model.userprofile.UserProfile;
+import seedu.internsprint.storage.StorageManager;
 import seedu.internsprint.util.InternSprintLogger;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -71,7 +73,7 @@ public class UserProfileCommand extends Command {
     public CommandResult execute(InternshipList internships, UserProfile user) {
         logger.log(Level.INFO, "Entering execute for user command...");
         CommandResult result;
-        List<String> feedback = new ArrayList<>();
+        ArrayList<String> feedback = new ArrayList<>();
         if (!isValidParameters()) {
             logger.log(Level.WARNING, "There are invalid parameters so error result is output to user.");
             feedback.add(USERPROFILE_INVALID_PARAMS);
@@ -81,6 +83,13 @@ public class UserProfileCommand extends Command {
             return result;
         }
         setUserProfileAttributes(user);
+
+        result = user.saveProfile(feedback);
+        if (!result.isSuccessful()) {
+            logger.log(Level.WARNING, "There was an error saving the profile.");
+            return result;
+        }
+
         feedback.add(USER_UPDATE_SUCCESS_MESSAGE);
         feedback.add(user.toString());
         result = new CommandResult(feedback);
