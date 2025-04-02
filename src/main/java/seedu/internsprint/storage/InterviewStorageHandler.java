@@ -122,13 +122,14 @@ public class InterviewStorageHandler implements Storage<InternshipList> {
         }
 
         JSONArray jsonArray = new JSONArray(jsonData.toString());
-        if (jsonArray.isEmpty()) {
+        if (jsonArray.isEmpty() && jsonData.length() != 2) {
             logger.log(Level.WARNING, "Error in formatting such that JSONArray could not be" +
                     " created successfully");
             result = errorReadingFile();
             return result;
         }
-        assert !jsonArray.isEmpty() : "Array of JSON objects read from file should not be empty at this point";
+        assert !(jsonArray.isEmpty() && jsonData.length() != 2) :
+            "Array of JSON objects read from file should not be empty at this point";
         logger.log(Level.INFO, "Successfully extracted interviews as JSON objects from file");
 
         for (int i = 0; i < jsonArray.length(); i++) {
