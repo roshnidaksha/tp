@@ -211,6 +211,9 @@ model
 
 ---
 
+#### Model UML Diagram
+![Model_UML_diag.png](images/Model_UML_diag.png)
+
 ### Storage Component
 
 The Storage component is responsible for reading and writing data to and from the disk.
@@ -423,6 +426,15 @@ Below is the sequence diagram for deleting an internship.
 Add sequence diagram for deleting an internship here.
 
 ### 4. List all Internships
+**Overview**:
+
+This command allows user to view a list of all added internships.
+Description of segment is yet to be updated. In the meantime, here are the diagrams for list command
+![list_full_seq_diag.png](images/ListImages/list_full_seq_diag.png)
+![list_overview.png](images/ListImages/list_overview.png)
+![list_ref_1.png](images/ListImages/list_ref_1.png)
+![list_ref_2.png](images/ListImages/list_ref_2.png)
+
 ### 5. Create/Update User Profile
 
 **Overview**:
