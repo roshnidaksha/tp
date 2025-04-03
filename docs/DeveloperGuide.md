@@ -192,15 +192,12 @@ one of its subclasses e.g., `DeleteCommand`).
 The **Model** component is responsible for storing and managing and providing access to all the data used by the 
 InternSprint . It represents the internal state of the application and is updated based on commands entered by the user.
 
----
-
 #### Responsibilities
 - Store internship information (company name, role, description, etc.)
 - Support three internship types: Software, Hardware and General.
 - Store and manage interviews (including multiple rounds per internship)
 - Handle user information and goals via the `UserProfile`
 
----
 #### Package Structure
 
 ```
@@ -216,7 +213,7 @@ model
 └── userprofile
     └── UserProfile.java        # Stores user preferences (companies, roles, goals, etc.)
 ```
----
+
 
 #### Key Classes and Their Roles
 
@@ -229,16 +226,52 @@ model
 | `InterviewEntry`                      | A wrapper for pairing an `Interview` with its parent `Internship` |
 | `UserProfile`                         | Stores user preferences for use across the application            |
 
----
+
 
 #### Model UML Diagram
 ![Model_UML_diag.png](images/Model_UML_diag.png)
 
+
 ### Storage Component
 
-The Storage component is responsible for reading and writing data to and from the disk.
+The Storage component is responsible for managing saving and loading in the application.
+It ensures that user data, such as internships, projects, profiles, and interviews, 
+are stored and retrieved efficiently.
 
-{Explain in better detail}
+#### Key Classes and Their Roles
+
+1. **StorageManager Class**: It acts as the central controller for the storage system. It implements a 
+singleton pattern to ensure only one instance exists throughout the application. It manages multiple 
+storage handlers, each responsible for handling a specific type of data.
+2. **Storage Class**: It acts as the central interface, interacting with the 
+storage handlers `InternshipStorageHandler`, `InterviewStorageHandler`, `ProjecttorageHandler` 
+and `ProfileStorageHandler` to manage the saving and loading of different types of data.
+
+Here is a class diagram of related classes in the Storage component:
+
+![Storage.drawio.png](images/Storage.drawio.png)
+
+**How the `Storage` Component works:**
+1. When the user performs an action that modifies stored data (e.g., adding or deleting an internship), 
+the corresponding `Command` class interacts with the `InternshipList`.
+2. The `InternshipList` then calls the `saveInternships()` method, which delegates the saving process 
+to the `StorageManager`.
+3. The `StorageManager` calls the appropriate storage handler, such as `InternshipStorageHandler`, 
+to write the updated data to a file.
+4. The data is saved persistently and can be reloaded when the application starts or when requested by the user.
+
+#### Summary of All Storage Classes and Their Roles
+
+| Class                      | Role                                                                |
+|----------------------------|---------------------------------------------------------------------|
+| `Storage`                  | Abstract base class for storage related operations                  |
+| `Storage Manager`          | Manages saving/loading processes for the different storage handlers |
+| `InternshipStorageHandler` | Handles saving and loading of internship related data               |
+| `InterviewStorageHandler`  | Handles data storage for interviews of internships                  |
+| `ProfileStorageHandler`    | Handles data storage for the user's profile                         |
+| `ProjectStorageHandler`    | Handles saving and loading of project related data                  |
+
+---
 
 ## Implementation
 
@@ -379,15 +412,15 @@ an unsuccessful result is returned to the user.
 * If no duplicates are found and execution of editParameters...() is successful, the edited internship is added to the list of internships
 and a successful execution result is returned to the user.
 * Depending on whether the internships are successfully saved to the `internships.txt` file,
-  a `CommandResult` is returned. The reference frame for saving internships is omitted in the diagram to focus on the
-  details of adding a new internship.
+  a `CommandResult` is returned. The reference frame for saving internships is similar to the reference frame 
+  under `DeleteCommand`.
 
-![EditCommandSequenceDiagramOverview](images/edit_overview.png)
+![EditCommandSequenceDiagramOverview](images/EditImages/edit_overview.png)
 
 Below are the expanded reference frames for successful and unsuccessful CommandResults returned by execute() method.
 
-![EditCommandSequenceDiagramOverview](images/edit_ref_1.png)
-![EditCommandSequenceDiagramOverview](images/edit_ref_2.png)
+![EditCommandSequenceDiagramOverview](images/EditImages/edit_ref_1.png)
+![EditCommandSequenceDiagramOverview](images/EditImages/edit_ref_2.png)
 
 
 * Print calls, assert statements, logging, and other non-essential calls are omitted in the diagram for clarity.
@@ -395,6 +428,7 @@ For full clarity, note below is a comprehensive sequence diagram, combining all 
 behind duplicate-checking for example. Note this is only added for completeness for this one Command class, and only
 to supplement an additional level of detail to above overview diagram (which should be sufficient for understanding).
 Such an expanded view will be isolated to this one command but execution logic resembles other Commands,
+
 hence can refer to this diagram for thoroughness for all such commands.
 
 
@@ -442,11 +476,35 @@ the internship details manually.
 
 **Sequence Diagram:**
 
-Below is the sequence diagram for deleting an internship.
+Below is the sequence diagram for deleting internship. This is an overview sequence diagram in which method flow has
+been simplified using reference frames, expanded on below to help aid in clarity.
 
-![DeleteCommandOverview.drawio.png](images/DeleteCommandOverview.drawio.png)
-More diagrams detailing the DeleteCommand to be added here.
+* `InternSprint.java` obtains the correct `DeleteCommand` object from the `CommandParser` class and calls the
+  `execute()` method of that `DeleteCommand` object.
+* `execute()` method first checks the validity of the provided parameter using the `isValidParameters()` method of
+  the same `*Command` object. For the `DeleteCommand` this methods check that if the index is valid and not missing.
+* If the parameter is not valid (as depicted in the sequence diagram below), then a `CommandResult` with the correct
+  usage message is returned to the user. The `isSuccessful` field of the `CommandResult` object is set to `false`.
+* If the parameter is valid (as depicted in the sequence diagram below), then the specified index is found in the
+  internship list.
+* The internship at the index is then deleted and is removed from the list of internships. 
+  A successful execution result is returned to the user.
+* Depending on whether the internships are successfully saved to the `internships.txt` file,
+  a `CommandResult` is returned. 
 
+![DeleteCommand.drawio.png](images/DeleteImages/DeleteCommand.drawio.png)
+
+Below are the expanded reference frames for successful and unsuccessful CommandResults returned by execute() method.
+The reference frame for saving internships can also be seen below.
+
+![DeleteWrongParameter.drawio.png](images/DeleteImages/DeleteWrongParameter.drawio.png)
+
+![DeleteCorrectParameter.drawio.png](images/DeleteImages/DeleteCorrectParameter.drawio.png)
+
+![SaveInternship.drawio.png](images/DeleteImages/SaveInternship.drawio.png)
+
+* Print calls, assert statements, logging, and other non-essential calls are omitted in the diagrams for clarity.
+  
 ### 4. List all Internships
 **Overview**:
 
@@ -518,7 +576,7 @@ class can be referenced to understand execution logic for these commands. Howeve
 command and how the three different project type classes extend from their superclasses, below is a class diagram for the same:
 
 
-![ProjectCommandUMLDiagram](images/projects-uml.png)
+![ProjectCommandUMLDiagram](images/ProjectImages/projects-uml.png)
 
 * Certain non-essential attributes and class methods are omitted in the diagram for clarity.
 
