@@ -1,9 +1,8 @@
-package seedu.internsprint.logic.command.internship;
+package seedu.internsprint.logic.command.user;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.internsprint.logic.command.CommandResult;
-import seedu.internsprint.logic.command.user.ViewSoftwareProjectsCommand;
 import seedu.internsprint.model.internship.InternshipList;
 import seedu.internsprint.model.userprofile.UserProfile;
 import seedu.internsprint.model.userprofile.project.Project;
