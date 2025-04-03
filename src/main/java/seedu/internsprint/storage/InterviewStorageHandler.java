@@ -1,11 +1,8 @@
 package seedu.internsprint.storage;
 
-import seedu.internsprint.exceptions.DuplicateEntryException;
 import seedu.internsprint.logic.command.CommandResult;
-import seedu.internsprint.model.internship.GeneralInternship;
-import seedu.internsprint.model.internship.HardwareInternship;
-import seedu.internsprint.model.internship.SoftwareInternship;
 import seedu.internsprint.model.internship.InternshipList;
+import seedu.internsprint.model.internship.interview.Interview;
 import seedu.internsprint.util.InternSprintLogger;
 
 import org.json.JSONArray;
@@ -26,25 +23,23 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.FILE_ALREADY
 import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_CREATE_DIRECTORY;
 import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_CREATE_FILE;
 import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_READ_FILE;
-
 import static seedu.internsprint.util.InternSprintMessages.LOADING_DATA_SUCCESS;
 import static seedu.internsprint.util.InternSprintMessages.LOADING_DATA_FIRST_TIME;
 
-/**
- * Handles the storage of internship data.
- */
-public class InternshipStorageHandler implements Storage<InternshipList> {
-    public static final String FILE_PATH = Paths.get("data", "internships.txt").toString();
+public class InterviewStorageHandler implements Storage<InternshipList> {
+
+    public static final String FILE_PATH = Paths.get("data", "interviews.txt").toString();
     private static File file;
     private static final Logger logger = InternSprintLogger.getLogger();
 
-    public InternshipStorageHandler() {
+    public InterviewStorageHandler() {
         file = new File(FILE_PATH);
     }
 
     /**
      * Creates the file if it does not exist.
      */
+    @Override
     public void createFile() {
         try {
             if (file.getParentFile() != null && !file.getParentFile().exists()) {
@@ -57,7 +52,7 @@ public class InternshipStorageHandler implements Storage<InternshipList> {
             if (!file.exists()) {
                 if (!file.createNewFile()) {
                     throw new RuntimeException(String.format(FILE_ALREADY_EXISTS,
-                        file.getAbsolutePath()));
+                            file.getAbsolutePath()));
                 }
                 assert file.exists() : "File should exist at this point";
             }
@@ -69,16 +64,15 @@ public class InternshipStorageHandler implements Storage<InternshipList> {
     }
 
     /**
-     * Saves the internships to the file.
+     * Saves the interviews to the file.
      *
      * @param internships List of internships to be saved.
      */
+    @Override
     public void save(InternshipList internships) throws IOException {
-        logger.log(Level.INFO, "Saving Internships to file ...");
+        logger.log(Level.INFO, "Saving Interviews to file ...");
         JSONArray jsonArray = new JSONArray();
-        internships.getInternshipMap().forEach((type, list) -> {
-            list.forEach(internship -> jsonArray.put(internship.toJson()));
-        });
+        internships.getInterviewList().forEach(interview -> jsonArray.put(interview.toJson()));
 
         if (!file.exists()) {
             createFile();
@@ -87,10 +81,10 @@ public class InternshipStorageHandler implements Storage<InternshipList> {
 
         try (FileWriter fileWriter = new FileWriter(file)) {
             fileWriter.write(jsonArray.toString(4));
-            logger.log(Level.INFO, String.format("Successfully saved %s Internships to file %s",
+            logger.log(Level.INFO, String.format("Successfully saved %s Interviews to file %s",
                 jsonArray.length(), file.getAbsolutePath()));
         } catch (IOException e) {
-            logger.log(Level.SEVERE, "Error saving internships to file");
+            logger.log(Level.SEVERE, "Error writing to file");
             throw new IOException(String.format(UNABLE_TO_CREATE_FILE,
                     file.getAbsolutePath()));
         }
@@ -98,13 +92,14 @@ public class InternshipStorageHandler implements Storage<InternshipList> {
     }
 
     /**
-     * Loads the internships from the file.
+     * Loads the interviews from the file.
      *
-     * @param internships List of internships to be loaded.
+     * @param internships List of internships where interviews need to be loaded.
      * @return CommandResult object indicating the success of the operation.
      */
+    @Override
     public CommandResult load(InternshipList internships) {
-        logger.log(Level.INFO, "Beginning process to load internships from file ...");
+        logger.log(Level.INFO, "Beginning process to load interviews from file ...");
         CommandResult result;
         if (!file.exists() || file.length() == 0) {
             logger.log(Level.INFO, "Data file loaded is empty currently");
@@ -127,23 +122,35 @@ public class InternshipStorageHandler implements Storage<InternshipList> {
         }
 
         JSONArray jsonArray = new JSONArray(jsonData.toString());
-        if (jsonArray.isEmpty()) {
+        if (jsonArray.isEmpty() && jsonData.length() != 2) {
             logger.log(Level.WARNING, "Error in formatting such that JSONArray could not be" +
-                    "created successfully");
+                    " created successfully");
             result = errorReadingFile();
             return result;
         }
-        assert !jsonArray.isEmpty(): "Array of JSON objects read from file should not be an empty at this point";
-        logger.log(Level.INFO, "Successfully extracted internships as JSON objects from file");
+        assert !(jsonArray.isEmpty() && jsonData.length() != 2) :
+            "Array of JSON objects read from file should not be empty at this point";
+        logger.log(Level.INFO, "Successfully extracted interviews as JSON objects from file");
 
         for (int i = 0; i < jsonArray.length(); i++) {
-            JSONObject internshipJson = jsonArray.getJSONObject(i);
-            addInternshipToList(internships, internshipJson);
+            JSONObject interviewJson = jsonArray.getJSONObject(i);
+            addInterviewToList(internships, interviewJson);
         }
-        logger.log(Level.INFO, "Successfully added internships from file to internship list in app");
+        logger.log(Level.INFO, "Successfully added interviews from file to interview list in app");
         result = new CommandResult(LOADING_DATA_SUCCESS);
         result.setSuccessful(true);
         return result;
+    }
+
+    /**
+     * Adds the interview to the list of interviews.
+     *
+     * @param internships List of internships.
+     * @param interviewJson JSON object representing the interview.
+     */
+    private static void addInterviewToList(InternshipList internships, JSONObject interviewJson) {
+        Interview interview = Interview.fromJson(interviewJson);
+        internships.addInterview(interview);
     }
 
     /**
@@ -159,32 +166,4 @@ public class InternshipStorageHandler implements Storage<InternshipList> {
         result.setSuccessful(false);
         return result;
     }
-
-    /**
-     * Adds the internship to the list of internships.
-     *
-     * @param internships List of internships.
-     * @param internshipJson JSON object representing the internship.
-     */
-    private static void addInternshipToList(InternshipList internships, JSONObject internshipJson) {
-        try {
-            switch (internshipJson.getString("type")) {
-            case "general":
-                internships.addInternship(GeneralInternship.fromJson(internshipJson));
-                break;
-            case "software":
-                internships.addInternship(SoftwareInternship.fromJson(internshipJson));
-                break;
-            case "hardware":
-                internships.addInternship(HardwareInternship.fromJson(internshipJson));
-                break;
-            default:
-                break;
-            }
-        } catch (DuplicateEntryException e) {
-            throw new RuntimeException(e.getMessage() + "\n" + "Please check the file for duplicate entries");
-        }
-    }
 }
-
-

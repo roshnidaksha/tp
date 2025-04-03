@@ -45,4 +45,6 @@ public class InternSprintExceptionMessages {
     public static final String DUPLICATE_INTERNSHIP = "This internship already exists in your list.";
     public static final String DUPLICATE_INTERVIEW = "An interview with the same date and time already exists for " +
         "that internship.\n" + "    Please check your date and time or the internship you are referring to.";
+    public static final String UNABLE_TO_SAVE_PROFILE = "Unable to save user profile to file %s";
+    public static final String UNABLE_TO_LOAD_PROFILE = "Unable to read user profile file";
 }

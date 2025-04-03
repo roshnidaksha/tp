@@ -14,7 +14,13 @@ import java.util.logging.Logger;
 import static seedu.internsprint.util.InternSprintMessages.USER_VIEW_SUCCESS_MESSAGE;
 
 public class ViewUserCommand extends Command {
+    public static final String COMMAND_WORD = "view user";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Displays the user profile " +
+            "details in a Resume format.\n"
+            + "    Parameters: None\n"
+            + "    Example: " + COMMAND_WORD;
     private static final Logger logger = InternSprintLogger.getLogger();
+
     @Override
     protected boolean isValidParameters() {
         assert parameters.isEmpty():"There should be no flags in this command.";

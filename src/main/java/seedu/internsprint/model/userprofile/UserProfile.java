@@ -1,5 +1,6 @@
 package seedu.internsprint.model.userprofile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -9,9 +10,14 @@ import java.util.logging.Logger;
 import org.json.JSONObject;
 import de.vandermeer.asciitable.AsciiTable;
 
+import seedu.internsprint.logic.command.CommandResult;
 import seedu.internsprint.logic.parser.CommandParser;
 import seedu.internsprint.model.userprofile.project.ProjectList;
+import seedu.internsprint.storage.ProfileStorageHandler;
+import seedu.internsprint.storage.StorageManager;
 import seedu.internsprint.util.InternSprintLogger;
+
+import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_WRITE_FILE;
 
 /**
  * Stores basic user profile to customize application for user.
@@ -27,6 +33,8 @@ public class UserProfile {
     public static String internshipDateRange;
     private static final Logger logger = InternSprintLogger.getLogger();
     public final ProjectList projects;
+
+    private final StorageManager storageManager = StorageManager.getInstance();
 
     public UserProfile() {
         projects = new ProjectList();
@@ -98,6 +106,7 @@ public class UserProfile {
 
     /**
      * Return basic formatted string of User Profile to user for updates
+     *
      * @return String of user profile
      */
     @Override
@@ -134,6 +143,7 @@ public class UserProfile {
 
     /**
      * Returns more CV-style formatted string to user in terminal
+     *
      * @return CV-formatted string to user
      */
     public String toExtendedString() {
@@ -178,7 +188,39 @@ public class UserProfile {
         return "\n" + at.render();
 
     }
-    
+
+    /**
+     * Returns a formatted string representation of the user profile.
+     * This method presents the user's details in a structured, readable format,
+     * with each attribute displayed on a new line.
+     *
+     * @return A formatted string containing user profile details.
+     */
+    public String toFormattedString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("Name: ").append(name != null ? name : "N/A").append("\n");
+        sb.append("Yearly Goals: ").append(yearlyGoals != null ? yearlyGoals : "N/A").append("\n");
+        sb.append("Monthly Goals: ").append(monthlyGoals != null ? monthlyGoals : "N/A").append("\n");
+        sb.append("Preferred Industries: ").append(preferredIndustries != null ?
+                String.join(", ", preferredIndustries) : "N/A").append("\n");
+        sb.append("Preferred Companies: ").append(preferredCompanies != null ?
+                String.join(", ", preferredCompanies) : "N/A").append("\n");
+        sb.append("Preferred Roles: ").append(preferredRoles != null ?
+                String.join(", ", preferredRoles) : "N/A").append("\n");
+        sb.append("Target Stipend Range: ").append(targetStipendRange != null ?
+                targetStipendRange : "N/A").append("\n");
+        sb.append("Internship Date Range: ").append(internshipDateRange != null ?
+                internshipDateRange : "N/A").append("\n");
+
+        return sb.toString();
+    }
+
+    /**
+     * Returns a JSON representation of the user profile.
+     *
+     * @return A JSONObject containing user profile details.
+     */
     public JSONObject toJson() {
         Map<String, Object> orderedMap = new LinkedHashMap<>();
         orderedMap.put("type", "user");
@@ -191,6 +233,23 @@ public class UserProfile {
         orderedMap.put("pay", targetStipendRange);
         orderedMap.put("date", internshipDateRange);
         return new JSONObject(orderedMap);
+    }
+
+    /**
+     * Saves the user profile to a file.
+     */
+    public CommandResult saveProfile(ArrayList<String> feedback) {
+        logger.log(Level.INFO, "Saving user profile to file...");
+        CommandResult result;
+        try {
+            storageManager.saveUserProfileData(this);
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "Error saving user profile", e);
+            feedback.add(String.format(UNABLE_TO_WRITE_FILE, ProfileStorageHandler.FILE_PATH));
+            result = new CommandResult(feedback, false);
+            return result;
+        }
+        return new CommandResult(feedback, true);
     }
 
 }

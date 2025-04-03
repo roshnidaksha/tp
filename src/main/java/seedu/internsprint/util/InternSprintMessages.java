@@ -52,4 +52,6 @@ public class InternSprintMessages {
     public static final String NUMBER_OF_INTERNSHIPS_FOUND = "Number of internships found: %d";
     public static final String ADD_INTERVIEW_MESSAGE_SUCCESS = "New interview added\n%s";
     public static final String SORT_INTERVIEWS_MESSAGE_SUCCESS = "Here are your interviews sorted by date and time.";
+    public static final String SAVING_PROFILE_SUCCESS = "Successfully saved user profile to file %s";
+    public static final String LOADING_PROFILE_SUCCESS = "Successfully loaded user profile from file";
 }

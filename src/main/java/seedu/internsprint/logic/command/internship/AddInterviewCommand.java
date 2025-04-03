@@ -156,6 +156,7 @@ public class AddInterviewCommand extends Command {
             parameters.getOrDefault("/email", ""),
             parameters.getOrDefault("/notes", "")
         );
+        interview.setInternshipId(internship.getInternshipId());
 
         try {
             internship.addInterview(interview);
