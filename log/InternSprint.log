@@ -4576,3 +4576,939 @@ Apr 02, 2025 11:37:25 PM seedu.internsprint.logic.command.CommandResult <init>
 INFO: Multiple feedback provided to user and command is unsuccessful...
 Apr 02, 2025 11:37:25 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
 INFO: Command executed successfully
+Apr 03, 2025 2:59:28 PM seedu.internsprint.InternSprint run
+INFO: Starting InternSprint
+Apr 03, 2025 2:59:28 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Loading internships from storage
+Apr 03, 2025 2:59:28 PM seedu.internsprint.InternSprint loadData
+INFO: Loading data from storage
+Apr 03, 2025 2:59:28 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Beginning process to load internships from file ...
+Apr 03, 2025 2:59:28 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Successfully extracted internships as JSON objects from file
+Apr 03, 2025 2:59:28 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Successfully added internships from file to internship list in app
+Apr 03, 2025 2:59:28 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 2:59:28 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Beginning process to load interviews from file ...
+Apr 03, 2025 2:59:28 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Successfully extracted interviews as JSON objects from file
+Apr 03, 2025 2:59:29 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Successfully added interviews from file to interview list in app
+Apr 03, 2025 2:59:29 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 2:59:29 PM seedu.internsprint.storage.ProfileStorageHandler load
+INFO: Loading user profile from file...
+Apr 03, 2025 2:59:29 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user and command is unsuccessful...
+Apr 03, 2025 2:59:29 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Beginning process to load projects from file ...
+Apr 03, 2025 2:59:29 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Successfully extracted projects as JSON objects from file
+Apr 03, 2025 2:59:29 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Successfully added projects from file to project list in app
+Apr 03, 2025 2:59:29 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 2:59:29 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Data loaded successfully
+Apr 03, 2025 2:59:35 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: User command: view user
+Apr 03, 2025 2:59:35 PM seedu.internsprint.logic.parser.CommandParser parseCommand
+INFO: User command inside parseCommand: view user
+Apr 03, 2025 2:59:35 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Parsed Command: seedu.internsprint.logic.command.user.ViewUserCommand@475530b9
+Apr 03, 2025 2:59:35 PM seedu.internsprint.logic.command.user.ViewUserCommand execute
+INFO: Entering execute in view user profile command...
+Apr 03, 2025 2:59:35 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user...
+Apr 03, 2025 2:59:35 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Command executed successfully
+Apr 03, 2025 2:59:40 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: User command: my /name Nikita
+Apr 03, 2025 2:59:40 PM seedu.internsprint.logic.parser.CommandParser parseCommand
+INFO: User command inside parseCommand: my /name Nikita
+Apr 03, 2025 2:59:40 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Parsed Command: seedu.internsprint.logic.command.user.UserProfileCommand@e320068
+Apr 03, 2025 2:59:40 PM seedu.internsprint.logic.command.user.UserProfileCommand execute
+INFO: Entering execute for user command...
+Apr 03, 2025 2:59:40 PM seedu.internsprint.logic.command.user.UserProfileCommand isValidParameters
+INFO: Entering check for parameters in user command.
+Apr 03, 2025 2:59:40 PM seedu.internsprint.logic.command.user.UserProfileCommand setUserProfileAttributes
+INFO: Updating given parameters...
+Apr 03, 2025 2:59:40 PM seedu.internsprint.model.userprofile.UserProfile saveProfile
+INFO: Saving user profile to file...
+Apr 03, 2025 2:59:40 PM seedu.internsprint.storage.ProfileStorageHandler save
+INFO: Saving user profile to file...
+Apr 03, 2025 2:59:40 PM seedu.internsprint.storage.ProfileStorageHandler save
+INFO: Successfully saved user profile to file C:\Users\Nikita\Desktop\cs2113\tp\data\user.txt
+Apr 03, 2025 2:59:40 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user and command is unsuccessful...
+Apr 03, 2025 2:59:40 PM seedu.internsprint.model.userprofile.UserProfile toString
+INFO: Returning basic string for user profile
+Apr 03, 2025 2:59:40 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user...
+Apr 03, 2025 2:59:40 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Command executed successfully
+Apr 03, 2025 2:59:43 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: User command: view user
+Apr 03, 2025 2:59:43 PM seedu.internsprint.logic.parser.CommandParser parseCommand
+INFO: User command inside parseCommand: view user
+Apr 03, 2025 2:59:43 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Parsed Command: seedu.internsprint.logic.command.user.ViewUserCommand@704a52ec
+Apr 03, 2025 2:59:43 PM seedu.internsprint.logic.command.user.ViewUserCommand execute
+INFO: Entering execute in view user profile command...
+Apr 03, 2025 2:59:43 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user...
+Apr 03, 2025 2:59:43 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Command executed successfully
+Apr 03, 2025 2:59:46 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: User command: bye
+Apr 03, 2025 2:59:46 PM seedu.internsprint.logic.parser.CommandParser parseCommand
+INFO: User command inside parseCommand: bye
+Apr 03, 2025 2:59:46 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Parsed Command: seedu.internsprint.logic.command.ByeCommand@4493d195
+Apr 03, 2025 2:59:46 PM seedu.internsprint.storage.InternshipStorageHandler save
+INFO: Saving Internships to file ...
+Apr 03, 2025 2:59:46 PM seedu.internsprint.storage.InternshipStorageHandler save
+INFO: Successfully saved 1 Internships to file C:\Users\Nikita\Desktop\cs2113\tp\data\internships.txt
+Apr 03, 2025 2:59:46 PM seedu.internsprint.storage.InterviewStorageHandler save
+INFO: Saving Interviews to file ...
+Apr 03, 2025 2:59:46 PM seedu.internsprint.storage.InterviewStorageHandler save
+INFO: Successfully saved 1 Interviews to file C:\Users\Nikita\Desktop\cs2113\tp\data\interviews.txt
+Apr 03, 2025 2:59:46 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user...
+Apr 03, 2025 2:59:46 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Command executed successfully
+Apr 03, 2025 2:59:46 PM seedu.internsprint.InternSprint exit
+INFO: Exiting InternSprint
+Apr 03, 2025 2:59:48 PM seedu.internsprint.InternSprint run
+INFO: Starting InternSprint
+Apr 03, 2025 2:59:48 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Loading internships from storage
+Apr 03, 2025 2:59:48 PM seedu.internsprint.InternSprint loadData
+INFO: Loading data from storage
+Apr 03, 2025 2:59:48 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Beginning process to load internships from file ...
+Apr 03, 2025 2:59:48 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Successfully extracted internships as JSON objects from file
+Apr 03, 2025 2:59:48 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Successfully added internships from file to internship list in app
+Apr 03, 2025 2:59:48 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 2:59:48 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Beginning process to load interviews from file ...
+Apr 03, 2025 2:59:48 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Successfully extracted interviews as JSON objects from file
+Apr 03, 2025 2:59:49 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Successfully added interviews from file to interview list in app
+Apr 03, 2025 2:59:49 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 2:59:49 PM seedu.internsprint.storage.ProfileStorageHandler load
+INFO: Loading user profile from file...
+Apr 03, 2025 2:59:49 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user and command is unsuccessful...
+Apr 03, 2025 2:59:49 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Beginning process to load projects from file ...
+Apr 03, 2025 2:59:49 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Successfully extracted projects as JSON objects from file
+Apr 03, 2025 2:59:49 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Successfully added projects from file to project list in app
+Apr 03, 2025 2:59:49 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 2:59:49 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Data loaded successfully
+Apr 03, 2025 2:59:55 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: User command: view user
+Apr 03, 2025 2:59:55 PM seedu.internsprint.logic.parser.CommandParser parseCommand
+INFO: User command inside parseCommand: view user
+Apr 03, 2025 2:59:55 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Parsed Command: seedu.internsprint.logic.command.user.ViewUserCommand@475530b9
+Apr 03, 2025 2:59:55 PM seedu.internsprint.logic.command.user.ViewUserCommand execute
+INFO: Entering execute in view user profile command...
+Apr 03, 2025 2:59:55 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user...
+Apr 03, 2025 2:59:55 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Command executed successfully
+Apr 03, 2025 2:59:58 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: User command: bye
+Apr 03, 2025 2:59:58 PM seedu.internsprint.logic.parser.CommandParser parseCommand
+INFO: User command inside parseCommand: bye
+Apr 03, 2025 2:59:58 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Parsed Command: seedu.internsprint.logic.command.ByeCommand@536aaa8d
+Apr 03, 2025 2:59:58 PM seedu.internsprint.storage.InternshipStorageHandler save
+INFO: Saving Internships to file ...
+Apr 03, 2025 2:59:58 PM seedu.internsprint.storage.InternshipStorageHandler save
+INFO: Successfully saved 1 Internships to file C:\Users\Nikita\Desktop\cs2113\tp\data\internships.txt
+Apr 03, 2025 2:59:58 PM seedu.internsprint.storage.InterviewStorageHandler save
+INFO: Saving Interviews to file ...
+Apr 03, 2025 2:59:58 PM seedu.internsprint.storage.InterviewStorageHandler save
+INFO: Successfully saved 1 Interviews to file C:\Users\Nikita\Desktop\cs2113\tp\data\interviews.txt
+Apr 03, 2025 2:59:58 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user...
+Apr 03, 2025 2:59:58 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Command executed successfully
+Apr 03, 2025 2:59:58 PM seedu.internsprint.InternSprint exit
+INFO: Exiting InternSprint
+Apr 03, 2025 3:00:45 PM seedu.internsprint.InternSprint run
+INFO: Starting InternSprint
+Apr 03, 2025 3:00:45 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Loading internships from storage
+Apr 03, 2025 3:00:45 PM seedu.internsprint.InternSprint loadData
+INFO: Loading data from storage
+Apr 03, 2025 3:00:45 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Beginning process to load internships from file ...
+Apr 03, 2025 3:00:45 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Successfully extracted internships as JSON objects from file
+Apr 03, 2025 3:00:45 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Successfully added internships from file to internship list in app
+Apr 03, 2025 3:00:45 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:00:45 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Beginning process to load interviews from file ...
+Apr 03, 2025 3:00:45 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Successfully extracted interviews as JSON objects from file
+Apr 03, 2025 3:00:46 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Successfully added interviews from file to interview list in app
+Apr 03, 2025 3:00:46 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:00:46 PM seedu.internsprint.storage.ProfileStorageHandler load
+INFO: Loading user profile from file...
+Apr 03, 2025 3:00:46 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user and command is unsuccessful...
+Apr 03, 2025 3:00:46 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Beginning process to load projects from file ...
+Apr 03, 2025 3:00:46 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Successfully extracted projects as JSON objects from file
+Apr 03, 2025 3:00:46 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Successfully added projects from file to project list in app
+Apr 03, 2025 3:00:46 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:00:46 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Data loaded successfully
+Apr 03, 2025 3:01:04 PM seedu.internsprint.InternSprint run
+INFO: Starting InternSprint
+Apr 03, 2025 3:01:05 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Loading internships from storage
+Apr 03, 2025 3:01:05 PM seedu.internsprint.InternSprint loadData
+INFO: Loading data from storage
+Apr 03, 2025 3:01:05 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Beginning process to load internships from file ...
+Apr 03, 2025 3:01:05 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Successfully extracted internships as JSON objects from file
+Apr 03, 2025 3:01:05 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Successfully added internships from file to internship list in app
+Apr 03, 2025 3:01:05 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:01:05 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Beginning process to load interviews from file ...
+Apr 03, 2025 3:01:05 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Successfully extracted interviews as JSON objects from file
+Apr 03, 2025 3:01:05 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Successfully added interviews from file to interview list in app
+Apr 03, 2025 3:01:05 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:01:05 PM seedu.internsprint.storage.ProfileStorageHandler load
+INFO: Loading user profile from file...
+Apr 03, 2025 3:01:05 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user and command is unsuccessful...
+Apr 03, 2025 3:01:05 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Beginning process to load projects from file ...
+Apr 03, 2025 3:01:05 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Successfully extracted projects as JSON objects from file
+Apr 03, 2025 3:01:05 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Successfully added projects from file to project list in app
+Apr 03, 2025 3:01:05 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:01:05 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Data loaded successfully
+Apr 03, 2025 3:01:47 PM seedu.internsprint.InternSprint run
+INFO: Starting InternSprint
+Apr 03, 2025 3:01:48 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Loading internships from storage
+Apr 03, 2025 3:01:48 PM seedu.internsprint.InternSprint loadData
+INFO: Loading data from storage
+Apr 03, 2025 3:01:48 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Beginning process to load internships from file ...
+Apr 03, 2025 3:01:48 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Successfully extracted internships as JSON objects from file
+Apr 03, 2025 3:01:48 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Successfully added internships from file to internship list in app
+Apr 03, 2025 3:01:48 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:01:48 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Beginning process to load interviews from file ...
+Apr 03, 2025 3:01:48 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Successfully extracted interviews as JSON objects from file
+Apr 03, 2025 3:01:48 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Successfully added interviews from file to interview list in app
+Apr 03, 2025 3:01:48 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:01:48 PM seedu.internsprint.storage.ProfileStorageHandler load
+INFO: Loading user profile from file...
+Apr 03, 2025 3:01:48 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user and command is unsuccessful...
+Apr 03, 2025 3:01:48 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Beginning process to load projects from file ...
+Apr 03, 2025 3:01:48 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Successfully extracted projects as JSON objects from file
+Apr 03, 2025 3:01:48 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Successfully added projects from file to project list in app
+Apr 03, 2025 3:01:48 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:01:48 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Data loaded successfully
+Apr 03, 2025 3:01:55 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: User command: bye
+Apr 03, 2025 3:01:55 PM seedu.internsprint.logic.parser.CommandParser parseCommand
+INFO: User command inside parseCommand: bye
+Apr 03, 2025 3:01:55 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Parsed Command: seedu.internsprint.logic.command.ByeCommand@475530b9
+Apr 03, 2025 3:01:55 PM seedu.internsprint.storage.InternshipStorageHandler save
+INFO: Saving Internships to file ...
+Apr 03, 2025 3:01:55 PM seedu.internsprint.storage.InternshipStorageHandler save
+INFO: Successfully saved 1 Internships to file C:\Users\Nikita\Desktop\cs2113\tp\data\internships.txt
+Apr 03, 2025 3:01:55 PM seedu.internsprint.storage.InterviewStorageHandler save
+INFO: Saving Interviews to file ...
+Apr 03, 2025 3:01:55 PM seedu.internsprint.storage.InterviewStorageHandler save
+INFO: Successfully saved 1 Interviews to file C:\Users\Nikita\Desktop\cs2113\tp\data\interviews.txt
+Apr 03, 2025 3:01:55 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user...
+Apr 03, 2025 3:01:55 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Command executed successfully
+Apr 03, 2025 3:01:55 PM seedu.internsprint.InternSprint exit
+INFO: Exiting InternSprint
+Apr 03, 2025 3:08:18 PM seedu.internsprint.InternSprint run
+INFO: Starting InternSprint
+Apr 03, 2025 3:08:18 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Loading internships from storage
+Apr 03, 2025 3:08:18 PM seedu.internsprint.InternSprint loadData
+INFO: Loading data from storage
+Apr 03, 2025 3:08:18 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Beginning process to load internships from file ...
+Apr 03, 2025 3:08:18 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Successfully extracted internships as JSON objects from file
+Apr 03, 2025 3:08:18 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Successfully added internships from file to internship list in app
+Apr 03, 2025 3:08:18 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:08:18 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Beginning process to load interviews from file ...
+Apr 03, 2025 3:08:18 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Successfully extracted interviews as JSON objects from file
+Apr 03, 2025 3:08:19 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Successfully added interviews from file to interview list in app
+Apr 03, 2025 3:08:19 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:08:19 PM seedu.internsprint.storage.ProfileStorageHandler load
+INFO: Loading user profile from file...
+Apr 03, 2025 3:08:19 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user and command is unsuccessful...
+Apr 03, 2025 3:08:19 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Beginning process to load projects from file ...
+Apr 03, 2025 3:08:19 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Successfully extracted projects as JSON objects from file
+Apr 03, 2025 3:08:19 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Successfully added projects from file to project list in app
+Apr 03, 2025 3:08:19 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:08:19 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Data loaded successfully
+Apr 03, 2025 3:08:24 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: User command: view user
+Apr 03, 2025 3:08:24 PM seedu.internsprint.logic.parser.CommandParser parseCommand
+INFO: User command inside parseCommand: view user
+Apr 03, 2025 3:08:24 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Parsed Command: seedu.internsprint.logic.command.user.ViewUserCommand@475530b9
+Apr 03, 2025 3:08:24 PM seedu.internsprint.logic.command.user.ViewUserCommand execute
+INFO: Entering execute in view user profile command...
+Apr 03, 2025 3:08:24 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user...
+Apr 03, 2025 3:08:24 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Command executed successfully
+Apr 03, 2025 3:08:34 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: User command: my /mgoals toe be rich
+Apr 03, 2025 3:08:34 PM seedu.internsprint.logic.parser.CommandParser parseCommand
+INFO: User command inside parseCommand: my /mgoals toe be rich
+Apr 03, 2025 3:08:34 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Parsed Command: seedu.internsprint.logic.command.user.UserProfileCommand@e320068
+Apr 03, 2025 3:08:34 PM seedu.internsprint.logic.command.user.UserProfileCommand execute
+INFO: Entering execute for user command...
+Apr 03, 2025 3:08:34 PM seedu.internsprint.logic.command.user.UserProfileCommand isValidParameters
+INFO: Entering check for parameters in user command.
+Apr 03, 2025 3:08:34 PM seedu.internsprint.logic.command.user.UserProfileCommand setUserProfileAttributes
+INFO: Updating given parameters...
+Apr 03, 2025 3:08:34 PM seedu.internsprint.model.userprofile.UserProfile saveProfile
+INFO: Saving user profile to file...
+Apr 03, 2025 3:08:34 PM seedu.internsprint.storage.ProfileStorageHandler save
+INFO: Saving user profile to file...
+Apr 03, 2025 3:08:34 PM seedu.internsprint.storage.ProfileStorageHandler save
+INFO: Successfully saved user profile to file C:\Users\Nikita\Desktop\cs2113\tp\data\user.txt
+Apr 03, 2025 3:08:34 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user and command is unsuccessful...
+Apr 03, 2025 3:08:34 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user...
+Apr 03, 2025 3:08:34 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Command executed successfully
+Apr 03, 2025 3:08:47 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: User command: bye
+Apr 03, 2025 3:08:47 PM seedu.internsprint.logic.parser.CommandParser parseCommand
+INFO: User command inside parseCommand: bye
+Apr 03, 2025 3:08:47 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Parsed Command: seedu.internsprint.logic.command.ByeCommand@6ee52dcd
+Apr 03, 2025 3:08:47 PM seedu.internsprint.storage.InternshipStorageHandler save
+INFO: Saving Internships to file ...
+Apr 03, 2025 3:08:47 PM seedu.internsprint.storage.InternshipStorageHandler save
+INFO: Successfully saved 1 Internships to file C:\Users\Nikita\Desktop\cs2113\tp\data\internships.txt
+Apr 03, 2025 3:08:47 PM seedu.internsprint.storage.InterviewStorageHandler save
+INFO: Saving Interviews to file ...
+Apr 03, 2025 3:08:47 PM seedu.internsprint.storage.InterviewStorageHandler save
+INFO: Successfully saved 1 Interviews to file C:\Users\Nikita\Desktop\cs2113\tp\data\interviews.txt
+Apr 03, 2025 3:08:47 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user...
+Apr 03, 2025 3:08:47 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Command executed successfully
+Apr 03, 2025 3:08:47 PM seedu.internsprint.InternSprint exit
+INFO: Exiting InternSprint
+Apr 03, 2025 3:09:40 PM seedu.internsprint.InternSprint run
+INFO: Starting InternSprint
+Apr 03, 2025 3:09:40 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Loading internships from storage
+Apr 03, 2025 3:09:40 PM seedu.internsprint.InternSprint loadData
+INFO: Loading data from storage
+Apr 03, 2025 3:09:40 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Beginning process to load internships from file ...
+Apr 03, 2025 3:09:40 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Successfully extracted internships as JSON objects from file
+Apr 03, 2025 3:09:40 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Successfully added internships from file to internship list in app
+Apr 03, 2025 3:09:40 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:09:40 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Beginning process to load interviews from file ...
+Apr 03, 2025 3:09:40 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Successfully extracted interviews as JSON objects from file
+Apr 03, 2025 3:09:40 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Successfully added interviews from file to interview list in app
+Apr 03, 2025 3:09:40 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:09:40 PM seedu.internsprint.storage.ProfileStorageHandler load
+INFO: Loading user profile from file...
+Apr 03, 2025 3:09:40 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user and command is unsuccessful...
+Apr 03, 2025 3:09:40 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Beginning process to load projects from file ...
+Apr 03, 2025 3:09:40 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Successfully extracted projects as JSON objects from file
+Apr 03, 2025 3:09:40 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Successfully added projects from file to project list in app
+Apr 03, 2025 3:09:40 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:09:40 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Data loaded successfully
+Apr 03, 2025 3:09:51 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: User command: my /ygoals to be rich
+Apr 03, 2025 3:09:51 PM seedu.internsprint.logic.parser.CommandParser parseCommand
+INFO: User command inside parseCommand: my /ygoals to be rich
+Apr 03, 2025 3:09:51 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Parsed Command: seedu.internsprint.logic.command.user.UserProfileCommand@1d057a39
+Apr 03, 2025 3:09:51 PM seedu.internsprint.logic.command.user.UserProfileCommand execute
+INFO: Entering execute for user command...
+Apr 03, 2025 3:09:51 PM seedu.internsprint.logic.command.user.UserProfileCommand isValidParameters
+INFO: Entering check for parameters in user command.
+Apr 03, 2025 3:09:51 PM seedu.internsprint.logic.command.user.UserProfileCommand setUserProfileAttributes
+INFO: Updating given parameters...
+Apr 03, 2025 3:09:51 PM seedu.internsprint.model.userprofile.UserProfile saveProfile
+INFO: Saving user profile to file...
+Apr 03, 2025 3:09:51 PM seedu.internsprint.storage.ProfileStorageHandler save
+INFO: Saving user profile to file...
+Apr 03, 2025 3:09:51 PM seedu.internsprint.storage.ProfileStorageHandler save
+INFO: Successfully saved user profile to file C:\Users\Nikita\Desktop\cs2113\tp\data\user.txt
+Apr 03, 2025 3:09:51 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user and command is unsuccessful...
+Apr 03, 2025 3:09:51 PM seedu.internsprint.model.userprofile.UserProfile toString
+INFO: Returning basic string for user profile
+Apr 03, 2025 3:09:51 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user...
+Apr 03, 2025 3:09:51 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Command executed successfully
+Apr 03, 2025 3:09:56 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: User command: bye
+Apr 03, 2025 3:09:56 PM seedu.internsprint.logic.parser.CommandParser parseCommand
+INFO: User command inside parseCommand: bye
+Apr 03, 2025 3:09:56 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Parsed Command: seedu.internsprint.logic.command.ByeCommand@14acaea5
+Apr 03, 2025 3:09:56 PM seedu.internsprint.storage.InternshipStorageHandler save
+INFO: Saving Internships to file ...
+Apr 03, 2025 3:09:56 PM seedu.internsprint.storage.InternshipStorageHandler save
+INFO: Successfully saved 1 Internships to file C:\Users\Nikita\Desktop\cs2113\tp\data\internships.txt
+Apr 03, 2025 3:09:56 PM seedu.internsprint.storage.InterviewStorageHandler save
+INFO: Saving Interviews to file ...
+Apr 03, 2025 3:09:56 PM seedu.internsprint.storage.InterviewStorageHandler save
+INFO: Successfully saved 1 Interviews to file C:\Users\Nikita\Desktop\cs2113\tp\data\interviews.txt
+Apr 03, 2025 3:09:56 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user...
+Apr 03, 2025 3:09:56 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Command executed successfully
+Apr 03, 2025 3:09:56 PM seedu.internsprint.InternSprint exit
+INFO: Exiting InternSprint
+Apr 03, 2025 3:12:24 PM seedu.internsprint.InternSprint run
+INFO: Starting InternSprint
+Apr 03, 2025 3:12:24 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Loading internships from storage
+Apr 03, 2025 3:12:24 PM seedu.internsprint.InternSprint loadData
+INFO: Loading data from storage
+Apr 03, 2025 3:12:24 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Beginning process to load internships from file ...
+Apr 03, 2025 3:12:24 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Successfully extracted internships as JSON objects from file
+Apr 03, 2025 3:12:24 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Successfully added internships from file to internship list in app
+Apr 03, 2025 3:12:24 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:12:24 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Beginning process to load interviews from file ...
+Apr 03, 2025 3:12:24 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Successfully extracted interviews as JSON objects from file
+Apr 03, 2025 3:12:25 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Successfully added interviews from file to interview list in app
+Apr 03, 2025 3:12:25 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:12:25 PM seedu.internsprint.storage.ProfileStorageHandler load
+INFO: Loading user profile from file...
+Apr 03, 2025 3:12:25 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user and command is unsuccessful...
+Apr 03, 2025 3:12:25 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Beginning process to load projects from file ...
+Apr 03, 2025 3:12:25 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Successfully extracted projects as JSON objects from file
+Apr 03, 2025 3:12:25 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Successfully added projects from file to project list in app
+Apr 03, 2025 3:12:25 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:12:25 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Data loaded successfully
+Apr 03, 2025 3:12:31 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: User command: my /ygoals check
+Apr 03, 2025 3:12:31 PM seedu.internsprint.logic.parser.CommandParser parseCommand
+INFO: User command inside parseCommand: my /ygoals check
+Apr 03, 2025 3:12:31 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Parsed Command: seedu.internsprint.logic.command.user.UserProfileCommand@1d057a39
+Apr 03, 2025 3:12:31 PM seedu.internsprint.logic.command.user.UserProfileCommand execute
+INFO: Entering execute for user command...
+Apr 03, 2025 3:12:31 PM seedu.internsprint.logic.command.user.UserProfileCommand isValidParameters
+INFO: Entering check for parameters in user command.
+Apr 03, 2025 3:12:31 PM seedu.internsprint.logic.command.user.UserProfileCommand setUserProfileAttributes
+INFO: Updating given parameters...
+Apr 03, 2025 3:12:31 PM seedu.internsprint.model.userprofile.UserProfile saveProfile
+INFO: Saving user profile to file...
+Apr 03, 2025 3:12:31 PM seedu.internsprint.storage.ProfileStorageHandler save
+INFO: Saving user profile to file...
+Apr 03, 2025 3:12:31 PM seedu.internsprint.storage.ProfileStorageHandler save
+INFO: Successfully saved user profile to file C:\Users\Nikita\Desktop\cs2113\tp\data\user.txt
+Apr 03, 2025 3:12:31 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user and command is unsuccessful...
+Apr 03, 2025 3:12:31 PM seedu.internsprint.model.userprofile.UserProfile toString
+INFO: Returning basic string for user profile
+Apr 03, 2025 3:12:31 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user...
+Apr 03, 2025 3:12:31 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Command executed successfully
+Apr 03, 2025 3:13:10 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: User command: bye
+Apr 03, 2025 3:13:10 PM seedu.internsprint.logic.parser.CommandParser parseCommand
+INFO: User command inside parseCommand: bye
+Apr 03, 2025 3:13:10 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Parsed Command: seedu.internsprint.logic.command.ByeCommand@14acaea5
+Apr 03, 2025 3:13:10 PM seedu.internsprint.storage.InternshipStorageHandler save
+INFO: Saving Internships to file ...
+Apr 03, 2025 3:13:10 PM seedu.internsprint.storage.InternshipStorageHandler save
+INFO: Successfully saved 1 Internships to file C:\Users\Nikita\Desktop\cs2113\tp\data\internships.txt
+Apr 03, 2025 3:13:10 PM seedu.internsprint.storage.InterviewStorageHandler save
+INFO: Saving Interviews to file ...
+Apr 03, 2025 3:13:10 PM seedu.internsprint.storage.InterviewStorageHandler save
+INFO: Successfully saved 1 Interviews to file C:\Users\Nikita\Desktop\cs2113\tp\data\interviews.txt
+Apr 03, 2025 3:13:10 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user...
+Apr 03, 2025 3:13:10 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Command executed successfully
+Apr 03, 2025 3:13:10 PM seedu.internsprint.InternSprint exit
+INFO: Exiting InternSprint
+Apr 03, 2025 3:13:45 PM seedu.internsprint.InternSprint run
+INFO: Starting InternSprint
+Apr 03, 2025 3:13:45 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Loading internships from storage
+Apr 03, 2025 3:13:45 PM seedu.internsprint.InternSprint loadData
+INFO: Loading data from storage
+Apr 03, 2025 3:13:45 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Beginning process to load internships from file ...
+Apr 03, 2025 3:13:45 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Successfully extracted internships as JSON objects from file
+Apr 03, 2025 3:13:45 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Successfully added internships from file to internship list in app
+Apr 03, 2025 3:13:45 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:13:45 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Beginning process to load interviews from file ...
+Apr 03, 2025 3:13:45 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Successfully extracted interviews as JSON objects from file
+Apr 03, 2025 3:13:45 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Successfully added interviews from file to interview list in app
+Apr 03, 2025 3:13:45 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:13:45 PM seedu.internsprint.storage.ProfileStorageHandler load
+INFO: Loading user profile from file...
+Apr 03, 2025 3:13:45 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user and command is unsuccessful...
+Apr 03, 2025 3:13:45 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Beginning process to load projects from file ...
+Apr 03, 2025 3:13:45 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Successfully extracted projects as JSON objects from file
+Apr 03, 2025 3:13:45 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Successfully added projects from file to project list in app
+Apr 03, 2025 3:13:45 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:13:45 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Data loaded successfully
+Apr 03, 2025 3:13:50 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: User command: my /name John
+Apr 03, 2025 3:13:50 PM seedu.internsprint.logic.parser.CommandParser parseCommand
+INFO: User command inside parseCommand: my /name John
+Apr 03, 2025 3:13:50 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Parsed Command: seedu.internsprint.logic.command.user.UserProfileCommand@1d057a39
+Apr 03, 2025 3:13:50 PM seedu.internsprint.logic.command.user.UserProfileCommand execute
+INFO: Entering execute for user command...
+Apr 03, 2025 3:13:50 PM seedu.internsprint.logic.command.user.UserProfileCommand isValidParameters
+INFO: Entering check for parameters in user command.
+Apr 03, 2025 3:13:50 PM seedu.internsprint.logic.command.user.UserProfileCommand setUserProfileAttributes
+INFO: Updating given parameters...
+Apr 03, 2025 3:13:50 PM seedu.internsprint.model.userprofile.UserProfile saveProfile
+INFO: Saving user profile to file...
+Apr 03, 2025 3:13:50 PM seedu.internsprint.storage.ProfileStorageHandler save
+INFO: Saving user profile to file...
+Apr 03, 2025 3:13:50 PM seedu.internsprint.storage.ProfileStorageHandler save
+INFO: Successfully saved user profile to file C:\Users\Nikita\Desktop\cs2113\tp\data\user.txt
+Apr 03, 2025 3:13:50 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user and command is unsuccessful...
+Apr 03, 2025 3:13:50 PM seedu.internsprint.model.userprofile.UserProfile toString
+INFO: Returning basic string for user profile
+Apr 03, 2025 3:13:50 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user...
+Apr 03, 2025 3:13:50 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Command executed successfully
+Apr 03, 2025 3:14:00 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: User command: bye
+Apr 03, 2025 3:14:00 PM seedu.internsprint.logic.parser.CommandParser parseCommand
+INFO: User command inside parseCommand: bye
+Apr 03, 2025 3:14:00 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Parsed Command: seedu.internsprint.logic.command.ByeCommand@14acaea5
+Apr 03, 2025 3:14:00 PM seedu.internsprint.storage.InternshipStorageHandler save
+INFO: Saving Internships to file ...
+Apr 03, 2025 3:14:00 PM seedu.internsprint.storage.InternshipStorageHandler save
+INFO: Successfully saved 1 Internships to file C:\Users\Nikita\Desktop\cs2113\tp\data\internships.txt
+Apr 03, 2025 3:14:00 PM seedu.internsprint.storage.InterviewStorageHandler save
+INFO: Saving Interviews to file ...
+Apr 03, 2025 3:14:00 PM seedu.internsprint.storage.InterviewStorageHandler save
+INFO: Successfully saved 1 Interviews to file C:\Users\Nikita\Desktop\cs2113\tp\data\interviews.txt
+Apr 03, 2025 3:14:00 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user...
+Apr 03, 2025 3:14:00 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Command executed successfully
+Apr 03, 2025 3:14:00 PM seedu.internsprint.InternSprint exit
+INFO: Exiting InternSprint
+Apr 03, 2025 3:15:23 PM seedu.internsprint.InternSprint run
+INFO: Starting InternSprint
+Apr 03, 2025 3:15:23 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Loading internships from storage
+Apr 03, 2025 3:15:23 PM seedu.internsprint.InternSprint loadData
+INFO: Loading data from storage
+Apr 03, 2025 3:15:23 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Beginning process to load internships from file ...
+Apr 03, 2025 3:15:23 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Successfully extracted internships as JSON objects from file
+Apr 03, 2025 3:15:23 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Successfully added internships from file to internship list in app
+Apr 03, 2025 3:15:23 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:15:23 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Beginning process to load interviews from file ...
+Apr 03, 2025 3:15:23 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Successfully extracted interviews as JSON objects from file
+Apr 03, 2025 3:15:24 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Successfully added interviews from file to interview list in app
+Apr 03, 2025 3:15:24 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:15:24 PM seedu.internsprint.storage.ProfileStorageHandler load
+INFO: Loading user profile from file...
+Apr 03, 2025 3:15:24 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user and command is unsuccessful...
+Apr 03, 2025 3:15:24 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Beginning process to load projects from file ...
+Apr 03, 2025 3:15:24 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Successfully extracted projects as JSON objects from file
+Apr 03, 2025 3:15:24 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Successfully added projects from file to project list in app
+Apr 03, 2025 3:15:24 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:15:24 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Data loaded successfully
+Apr 03, 2025 3:15:30 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: User command: my /ygoals this
+Apr 03, 2025 3:15:30 PM seedu.internsprint.logic.parser.CommandParser parseCommand
+INFO: User command inside parseCommand: my /ygoals this
+Apr 03, 2025 3:15:30 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Parsed Command: seedu.internsprint.logic.command.user.UserProfileCommand@1d057a39
+Apr 03, 2025 3:15:30 PM seedu.internsprint.logic.command.user.UserProfileCommand execute
+INFO: Entering execute for user command...
+Apr 03, 2025 3:15:30 PM seedu.internsprint.logic.command.user.UserProfileCommand isValidParameters
+INFO: Entering check for parameters in user command.
+Apr 03, 2025 3:15:30 PM seedu.internsprint.logic.command.user.UserProfileCommand setUserProfileAttributes
+INFO: Updating given parameters...
+Apr 03, 2025 3:15:30 PM seedu.internsprint.model.userprofile.UserProfile saveProfile
+INFO: Saving user profile to file...
+Apr 03, 2025 3:15:30 PM seedu.internsprint.storage.ProfileStorageHandler save
+INFO: Saving user profile to file...
+Apr 03, 2025 3:15:30 PM seedu.internsprint.storage.ProfileStorageHandler save
+INFO: Successfully saved user profile to file C:\Users\Nikita\Desktop\cs2113\tp\data\user.txt
+Apr 03, 2025 3:15:30 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user and command is unsuccessful...
+Apr 03, 2025 3:15:30 PM seedu.internsprint.model.userprofile.UserProfile toString
+INFO: Returning basic string for user profile
+Apr 03, 2025 3:15:30 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user...
+Apr 03, 2025 3:15:30 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Command executed successfully
+Apr 03, 2025 3:15:42 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: User command: bye
+Apr 03, 2025 3:15:42 PM seedu.internsprint.logic.parser.CommandParser parseCommand
+INFO: User command inside parseCommand: bye
+Apr 03, 2025 3:15:42 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Parsed Command: seedu.internsprint.logic.command.ByeCommand@14acaea5
+Apr 03, 2025 3:15:42 PM seedu.internsprint.storage.InternshipStorageHandler save
+INFO: Saving Internships to file ...
+Apr 03, 2025 3:15:42 PM seedu.internsprint.storage.InternshipStorageHandler save
+INFO: Successfully saved 1 Internships to file C:\Users\Nikita\Desktop\cs2113\tp\data\internships.txt
+Apr 03, 2025 3:15:42 PM seedu.internsprint.storage.InterviewStorageHandler save
+INFO: Saving Interviews to file ...
+Apr 03, 2025 3:15:42 PM seedu.internsprint.storage.InterviewStorageHandler save
+INFO: Successfully saved 1 Interviews to file C:\Users\Nikita\Desktop\cs2113\tp\data\interviews.txt
+Apr 03, 2025 3:15:42 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user...
+Apr 03, 2025 3:15:42 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Command executed successfully
+Apr 03, 2025 3:15:42 PM seedu.internsprint.InternSprint exit
+INFO: Exiting InternSprint
+Apr 03, 2025 3:16:24 PM seedu.internsprint.InternSprint run
+INFO: Starting InternSprint
+Apr 03, 2025 3:16:24 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Loading internships from storage
+Apr 03, 2025 3:16:24 PM seedu.internsprint.InternSprint loadData
+INFO: Loading data from storage
+Apr 03, 2025 3:16:24 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Beginning process to load internships from file ...
+Apr 03, 2025 3:16:24 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Successfully extracted internships as JSON objects from file
+Apr 03, 2025 3:16:24 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Successfully added internships from file to internship list in app
+Apr 03, 2025 3:16:24 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:16:24 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Beginning process to load interviews from file ...
+Apr 03, 2025 3:16:24 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Successfully extracted interviews as JSON objects from file
+Apr 03, 2025 3:16:25 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Successfully added interviews from file to interview list in app
+Apr 03, 2025 3:16:25 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:16:25 PM seedu.internsprint.storage.ProfileStorageHandler load
+INFO: Loading user profile from file...
+Apr 03, 2025 3:16:25 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user and command is unsuccessful...
+Apr 03, 2025 3:16:25 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Beginning process to load projects from file ...
+Apr 03, 2025 3:16:25 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Successfully extracted projects as JSON objects from file
+Apr 03, 2025 3:16:25 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Successfully added projects from file to project list in app
+Apr 03, 2025 3:16:25 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:16:25 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Data loaded successfully
+Apr 03, 2025 3:16:33 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: User command: project general
+Apr 03, 2025 3:16:33 PM seedu.internsprint.logic.parser.CommandParser parseCommand
+INFO: User command inside parseCommand: project general
+Apr 03, 2025 3:16:33 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Parsed Command: seedu.internsprint.logic.command.user.ProjectGeneralCommand@1d057a39
+Apr 03, 2025 3:16:33 PM seedu.internsprint.logic.command.user.ProjectCommand execute
+INFO: Executing add command
+Apr 03, 2025 3:16:33 PM seedu.internsprint.logic.command.user.ProjectCommand execute
+WARNING: Invalid parameters entered
+Apr 03, 2025 3:16:33 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:16:33 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Command executed successfully
+Apr 03, 2025 3:16:41 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: User command: project general /n Team Project for CS2113 /r Unit Tester /dept Software Engineering/obj To get an A+ /desc Worked at identifying feature flaws in app /dur May-August
+Apr 03, 2025 3:16:41 PM seedu.internsprint.logic.parser.CommandParser parseCommand
+INFO: User command inside parseCommand: project general /n Team Project for CS2113 /r Unit Tester /dept Software Engineering/obj To get an A+ /desc Worked at identifying feature flaws in app /dur May-August
+Apr 03, 2025 3:16:41 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Parsed Command: seedu.internsprint.logic.command.user.ProjectGeneralCommand@4c70fda8
+Apr 03, 2025 3:16:41 PM seedu.internsprint.logic.command.user.ProjectCommand execute
+INFO: Executing add command
+Apr 03, 2025 3:16:41 PM seedu.internsprint.logic.command.user.ProjectGeneralCommand createProject
+INFO: Creating General Project
+Apr 03, 2025 3:16:41 PM seedu.internsprint.storage.ProjectStorageHandler save
+INFO: Saving Projects to file ...
+Apr 03, 2025 3:16:41 PM seedu.internsprint.storage.ProjectStorageHandler save
+INFO: Successfully saved 1 Projects to file C:\Users\Nikita\Desktop\cs2113\tp\data\projects.txt
+Apr 03, 2025 3:16:41 PM seedu.internsprint.logic.command.user.ProjectCommand execute
+INFO: Internship added successfully and saved to file
+Apr 03, 2025 3:16:41 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user...
+Apr 03, 2025 3:16:41 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Command executed successfully
+Apr 03, 2025 3:16:50 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: User command: bye
+Apr 03, 2025 3:16:50 PM seedu.internsprint.logic.parser.CommandParser parseCommand
+INFO: User command inside parseCommand: bye
+Apr 03, 2025 3:16:50 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Parsed Command: seedu.internsprint.logic.command.ByeCommand@6a41eaa2
+Apr 03, 2025 3:16:50 PM seedu.internsprint.storage.InternshipStorageHandler save
+INFO: Saving Internships to file ...
+Apr 03, 2025 3:16:50 PM seedu.internsprint.storage.InternshipStorageHandler save
+INFO: Successfully saved 1 Internships to file C:\Users\Nikita\Desktop\cs2113\tp\data\internships.txt
+Apr 03, 2025 3:16:50 PM seedu.internsprint.storage.InterviewStorageHandler save
+INFO: Saving Interviews to file ...
+Apr 03, 2025 3:16:50 PM seedu.internsprint.storage.InterviewStorageHandler save
+INFO: Successfully saved 1 Interviews to file C:\Users\Nikita\Desktop\cs2113\tp\data\interviews.txt
+Apr 03, 2025 3:16:50 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user...
+Apr 03, 2025 3:16:50 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Command executed successfully
+Apr 03, 2025 3:16:50 PM seedu.internsprint.InternSprint exit
+INFO: Exiting InternSprint
+Apr 03, 2025 3:17:45 PM seedu.internsprint.InternSprint run
+INFO: Starting InternSprint
+Apr 03, 2025 3:17:45 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Loading internships from storage
+Apr 03, 2025 3:17:45 PM seedu.internsprint.InternSprint loadData
+INFO: Loading data from storage
+Apr 03, 2025 3:17:45 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Beginning process to load internships from file ...
+Apr 03, 2025 3:17:45 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Successfully extracted internships as JSON objects from file
+Apr 03, 2025 3:17:45 PM seedu.internsprint.storage.InternshipStorageHandler load
+INFO: Successfully added internships from file to internship list in app
+Apr 03, 2025 3:17:45 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:17:45 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Beginning process to load interviews from file ...
+Apr 03, 2025 3:17:45 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Successfully extracted interviews as JSON objects from file
+Apr 03, 2025 3:17:45 PM seedu.internsprint.storage.InterviewStorageHandler load
+INFO: Successfully added interviews from file to interview list in app
+Apr 03, 2025 3:17:45 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:17:45 PM seedu.internsprint.storage.ProfileStorageHandler load
+INFO: Loading user profile from file...
+Apr 03, 2025 3:17:46 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user and command is unsuccessful...
+Apr 03, 2025 3:17:46 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Beginning process to load projects from file ...
+Apr 03, 2025 3:17:46 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Successfully extracted projects as JSON objects from file
+Apr 03, 2025 3:17:46 PM seedu.internsprint.storage.ProjectStorageHandler load
+INFO: Successfully added projects from file to project list in app
+Apr 03, 2025 3:17:46 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:17:46 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Data loaded successfully
+Apr 03, 2025 3:17:52 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: User command: project software
+Apr 03, 2025 3:17:52 PM seedu.internsprint.logic.parser.CommandParser parseCommand
+INFO: User command inside parseCommand: project software
+Apr 03, 2025 3:17:52 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Parsed Command: seedu.internsprint.logic.command.user.ProjectSoftwareCommand@1d057a39
+Apr 03, 2025 3:17:52 PM seedu.internsprint.logic.command.user.ProjectCommand execute
+INFO: Executing add command
+Apr 03, 2025 3:17:52 PM seedu.internsprint.logic.command.user.ProjectCommand execute
+WARNING: Invalid parameters entered
+Apr 03, 2025 3:17:52 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:17:52 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Command executed successfully
+Apr 03, 2025 3:18:01 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: User command: project software /n Team Project for CS2113 /r Unit Tester /pro Java, C++/obj To get an A+ /desc Worked at identifying feature flaws in app /dur May-August
+Apr 03, 2025 3:18:01 PM seedu.internsprint.logic.parser.CommandParser parseCommand
+INFO: User command inside parseCommand: project software /n Team Project for CS2113 /r Unit Tester /pro Java, C++/obj To get an A+ /desc Worked at identifying feature flaws in app /dur May-August
+Apr 03, 2025 3:18:01 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Parsed Command: seedu.internsprint.logic.command.user.ProjectSoftwareCommand@4c70fda8
+Apr 03, 2025 3:18:01 PM seedu.internsprint.logic.command.user.ProjectCommand execute
+INFO: Executing add command
+Apr 03, 2025 3:18:01 PM seedu.internsprint.logic.command.user.ProjectSoftwareCommand createProject
+INFO: Creating Software Project
+Apr 03, 2025 3:18:01 PM seedu.internsprint.storage.ProjectStorageHandler save
+INFO: Saving Projects to file ...
+Apr 03, 2025 3:18:01 PM seedu.internsprint.storage.ProjectStorageHandler save
+INFO: Successfully saved 1 Projects to file C:\Users\Nikita\Desktop\cs2113\tp\data\projects.txt
+Apr 03, 2025 3:18:01 PM seedu.internsprint.logic.command.user.ProjectCommand execute
+INFO: Internship added successfully and saved to file
+Apr 03, 2025 3:18:01 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user...
+Apr 03, 2025 3:18:01 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Command executed successfully
+Apr 03, 2025 3:18:11 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: User command: project hardware
+Apr 03, 2025 3:18:11 PM seedu.internsprint.logic.parser.CommandParser parseCommand
+INFO: User command inside parseCommand: project hardware
+Apr 03, 2025 3:18:11 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Parsed Command: seedu.internsprint.logic.command.user.ProjectHardwareCommand@7cd62f43
+Apr 03, 2025 3:18:11 PM seedu.internsprint.logic.command.user.ProjectCommand execute
+INFO: Executing add command
+Apr 03, 2025 3:18:11 PM seedu.internsprint.logic.command.user.ProjectCommand execute
+WARNING: Invalid parameters entered
+Apr 03, 2025 3:18:11 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: One line of feedback provided to user...
+Apr 03, 2025 3:18:11 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Command executed successfully
+Apr 03, 2025 3:18:20 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: User command: project hardware /n Team Project for EE2026 /r Ui Developer /hcomp Basys Board/obj To get an A+ /desc Worked at creating pixel art for the UI /dur May-Augustc
+Apr 03, 2025 3:18:20 PM seedu.internsprint.logic.parser.CommandParser parseCommand
+INFO: User command inside parseCommand: project hardware /n Team Project for EE2026 /r Ui Developer /hcomp Basys Board/obj To get an A+ /desc Worked at creating pixel art for the UI /dur May-Augustc
+Apr 03, 2025 3:18:20 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Parsed Command: seedu.internsprint.logic.command.user.ProjectHardwareCommand@6d4b1c02
+Apr 03, 2025 3:18:20 PM seedu.internsprint.logic.command.user.ProjectCommand execute
+INFO: Executing add command
+Apr 03, 2025 3:18:20 PM seedu.internsprint.logic.command.user.ProjectHardwareCommand createProject
+INFO: Creating Hardware Project
+Apr 03, 2025 3:18:20 PM seedu.internsprint.storage.ProjectStorageHandler save
+INFO: Saving Projects to file ...
+Apr 03, 2025 3:18:20 PM seedu.internsprint.storage.ProjectStorageHandler save
+INFO: Successfully saved 2 Projects to file C:\Users\Nikita\Desktop\cs2113\tp\data\projects.txt
+Apr 03, 2025 3:18:20 PM seedu.internsprint.logic.command.user.ProjectCommand execute
+INFO: Internship added successfully and saved to file
+Apr 03, 2025 3:18:20 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user...
+Apr 03, 2025 3:18:20 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Command executed successfully
+Apr 03, 2025 3:18:23 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: User command: bye
+Apr 03, 2025 3:18:23 PM seedu.internsprint.logic.parser.CommandParser parseCommand
+INFO: User command inside parseCommand: bye
+Apr 03, 2025 3:18:23 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Parsed Command: seedu.internsprint.logic.command.ByeCommand@4883b407
+Apr 03, 2025 3:18:23 PM seedu.internsprint.storage.InternshipStorageHandler save
+INFO: Saving Internships to file ...
+Apr 03, 2025 3:18:23 PM seedu.internsprint.storage.InternshipStorageHandler save
+INFO: Successfully saved 1 Internships to file C:\Users\Nikita\Desktop\cs2113\tp\data\internships.txt
+Apr 03, 2025 3:18:23 PM seedu.internsprint.storage.InterviewStorageHandler save
+INFO: Saving Interviews to file ...
+Apr 03, 2025 3:18:23 PM seedu.internsprint.storage.InterviewStorageHandler save
+INFO: Successfully saved 1 Interviews to file C:\Users\Nikita\Desktop\cs2113\tp\data\interviews.txt
+Apr 03, 2025 3:18:23 PM seedu.internsprint.logic.command.CommandResult <init>
+INFO: Multiple feedback provided to user...
+Apr 03, 2025 3:18:23 PM seedu.internsprint.InternSprint runCommandLoopUntilExitCommand
+INFO: Command executed successfully
+Apr 03, 2025 3:18:23 PM seedu.internsprint.InternSprint exit
+INFO: Exiting InternSprint
