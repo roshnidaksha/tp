@@ -9,7 +9,7 @@ Welcome to InternSprint!
 
 Your ultimate assistant for managing internship applications!
 Juggling multiple applications, different platforms, and endless follow-ups? InternSprint makes it easy to log, track,
-and update your applications—all in one place. No more lost applications or forgotten deadlines!
+and update your applications - all in one place. No more lost applications or forgotten deadlines!
 Get started by adding an internship! InternSprint allows you to add three types of internships:
 - General
 - Software
