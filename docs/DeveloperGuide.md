@@ -239,9 +239,7 @@ model
 
 #### Model UML Diagrams
 
-The overall system model has been divided into two separate UML diagrams.The decision to separate these models is based 
-on the fact that user profiles and projects have no direct association with internships and interviews. By splitting the 
-diagrams, we accurately represent the system architecture.
+The overall system model has been divided into two separate UML diagrams for ease of understanding.
 
 *Internships and Interview Diagram*
 ![Model_UML_Pt1](images/ModelImages/Model_UML_Pt1.png)
