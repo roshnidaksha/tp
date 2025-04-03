@@ -230,7 +230,7 @@ and `ProfileStorageHandler` to manage the saving and loading of different types 
 
 Here is a class diagram of related classes in the Storage component:
 
-
+![Storage.drawio.png](images/Storage.drawio.png)
 
 **How the `Storage` Component works:**
 1. When the user performs an action that modifies stored data (e.g., adding or deleting an internship), 
@@ -396,12 +396,12 @@ and a successful execution result is returned to the user.
   a `CommandResult` is returned. The reference frame for saving internships is similar to the reference frame 
   under `DeleteCommand`.
 
-![EditCommandSequenceDiagramOverview](images/edit_overview.png)
+![EditCommandSequenceDiagramOverview](images/EditImages/edit_overview.png)
 
 Below are the expanded reference frames for successful and unsuccessful CommandResults returned by execute() method.
 
-![EditCommandSequenceDiagramOverview](images/edit_ref_1.png)
-![EditCommandSequenceDiagramOverview](images/edit_ref_2.png)
+![EditCommandSequenceDiagramOverview](images/EditImages/edit_ref_1.png)
+![EditCommandSequenceDiagramOverview](images/EditImages/edit_ref_2.png)
 
 
 * Print calls, assert statements, logging, and other non-essential calls are omitted in the diagram for clarity.
@@ -409,10 +409,10 @@ For full clarity, note below is a comprehensive sequence diagram, combining all 
 behind duplicate-checking for example. Note this is only added for completeness for this one Command class, and only
 to supplement an additional level of detail to above overview diagram (which should be sufficient for understanding).
 Such an expanded view will be isolated to this one command but execution logic resembles other Commands,
-hence can refer to [this diagram](images/edit_command_pdf.drawio.pdf) for all such commands.
+hence can refer to [this diagram](images/EditImages/edit_command_pdf.drawio.pdf) for all such commands.
 
 
-[Click here for comprehensive Edit Command Sequence Diagram](images/edit_command_pdf.drawio.pdf)
+[Click here for comprehensive Edit Command Sequence Diagram](images/EditImages/edit_command_pdf.drawio.pdf)
 
 ### 3. Delete an Internship
 
@@ -470,15 +470,18 @@ been simplified using reference frames, expanded on below to help aid in clarity
 * The internship at the index is then deleted and is removed from the list of internships. 
   A successful execution result is returned to the user.
 * Depending on whether the internships are successfully saved to the `internships.txt` file,
-  a `CommandResult` is returned. The reference frame for saving internships can be seen below.
+  a `CommandResult` is returned. 
 
-![EditCommandSequenceDiagramOverview](images/edit_overview.png)
+![DeleteCommand.drawio.png](images/DeleteImages/DeleteCommand.drawio.png)
 
 Below are the expanded reference frames for successful and unsuccessful CommandResults returned by execute() method.
+The reference frame for saving internships can also be seen below.
 
-![EditCommandSequenceDiagramOverview](images/edit_ref_1.png)
-![EditCommandSequenceDiagramOverview](images/edit_ref_2.png)
+![DeleteWrongParameter.drawio.png](images/DeleteImages/DeleteWrongParameter.drawio.png)
 
+![DeleteCorrectParameter.drawio.png](images/DeleteImages/DeleteCorrectParameter.drawio.png)
+
+![SaveInternship.drawio.png](images/DeleteImages/SaveInternship.drawio.png)
 
 * Print calls, assert statements, logging, and other non-essential calls are omitted in the diagrams for clarity.
   
@@ -553,7 +556,7 @@ class can be referenced to understand execution logic for these commands. Howeve
 command and how the three different project type classes extend from their superclasses, below is a class diagram for the same:
 
 
-![ProjectCommandUMLDiagram](images/projects-uml.png)
+![ProjectCommandUMLDiagram](images/ProjectImages/projects-uml.png)
 
 * Certain non-essential attributes and class methods are omitted in the diagram for clarity.
 
