@@ -189,10 +189,8 @@ one of its subclasses e.g., `DeleteCommand`).
 
 ### Model Component
 
-The **Model** component is responsible for storing and managing and providing access to all the data used by the 
+The **Model** component is responsible for storing, managing and providing access to all the data used by the 
 InternSprint . It represents the internal state of the application and is updated based on commands entered by the user.
-
----
 
 #### Responsibilities
 - Store internship information (company name, role, description, etc.)
@@ -200,23 +198,29 @@ InternSprint . It represents the internal state of the application and is update
 - Store and manage interviews (including multiple rounds per internship)
 - Handle user information and goals via the `UserProfile`
 
----
 #### Package Structure
 
 ```
 model
 ├── internship
-│   ├── Interview.java          # Represents a single interview (including optional rounds)
-│   ├── InterviewEntry.java     # Wrapper class pairing an Interview with its Internship
-│   ├── GeneralInternship.java  # Internship subclass for general roles
-│   ├── HardwareInternship.java # Internship subclass for hardware roles
-│   ├── SoftwareInternship.java # Internship subclass for software roles
-│   ├── Internship.java         # Abstract class defining an internship's structure
-│   └── InternshipList.java     # Contains and manages the internship collection
+│   ├── Interview          
+│   │    ├── Interview.java      # Represents a single interview (including optional rounds)
+│   │    ├── InterviewEntry.java # Wrapper class pairing an Interview with its Internship    
+│   ├── GeneralInternship.java   # Internship subclass for general roles
+│   ├── HardwareInternship.java  # Internship subclass for hardware roles
+│   ├── SoftwareInternship.java  # Internship subclass for software roles
+│   ├── Internship.java          # Abstract class defining an internship's structure
+│   └── InternshipList.java      # Contains and manages the internship collection
 └── userprofile
-    └── UserProfile.java        # Stores user preferences (companies, roles, goals, etc.)
+    └── Project
+    │    └── GeneralProject.java  # Project subclass for general projects
+    │    └── HardwareProject.java # Project subclass for hardware projects
+    │    └── SoftwareProject.java # Project subclass for software projects
+    │    └── ProjectList.java     # Contains and manages the projects
+    │    └── Project.java         # Project class defiing a project's structure
+    └── UserProfile.java          # Stores user preferences (companies, roles, goals, etc.)
 ```
----
+
 
 #### Key Classes and Their Roles
 
@@ -228,17 +232,61 @@ model
 | `Interview`                           | Represents one interview round, with optional next rounds         |
 | `InterviewEntry`                      | A wrapper for pairing an `Interview` with its parent `Internship` |
 | `UserProfile`                         | Stores user preferences for use across the application            |
+| `Projects`                            | Abstract base class for projects                                  |
+| `General/Software/HardwareProjects`   | Specific implementations depending on type                        |
+| `ProjectList`                         | Stores projects in a Hashmap by category                          |
 
----
 
-#### Model UML Diagram
-![Model_UML_diag.png](images/Model_UML_diag.png)
+#### Model UML Diagrams
+
+The overall system model has been divided into two separate UML diagrams for ease of understanding.
+
+*Internships and Interview Diagram*
+![Model_UML_Pt1](images/ModelImages/Model_UML_Pt1.png)
+*User Profile and Projects Diagram*
+![Model_UML_Pt2](images/ModelImages/Model_UML_Pt2.png)
+
 
 ### Storage Component
 
-The Storage component is responsible for reading and writing data to and from the disk.
+The Storage component is responsible for managing saving and loading in the application.
+It ensures that user data, such as internships, projects, profiles, and interviews, 
+are stored and retrieved efficiently.
 
-{Explain in better detail}
+#### Key Classes and Their Roles
+
+1. **StorageManager Class**: It acts as the central controller for the storage system. It implements a 
+singleton pattern to ensure only one instance exists throughout the application. It manages multiple 
+storage handlers, each responsible for handling a specific type of data.
+2. **Storage Class**: It acts as the central interface, interacting with the 
+storage handlers `InternshipStorageHandler`, `InterviewStorageHandler`, `ProjecttorageHandler` 
+and `ProfileStorageHandler` to manage the saving and loading of different types of data.
+
+Here is a class diagram of related classes in the Storage component:
+
+![Storage.drawio.png](images/Storage.drawio.png)
+
+**How the `Storage` Component works:**
+1. When the user performs an action that modifies stored data (e.g., adding or deleting an internship), 
+the corresponding `Command` class interacts with the `InternshipList`.
+2. The `InternshipList` then calls the `saveInternships()` method, which delegates the saving process 
+to the `StorageManager`.
+3. The `StorageManager` calls the appropriate storage handler, such as `InternshipStorageHandler`, 
+to write the updated data to a file.
+4. The data is saved persistently and can be reloaded when the application starts or when requested by the user.
+
+#### Summary of All Storage Classes and Their Roles
+
+| Class                      | Role                                                                |
+|----------------------------|---------------------------------------------------------------------|
+| `Storage`                  | Abstract base class for storage related operations                  |
+| `Storage Manager`          | Manages saving/loading processes for the different storage handlers |
+| `InternshipStorageHandler` | Handles saving and loading of internship related data               |
+| `InterviewStorageHandler`  | Handles data storage for interviews of internships                  |
+| `ProfileStorageHandler`    | Handles data storage for the user's profile                         |
+| `ProjectStorageHandler`    | Handles saving and loading of project related data                  |
+
+---
 
 ## Implementation
 
@@ -379,15 +427,15 @@ an unsuccessful result is returned to the user.
 * If no duplicates are found and execution of editParameters...() is successful, the edited internship is added to the list of internships
 and a successful execution result is returned to the user.
 * Depending on whether the internships are successfully saved to the `internships.txt` file,
-  a `CommandResult` is returned. The reference frame for saving internships is omitted in the diagram to focus on the
-  details of adding a new internship.
+  a `CommandResult` is returned. The reference frame for saving internships is similar to the reference frame 
+  under `DeleteCommand`.
 
-![EditCommandSequenceDiagramOverview](images/edit_overview.png)
+![EditCommandSequenceDiagramOverview](images/EditImages/edit_overview.png)
 
 Below are the expanded reference frames for successful and unsuccessful CommandResults returned by execute() method.
 
-![EditCommandSequenceDiagramOverview](images/edit_ref_1.png)
-![EditCommandSequenceDiagramOverview](images/edit_ref_2.png)
+![EditCommandSequenceDiagramOverview](images/EditImages/edit_ref_1.png)
+![EditCommandSequenceDiagramOverview](images/EditImages/edit_ref_2.png)
 
 
 * Print calls, assert statements, logging, and other non-essential calls are omitted in the diagram for clarity.
@@ -395,6 +443,7 @@ For full clarity, note below is a comprehensive sequence diagram, combining all 
 behind duplicate-checking for example. Note this is only added for completeness for this one Command class, and only
 to supplement an additional level of detail to above overview diagram (which should be sufficient for understanding).
 Such an expanded view will be isolated to this one command but execution logic resembles other Commands,
+
 hence can refer to this diagram for thoroughness for all such commands.
 
 
@@ -442,20 +491,89 @@ the internship details manually.
 
 **Sequence Diagram:**
 
-Below is the sequence diagram for deleting an internship.
+Below is the sequence diagram for deleting internship. This is an overview sequence diagram in which method flow has
+been simplified using reference frames, expanded on below to help aid in clarity.
 
-![DeleteCommandOverview.drawio.png](images/DeleteCommandOverview.drawio.png)
-More diagrams detailing the DeleteCommand to be added here.
+* `InternSprint.java` obtains the correct `DeleteCommand` object from the `CommandParser` class and calls the
+  `execute()` method of that `DeleteCommand` object.
+* `execute()` method first checks the validity of the provided parameter using the `isValidParameters()` method of
+  the same `*Command` object. For the `DeleteCommand` this methods check that if the index is valid and not missing.
+* If the parameter is not valid (as depicted in the sequence diagram below), then a `CommandResult` with the correct
+  usage message is returned to the user. The `isSuccessful` field of the `CommandResult` object is set to `false`.
+* If the parameter is valid (as depicted in the sequence diagram below), then the specified index is found in the
+  internship list.
+* The internship at the index is then deleted and is removed from the list of internships. 
+  A successful execution result is returned to the user.
+* Depending on whether the internships are successfully saved to the `internships.txt` file,
+  a `CommandResult` is returned. 
 
+![DeleteCommand.drawio.png](images/DeleteImages/DeleteCommand.drawio.png)
+
+Below are the expanded reference frames for successful and unsuccessful CommandResults returned by execute() method.
+The reference frame for saving internships can also be seen below.
+
+![DeleteWrongParameter.drawio.png](images/DeleteImages/DeleteWrongParameter.drawio.png)
+
+![DeleteCorrectParameter.drawio.png](images/DeleteImages/DeleteCorrectParameter.drawio.png)
+
+![SaveInternship.drawio.png](images/DeleteImages/SaveInternship.drawio.png)
+
+* Print calls, assert statements, logging, and other non-essential calls are omitted in the diagrams for clarity.
+  
 ### 4. List all Internships
 **Overview**:
+This command allows the user to list all internships they have added. Data stored in internships.txt file at ../data/internships is retrieved to display the list of internships.
 
-This command allows user to view a list of all added internships.
-Description of segment is yet to be updated. In the meantime, here are the diagrams for list command
-![list_full_seq_diag.png](images/ListImages/list_full_seq_diag.png)
-![list_overview.png](images/ListImages/list_overview.png)
-![list_ref_1.png](images/ListImages/list_ref_1.png)
-![list_ref_2.png](images/ListImages/list_ref_2.png)
+**How the feature is implemented:**
+
+* The `listCommand` class is a class that extends from the abstract class `Command`.
+* The user is not supposed to provide any additional parameters
+* The `isValidParameters()` method ensures that no extra parameters is provided by the user before proceeding
+  with execution.
+* The `execute()` method receives an InternshipList(which stores internships categorized by type in a HashMap) and a UserProfile.
+  The method then iterates over each internship category (software, hardware, general), retrieves the corresponding list from the HashMap, and constructs a formatted output. Each internship is numbered sequentially. If no internships are found, it returns a CommandResult with a specific “No internships found” message.
+
+**Why is it implemented this way:**
+* The parameters are checked to ensure they are empty so that users do not wrongly try to provide /index flags to list to view a particular internship. Instead, list will give a list of all internships added.
+* By listing all internships from different categories in one command, the user gets a comprehensive view of their data without having to invoke separate commands for each type, allowing for a unified and cohesive output.
+
+**Alternatives Considered:**
+* **Alternative 1:** Separate Listing Commands for Each Internship Type
+  * Pros: 
+    - Could allow for specialized handling of different internship types.
+  * Cons: 
+    - Would increase the number of classes and overall code complexity.
+    the internship details manually.
+    - Users would need to run multiple commands to see a full list, leading to a fragmented user experience.
+
+
+* **Alternative 2:**  A Switch Statement Within a Single Command
+  * Pros: 
+    - Could handle each category differently if needed by using a switch-case block.
+  * Cons: 
+    - Loses the benefits of a unified, streamlined command interface.
+  
+**Sequence Diagrams**<br>
+Below are the sequence diagrams for listing all internships.  
+
+![ListCommand_PT1](images/ListImages/ListCommand_PT1.png)
+* The execute() method of the ListCommand class is called
+
+* Execute() method checks the validity of the parameters using the isValidParameters() method.
+ 
+* If extra parameters are entered(as depicted in the sequence diagram below), it will be invalid and hence, a commandResult with the correct usage message is returned to the user. 
+
+![ListCommand_PT2](images/ListImages/ListCommand_PT2.png)
+* If the parameters are valid (as depicted in the sequence diagram below), then the internships in the internship list are iterated through by catergory (software, hardware, general) and added to a arrayList as formatted strings.
+
+* A command result containing these internships is then returned.
+  ![ListCommand_PT3](images/ListImages/ListCommand_PT3.png)
+*Print calls, assert statements, logging, and other non-essential calls are omitted in the diagram for clarity.
+
+
+
+
+
 
 ### 5. Create/Update User Profile
 
@@ -518,7 +636,7 @@ class can be referenced to understand execution logic for these commands. Howeve
 command and how the three different project type classes extend from their superclasses, below is a class diagram for the same:
 
 
-![ProjectCommandUMLDiagram](images/projects-uml.png)
+![ProjectCommandUMLDiagram](images/ProjectImages/projects-uml.png)
 
 * Certain non-essential attributes and class methods are omitted in the diagram for clarity.
 
