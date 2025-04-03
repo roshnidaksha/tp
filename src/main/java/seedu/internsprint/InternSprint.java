@@ -57,7 +57,7 @@ public class InternSprint {
         CommandResult internshipResult = storageManager.loadInternshipData(internships);
         CommandResult interviewResult = storageManager.loadInterviewData(internships);
         CommandResult profileResult = storageManager.loadUserProfileData(user);
-        CommandResult projectResult = storageManager.loadProjectData(projects);
+        CommandResult projectResult = storageManager.loadProjectData(user.projects);
         Ui.showResultToUser(internshipResult);
         return interviewResult.isSuccessful() && internshipResult.isSuccessful()
             && profileResult.isSuccessful() && projectResult.isSuccessful();
