@@ -19,7 +19,7 @@
     * [4. List all Internships](#4-list-all-internships)
     * [5. Create/Update User Profile](#5-createupdate-user-profile)
     * [6. Add/View Projects under User Profile](#6-addview-projects-under-user-profile)
-* [**Documentation, logging, testing, configuration and deployment**](#documentation-logging-testing-configuration-and-deployment)
+* [**Logging Guide**](#logging-guide)
 * [**Product scope**](#product-scope)
   * [Target user profile](#target-user-profile)
   * [Value proposition](#value-proposition)
@@ -523,19 +523,24 @@ command and how the three different project type classes extend from their super
 * Certain non-essential attributes and class methods are omitted in the diagram for clarity.
 
 
-## Documentation, logging, testing, configuration and deployment
+### Logging Guide
+
+* We use `java.util.logging` package for logging.
+* The `InternSprintLogger.java` class is responsible for setting up the logger and creating a singleton logger.
+* This logger can be obtained by using `InternSprintLogger.getLogger()`.
+* Log messages are output to a `.log` file which is found at `../log/InternSprint.log`.
 
 ## Product scope
 
 ### Target user profile
 
-This product is designed for NUS Computer Engineering undergraduates, especially students applying for internships 
-or jobs for the first time. It caters to those who prefer a unified CLI-based platform over a GUI, streamlining 
-job application processes for tech-savvy users who value automation and command-line control.
+This product is designed for **NUS Computer Engineering undergraduates**, especially students **applying for internships** 
+or jobs for the first time. It caters to those who **prefer a unified CLI-based platform** over a GUI, streamlining 
+job application processes for tech-savvy users who **value automation and command-line control**.
 
 ### Value proposition
 
-The product helps CEG students effortlessly track and maintain job applications at different stages using short 
+The product helps CEG students **effortlessly track and maintain job applications** at different stages using short 
 commands, all within a unified CLI. Stay organized, save time, and streamline the application process with automation, 
 ensuring a seamless and efficient job hunt.
 
@@ -563,11 +568,18 @@ ensuring a seamless and efficient job hunt.
 * Should work on any *mainsteam OS* as long as it has Java 17 or above installed.
 * A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be 
 able to accomplish most of the tasks faster using commands than using a mouse.
+* The application should be able to handle sufficient amount of internships a CEG student might apply to without causing
+any lag.
 
 ## Glossary
 
-* *glossary item* - Definition
+* *CEG* - Computer Engineering
+* *CLI* - Command Line Interface
+* *CV* - Curriculum Vitae
+* *GUI* - Graphical User Interface
 * *Mainstream OS* - Windows, Linux, Unix, MacOS
+* *SoC* - Separation of Concerns
+* *SRP* - Single Responsibility Principle
 
 ## Instructions for manual testing
 
