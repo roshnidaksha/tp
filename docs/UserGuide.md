@@ -21,7 +21,7 @@ and easily tracking status of your applications.
 
 <!-- TOC -->
   * [Quick Start](#quick-start)
-  * [Features](#features-)
+  * [Features](#features)
     * [Help: `help`](#help-help)
       * [Internship Commands](#internship-commands)
       * [Listing all internships: `list`](#listing-all-internships-list)
