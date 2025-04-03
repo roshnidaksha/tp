@@ -72,7 +72,7 @@ Follow the guide [[se-edu/guides] IDEA: Importing a Gradle project]
 
 ### Architecture
 
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+![OverallArchitecture](images/OverallArchitecture.png)
 
 The **Architecture Diagram** above shows the high-level implementation of the InternSprint application.
 
@@ -80,14 +80,33 @@ Given below is a quick overview of our main components and their interactions.
 
 **Main Components:**
 
-{Explain briefly the packaging structure and the main components of the product.}
+`InternSprint` class is responsible for the launch and shutdown of the entire program.
+* At application launch, it initializes the `StorageManager`, `InternshipList`, `UserProfile`, and `ProjectList` components.
+* All data is saved immediately after command execution. So during application shutdown, an exit message is displayed to
+user and the garbage collector ensures the necessary cleaning automatically.
+
+The bulk of the application logic is done by the following 4 components:
+* `Ui` - Handles user input and output.
+* `Logic` - Parses user input and executes commands.
+* `Model` - Stores and manages the data.
+* `Storage` - Reads and writes data to and from the disk.
 
 **How the components interact:**
 
-The *Sequence Diagram* below shows how the components interact with each other when a user deletes an internship by 
-issuing the command `delete /index 1`.
+The *Sequence Diagram* demonstrating the interaction between these 4 components is described below under the `Ui` 
+component. The `Ui` component can be accessed [here](#ui-component).
 
-{Insert Sequence diagram here and explanation here}
+Each of the 4 components has its API defined either in an `interface` or in an `abstract` class with the same name as the package.
+* The `Ui` component is a single class.
+* The `Logic` component consists of two main parts: the `Parser` and the `Command` packages.
+  * The `command` package defines its API in the abstract `Command.java` class.
+  * The `parser` package is made up of two single classes: `CommandParser.java` and `DateTimeParser.java`.
+* The `Model` component consists of two packages: `internship` and `userprofile`.
+  * The `internship` package defines its API in the abstract `Internship.java` class. 
+  * There is also an `interview` package that contains the `Interview.java` and `InterviewEntry.java` classes.
+  * The `userprofile` package is a single class.
+  * The `userprofile` package consists `project` package whose API is defined in the abstract `Project.java` class.
+* The `Storage` class defines its API in the `Storage.java` interface.
 
 ### UI Component
 
