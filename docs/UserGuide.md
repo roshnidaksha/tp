@@ -23,7 +23,7 @@ and easily tracking status of your applications.
   * [Quick Start](#quick-start)
   * [Features](#features)
     * [Help: `help`](#help-help)
-      * [Internship Commands](#internship-commands)
+    * [Internship Commands](#internship-commands)
       * [Listing all internships: `list`](#listing-all-internships-list)
       * [Adding a general category of internship: `add general`](#adding-a-general-category-of-internship-add-general)
       * [Adding a software category of internship: `add software`](#adding-a-software-category-of-internship-add-software)
@@ -415,7 +415,14 @@ Example of usage:
 > my /name John Doe /ind Software /c Google /r Developer /mgoals 100 applications /ygoals 2 internships
 ------------------------------------------------------------------------------------------------------------------------
     Successfully updated your user profile as shown below:
-    Name: John Doe, Preferred Industries: [Software], Preferred Companies: [Google], Preferred Roles: [Developer], Monthly Goals: 100 applications, Yearly Goals: 2 internships
+    
+    Name: John Doe
+    Preferred Industries: [Software]
+    Preferred Companies: [Google]
+    Preferred Roles: [Developer]
+    Monthly Goals: 100 applications
+    Yearly Goals: 2 internships
+
 ------------------------------------------------------------------------------------------------------------------------
 ```
 
