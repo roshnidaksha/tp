@@ -115,28 +115,28 @@ public class UserProfile {
 
         StringBuilder sb = new StringBuilder();
         if (name != null) {
-            sb.append("Name: ").append(name);
+            sb.append("\n").append("    Name: ").append(name).append("\n");
         }
         if (preferredIndustries != null) {
-            sb.append(", Preferred Industries: ").append(preferredIndustries);
+            sb.append("    Preferred Industries: ").append(preferredIndustries).append("\n");
         }
         if (preferredCompanies != null) {
-            sb.append(", Preferred Companies: ").append(preferredCompanies);
+            sb.append("    Preferred Companies: ").append(preferredCompanies).append("\n");
         }
         if (preferredRoles != null) {
-            sb.append(", Preferred Roles: ").append(preferredRoles);
+            sb.append("    Preferred Roles: ").append(preferredRoles).append("\n");
         }
         if (targetStipendRange != null) {
-            sb.append(", Target Stipend Range: ").append(targetStipendRange);
+            sb.append("    Target Stipend Range: ").append(targetStipendRange).append("\n");
         }
         if (internshipDateRange != null) {
-            sb.append(", Internship Date Range: ").append(internshipDateRange);
+            sb.append("    Internship Date Range: ").append(internshipDateRange).append("\n");
         }
         if (monthlyGoals != null) {
-            sb.append(", Monthly Goals: ").append(monthlyGoals);
+            sb.append("    Monthly Goals: ").append(monthlyGoals).append("\n");
         }
         if (yearlyGoals != null) {
-            sb.append(", Yearly Goals: ").append(yearlyGoals);
+            sb.append("    Yearly Goals: ").append(yearlyGoals).append("\n");
         }
         return sb.toString().replaceFirst("^,\\s*", "");
     }
