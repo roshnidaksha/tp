@@ -68,4 +68,5 @@ public class ViewGeneralProjectsCommandTest {
             viewCommand.execute(internshipList, null);
         });
     }
+    
 }
