@@ -28,8 +28,7 @@
 
 ## Acknowledgements
 
-{list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
-Special thanks to the authors of [/addressbook-level3] https://se-education.org/addressbook-level3/DeveloperGuide.html#acknowledgements)
+Special thanks to the authors of [addressbook-level3](https://se-education.org/addressbook-level3/DeveloperGuide.html#acknowledgements)
 for their Developer Guide, used here as a reference for the following DG:
 
 **Third party libraries used:**
@@ -174,14 +173,14 @@ InternSprint . It represents the internal state of the application and is update
 
 ---
 
-#### ⚙️ Responsibilities
+#### Responsibilities
 - Store internship information (company name, role, description, etc.)
 - Support three internship types: Software, Hardware and General.
 - Store and manage interviews (including multiple rounds per internship)
 - Handle user information and goals via the `UserProfile`
 
 ---
-#### 📦 Package Structure
+#### Package Structure
 
 ```
 model
@@ -198,7 +197,7 @@ model
 ```
 ---
 
-#### 🧱 Key Classes and Their Roles
+#### Key Classes and Their Roles
 
 | Class                                 | Role                                                              |
 |---------------------------------------|-------------------------------------------------------------------|
@@ -521,15 +520,22 @@ ensuring a seamless and efficient job hunt.
 
 ## User Stories
 
-| Version | As a ...    | I want to ...                                                      | So that I can ...                                                                                     |
-|---------|-------------|--------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| v1.0    | New user    | View the user command guide easily                                 | learn more about the product as and when needed, and know how to work with the software               |
-| v1.0    | Normal user | Add the job role, company and status of the job I have applied for | easily identify where I have applied                                                                  |
-| v1.0    | Normal user | List all the jobs I have applied for                               | track my progress and have a masterlist reference of my applications                                  |
-| v1.0    | Normal user | Delete certain job applications                                    | only see relevant data in the list                                                                    |
-| v1.0    | Normal user | View the detailed job description                                  | have a better understanding of the role I am applying for                                             |
-| v1.0    | Normal user | Save the previously stored data about the jobs I have applied to   | reopen the application and have my old data restored so I don't have to reenter everything repeatedly |
-| v2.0    | New user    |                                                                    |                                                                                                       |
+| Version | As a ...    | I want to ...                                                                                                  | So that I can ...                                                                                     |
+|---------|-------------|----------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| v1.0    | New user    | View the user command guide easily                                                                             | learn more about the product as and when needed, and know how to work with the software               |
+| v1.0    | Normal user | Add the job role, company and status of the job I have applied for                                             | easily identify where I have applied                                                                  |
+| v1.0    | Normal user | List all the jobs I have applied for                                                                           | track my progress and have a masterlist reference of my applications                                  |
+| v1.0    | Normal user | Delete certain job applications                                                                                | only see relevant data in the list                                                                    |
+| v1.0    | Normal user | View the detailed job description                                                                              | have a better understanding of the role I am applying for                                             |
+| v1.0    | Normal user | Save the previously stored data about the jobs I have applied to                                               | reopen the application and have my old data restored so I don't have to reenter everything repeatedly |
+| v2.0    | New user    | Enter my goals for the year, as in what would be my ideal role, in which companies and what pay or time ranges | have a clear picture to refer back to when making applications                                        |
+| v2.0    | New user    | Enter in my personal details like name, age major and preferences                                              | have a personal touch in my software                                                                  |
+| v2.0    | New user    | Have some pictorial elements and visual representations of data                                                | be engaged and not have to deal with too text-heavy or boring visuals                                 |
+| v2.0    | New user    | Add in my skills in different tech stacks and different soft skills                                            | keep my skill set updated and use it as a reference for different applications                        |
+| v2.0    | Normal user | Note important details about the job interviews                                                                | well prepare for interviews                                                                           |
+| v2.0    | Normal user | Mark jobs based on different stages on the job portal                                                          | be aware of which application to portal to check for updates, and which stage they are in             |
+| v2.0    | Normal user | View HR details and contact number for the interviews                                                          | be aware of the point of contact for various applications                                             |
+| v2.0    | Normal user | Record interview dates and time                                                                                | better track interviews                                                                               |
 
 ## Non-Functional Requirements
 
