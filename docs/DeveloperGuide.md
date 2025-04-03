@@ -17,6 +17,8 @@
     * [2. Edit an Internship](#2-edit-an-internship)
     * [3. Delete an Internship](#3-delete-an-internship)
     * [4. List all Internships](#4-list-all-internships)
+    * [5. Create/Update User Profile](#5-createupdate-user-profile)
+    * [6. Add/View Projects under User Profile](#6-addview-projects-under-user-profile)
 * [**Documentation, logging, testing, configuration and deployment**](#documentation-logging-testing-configuration-and-deployment)
 * [**Product scope**](#product-scope)
   * [Target user profile](#target-user-profile)
@@ -374,10 +376,10 @@ For full clarity, note below is a comprehensive sequence diagram, combining all 
 behind duplicate-checking for example. Note this is only added for completeness for this one Command class, and only
 to supplement an additional level of detail to above overview diagram (which should be sufficient for understanding).
 Such an expanded view will be isolated to this one command but execution logic resembles other Commands,
-hence can refer to this diagram for thoroughness for all such commands.
+hence can refer to [this diagram](images/edit_command_pdf.drawio.pdf) for all such commands.
 
 
-![Edit-Command Sequence Diagram](images/edit_full_seq_diag.png)
+[Click here for comprehensive Edit Command Sequence Diagram](images/edit_command_pdf.drawio.pdf)
 
 ### 3. Delete an Internship
 
@@ -460,7 +462,7 @@ or `/mgoals` to their preference.
 be to help them customize their CV and application processes. We aimed to make the user experience for simpler and more intuitive to understand,
 and emulated the sequence logic seen in `edit` command.
 
-### 5. Add/View Projects under User Profile
+### 6. Add/View Projects under User Profile
 
 **Overview**:
 
