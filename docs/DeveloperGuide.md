@@ -541,7 +541,6 @@ ensuring a seamless and efficient job hunt.
 
 ## Non-Functional Requirements
 
-{Give non-functional requirements}
 * Should work on any *mainsteam OS* as long as it has Java 17 or above installed.
 * A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be 
 able to accomplish most of the tasks faster using commands than using a mouse.
@@ -553,7 +552,6 @@ able to accomplish most of the tasks faster using commands than using a mouse.
 
 ## Instructions for manual testing
 
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
 
 > **Note:** These instructions only provide a starting point for testers to work on; testers are expected to do more 
 > exploratory testing.
