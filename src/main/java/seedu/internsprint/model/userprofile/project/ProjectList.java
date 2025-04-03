@@ -1,7 +1,13 @@
 package seedu.internsprint.model.userprofile.project;
 
+import seedu.internsprint.storage.ProjectStorageHandler;
+import seedu.internsprint.storage.StorageManager;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_WRITE_FILE;
 
 /**
  * Represents the list of projects.
@@ -9,6 +15,7 @@ import java.util.HashMap;
 public class ProjectList {
     protected final HashMap<String, ArrayList<Project>> projectMap = new HashMap<>();
     protected int projectCount = 0;
+    private final StorageManager storageManager = StorageManager.getInstance();
 
     public ProjectList() {
         projectMap.put("software", new ArrayList<>());
@@ -38,6 +45,17 @@ public class ProjectList {
     public boolean contains(Project project) {
         String type = project.getType();
         return projectMap.get(type).contains(project);
+    }
+
+    /**
+     * Saves the projects to storage.
+     */
+    public void saveProjects() throws IOException {
+        try {
+            storageManager.saveProjectData(this);
+        } catch (IOException e) {
+            throw new IOException(String.format(UNABLE_TO_WRITE_FILE, ProjectStorageHandler.FILE_PATH));
+        }
     }
 
     public HashMap<String, ArrayList<Project>> getProjectMap() {

@@ -23,24 +23,27 @@ and easily tracking status of your applications.
   * [Quick Start](#quick-start)
   * [Features](#features)
     * [Help: `help`](#help-help)
-    * [Listing all internships: `list`](#listing-all-internships-list)
-    * [Adding a general category of internship: `add general`](#adding-a-general-category-of-internship-add-general)
-    * [Adding a software category of internship: `add software`](#adding-a-software-category-of-internship-add-software)
-    * [Adding a hardware category of internship: `add hardware`](#adding-a-hardware-category-of-internship-add-hardware)
-    * [Editing an internship: `edit`](#editing-an-internship-edit)
-    * [Deleting an internship: `delete`](#deleting-an-internship-delete)
-    * [Finding internships: `find`](#finding-internships-find)
-    * [Viewing extended description of a specific internship: `desc`](#viewing-extended-description-of-a-specific-internship-desc)
-    * [Adding interviews for internships: `interviewfor`](#adding-interviews-for-internships-interviewfor)
-    * [Sorting all interviews added by date: `sortInterviews`](#sorting-all-interviews-added-by-date-sortinterviews)
-    * [Updating user profile information: `my`](#updating-user-profile-information-my)
-    * [Viewing user profile information: `view user`](#viewing-user-profile-information-view-user)
-    * [Adding a general category of project: `project general`](#adding-a-general-category-of-project-project-general)
-    * [Adding a software category of internship: `project software`](#adding-a-software-category-of-internship-project-software)
-    * [Adding a hardware category of internship: `project hardware`](#adding-a-hardware-category-of-internship-project-hardware)
-    * [Viewing a general category of project: `view general`](#viewing-a-general-category-of-project-view-general)
-    * [Viewing a software category of internship: `view software`](#viewing-a-software-category-of-internship-view-software)
-    * [Viewing a hardware category of internship: `view hardware`](#viewing-a-hardware-category-of-internship-view-hardware)
+      * [Internship Commands](#internship-commands)
+      * [Listing all internships: `list`](#listing-all-internships-list)
+      * [Adding a general category of internship: `add general`](#adding-a-general-category-of-internship-add-general)
+      * [Adding a software category of internship: `add software`](#adding-a-software-category-of-internship-add-software)
+      * [Adding a hardware category of internship: `add hardware`](#adding-a-hardware-category-of-internship-add-hardware)
+      * [Editing an internship: `edit`](#editing-an-internship-edit)
+      * [Deleting an internship: `delete`](#deleting-an-internship-delete)
+      * [Finding internships: `find`](#finding-internships-find)
+      * [Viewing extended description of a specific internship:
+        `desc`](#viewing-extended-description-of-a-specific-internship-desc)
+      * [Adding interviews for internships: `interviewfor`](#adding-interviews-for-internships-interviewfor)
+      * [Sorting all interviews added by date: `sortInterviews`](#sorting-all-interviews-added-by-date-sortinterviews)
+    * [User Commands](#user-commands)
+      * [Updating user profile information: `my`](#updating-user-profile-information-my)
+      * [Viewing user profile information: `view user`](#viewing-user-profile-information-view-user)
+      * [Adding a general category of project: `project general`](#adding-a-general-category-of-project-project-general)
+      * [Adding a software category of project: `project software`](#adding-a-software-category-of-project-project-software)
+      * [Adding a hardware category of project: `project hardware`](#adding-a-hardware-category-of-project-project-hardware)
+      * [Viewing a general category of project: `view general`](#viewing-a-general-category-of-project-view-general)
+      * [Viewing a software category of project: `view software`](#viewing-a-software-category-of-project-view-software)
+      * [Viewing a hardware category of project: `view hardware`](#viewing-a-hardware-category-of-project-view-hardware)
     * [Exit `bye`](#exit-bye)
   * [Saving the data](#saving-the-data)
   * [Editing the data file](#editing-the-data-file)
@@ -91,6 +94,8 @@ and easily tracking status of your applications.
    `bye` : Exits the app.
 
 ## Features
+
+### Internship Commands
 
 ### Help: `help`
 Allows users to view the usage of all the available commands, or the usage of a specific command.
@@ -291,6 +296,7 @@ Example of usage:
     Successfully deleted internship: Company: Mavericks, Role: Consultant, Dept: Technical Consultation
 ------------------------------------------------------------------------------------------------------------------------
 ```
+
 ---
 
 ### Finding internships: `find`
@@ -360,7 +366,6 @@ Example of usage:
 
 ---
 
-
 ### Sorting all interviews added by date: `sortInterviews`
 Allows users to sort all rounds of interviews added across multiple internships by date.
 
@@ -388,6 +393,7 @@ Example of usage:
 
 ---
 
+### User Commands
 
 ### Updating user profile information: `my`
 Allows users to update user profile information with details such as name, or preferrred industries, roles
@@ -414,7 +420,6 @@ Example of usage:
 ```
 
 ---
-
 
 ### Viewing user profile information: `view user`
 Allows users to view user profile information with details such as name, or preferrred industries, roles
@@ -521,7 +526,6 @@ Examples of usage:
 
 ---
 
-
 ### Viewing a general category of project: `view general`
 Allows users to view list of saved general projects.
 Basic Format: `view general`
@@ -587,7 +591,6 @@ Examples of usage:
 │Programming Languages:                 │Java, C++                             │
 └───────────────────────────────────────┴──────────────────────────────────────┘
 ------------------------------------------------------------------------------------------------------------------------
-
 ```
 
 ---
@@ -623,7 +626,6 @@ Examples of usage:
 │Hardware Components:                   │Basys Board                           │
 └───────────────────────────────────────┴──────────────────────────────────────┘
 ------------------------------------------------------------------------------------------------------------------------
-
 ```
 
 ---
@@ -683,16 +685,25 @@ should be only one `internships.txt` in the location.
 
 ## Command Summary
 
-{Give a 'cheat sheet' of commands here once v2.0 goes out}
-
-| Command             | Format                                                                 |
-|---------------------|------------------------------------------------------------------------|
+| Command             | Format                                                                                                                                                                 |
+|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Internship Commands |
-| `add general`       | `add general /c COMPANY_NAME /r ROLE /dept DEPARTMENT`                 |
-| `add software`      | `add software /c COMPANY_NAME /r ROLE /tech TECHNOLOGIES`              |
-| `add hardware`      | `add hardware /c COMPANY_NAME /r ROLE /hardtech HARDWARE_TECHNOLOGIES` |
-| ...                 | ...                                                                    |
-| `find`              | `find [TYPE] [/c COMPANY_NAME] [\r ROLE]`                              |
-| `bye'               | `bye`                                                                  |
-| User Commands       |                                                                        |
-
+| `add general`       | `add general /c COMPANY_NAME /r ROLE /dept DEPARTMENT`                                                                                                                 |
+| `add software`      | `add software /c COMPANY_NAME /r ROLE /tech TECHNOLOGIES`                                                                                                              |
+| `add hardware`      | `add hardware /c COMPANY_NAME /r ROLE /hardtech HARDWARE_TECHNOLOGIES`                                                                                                 |
+| `edit`              | `edit /index INDEX_OF_INTERNSHIP`                                                                                                                                      |
+| `delete`            | `delete /index INDEX_OF_INTERNSHIP`                                                                                                                                    |
+| `find`              | `find [TYPE] [/c COMPANY_NAME] [\r ROLE]`                                                                                                                              |
+| `desc`              | `desc /index INDEX_OF_INTERNSHIP`                                                                                                                                      |
+| `interviewfor`      | `interviewfor /index INDEX_OF_INTERNSHIP /date DATE /start START_TIME /end END_TIME /type TYPE [/email INTERVIEWER_EMAIL] [/notes NOTES]`                              |
+| `sortInterviews`    | `sortInterviews`                                                                                                                                                       |
+| User Commands       |                                                                                                                                                                        |
+| `my`                | `my /c COMPANIES_YOU_PREFER /r ROLES_YOU_PREFER /ygoals YEARLY_GOALS /mgoals MONTHLY_GOALS /pay PAY_RANGE /ind INDUSTRIES_YOU_PREFER /time TIME_RANGE /name YOUR_NAME` |
+| `view user`         | `view user`                                                                                                                                                            |
+| `project general`   | `project general /n PROJECT_NAME /r ROLE /dept DEPARTMENT /obj OBJECTIVES /desc DESCRIPTION /dur DURATION`                                                             |
+| `project software`  | `project software /n PROJECT_NAME /r ROLE /dept DEPARTMENT /pro PROGRAMMING_LANGUAGES /obj OBJECTIVES /desc DESCRIPTION /dur DURATION`                                 |
+| `project hardware`  | `project hardware /n PROJECT_NAME /r ROLE /dept DEPARTMENT /hcomp HARDWARE_COMPONENTS /obj OBJECTIVES /desc DESCRIPTION /dur DURATION`                                 |
+| `view general`      | `view general`                                                                                                                                                         |
+| `view software`     | `view software`                                                                                                                                                        |
+| `view hardware`     | `view hardware`                                                                                                                                                        |
+| `bye'               | `bye`                                                                                                                                                                  |
