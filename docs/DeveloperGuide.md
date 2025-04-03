@@ -567,16 +567,170 @@ able to accomplish most of the tasks faster using commands than using a mouse.
 2. Expected: A welcome message and a prompt for user input.
 
 ### 2. Test Cases
+For more depth and greater variety of test cases which fully explore our extended features we **highly recommend** you take a
+look at sample commands in our [User Guide Feature List](https://ay2425s2-cs2113-t11a-3.github.io/tp/UserGuide.html#table-of-contents).
 
 **2.1 Initial State**
 
+1. Test case: `help`
+
+  Expected: List of all possible commands user may enter should be displayed.
+
+2. Test case: `any non-command string`
+
+Expected: Error for an unrecognized command should appear.
+
 **2.2 Add a new internship**
+1. Test case: ` add general /c Google /r Human Resource /dept HR`
+
+Expected: Adds a general category of internship in Google, for an HR role, in the HR department. (These are
+the most basic required parameters).
+   
+
+2. Test case: `add software /c Google /r Software Engineer /tech Java, Python`
+
+Expected:  Adds a software category of internship in Google, for a Software Engineer role, with tech stack of Java and 
+Python. (These are the most basic required parameters).
+
+3. Test case: `add hardware /c Google /r Hardware Engineer /hardtech Arduino, Raspberry Pi`
+
+Expected:  Adds a hardware category of internship in Google, for a Hardware Engineer role, with hardware tech stack of Arduino, Raspberry Pi.
+(These are the most basic required parameters).
+
+4. Test case: `add software /c IBM /r Data Analytics /tech Python, PowerBI /ex Good project showcase`
+
+Expected:  Adds a software category of internship in IBM, for a Data Analytics role, with tech stack of Python, PowerBI
+and experience of good project showcases. (These are some extended parameters: more info on possible extended parameters in UG).
+
+*Note: you may extend this test case to other categories of internships, with more optional parameters.*
 
 **2.3 List all internships**
+1. Test case: `list`
+
+Expected: Should list all internships organized by category. Should not show extended parameters like `description` among others
+(should just be the essential compulsory flag information).
+
+2. Test case: `list /index 1`
+
+Expected: Should output error highlighting correct usage of list command.
 
 **2.4 Delete an internship**
+1. Test case: `delete`
+
+Expected: Should output error highlighting correct usage of delete command.
+
+2. Test case: `delete /index 1`
+
+Expected: Should correctly delete the internship in the list at index 1. You may `list` all internships to confirm.
+
+3. Test case: `delete /index -1`
+
+Expected: Should output error highlighting invalid index.
 
 **2.5 Edit an internship**
 
-**2.7 Describe an internship**
+1. Test case: `edit`
+
+Expected: Should output error highlighting correct usage of edit command.
+
+2. Test case: `edit /index 1 /c Java /desc Some description`
+
+Expected: Should correctly edit the internship in the list at index 1 to new company of Java. 
+This commmand is used to potentially explore adding more optional parameters if you forgot to add such parameters when creating
+the internship. You may `list` all internships to confirm. (Can check optional parameters in UG)
+
+3. Test case: `edit /c Google /desc Some description`
+
+Expected: Should output error highlighting invalid parameters. 
+
+**2.6 Describe an internship**
+1. Test case: `desc`
+
+Expected: Should output error highlighting correct usage of description command.
+
+2. Test case: `desc /index 1`
+
+Expected: Should correctly show description of the internship in the list at index 1. 
+
+3. Test case: `desc /index -1`
+
+Expected: Should output error highlighting invalid index.
+
+**2.7 Find an internship**
+1. Test case: `find`
+
+Expected: Should output error highlighting correct usage of find command.
+
+2. Test case: `find software /c Google`
+
+Expected: Should find all software internships added, under company name Google.
+
+**2.8 Adding interviews for internships**
+
+1. Test case: `interviewfor `
+
+Expected: Should output error highlighting correct usage of add interview command.
+
+2. Test case: `interviewfor /index 1 /date 2025-01-01 /start 10:00 /end 14:00 /type technical round`
+
+Expected: Should correctly add a technical interview to the internship in the list at index 1 with above timings.
+(You can potentially explore adding more optional parameter according to user guide. You may `desc` this index internship to confirm it will not appear on listing.)
+
+3. Test case: `interviewfor /date 2025-01-01 /start 10:00 /end 14:00 /type technical round`
+
+Expected: Should output error highlighting no index/invalid parameters. 
+
+**2.9 Sorting interviews for internships**
+
+1. Test case: `sortInterviews `
+
+Expected: Should sort all rounds of interviews added across multiple internships by date.
+
+**2.10 Adding/Viewing user profile information**
+
+1. Test case: `my /name John Doe /ind Software /c Google /r Developer /mgoals 100 applications /ygoals 2 internships`
+
+Expected: Should correctly edit your user profile information according to above optional parameters. (Can check optional parameters in UG)
+
+
+2. Test case: `my`
+
+Expected: Since all parameters are optional to user, this command would successfully "edit"  your user profile information according to above optional parameters. 
+(Since no flag/optional parameters provided - no changes).
+
+3. Test case: `view user`
+
+Expected: Should display ASCII table to user of their profile information.
+
+**2.11 Adding/Viewing projects information**
+
+1. Test case: `project general /n Team Project /r Tester /dept Software Engineering /obj For the PE /desc Worked at identifying feature flaws in app /dur May-August`
+
+Expected: Should correctly add a general project according to above compulsary parameters. 
+(All parameters are mandatory since they all hold valuable information for user. You may extend this to project general and project hardware)
+
+
+2. Test case: `project software /n Team Project for CS2113 /r Unit Tester /pro Java, C++ /obj To get an A+ /desc Worked at identifying feature flaws in app /dur May-August`
+
+Expected: Should correctly add a software project according to above compulsory parameters.
+
+3. Test case: `project hardware /n Team Project for EE2026 /r Ui Developer /hcomp Basys Board/obj To get an A+ /desc Worked at creating pixel art for the UI /dur May-August`
+
+Expected: Should correctly add a hardware project according to above compulsory parameters.
+
+4. Test case: `view general`
+
+Expected: Should display ASCII table to user of their general projects.
+
+5. Test case: `view software`
+
+Expected: Should display ASCII table to user of their software projects.
+
+6. Test case: `view hardware`
+
+Expected: Should display ASCII table to user of their hardware projects.
+
+
+
+
 

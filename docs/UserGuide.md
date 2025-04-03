@@ -470,7 +470,7 @@ Basic Format: `project general /n PROJECT_NAME /r ROLE /dept DEPARTMENT /obj OBJ
 Examples of usage:
 
 ```
-> project general /n Team Project for CS2113 /r Unit Tester /dept Software Engineering/obj To get an A+ /desc Worked at identifying feature flaws in app /dur May-August
+> project general /n Team Project for CS2113 /r Unit Tester /dept Software Engineering /obj To get an A+ /desc Worked at identifying feature flaws in app /dur May-August
 ------------------------------------------------------------------------------------------------------------------------
     Project successfully added to user profile. Below are the details for the same: 
 
@@ -492,7 +492,7 @@ Basic Format: `project software /n PROJECT_NAME /r ROLE /dept DEPARTMENT /pro PR
 Examples of usage:
 
 ```
-> project software /n Team Project for CS2113 /r Unit Tester /pro Java, C++/obj To get an A+ /desc Worked at identifying feature flaws in app /dur May-August
+> project software /n Team Project for CS2113 /r Unit Tester /pro Java, C++ /obj To get an A+ /desc Worked at identifying feature flaws in app /dur May-August
 ------------------------------------------------------------------------------------------------------------------------
     Project successfully added to user profile. Below are the details for the same: 
 
