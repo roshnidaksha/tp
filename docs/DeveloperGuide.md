@@ -19,7 +19,7 @@
     * [4. List all Internships](#4-list-all-internships)
     * [5. Create/Update User Profile](#5-createupdate-user-profile)
     * [6. Add/View Projects under User Profile](#6-addview-projects-under-user-profile)
-* [**Documentation, logging, testing, configuration and deployment**](#documentation-logging-testing-configuration-and-deployment)
+* [**Logging Guide**](#logging-guide)
 * [**Product scope**](#product-scope)
   * [Target user profile](#target-user-profile)
   * [Value proposition](#value-proposition)
@@ -74,7 +74,7 @@ Follow the guide [[se-edu/guides] IDEA: Importing a Gradle project]
 
 ### Architecture
 
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+![OverallArchitecture](images/OverallArchitecture.png)
 
 The **Architecture Diagram** above shows the high-level implementation of the InternSprint application.
 
@@ -82,14 +82,33 @@ Given below is a quick overview of our main components and their interactions.
 
 **Main Components:**
 
-{Explain briefly the packaging structure and the main components of the product.}
+`InternSprint` class is responsible for the launch and shutdown of the entire program.
+* At application launch, it initializes the `StorageManager`, `InternshipList`, `UserProfile`, and `ProjectList` components.
+* All data is saved immediately after command execution. So during application shutdown, an exit message is displayed to
+user and the garbage collector ensures the necessary cleaning automatically.
+
+The bulk of the application logic is done by the following 4 components:
+* `Ui` - Handles user input and output.
+* `Logic` - Parses user input and executes commands.
+* `Model` - Stores and manages the data.
+* `Storage` - Reads and writes data to and from the disk.
 
 **How the components interact:**
 
-The *Sequence Diagram* below shows how the components interact with each other when a user deletes an internship by 
-issuing the command `delete /index 1`.
+The *Sequence Diagram* demonstrating the interaction between these 4 components is described below under the `Ui` 
+component. The `Ui` component can be accessed [here](#ui-component).
 
-{Insert Sequence diagram here and explanation here}
+Each of the 4 components has its API defined either in an `interface` or in an `abstract` class with the same name as the package.
+* The `Ui` component is a single class.
+* The `Logic` component consists of two main parts: the `Parser` and the `Command` packages.
+  * The `command` package defines its API in the abstract `Command.java` class.
+  * The `parser` package is made up of two single classes: `CommandParser.java` and `DateTimeParser.java`.
+* The `Model` component consists of two packages: `internship` and `userprofile`.
+  * The `internship` package defines its API in the abstract `Internship.java` class. 
+  * There is also an `interview` package that contains the `Interview.java` and `InterviewEntry.java` classes.
+  * The `userprofile` package is a single class.
+  * The `userprofile` package consists `project` package whose API is defined in the abstract `Project.java` class.
+* The `Storage` class defines its API in the `Storage.java` interface.
 
 ### UI Component
 
@@ -409,10 +428,11 @@ For full clarity, note below is a comprehensive sequence diagram, combining all 
 behind duplicate-checking for example. Note this is only added for completeness for this one Command class, and only
 to supplement an additional level of detail to above overview diagram (which should be sufficient for understanding).
 Such an expanded view will be isolated to this one command but execution logic resembles other Commands,
-hence can refer to [this diagram](images/EditImages/edit_command_pdf.drawio.pdf) for all such commands.
+
+hence can refer to this diagram for thoroughness for all such commands.
 
 
-[Click here for comprehensive Edit Command Sequence Diagram](images/EditImages/edit_command_pdf.drawio.pdf)
+![Edit-Command Sequence Diagram](images/edit_full_seq_diag.png)
 
 ### 3. Delete an Internship
 
@@ -561,19 +581,24 @@ command and how the three different project type classes extend from their super
 * Certain non-essential attributes and class methods are omitted in the diagram for clarity.
 
 
-## Documentation, logging, testing, configuration and deployment
+### Logging Guide
+
+* We use `java.util.logging` package for logging.
+* The `InternSprintLogger.java` class is responsible for setting up the logger and creating a singleton logger.
+* This logger can be obtained by using `InternSprintLogger.getLogger()`.
+* Log messages are output to a `.log` file which is found at `../log/InternSprint.log`.
 
 ## Product scope
 
 ### Target user profile
 
-This product is designed for NUS Computer Engineering undergraduates, especially students applying for internships 
-or jobs for the first time. It caters to those who prefer a unified CLI-based platform over a GUI, streamlining 
-job application processes for tech-savvy users who value automation and command-line control.
+This product is designed for **NUS Computer Engineering undergraduates**, especially students **applying for internships** 
+or jobs for the first time. It caters to those who **prefer a unified CLI-based platform** over a GUI, streamlining 
+job application processes for tech-savvy users who **value automation and command-line control**.
 
 ### Value proposition
 
-The product helps CEG students effortlessly track and maintain job applications at different stages using short 
+The product helps CEG students **effortlessly track and maintain job applications** at different stages using short 
 commands, all within a unified CLI. Stay organized, save time, and streamline the application process with automation, 
 ensuring a seamless and efficient job hunt.
 
@@ -601,11 +626,18 @@ ensuring a seamless and efficient job hunt.
 * Should work on any *mainsteam OS* as long as it has Java 17 or above installed.
 * A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be 
 able to accomplish most of the tasks faster using commands than using a mouse.
+* The application should be able to handle sufficient amount of internships a CEG student might apply to without causing
+any lag.
 
 ## Glossary
 
-* *glossary item* - Definition
+* *CEG* - Computer Engineering
+* *CLI* - Command Line Interface
+* *CV* - Curriculum Vitae
+* *GUI* - Graphical User Interface
 * *Mainstream OS* - Windows, Linux, Unix, MacOS
+* *SoC* - Separation of Concerns
+* *SRP* - Single Responsibility Principle
 
 ## Instructions for manual testing
 
@@ -627,165 +659,186 @@ look at sample commands in our [User Guide Feature List](https://ay2425s2-cs2113
 
 **2.1 Initial State**
 
-1. Test case: `help`
+1. Follow the instructions given in our [User Guide Quick Start](https://ay2425s2-cs2113-t11a-3.github.io/tp/UserGuide.html#quick-start)
+2. Expected: A welcome message and a prompt for user input.
 
-  Expected: List of all possible commands user may enter should be displayed.
+3. Test case: `help`
+   
+   Expected: List of all possible commands user may enter should be displayed.
 
-2. Test case: `any non-command string`
+4. Test case: `any non-command string`
 
-Expected: Error for an unrecognized command should appear.
+   Expected: Error for an unrecognized command should appear.
 
 **2.2 Add a new internship**
 1. Test case: ` add general /c Google /r Human Resource /dept HR`
 
-Expected: Adds a general category of internship in Google, for an HR role, in the HR department. (These are
+    Expected: Adds a general category of internship in Google, for an HR role, in the HR department. (These are
 the most basic required parameters).
    
 
 2. Test case: `add software /c Google /r Software Engineer /tech Java, Python`
 
-Expected:  Adds a software category of internship in Google, for a Software Engineer role, with tech stack of Java and 
+    Expected:  Adds a software category of internship in Google, for a Software Engineer role, with tech stack of Java and 
 Python. (These are the most basic required parameters).
+
 
 3. Test case: `add hardware /c Google /r Hardware Engineer /hardtech Arduino, Raspberry Pi`
 
-Expected:  Adds a hardware category of internship in Google, for a Hardware Engineer role, with hardware tech stack of Arduino, Raspberry Pi.
+    Expected:  Adds a hardware category of internship in Google, for a Hardware Engineer role, with hardware tech stack of Arduino, Raspberry Pi.
 (These are the most basic required parameters).
+
 
 4. Test case: `add software /c IBM /r Data Analytics /tech Python, PowerBI /ex Good project showcase`
 
-Expected:  Adds a software category of internship in IBM, for a Data Analytics role, with tech stack of Python, PowerBI
+    Expected:  Adds a software category of internship in IBM, for a Data Analytics role, with tech stack of Python, PowerBI
 and experience of good project showcases. (These are some extended parameters: more info on possible extended parameters in UG).
 
-*Note: you may extend this test case to other categories of internships, with more optional parameters.*
+    *Note: you may extend this test case to other categories of internships, with more optional parameters.*
+
+
+5. Test case: `add software /company Google /role Software Engineer`
+    
+    Expected: Should output an error message highlighting correct usage format as one of the basic required parameter `/tech` is missing.     
 
 **2.3 List all internships**
 1. Test case: `list`
 
-Expected: Should list all internships organized by category. Should not show extended parameters like `description` among others
+    Expected: Should list all internships organized by category. Should not show extended parameters like `description` among others
 (should just be the essential compulsory flag information).
+
 
 2. Test case: `list /index 1`
 
-Expected: Should output error highlighting correct usage of list command.
+    Expected: Should output error highlighting correct usage of list command.
 
 **2.4 Delete an internship**
 1. Test case: `delete`
 
-Expected: Should output error highlighting correct usage of delete command.
+    Expected: Should output error highlighting correct usage of delete command.
+
 
 2. Test case: `delete /index 1`
 
-Expected: Should correctly delete the internship in the list at index 1. You may `list` all internships to confirm.
+    Expected: Should correctly delete the internship in the list at index 1. You may `list` all internships to confirm.
+
 
 3. Test case: `delete /index -1`
 
-Expected: Should output error highlighting invalid index.
+    Expected: Should output error highlighting invalid index.
 
 **2.5 Edit an internship**
 
 1. Test case: `edit`
 
-Expected: Should output error highlighting correct usage of edit command.
+    Expected: Should output error highlighting correct usage of edit command.
+
 
 2. Test case: `edit /index 1 /c Java /desc Some description`
 
-Expected: Should correctly edit the internship in the list at index 1 to new company of Java. 
+    Expected: Should correctly edit the internship in the list at index 1 to new company of Java. 
 This commmand is used to potentially explore adding more optional parameters if you forgot to add such parameters when creating
 the internship. You may `list` all internships to confirm. (Can check optional parameters in UG)
 
+
 3. Test case: `edit /c Google /desc Some description`
 
-Expected: Should output error highlighting invalid parameters. 
+    Expected: Should output error highlighting invalid parameters. 
 
 **2.6 Describe an internship**
 1. Test case: `desc`
 
-Expected: Should output error highlighting correct usage of description command.
+    Expected: Should output error highlighting correct usage of description command.
+
 
 2. Test case: `desc /index 1`
 
-Expected: Should correctly show description of the internship in the list at index 1. 
+    Expected: Should correctly show description of the internship in the list at index 1. 
+
 
 3. Test case: `desc /index -1`
 
-Expected: Should output error highlighting invalid index.
+    Expected: Should output error highlighting invalid index.
+
 
 **2.7 Find an internship**
 1. Test case: `find`
 
-Expected: Should output error highlighting correct usage of find command.
+    Expected: Should output error highlighting correct usage of find command.
+
 
 2. Test case: `find software /c Google`
 
-Expected: Should find all software internships added, under company name Google.
+    Expected: Should find all software internships added, under company name Google.
 
 **2.8 Adding interviews for internships**
 
 1. Test case: `interviewfor `
 
-Expected: Should output error highlighting correct usage of add interview command.
+    Expected: Should output error highlighting correct usage of add interview command.
+
 
 2. Test case: `interviewfor /index 1 /date 2025-01-01 /start 10:00 /end 14:00 /type technical round`
 
-Expected: Should correctly add a technical interview to the internship in the list at index 1 with above timings.
+    Expected: Should correctly add a technical interview to the internship in the list at index 1 with above timings.
 (You can potentially explore adding more optional parameter according to user guide. You may `desc` this index internship to confirm it will not appear on listing.)
+
 
 3. Test case: `interviewfor /date 2025-01-01 /start 10:00 /end 14:00 /type technical round`
 
-Expected: Should output error highlighting no index/invalid parameters. 
+    Expected: Should output error highlighting no index/invalid parameters. 
 
 **2.9 Sorting interviews for internships**
 
 1. Test case: `sortInterviews `
 
-Expected: Should sort all rounds of interviews added across multiple internships by date.
+    Expected: Should sort all rounds of interviews added across multiple internships by date.
 
 **2.10 Adding/Viewing user profile information**
 
 1. Test case: `my /name John Doe /ind Software /c Google /r Developer /mgoals 100 applications /ygoals 2 internships`
 
-Expected: Should correctly edit your user profile information according to above optional parameters. (Can check optional parameters in UG)
+    Expected: Should correctly edit your user profile information according to above optional parameters. (Can check optional parameters in UG)
 
 
 2. Test case: `my`
 
-Expected: Since all parameters are optional to user, this command would successfully "edit"  your user profile information according to above optional parameters. 
+    Expected: Since all parameters are optional to user, this command would successfully "edit"  your user profile information according to above optional parameters. 
 (Since no flag/optional parameters provided - no changes).
+
 
 3. Test case: `view user`
 
-Expected: Should display ASCII table to user of their profile information.
+    Expected: Should display ASCII table to user of their profile information.
 
 **2.11 Adding/Viewing projects information**
 
 1. Test case: `project general /n Team Project /r Tester /dept Software Engineering /obj For the PE /desc Worked at identifying feature flaws in app /dur May-August`
 
-Expected: Should correctly add a general project according to above compulsary parameters. 
+    Expected: Should correctly add a general project according to above compulsary parameters. 
 (All parameters are mandatory since they all hold valuable information for user. You may extend this to project general and project hardware)
 
 
 2. Test case: `project software /n Team Project for CS2113 /r Unit Tester /pro Java, C++ /obj To get an A+ /desc Worked at identifying feature flaws in app /dur May-August`
 
-Expected: Should correctly add a software project according to above compulsory parameters.
+    Expected: Should correctly add a software project according to above compulsory parameters.
+
 
 3. Test case: `project hardware /n Team Project for EE2026 /r Ui Developer /hcomp Basys Board/obj To get an A+ /desc Worked at creating pixel art for the UI /dur May-August`
 
-Expected: Should correctly add a hardware project according to above compulsory parameters.
+    Expected: Should correctly add a hardware project according to above compulsory parameters.
+
 
 4. Test case: `view general`
 
-Expected: Should display ASCII table to user of their general projects.
+    Expected: Should display ASCII table to user of their general projects.
+
 
 5. Test case: `view software`
 
-Expected: Should display ASCII table to user of their software projects.
+    Expected: Should display ASCII table to user of their software projects.
+
 
 6. Test case: `view hardware`
 
-Expected: Should display ASCII table to user of their hardware projects.
-
-
-
-
-
+    Expected: Should display ASCII table to user of their hardware projects.
