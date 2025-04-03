@@ -2,15 +2,16 @@ package seedu.internsprint.logic.command.user;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import seedu.internsprint.model.internship.GeneralInternship;
-import seedu.internsprint.model.internship.SoftwareInternship;
+
 import seedu.internsprint.model.userprofile.project.HardwareProject;
 import seedu.internsprint.model.userprofile.project.Project;
 
 import java.util.HashMap;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class ProjectHardwareCommandTest {
     ProjectHardwareCommand projectHardwareCommand;

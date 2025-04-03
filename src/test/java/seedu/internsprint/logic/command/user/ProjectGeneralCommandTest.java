@@ -7,9 +7,11 @@ import seedu.internsprint.model.userprofile.project.Project;
 import seedu.internsprint.model.userprofile.project.GeneralProject;
 
 import java.util.HashMap;
-import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 
 class ProjectGeneralCommandTest {
     ProjectGeneralCommand projectGeneralCommand;
@@ -23,37 +25,37 @@ class ProjectGeneralCommandTest {
 
     @Test
     void isValidParameters_provideCorrectMandatoryFlags_returnsValid() {
-        parameters.put("/n","Team Project for EE2026");
-        parameters.put("/r","Ui Developer");
+        parameters.put("/n","Name");
+        parameters.put("/r","Role");
         parameters.put("/dept","Tech");
-        parameters.put("/obj","To get an A+");
-        parameters.put("/desc","Worked at creating pixel art for the UI");
+        parameters.put("/obj","Objective");
+        parameters.put("/desc","Description");
         parameters.put("/dur","May-August");
         assertTrue(projectGeneralCommand.isValidParameters());
     }
     @Test
     void isValidParameters_provideMissingMandatoryFlags_returnsInalid() {
-        parameters.put("/n","Team Project for EE2026");
-        parameters.put("/r","Ui Developer");
-        parameters.put("/obj","To get an A+");
-        parameters.put("/desc","Worked at creating pixel art for the UI");
+        parameters.put("/n","Name");
+        parameters.put("/r","Role");
+        parameters.put("/obj","Objective");
+        parameters.put("/desc","Description");
         assertFalse(projectGeneralCommand.isValidParameters());
     }
 
     @Test
     void execute_provideAllFlags_createsProject() {
-        parameters.put("/n","Team Project for EE2026");
-        parameters.put("/r","Ui Developer");
+        parameters.put("/n","Name");
+        parameters.put("/r","Role");
         parameters.put("/dept","Tech");
-        parameters.put("/obj","To get an A+");
-        parameters.put("/desc","Worked at creating pixel art for the UI");
+        parameters.put("/obj","Objective");
+        parameters.put("/desc","Description");
         parameters.put("/dur","May-August");
         Project project = projectGeneralCommand.createProject();
-        assertEquals("Ui Developer", project.getRole());
-        assertEquals("Team Project for EE2026", project.getProjectName());
+        assertEquals("Role", project.getRole());
+        assertEquals("Name", project.getProjectName());
         assertEquals("Tech", ((GeneralProject) project).getDepartment());
-        assertEquals("To get an A+", project.getObjectives());
-        assertEquals("Worked at creating pixel art for the UI", project.getDescription());
+        assertEquals("Objective", project.getObjectives());
+        assertEquals("Description", project.getDescription());
         assertEquals("May-August", project.getDuration());
     }
 }
