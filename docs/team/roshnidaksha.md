@@ -41,6 +41,8 @@ Check out my contributions to InternSprint at the [TP Dashboard](https://nus-cs2
     * **Contributions**: Created the `AddInterviewCommand` class.
 
 **NOTE:** For both the features above, the command takes care to not add any duplicate internships or interviews to the list.
+[(#113)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/113)
+[(#120)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/120)
 
 
 3. **New feature:** Added the function to filter internships.
@@ -73,27 +75,44 @@ Check out my contributions to InternSprint at the [TP Dashboard](https://nus-cs2
 **Contributions to team-based tasks :**
 * Created `Command` and `CommandResult` classes to manage the command execution and result.
 [(#17)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/17)
-* Created `Storage` interface to handle storage of different kinds of data.
+* Created `Storage` interface to handle storage of different kinds of data. [(#126)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/126)
 
   * Wrote the skeleton code for `fromJSON` and `toJSON` methods to handle JSON parsing using `JSON in Java` external library.
   [(#56)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/56)
   * Implemented `InternshipStorageHandler` to save internship data in JSON format.
   [(#24)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/24)
+  [(#133)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/133)
 * Created `InternSprintExceptionMessages` and `InternSprintMessages` classes to store the exception messages and 
 other messages used in the application.
 [(#17)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/17)
 
 **Testing**
-* Add Internship Commands [(#28)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/28)
+* Add Internship Commands [(#28)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/28) [(#96)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/96/files)
+* Command Parser [(#96)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/96/files)
+* DateTimeParser [(#74)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/133)
 
-Contributions to the UG: Which sections did you contribute to the UG?
-Contributions to the DG: Which sections did you contribute to the DG? Which UML diagrams did you add/updated?
-Contributions to team-based tasks
-Review/mentoring contributions: Links to PRs reviewed, instances of helping team members in other ways.
-Contributions beyond the project team:
-Evidence of helping others e.g. responses you posted in our forum, bugs you reported in other team's products,
-Evidence of technical leadership e.g. sharing useful information in the forum
-Keep in mind that evaluators will use the PPP to estimate your project effort. We recommend that you mention things that will earn you a fair score e.g., explain how deep the enhancement is, why it is complete, how hard it was to implement etc.
+**Contributions to Documentation:**
+* **User Guide**
+  * Adding internships: software, hardware and general [(#72)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/72)
+  * Date and Time formats [(#111)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/111)
+  * Command Summary [(#137)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/137)
+* **Developer Guide**
+  * Architecture [(#144)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/144)
+  * Logic Component [(#102)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/102)
+  * Add new internship [(#102)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/102)
+  * Logging guide, Product scope, User Stories, Non-Functional Requirements, Glossary [(#144)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/144)
 
-OPTIONAL Contributions to the Developer Guide (Extracts): Reproduce the parts in the Developer Guide that you wrote. Alternatively, you can show the various diagrams you contributed.
-OPTIONAL Contributions to the User Guide (Extracts): Reproduce the parts in the User Guide that you wrote.
+**PRs Reviewed:**
+[(#18)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/18)
+[(#29)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/29)
+[(#35)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/35)
+[(#37)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/37)
+[(#77)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/77)
+[(#79)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/79)
+[(#80)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/80)
+[(#85)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/85)
+[(#98)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/98)
+[(#104)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/104)
+[(#115)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/115)
+[(#124)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/124)
+[(#155)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/155)
