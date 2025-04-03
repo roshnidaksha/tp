@@ -568,7 +568,23 @@ able to accomplish most of the tasks faster using commands than using a mouse.
 
 **2.1 Initial State**
 
+1. Follow the instructions given in our [User Guide Quick Start](https://ay2425s2-cs2113-t11a-3.github.io/tp/UserGuide.html#quick-start)
+2. Expected: A welcome message and a prompt for user input.
+
 **2.2 Add a new internship**
+
+* **2.2.1 Add a new software internship**
+  * Test Case: `add software /company Google /role Software Engineer /tech Java`
+  * Expected: This command has all the mandatory parameters and is valid. Hence, the internship is added to the list of
+  internships. You can view the new internship in the text file, and the console will output the success message.
+* **2.2.2 Add a new software internship with some optional parameters**
+  * Test Case: `add software /company Google /role Software Engineer /tech Java /desc Status`
+  * Expected: This command has all the mandatory parameters along with one additional parameter. Hence, the internship
+  should be added to your list of internships too.
+* **2.2.3 Invalid command for adding software internship** 
+  * Test Case: `add software /company Google /role Software Engineer`
+  * Expected: This command is invalid as the mandatory parameter `/tech` is missing. Hence, the internship will not be
+  added, and an error message with the correct usage format will be displayed.
 
 **2.3 List all internships**
 
