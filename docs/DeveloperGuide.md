@@ -526,7 +526,7 @@ This command allows the user to list all internships they have added. Data store
 
 **How the feature is implemented:**
 
-* The `listCommand` class is an abstract class that extends from the abstract class `Command`.
+* The `listCommand` class is a class that extends from the abstract class `Command`.
 * The user is not supposed to provide any additional parameters
 * The `isValidParameters()` method ensures that no extra parameters is provided by the user before proceeding
   with execution.
