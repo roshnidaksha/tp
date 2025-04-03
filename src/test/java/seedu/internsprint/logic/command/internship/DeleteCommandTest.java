@@ -77,5 +77,18 @@ class DeleteCommandTest {
         assertFalse(result.isSuccessful());
     }
 
+    @Test
+    void deleteCommand_deleteFromEmptyList_returnsInvalid() {
+        DeleteCommand deleteCommand = new DeleteCommand();
+        HashMap<String, String> parameters = deleteCommand.getParameters();
+        parameters.put("/index", "1");
+        deleteCommand.setParameters(parameters);
+        InternshipList emptyInternshipList = new InternshipList();
+        CommandResult result = deleteCommand.execute(emptyInternshipList, user);
+        assertEquals(InternSprintExceptionMessages.INVALID_INDEX_RANGE, result.getFeedbackToUser().get(0));
+        assertFalse(result.isSuccessful());
+    }
+
+
 }
 
