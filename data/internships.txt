@@ -1,7 +1,7 @@
 [{
-    "role": "Human Resource",
-    "companyName": "Google",
+    "role": "IT Intern",
+    "companyName": "UBS",
     "type": "general",
-    "department": "HR",
+    "department": "IT",
     "internshipId": 0
 }]

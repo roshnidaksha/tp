@@ -33,8 +33,9 @@ class ProjectGeneralCommandTest {
         parameters.put("/dur","May-August");
         assertTrue(projectGeneralCommand.isValidParameters());
     }
+
     @Test
-    void isValidParameters_provideMissingMandatoryFlags_returnsInalid() {
+    void isValidParameters_provideMissingMandatoryFlags_returnsInvalid() {
         parameters.put("/n","Name");
         parameters.put("/r","Role");
         parameters.put("/obj","Objective");
@@ -59,3 +60,4 @@ class ProjectGeneralCommandTest {
         assertEquals("May-August", project.getDuration());
     }
 }
+
