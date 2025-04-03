@@ -470,7 +470,7 @@ Basic Format: `project general /n PROJECT_NAME /r ROLE /dept DEPARTMENT /obj OBJ
 Examples of usage:
 
 ```
-> project general /n Team Project for CS2113 /r Unit Tester /dept Software Engineering/obj To get an A+ /desc Worked at identifying feature flaws in app /dur May-August
+> project general /n Team Project for CS2113 /r Unit Tester /dept Software Engineering /obj To get an A+ /desc Worked at identifying feature flaws in app /dur May-August
 ------------------------------------------------------------------------------------------------------------------------
     Project successfully added to user profile. Below are the details for the same: 
 
@@ -492,7 +492,7 @@ Basic Format: `project software /n PROJECT_NAME /r ROLE /dept DEPARTMENT /pro PR
 Examples of usage:
 
 ```
-> project software /n Team Project for CS2113 /r Unit Tester /pro Java, C++/obj To get an A+ /desc Worked at identifying feature flaws in app /dur May-August
+> project software /n Team Project for CS2113 /r Unit Tester /pro Java, C++ /obj To get an A+ /desc Worked at identifying feature flaws in app /dur May-August
 ------------------------------------------------------------------------------------------------------------------------
     Project successfully added to user profile. Below are the details for the same: 
 
@@ -685,25 +685,25 @@ should be only one `internships.txt` in the location.
 
 ## Command Summary
 
-| Command             | Format                                                                                                                                                                 |
-|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Command            | Format                                                                                                                                                                 |
+|--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Internship Commands |
-| `add general`       | `add general /c COMPANY_NAME /r ROLE /dept DEPARTMENT`                                                                                                                 |
-| `add software`      | `add software /c COMPANY_NAME /r ROLE /tech TECHNOLOGIES`                                                                                                              |
-| `add hardware`      | `add hardware /c COMPANY_NAME /r ROLE /hardtech HARDWARE_TECHNOLOGIES`                                                                                                 |
-| `edit`              | `edit /index INDEX_OF_INTERNSHIP`                                                                                                                                      |
-| `delete`            | `delete /index INDEX_OF_INTERNSHIP`                                                                                                                                    |
-| `find`              | `find [TYPE] [/c COMPANY_NAME] [\r ROLE]`                                                                                                                              |
-| `desc`              | `desc /index INDEX_OF_INTERNSHIP`                                                                                                                                      |
-| `interviewfor`      | `interviewfor /index INDEX_OF_INTERNSHIP /date DATE /start START_TIME /end END_TIME /type TYPE [/email INTERVIEWER_EMAIL] [/notes NOTES]`                              |
-| `sortInterviews`    | `sortInterviews`                                                                                                                                                       |
-| User Commands       |                                                                                                                                                                        |
-| `my`                | `my /c COMPANIES_YOU_PREFER /r ROLES_YOU_PREFER /ygoals YEARLY_GOALS /mgoals MONTHLY_GOALS /pay PAY_RANGE /ind INDUSTRIES_YOU_PREFER /time TIME_RANGE /name YOUR_NAME` |
-| `view user`         | `view user`                                                                                                                                                            |
-| `project general`   | `project general /n PROJECT_NAME /r ROLE /dept DEPARTMENT /obj OBJECTIVES /desc DESCRIPTION /dur DURATION`                                                             |
-| `project software`  | `project software /n PROJECT_NAME /r ROLE /dept DEPARTMENT /pro PROGRAMMING_LANGUAGES /obj OBJECTIVES /desc DESCRIPTION /dur DURATION`                                 |
-| `project hardware`  | `project hardware /n PROJECT_NAME /r ROLE /dept DEPARTMENT /hcomp HARDWARE_COMPONENTS /obj OBJECTIVES /desc DESCRIPTION /dur DURATION`                                 |
-| `view general`      | `view general`                                                                                                                                                         |
-| `view software`     | `view software`                                                                                                                                                        |
-| `view hardware`     | `view hardware`                                                                                                                                                        |
-| `bye'               | `bye`                                                                                                                                                                  |
+| `add general`      | `add general /c COMPANY_NAME /r ROLE /dept DEPARTMENT`                                                                                                                 |
+| `add software`     | `add software /c COMPANY_NAME /r ROLE /tech TECHNOLOGIES`                                                                                                              |
+| `add hardware`     | `add hardware /c COMPANY_NAME /r ROLE /hardtech HARDWARE_TECHNOLOGIES`                                                                                                 |
+| `edit`             | `edit /index INDEX_OF_INTERNSHIP`                                                                                                                                      |
+| `delete`           | `delete /index INDEX_OF_INTERNSHIP`                                                                                                                                    |
+| `find`             | `find [TYPE] [/c COMPANY_NAME] [\r ROLE]`                                                                                                                              |
+| `desc`             | `desc /index INDEX_OF_INTERNSHIP`                                                                                                                                      |
+| `interviewfor`     | `interviewfor /index INDEX_OF_INTERNSHIP /date DATE /start START_TIME /end END_TIME /type TYPE [/email INTERVIEWER_EMAIL] [/notes NOTES]`                              |
+| `sortInterviews`   | `sortInterviews`                                                                                                                                                       |
+| User Commands      |                                                                                                                                                                        |
+| `my`               | `my /c COMPANIES_YOU_PREFER /r ROLES_YOU_PREFER /ygoals YEARLY_GOALS /mgoals MONTHLY_GOALS /pay PAY_RANGE /ind INDUSTRIES_YOU_PREFER /time TIME_RANGE /name YOUR_NAME` |
+| `view user`        | `view user`                                                                                                                                                            |
+| `project general`  | `project general /n PROJECT_NAME /r ROLE /dept DEPARTMENT /obj OBJECTIVES /desc DESCRIPTION /dur DURATION`                                                             |
+| `project software` | `project software /n PROJECT_NAME /r ROLE /dept DEPARTMENT /pro PROGRAMMING_LANGUAGES /obj OBJECTIVES /desc DESCRIPTION /dur DURATION`                                 |
+| `project hardware` | `project hardware /n PROJECT_NAME /r ROLE /dept DEPARTMENT /hcomp HARDWARE_COMPONENTS /obj OBJECTIVES /desc DESCRIPTION /dur DURATION`                                 |
+| `view general`     | `view general`                                                                                                                                                         |
+| `view software`    | `view software`                                                                                                                                                        |
+| `view hardware`    | `view hardware`                                                                                                                                                        |
+| `bye`               | `bye`                                                                                                                                                                  |
