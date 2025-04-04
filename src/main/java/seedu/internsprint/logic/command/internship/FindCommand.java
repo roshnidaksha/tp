@@ -58,9 +58,9 @@ public class FindCommand extends Command {
 
         assert !parameters.isEmpty() : "parameters should not be empty";
 
-        String type = parameters.getOrDefault("description", "");
-        String companyName = parameters.getOrDefault("/c", "");
-        String role = parameters.getOrDefault("/r", "");
+        String type = parameters.getOrDefault("description", "").trim().toLowerCase();
+        String companyName = parameters.getOrDefault("/c", "").trim().toLowerCase();
+        String role = parameters.getOrDefault("/r", "").trim().toLowerCase();
 
         if (type.isBlank() && companyName.isBlank() && role.isBlank()) {
             result = new CommandResult(String.format(MISSING_REQUIRED_PARAMETERS, "at least one parameter required"));
@@ -72,9 +72,9 @@ public class FindCommand extends Command {
         ArrayList<Internship> foundInternships = new ArrayList<>();
         internships.getInternshipMap().values().forEach(internshipList -> {
             foundInternships.addAll(internshipList.stream()
-                .filter(internship -> (type.isEmpty() || internship.getType().equals(type))
-                    && (companyName.isEmpty() || internship.getCompanyName().equals(companyName))
-                    && (role.isEmpty() || internship.getRole().equals(role)))
+                .filter(internship -> (type.isEmpty() || internship.getType().toLowerCase().contains(type))
+                    && (companyName.isEmpty() || internship.getCompanyName().toLowerCase().contains(companyName))
+                    && (role.isEmpty() || internship.getRole().toLowerCase().contains(role)))
                 .toList());
         });
 
