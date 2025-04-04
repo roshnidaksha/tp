@@ -5,6 +5,7 @@ public class InternSprintExceptionMessages {
     public static final String ILLEGAL_VALUE_INPUT = "Illegal input: Unexpected '/' found in value for key";
     public static final String MISSING_VALUE_INPUT = "Invalid input: key %s found with no value.";
     public static final String MISSING_REQUIRED_PARAMETERS = "Missing required parameters: %s";
+    public static final String REPEATED_FLAG = "Repeated flag found: %s";
 
     public static final String INVALID_DATE_FORMAT = "Invalid date format or no date found";
     public static final String PARTIAL_DATE_FORMAT = "Some input words is not recognized as a date. \n"

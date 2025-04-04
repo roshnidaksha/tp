@@ -39,6 +39,7 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.INVALID_INDE
 import static seedu.internsprint.util.InternSprintExceptionMessages.INVALID_INDEX_RANGE;
 import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_INDEX;
 import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_VALUE_INPUT;
+import static seedu.internsprint.util.InternSprintExceptionMessages.REPEATED_FLAG;
 
 /**
  * Parses user input.
@@ -187,6 +188,10 @@ public class CommandParser {
 
             String key = keyValue[0].trim();
             String value = keyValue[1].trim();
+
+            if (keyValueMap.containsKey(key)) {
+                throw new IllegalArgumentException(String.format(REPEATED_FLAG, key));
+            }
 
             if (value.contains("/")) {
                 throw new IllegalArgumentException(ILLEGAL_VALUE_INPUT);
