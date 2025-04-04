@@ -23,7 +23,7 @@ and easily tracking status of your applications.
   * [Quick Start](#quick-start)
   * [Features](#features)
     * [Help: `help`](#help-help)
-      * [Internship Commands](#internship-commands)
+    * [Internship Commands](#internship-commands)
       * [Listing all internships: `list`](#listing-all-internships-list)
       * [Adding a general category of internship: `add general`](#adding-a-general-category-of-internship-add-general)
       * [Adding a software category of internship: `add software`](#adding-a-software-category-of-internship-add-software)
@@ -57,7 +57,7 @@ and easily tracking status of your applications.
 1. Ensure you have **Java 17** or above installed in your Computer, and it is compatible with your device operating
    system (Mac or Windows).
 
-2. Download the latest `.jar` file from https://github.com/AY2425S2-CS2113-T11a-3/tp/releases under latest release.
+2. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2113-T11a-3/tp/releases) under latest release.
 
 3. Copy the file to the folder you want to use as the home folder for InternSprint.
 
@@ -415,7 +415,14 @@ Example of usage:
 > my /name John Doe /ind Software /c Google /r Developer /mgoals 100 applications /ygoals 2 internships
 ------------------------------------------------------------------------------------------------------------------------
     Successfully updated your user profile as shown below:
-    Name: John Doe, Preferred Industries: [Software], Preferred Companies: [Google], Preferred Roles: [Developer], Monthly Goals: 100 applications, Yearly Goals: 2 internships
+    
+    Name: John Doe
+    Preferred Industries: [Software]
+    Preferred Companies: [Google]
+    Preferred Roles: [Developer]
+    Monthly Goals: 100 applications
+    Yearly Goals: 2 internships
+
 ------------------------------------------------------------------------------------------------------------------------
 ```
 

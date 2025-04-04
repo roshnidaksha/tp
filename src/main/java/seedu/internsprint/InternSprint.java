@@ -18,7 +18,7 @@ import java.util.logging.Level;
  * Entry point of the InternSprint application.
  */
 public class InternSprint {
-    private static final Logger logger = Logger.getLogger(InternSprint.class.getName());
+    private static final Logger logger = InternSprintLogger.getLogger();
     private final StorageManager storageManager;
     private final InternshipList internships;
     private final UserProfile user;
@@ -57,7 +57,7 @@ public class InternSprint {
         CommandResult internshipResult = storageManager.loadInternshipData(internships);
         CommandResult interviewResult = storageManager.loadInterviewData(internships);
         CommandResult profileResult = storageManager.loadUserProfileData(user);
-        CommandResult projectResult = storageManager.loadProjectData(projects);
+        CommandResult projectResult = storageManager.loadProjectData(user.projects);
         Ui.showResultToUser(internshipResult);
         return interviewResult.isSuccessful() && internshipResult.isSuccessful()
             && profileResult.isSuccessful() && projectResult.isSuccessful();
