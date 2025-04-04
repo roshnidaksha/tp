@@ -79,6 +79,22 @@ class FindCommandTest {
     }
 
     @Test
+    void execute_provideCompanyNameInLowerCase_returnsTrue() {
+        FindCommand findCommand = new FindCommand();
+        findCommand.getParameters().put("/c", "facebook");
+        CommandResult result = findCommand.execute(internshipList,  new UserProfile());
+        assertTrue(result.isSuccessful());
+    }
+
+    @Test
+    void execute_providePartialRole_returnsTrue() {
+        FindCommand findCommand = new FindCommand();
+        findCommand.getParameters().put("/r", "intern");
+        CommandResult result = findCommand.execute(internshipList,  new UserProfile());
+        assertTrue(result.isSuccessful());
+    }
+
+    @Test
     void execute_provideNoValidInput_returnsFalse() {
         FindCommand findCommand = new FindCommand();
         CommandResult result = findCommand.execute(internshipList,  new UserProfile());
