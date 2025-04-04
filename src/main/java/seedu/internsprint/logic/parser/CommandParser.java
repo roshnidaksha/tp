@@ -143,7 +143,7 @@ public class CommandParser {
             "project software", "project hardware", "view software", "view hardware", "view general",
             "view user"};
         for (String command : flagCommands) {
-            if (userInput.startsWith(command)) {
+            if (userInput.toLowerCase().startsWith(command)) {
                 return new String[]{command, userInput.substring(command.length()).trim()};
             }
         }
@@ -151,7 +151,7 @@ public class CommandParser {
         String commandType = commandTypeAndParams[0];
         String params = commandTypeAndParams.length > 1 ? commandTypeAndParams[1] : "";
 
-        return new String[]{commandType, params};
+        return new String[]{commandType.toLowerCase(), params};
     }
 
     /**
