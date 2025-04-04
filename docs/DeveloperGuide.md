@@ -438,16 +438,17 @@ Below are the expanded reference frames for successful and unsuccessful CommandR
 ![EditCommandSequenceDiagramOverview](images/EditImages/edit_ref_2.png)
 
 
-* Print calls, assert statements, logging, and other non-essential calls are omitted in the diagram for clarity.
+Print calls, assert statements, logging, and other non-essential calls are omitted in the diagram for clarity.
 For full clarity, note below is a comprehensive sequence diagram, combining all reference frames and expanding logic
-behind duplicate-checking for example. Note this is only added for completeness for this one Command class, and only
+behind duplicate-checking for example. 
+
+*Note this is only added for completeness for this one Command class, and only
 to supplement an additional level of detail to above overview diagram (which should be sufficient for understanding).
-Such an expanded view will be isolated to this one command but execution logic resembles other Commands,
+Such an expanded view will be isolated to this one command but execution logic resembles other Commands, 
+hence can refer to [this diagram](images/EditImages/edit_command_pdf.drawio.pdf)  for thoroughness for all such commands.*
 
-hence can refer to this diagram for thoroughness for all such commands.
 
-
-![Edit-Command Sequence Diagram](images/edit_full_seq_diag.png)
+[Edit-Command Sequence Diagram](images/EditImages/edit_command_pdf.drawio.pdf)
 
 ### 3. Delete an Internship
 

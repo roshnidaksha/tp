@@ -153,7 +153,7 @@ public class ProjectStorageHandler implements Storage<ProjectList> {
     private static CommandResult errorReadingFile() {
         CommandResult result;
         List<String> feedback = new ArrayList<>();
-        feedback.add(UNABLE_TO_READ_FILE);
+        feedback.add(String.format(UNABLE_TO_READ_FILE, file.getAbsolutePath()));
         result = new CommandResult(feedback);
         result.setSuccessful(false);
         return result;

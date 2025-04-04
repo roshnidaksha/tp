@@ -18,6 +18,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -130,7 +131,7 @@ public class InternshipStorageHandler implements Storage<InternshipList> {
         if (jsonArray.isEmpty()) {
             logger.log(Level.WARNING, "Error in formatting such that JSONArray could not be" +
                     "created successfully");
-            result = errorReadingFile();
+            result = new CommandResult(Collections.singletonList("Empty Internships"), true);
             return result;
         }
         assert !jsonArray.isEmpty(): "Array of JSON objects read from file should not be an empty at this point";
@@ -154,7 +155,7 @@ public class InternshipStorageHandler implements Storage<InternshipList> {
     private static CommandResult errorReadingFile() {
         CommandResult result;
         List<String> feedback = new ArrayList<>();
-        feedback.add(UNABLE_TO_READ_FILE);
+        feedback.add(String.format(UNABLE_TO_READ_FILE, file.getAbsolutePath()));
         result = new CommandResult(feedback);
         result.setSuccessful(false);
         return result;
