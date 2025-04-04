@@ -30,7 +30,7 @@ public class InternSprintExceptionMessages {
             "command.\n The sortInterviews command works as mentioned below:";
     public static final String USERPROFILE_INVALID_PARAMS = "You have not entered a valid parameter to user profile.\n"
             + "    The user profile command works as mentioned below:";
-    public static final String INVALID_CATEGORY_ERROR = "Invalid category: Valid categories are: " +
+    public static final String INVALID_CATEGORY_ERROR = "Invalid type provided: Valid types are: " +
             "software, hardware, general.";
     public static final String INVALID_INDEX_ERROR = "Invalid index: Please enter a valid index within the list.";
     public static final String ADD_INTERVIEW_INVALID_PARAMS = "You have not entered a valid parameter.\n"

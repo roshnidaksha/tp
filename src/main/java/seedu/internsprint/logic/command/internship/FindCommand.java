@@ -8,8 +8,11 @@ import seedu.internsprint.model.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintLogger;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Set;
 import java.util.logging.Logger;
 
+import static seedu.internsprint.util.InternSprintExceptionMessages.INVALID_CATEGORY_ERROR;
 import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_REQUIRED_PARAMETERS;
 import static seedu.internsprint.util.InternSprintMessages.NO_INTERNSHIPS_FOUND;
 import static seedu.internsprint.util.InternSprintMessages.NUMBER_OF_INTERNSHIPS_FOUND;
@@ -49,25 +52,19 @@ public class FindCommand extends Command {
         logger.info("Starting Find Command processing");
         logger.info("Parameters in FindCommand: " + parameters.toString());
 
-        if (!isValidParameters()) {
-            result = new CommandResult(String.format(MISSING_REQUIRED_PARAMETERS, "at least one parameter required"));
-            result.setSuccessful(false);
-            logger.warning("Missing value processing error");
-            return result;
-        }
-
-        assert !parameters.isEmpty() : "parameters should not be empty";
-
         String type = parameters.getOrDefault("description", "").trim().toLowerCase();
         String companyName = parameters.getOrDefault("/c", "").trim().toLowerCase();
         String role = parameters.getOrDefault("/r", "").trim().toLowerCase();
 
-        if (type.isBlank() && companyName.isBlank() && role.isBlank()) {
-            result = new CommandResult(String.format(MISSING_REQUIRED_PARAMETERS, "at least one parameter required"));
+        CommandResult checkInputs = checkInputs(type, companyName, role);
+        if (!checkInputs.isSuccessful()) {
+            result = new CommandResult(checkInputs.getFeedbackToUser());
             result.setSuccessful(false);
-            logger.warning("Missing value processing error");
+            logger.warning("Invalid parameters provided");
             return result;
         }
+
+        assert !parameters.isEmpty() : "parameters should not be empty";
 
         ArrayList<Internship> foundInternships = new ArrayList<>();
         internships.getInternshipMap().values().forEach(internshipList -> {
@@ -89,6 +86,35 @@ public class FindCommand extends Command {
             foundInternships);
         result.setSuccessful(true);
         logger.info("Internships found successfully");
+        return result;
+    }
+
+    private CommandResult checkInputs(String type, String companyName, String role) {
+        CommandResult result;
+        if (!isValidParameters()) {
+            result = new CommandResult(String.format(MISSING_REQUIRED_PARAMETERS, "at least one parameter required"));
+            result.setSuccessful(false);
+            logger.warning("No parameters provided");
+            return result;
+        }
+
+        if (type.isBlank() && companyName.isBlank() && role.isBlank()) {
+            result = new CommandResult(String.format(MISSING_REQUIRED_PARAMETERS, "at least one parameter required, " +
+                "parameters cannot be blank"));
+            result.setSuccessful(false);
+            logger.warning("No parameters provided, or all are blank");
+            return result;
+        }
+
+        Set<String> validTypes = Set.of("software", "hardware", "general");
+        if (!type.isBlank() && !validTypes.contains(type)) {
+            result = new CommandResult(INVALID_CATEGORY_ERROR);
+            result.setSuccessful(false);
+            logger.warning("Invalid type provided");
+            return result;
+        }
+
+        result = new CommandResult(Collections.singletonList("Valid"), true);
         return result;
     }
 
