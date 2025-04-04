@@ -22,13 +22,11 @@ public class InternSprint {
     private final StorageManager storageManager;
     private final InternshipList internships;
     private final UserProfile user;
-    private final ProjectList projects;
 
     public InternSprint() {
         storageManager = StorageManager.getInstance();
         internships = new InternshipList();
         user = new UserProfile();
-        projects = new ProjectList();
     }
 
     /**
