@@ -21,25 +21,33 @@ Here is the Code I have contributed:
 ### Enhancements implemented:
 1. **New Feature**: Added the ability delete added internships using index parameter
 
-   * **What it does**: Allows the user to delete saved internships: the user just needs the parameter of index to delete the internship form the list of internships
+   * **What it does**: Allows the user to delete saved internships: the user just needs the parameter of 
+   index to delete the internship form the list of internships
 
-   * **Highlights**: The index-based approach was used furthered in other commands like edit, enhancing consistency in the application.
+   * **Highlights**: The index-based approach was used furthered in other commands like edit, enhancing 
+   consistency in the application.
 
 2. **New Feature**: Added the ability to view usage for all the existing commands
 
-   * **What it does**: Allows the user to view the usage of all the available commands in InternSprint, including format to use the command and parameters needed
+   * **What it does**: Allows the user to view the usage of all the available commands in InternSprint, including 
+   format to use the command and parameters needed
 
-   * **Highlights**: This feature enhances user accessibility by providing a quick reference for all available commands, their formats, and required parameters. It utilizes a LinkedHashMap to record all the information for the commands.
+   * **Highlights**: This feature enhances user accessibility by providing a quick reference for all available 
+   commands, their formats, and required parameters. It utilizes a LinkedHashMap to record all the information for the commands.
 
 3. **New Feature**: Added the feature to save and load interview, project and user profile data.
 
-   * **What it does**: Allows the user to view the information they have entered for projects, interviews and profile in the respective txt files.
+   * **What it does**: Allows the user to view the information they have entered for projects, interviews and profile 
+   in the respective txt files.
 
-   * **Highlights**: This feature required implementing a Storage interface to standardize saving and loading mechanisms, along with a StorageManager to coordinate data persistence across different components.
+   * **Highlights**: This feature required implementing a Storage interface to standardize saving and loading 
+   mechanisms, along with a StorageManager to coordinate data persistence across different components.
 
-4. **Additional Enhancement**: Introduced a categorized project structure (software, hardware, and general) from which the add and view projects commands are built.
+4. **Additional Enhancement**: Introduced a categorized project structure (software, hardware, and general) 
+from which the add and view projects commands are built.
 
-   * **What it does**: Establishes a base class (Project) with core parameters: projectName, role, objectives, description, and duration, along with additional parameters for each project type.
+   * **What it does**: Establishes a base class (Project) with core parameters: projectName, role, objectives, 
+   description, and duration, along with additional parameters for each project type.
 
 5. **Additional Enhancement**: Added the Ui features, like ASCII art, and standardized Ui formatting.
 
@@ -49,8 +57,10 @@ Here is the Code I have contributed:
 
 **Contributions to team-based tasks :**
 * Created `DeleteCommand` and `HelpCommand` classes from `Command` and `CommandResult` classes.
-* Created `StorageManager`, `InterviewStorageHandler`, `ProjectStorageHandler`, `ProfileStorageHandler` from the `Storage` interface to handle storage of different kinds of data.
-* Created `Project`, `ProjectList`, `HardwareProject`, `SoftwareProject`, `GeneralProject` using which the project commands where built.
+* Created `StorageManager`, `InterviewStorageHandler`, `ProjectStorageHandler`, `ProfileStorageHandler` from the 
+`Storage` interface to handle storage of different kinds of data.
+* Created `Project`, `ProjectList`, `HardwareProject`, `SoftwareProject`, `GeneralProject` using which the 
+project commands where built.
 
 **Testing**
 * Delete Command 
