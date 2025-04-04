@@ -49,11 +49,6 @@ from which the add and view projects commands are built.
    * **What it does**: Establishes a base class (Project) with core parameters: projectName, role, objectives, 
    description, and duration, along with additional parameters for each project type.
 
-5. **Additional Enhancement**: Added the Ui features, like ASCII art, and standardized Ui formatting.
-
-   * **What it does**: Keeps Ui cohesive.
-
-
 
 **Contributions to team-based tasks :**
 * Created `DeleteCommand` and `HelpCommand` classes from `Command` and `CommandResult` classes.
