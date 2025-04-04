@@ -5,7 +5,6 @@ import seedu.internsprint.logic.command.CommandResult;
 import seedu.internsprint.logic.parser.CommandParser;
 import seedu.internsprint.model.internship.InternshipList;
 import seedu.internsprint.model.userprofile.UserProfile;
-import seedu.internsprint.model.userprofile.project.ProjectList;
 import seedu.internsprint.storage.StorageManager;
 import seedu.internsprint.util.InternSprintLogger;
 import seedu.internsprint.util.Ui;
