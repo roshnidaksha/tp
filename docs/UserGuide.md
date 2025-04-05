@@ -95,6 +95,12 @@ and easily tracking status of your applications.
 
 ## Features
 
+> **Notes about the command format:**
+> * Words in `UPPER_CASE` are the parameters to be supplied by the user.
+> * Items in square brackets `[...]` are optional.
+> * `/` is a reserved character to represent flag prefixes. It should not be used to give the value of any parameter.
+>   Use hyphens (`-`) instead.
+
 ### Internship Commands
 
 ### Help: `help`
