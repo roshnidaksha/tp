@@ -149,13 +149,28 @@ Example of usage:
 
 ---
 
+### Adding a new internship: `add [TYPE]`
+
+Internships are categorized into 3 types: `general`, `software` and `hardware`.
+
+They have multiple parameters that can be set, and some of them are optional.
+* The `COMPANY_NAME`, `ROLE` and `DEPARTMENT/TECHNOLOGIES` must be unique to the list of internships and are mandatory
+  parameters. They cannot be blank.
+* Adding an internship with the same company name, role and department/technologies as an existing internship is not
+  allowed and will result in an error message.
+* The `DESCRIPTION`, `ELIGIBILITY`, `EXPECTATIONS` and `STATUS` are optional parameters.
+
+Examples of usage for each type of internship can be found below.
+
+---
+
 ### Adding a general category of internship: `add general`
 Allows users to add a new general internship to their list of internship applications.
 
 Basic Format: `add general /c COMPANY_NAME /r ROLE /dept DEPARTMENT`
 
 Extended Format (with optional parameters): `add general /c COMPANY_NAME /r ROLE /ex EXPECTATIONS /eli ELIGIBILITY 
-/dept DEPARTMENT /desc DESCRIPTION`
+/dept DEPARTMENT /desc DESCRIPTION /status STATUS`
 
 * The `COMPANY_NAME`, `ROLE` and `DEPARTMENT` must be unique to the list of internships and are mandatory parameters.
 
@@ -187,7 +202,7 @@ Allows users to add a new software internship to their list of internship applic
 Basic Format: `add software /c COMPANY_NAME /r ROLE /tech TECHNOLOGIES`
 
 Extended Format (with optional parameters): `add software /c COMPANY_NAME /r ROLE /ex EXPECTATIONS /eli ELIGIBILITY
-/tech TECHNOLOGIES /desc DESCRIPTION`
+/tech TECHNOLOGIES /desc DESCRIPTION /status STATUS`
 
 * The `COMPANY_NAME`, `ROLE` and `TECHNOLOGIES` must be unique to the list of internships and are mandatory parameters.
 
@@ -220,7 +235,7 @@ Allows users to add a new hardware internship to their list of internship applic
 Basic Format: `add hardware /c COMPANY_NAME /r ROLE /hardtech HARDWARE_TECHNOLOGIES`
 
 Extended Format (with optional parameters): `add hardware /c COMPANY_NAME /r ROLE /ex EXPECTATIONS /eli ELIGIBILITY
-/hardtech HARDWARE_TECHNOLOGIES /desc DESCRIPTION`
+/hardtech HARDWARE_TECHNOLOGIES /desc DESCRIPTION /status STATUS`
 
 * The `COMPANY_NAME`, `ROLE` and `HARDWARE_TECHNOLOGIES` must be unique to the list of internships and are
   mandatory parameters.
