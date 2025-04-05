@@ -92,6 +92,7 @@ public class GeneralInternship extends Internship {
     @Override
     public JSONObject toJson() {
         Map<String, Object> orderedMap = new LinkedHashMap<>();
+        orderedMap.put("internshipId", internshipId);
         orderedMap.put("type", "general");
         orderedMap.put("companyName", companyName);
         orderedMap.put("role", role);
@@ -110,7 +111,7 @@ public class GeneralInternship extends Internship {
      * @return GeneralInternship object.
      */
     public static GeneralInternship fromJson(JSONObject json) {
-        return new GeneralInternship(
+        GeneralInternship generalInternship = new GeneralInternship(
                 json.getString("companyName"),
                 json.getString("role"),
                 json.getString("department"),
@@ -119,6 +120,8 @@ public class GeneralInternship extends Internship {
                 json.optString("status", ""),
                 json.optString("expectations", "")
         );
+        generalInternship.setInternshipId(json.getInt("internshipId"));
+        return generalInternship;
     }
 
     @Override

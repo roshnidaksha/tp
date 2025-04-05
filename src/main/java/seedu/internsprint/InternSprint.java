@@ -3,9 +3,9 @@ package seedu.internsprint;
 import seedu.internsprint.logic.command.Command;
 import seedu.internsprint.logic.command.CommandResult;
 import seedu.internsprint.logic.parser.CommandParser;
-import seedu.internsprint.storage.StorageHandler;
 import seedu.internsprint.model.internship.InternshipList;
 import seedu.internsprint.model.userprofile.UserProfile;
+import seedu.internsprint.storage.StorageManager;
 import seedu.internsprint.util.InternSprintLogger;
 import seedu.internsprint.util.Ui;
 
@@ -17,11 +17,13 @@ import java.util.logging.Level;
  * Entry point of the InternSprint application.
  */
 public class InternSprint {
-    private static final Logger logger = Logger.getLogger(InternSprint.class.getName());
+    private static final Logger logger = InternSprintLogger.getLogger();
+    private final StorageManager storageManager;
     private final InternshipList internships;
     private final UserProfile user;
 
     public InternSprint() {
+        storageManager = StorageManager.getInstance();
         internships = new InternshipList();
         user = new UserProfile();
     }
@@ -30,8 +32,6 @@ public class InternSprint {
      * Main entry-point for the InternSprint application.
      */
     public static void main(String[] args) {
-        //Logger.getLogger("").setLevel(Level.OFF);
-        // Set up centralized logger configuration at startup.
         InternSprintLogger.getLogger();
         new InternSprint().run();
     }
@@ -47,14 +47,32 @@ public class InternSprint {
     }
 
     /**
+     * Loads data from storage.
+     */
+    private boolean loadData() {
+        logger.log(Level.INFO, "Loading data from storage");
+        CommandResult internshipResult = storageManager.loadInternshipData(internships);
+        CommandResult interviewResult = storageManager.loadInterviewData(internships);
+        CommandResult profileResult = storageManager.loadUserProfileData(user);
+        CommandResult projectResult = storageManager.loadProjectData(user.projects);
+        Ui.showResultToUser(internshipResult);
+        return interviewResult.isSuccessful() && internshipResult.isSuccessful()
+            && profileResult.isSuccessful() && projectResult.isSuccessful();
+    }
+
+    /**
      * Reads the user command and executes it, until the user issues the exit command.
      */
     private void runCommandLoopUntilExitCommand() {
         logger.log(Level.INFO, "Loading internships from storage");
-        CommandResult result = StorageHandler.loadInternships(internships);
-        Ui.showResultToUser(result);
-        logger.log(Level.INFO, "Internships loaded successfully");
+        boolean isLoadingSuccessful = loadData();
+        if (!isLoadingSuccessful) {
+            Ui.showError("Unable to load data from storage. Please check your file.");
+            return;
+        }
+        logger.log(Level.INFO, "Data loaded successfully");
 
+        CommandResult result;
         boolean isExit = false;
         while (!isExit) {
             try {
@@ -81,7 +99,6 @@ public class InternSprint {
      */
     private void exit() {
         logger.log(Level.INFO, "Exiting InternSprint");
-        Ui.showExitMessage();
         System.exit(0);
     }
 }

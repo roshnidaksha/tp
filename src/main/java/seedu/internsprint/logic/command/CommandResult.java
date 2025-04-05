@@ -68,6 +68,14 @@ public class CommandResult {
         this.isExit = false;
     }
 
+    public CommandResult(List<String> feedbackToUser, boolean isSuccessful) {
+        logger.log(Level.INFO, "Multiple feedback provided to user and command is unsuccessful...");
+        this.feedbackToUser = feedbackToUser;
+        this.relevantInternships = null;
+        this.isExit = false;
+        this.isSuccessful = isSuccessful;
+    }
+
     public List<String> getFeedbackToUser() {
         return feedbackToUser;
     }

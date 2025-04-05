@@ -5,15 +5,18 @@ public class InternSprintExceptionMessages {
     public static final String ILLEGAL_VALUE_INPUT = "Illegal input: Unexpected '/' found in value for key";
     public static final String MISSING_VALUE_INPUT = "Invalid input: key %s found with no value.";
     public static final String MISSING_REQUIRED_PARAMETERS = "Missing required parameters: %s";
+    public static final String REPEATED_FLAG = "Repeated flag found: %s";
 
     public static final String INVALID_DATE_FORMAT = "Invalid date format or no date found";
     public static final String PARTIAL_DATE_FORMAT = "Some input words is not recognized as a date. \n"
         + "    Date interpreted is: %s. Please give a better format.";
+    public static final String END_TIME_BEFORE_START_TIME = "Interview start time cannot be after end time.";
 
     public static final String UNABLE_TO_CREATE_DIRECTORY = "Unable to create directory: %s";
     public static final String FILE_ALREADY_EXISTS = "File already exists: %s";
     public static final String UNABLE_TO_CREATE_FILE = "Unable to create file: %s";
-    public static final String UNABLE_TO_WRITE_FILE = "Unable to write to file: %s";
+    public static final String UNABLE_TO_WRITE_FILE = "Unable to write to file: %s.\n" +
+        "    Please check if the file is open in another program or the program will continue without saving.";
     public static final String UNABLE_TO_READ_FILE = "Unable to read file: %s";
 
     public static final String EDIT_UNABLE_TO_FIND_INTERNSHIP = """
@@ -29,7 +32,7 @@ public class InternSprintExceptionMessages {
             "command.\n The sortInterviews command works as mentioned below:";
     public static final String USERPROFILE_INVALID_PARAMS = "You have not entered a valid parameter to user profile.\n"
             + "    The user profile command works as mentioned below:";
-    public static final String INVALID_CATEGORY_ERROR = "Invalid category: Valid categories are: " +
+    public static final String INVALID_CATEGORY_ERROR = "Invalid type provided: Valid types are: " +
             "software, hardware, general.";
     public static final String INVALID_INDEX_ERROR = "Invalid index: Please enter a valid index within the list.";
     public static final String ADD_INTERVIEW_INVALID_PARAMS = "You have not entered a valid parameter.\n"
@@ -44,4 +47,6 @@ public class InternSprintExceptionMessages {
     public static final String DUPLICATE_INTERNSHIP = "This internship already exists in your list.";
     public static final String DUPLICATE_INTERVIEW = "An interview with the same date and time already exists for " +
         "that internship.\n" + "    Please check your date and time or the internship you are referring to.";
+    public static final String UNABLE_TO_SAVE_PROFILE = "Unable to save user profile to file %s";
+    public static final String UNABLE_TO_LOAD_PROFILE = "Unable to read user profile file";
 }

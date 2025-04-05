@@ -15,7 +15,13 @@ import java.util.logging.Logger;
 import static seedu.internsprint.util.InternSprintMessages.PROJECTS_VIEW_SUCCESS_MESSAGE;
 
 public class ViewHardwareProjectsCommand extends Command {
+    public static final String COMMAND_WORD = "view hardware";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Displays the list of hardware" +
+            "projects in a Resume format.\n"
+            + "    Parameters: None\n"
+            + "    Example: " + COMMAND_WORD;
     private static final Logger logger = InternSprintLogger.getLogger();
+
     @Override
     protected boolean isValidParameters() {
         assert parameters.isEmpty():"There should be no flags in this command.";
@@ -29,6 +35,8 @@ public class ViewHardwareProjectsCommand extends Command {
 
     /**
      * Showcases CV-formatted version of projects
+     *
+     * @param internships refers to the internship list
      * @param user refers to user saved in session
      * @return formatted projects string or error message in CommandResult type
      */

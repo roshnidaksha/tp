@@ -47,7 +47,7 @@ public class SoftwareProject extends Project {
     public String toString() {
         return "Project: " + projectName + ", Role: " + role +
                 ", Programming Languages: " + String.join(", ", programmingLanguages)
-                + ", Objectives: " + objectives + ", Duration: " + duration + ", Description: " + description;
+                + "\n    Objectives: " + objectives + ", Duration: " + duration + ", Description: " + description;
     }
 
     /**

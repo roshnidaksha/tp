@@ -8,7 +8,6 @@ import seedu.internsprint.util.InternSprintLogger;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.USERPROFILE_INVALID_PARAMS;
 import static seedu.internsprint.util.InternSprintMessages.USER_UPDATE_SUCCESS_MESSAGE;
@@ -41,6 +40,7 @@ public class UserProfileCommand extends Command {
 
     /**
      * Check that only predefined flags are entered by user
+     *
      * @return is valid flags or not
      */
     @Override
@@ -61,6 +61,8 @@ public class UserProfileCommand extends Command {
 
     /**
      * Iterates through parameters provided by user and updated according fields.
+     *
+     * @param internships InternshipList object
      * @param user refers to user saved in session
      * @return successful profile update or error message
      */
@@ -68,7 +70,7 @@ public class UserProfileCommand extends Command {
     public CommandResult execute(InternshipList internships, UserProfile user) {
         logger.log(Level.INFO, "Entering execute for user command...");
         CommandResult result;
-        List<String> feedback = new ArrayList<>();
+        ArrayList<String> feedback = new ArrayList<>();
         if (!isValidParameters()) {
             logger.log(Level.WARNING, "There are invalid parameters so error result is output to user.");
             feedback.add(USERPROFILE_INVALID_PARAMS);
@@ -78,6 +80,13 @@ public class UserProfileCommand extends Command {
             return result;
         }
         setUserProfileAttributes(user);
+
+        result = user.saveProfile(feedback);
+        if (!result.isSuccessful()) {
+            logger.log(Level.WARNING, "There was an error saving the profile.");
+            return result;
+        }
+
         feedback.add(USER_UPDATE_SUCCESS_MESSAGE);
         feedback.add(user.toString());
         result = new CommandResult(feedback);

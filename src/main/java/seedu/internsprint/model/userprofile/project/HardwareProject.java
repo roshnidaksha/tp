@@ -46,8 +46,8 @@ public class HardwareProject extends Project {
     @Override
     public String toString() {
         return "Project: " + projectName + ", Role: " + role +
-                ", Hardware Components: " + String.join(", ", hardwareComponents) + ", Objectives: " + objectives
-                + ", Duration: " + duration + ", Description: " + description;
+                ", Hardware Components: " + String.join(", ", hardwareComponents) + "\n    Objectives: "
+                + objectives + ", Duration: " + duration + ", Description: " + description;
     }
 
     /**

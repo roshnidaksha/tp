@@ -1,6 +1,7 @@
 [{
     "role": "IT Intern",
+    "companyName": "UBS",
     "type": "general",
     "department": "IT",
-    "companyName": "UBS"
+    "internshipId": 0
 }]

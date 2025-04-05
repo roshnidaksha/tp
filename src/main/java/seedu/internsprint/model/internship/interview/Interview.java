@@ -1,13 +1,17 @@
 package seedu.internsprint.model.internship.interview;
 
+import org.json.JSONObject;
 import seedu.internsprint.exceptions.DuplicateEntryException;
 import seedu.internsprint.logic.parser.DateTimeParser;
+import seedu.internsprint.util.InternSprintLogger;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.DUPLICATE_INTERVIEW;
+import static seedu.internsprint.util.InternSprintExceptionMessages.END_TIME_BEFORE_START_TIME;
 import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_REQUIRED_PARAMETERS;
 
 public class Interview {
@@ -18,13 +22,15 @@ public class Interview {
     protected LocalTime interviewEndTime;
     protected String interviewType;
 
-    protected ArrayList<Interview> nextRounds = new ArrayList<Interview>();
+    protected ArrayList<Interview> nextRounds = new ArrayList<>();
+    protected int roundCounter = 0;
 
     /*Optional Parameters to create an Interview */
     protected String interviewerEmail;
     protected String notes;
 
-    protected int roundCounter = 0;
+    private int internshipId = -1;
+    private final Logger logger = InternSprintLogger.getLogger();
 
     public Interview(String interviewDate, String interviewStartTime, String interviewEndTime,
                      String interviewType) {
@@ -43,6 +49,8 @@ public class Interview {
         this.interviewStartTime = DateTimeParser.parseTimeInput(interviewStartTime);
         this.interviewEndTime = DateTimeParser.parseTimeInput(interviewEndTime);
         this.interviewType = interviewType;
+
+        checkDateAndTime(this.interviewDate, this.interviewStartTime, this.interviewEndTime);
 
         setRoundCounter(this.roundCounter);
     }
@@ -65,6 +73,8 @@ public class Interview {
         this.interviewEndTime = DateTimeParser.parseTimeInput(interviewEndTime);
         this.interviewType = interviewType;
 
+        checkDateAndTime(this.interviewDate, this.interviewStartTime, this.interviewEndTime);
+
         if (interviewerEmail != null && !interviewerEmail.isBlank()) {
             this.interviewerEmail = interviewerEmail;
         }
@@ -74,6 +84,13 @@ public class Interview {
         }
 
         this.roundCounter = 0;
+    }
+
+    private void checkDateAndTime(LocalDate interviewDate, LocalTime startTime, LocalTime endTime) {
+        if (startTime.isAfter(endTime) || startTime.equals(endTime)) {
+            logger.warning("Interview start time cannot be after end time.");
+            throw new IllegalArgumentException(END_TIME_BEFORE_START_TIME);
+        }
     }
 
     @Override
@@ -130,10 +147,12 @@ public class Interview {
 
     public void addInterviewRound(Interview round) throws DuplicateEntryException {
         if (this.equals(round)) {
+            logger.warning("Interview round cannot be the same as the current round.");
             throw new DuplicateEntryException(DUPLICATE_INTERVIEW);
         }
         for (Interview nextRound : nextRounds) {
             if (nextRound.equals(round)) {
+                logger.warning("Interview round cannot be the same as the current round.");
                 throw new DuplicateEntryException(DUPLICATE_INTERVIEW);
             }
         }
@@ -217,5 +236,85 @@ public class Interview {
 
     public LocalTime getUnformattedInterviewEndTime() {
         return interviewEndTime;
+    }
+
+    public int getInternshipId() {
+        return internshipId;
+    }
+
+    public void setInternshipId(int internshipId) {
+        this.internshipId = internshipId;
+    }
+
+    /**
+     * Converts the Interview object to a JSON object.
+     *
+     * @return JSON object representing the interview.
+     */
+    public JSONObject toJson() {
+        JSONObject interviewJson = new JSONObject();
+        if (internshipId != -1) {
+            interviewJson.put("internshipId", internshipId);
+        }
+        interviewJson.put("date", interviewDate);
+        interviewJson.put("startTime", interviewStartTime);
+        interviewJson.put("endTime", interviewEndTime);
+        interviewJson.put("type", interviewType);
+        interviewJson.put("roundCounter", roundCounter);
+        if (interviewerEmail != null) {
+            interviewJson.put("interviewerEmail", interviewerEmail);
+        }
+        if (notes != null) {
+            interviewJson.put("notes", notes);
+        }
+
+        if (roundCounter != 0) {
+            interviewJson.put("nextRounds", new ArrayList<>());
+        }
+        for (Interview nextRound : nextRounds) {
+            interviewJson.append("nextRounds", nextRound.toJson());
+        }
+        return interviewJson;
+    }
+
+    /**
+     * Returns an Interview object from a JSON object.
+     *
+     * @param json JSON object representing the interview.
+     * @return Interview object.
+     */
+    private static Interview getOneInterviewFromJson(JSONObject json) {
+        Interview interview = new Interview(
+                json.getString("date"),
+                json.getString("startTime"),
+                json.getString("endTime"),
+                json.getString("type"),
+                json.optString("interviewerEmail"),
+                json.optString("notes")
+        );
+        interview.setInternshipId(json.optInt("internshipId", -1));
+        interview.setRoundCounter(json.getInt("roundCounter"));
+        return interview;
+    }
+
+    /**
+     * Creates an Interview object from a JSON object.
+     * If the Interview has next rounds, it will also create the next rounds.
+     *
+     * @param json JSON object representing the interview.
+     * @return Interview object.
+     */
+    public static Interview fromJson(JSONObject json) {
+        Interview interview = getOneInterviewFromJson(json);
+        if (interview.roundCounter != 0) {
+            ArrayList<Interview> nextRounds = new ArrayList<>();
+            for (int i = 0; i < interview.roundCounter; i++) {
+                JSONObject nextRoundJson = json.getJSONArray("nextRounds").getJSONObject(i);
+                Interview nextRound = getOneInterviewFromJson(nextRoundJson);
+                nextRounds.add(nextRound);
+            }
+            interview.setNextRounds(nextRounds);
+        }
+        return interview;
     }
 }
