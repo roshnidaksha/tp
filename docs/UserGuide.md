@@ -366,6 +366,7 @@ Extended Format (With optional parameters): `interviewfor /index INDEX_OF_INTERN
 * Duplicate interviews are not allowed. However, adding interviews with different parameters for the same index
   of internship is allowed as it will add multiple rounds of interviews for that particular internship.
 * The `INDEX_OF_INTERNSHIP` should not be out of range of the internship list.
+* Refer to [Date and Time Formats](#date-and-time-formats) for acceptable date and time formats.
 
 Example of usage:
 <div style="font-size: 0.85em;">
@@ -705,6 +706,8 @@ Relative dates are also accepted:
 - next month
 - tomorrow
 - next Friday
+
+> Provide only valid dates in the command line. `Natty` cannot read years after 10000, which is not valid in this era.
 
 ---
 
