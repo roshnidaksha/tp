@@ -20,11 +20,17 @@ public class InternSprintExceptionMessages {
     public static final String UNABLE_TO_READ_FILE = "Unable to read file: %s";
 
     public static final String EDIT_UNABLE_TO_FIND_INTERNSHIP = """
-            This internship is not found within your saved list. Check that /index is provided with a valid
-        index reference, or that the type of internship you are editing contains that type of flag""";
+           You have entered the wrong flag for this type of internship.""";
+    public static final String EDIT_INTERNSHIP_TYPE_TO_FLAG =
+            "Note that hardware type of internships accepts the /hardtech flag and software internships accepts" +
+         " the /tech flag.\n"
+           + "    Use list command to check which category the internship you want to edit falls under.";
     public static final String DESC_UNABLE_TO_FIND_INTERNSHIP = "This internship is not found within your saved list." +
             " Check that /index is provided with a valid index reference.";
-    public static final String EDIT_INVALID_PARAMS = "You have not entered a valid parameter to edit.\n"
+    public static final String EDIT_INVALID_PARAMS = "You have not entered a valid parameter to edit. Your flags are " +
+            "not within specified flags used in edit command.\n"
+            + "    The edit command works as mentioned below:";
+    public static final String EDIT_NO_INDEX = "You have not entered the /index flag. \n"
             + "    The edit command works as mentioned below:";
     public static final String LIST_INVALID_PARAMS = "You have entered invalid parameters to the list command.\n"
             + "    The list command works as mentioned below:";
