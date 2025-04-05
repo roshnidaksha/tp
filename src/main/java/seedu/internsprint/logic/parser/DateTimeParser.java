@@ -111,6 +111,12 @@ public class DateTimeParser {
         return group.getDates().get(0);
     }
 
+    /**
+     * Normalizes the time input string by replacing hyphens with colons and ensuring proper formatting.
+     *
+     * @param input Time input string.
+     * @return Normalized time input string.
+     */
     private static String normalizeTimeInput(String input) {
         String normalized = input.toLowerCase();
         normalized = normalized.replaceAll("(\\d{1,2})-(am|pm)", "$1 $2");
