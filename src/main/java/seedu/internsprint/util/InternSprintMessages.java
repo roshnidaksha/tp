@@ -37,6 +37,8 @@ public class InternSprintMessages {
 
     public static final String SAVE_SUCCESS_MESSAGE = "Internships saved successfully\n" +
             "    You can view the list of internships at data/internships.txt";
+    public static final String OVERALL_SAVE_SUCCESS_MESSAGE = "All data saved successfully\n" +
+            "    You can view all your saved data in the subdirectory!";
     public static final String LIST_COUNT_MESSAGE = "Now you have %d internships in the list";
     public static final String SUCCESSFUL_DELETE = "Successfully deleted internship: %s";
     public static final String USER_UPDATE_SUCCESS_MESSAGE = "Successfully updated your user profile as shown below:";

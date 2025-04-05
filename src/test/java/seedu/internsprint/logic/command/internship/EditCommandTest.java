@@ -23,6 +23,7 @@ class EditCommandTest {
     @Test
     void isValidParameters_provideCorrectIndexAndFlags_returnsValid() {
         EditCommand editCommand = new EditCommand();
+
         HashMap<String, String> parameters = editCommand.getParameters();
         parameters.put("/index", "1");
         parameters.put("/c", "Java");
@@ -35,16 +36,22 @@ class EditCommandTest {
     }
 
     @Test
-    void isValidParameters_provideNoIndex_returnsInvalid() {
+    void isPresentIndex_provideNoIndex_returnsInvalid() {
         EditCommand editCommand = new EditCommand();
         HashMap<String, String> parameters = editCommand.getParameters();
         parameters.put("/c", "Java");
-        parameters.put("/eli", "Y3 students");
-        parameters.put("/r", "/Automation Testing Intern");
-        parameters.put("/tech", "Java, C, C++");
-        parameters.put("/dept", "Quality Assurance");
         editCommand.setParameters(parameters);
-        assertFalse(editCommand.isValidParameters());
+        assertFalse(editCommand.isPresentIndex());
+    }
+    
+    @Test
+    void isPresentIndex_provideIndex_returnsValid() {
+        EditCommand editCommand = new EditCommand();
+        HashMap<String, String> parameters = editCommand.getParameters();
+        parameters.put("/index", "2");
+        parameters.put("/eli", "Y3 students");
+        editCommand.setParameters(parameters);
+        assertTrue(editCommand.isPresentIndex());
     }
 
     @Test

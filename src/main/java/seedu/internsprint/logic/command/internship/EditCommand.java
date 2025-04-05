@@ -18,8 +18,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+import static seedu.internsprint.util.InternSprintExceptionMessages.EDIT_NO_INDEX;
 import static seedu.internsprint.util.InternSprintExceptionMessages.EDIT_INVALID_PARAMS;
 import static seedu.internsprint.util.InternSprintExceptionMessages.EDIT_UNABLE_TO_FIND_INTERNSHIP;
+import static seedu.internsprint.util.InternSprintExceptionMessages.EDIT_INTERNSHIP_TYPE_TO_FLAG;
 import static seedu.internsprint.util.InternSprintMessages.EDIT_MESSAGE_SUCCESS;
 import static seedu.internsprint.util.InternSprintMessages.MESSAGE_DUPLICATE_INTERNSHIP;
 
@@ -40,15 +42,20 @@ public class EditCommand extends Command {
     public String getCommandType() {
         return "internship";
     }
-
-    @Override
-    protected boolean isValidParameters() {
-        logger.log(Level.INFO, "Entering check for parameters in edit command.");
+    protected boolean isPresentIndex(){
+        logger.log(Level.INFO, "Entering check for index flag in edit command.");
         if (!parameters.containsKey("/index")) {
             logger.log(Level.WARNING, "There is no specified index.");
             return false;
         }
         assert parameters.containsKey("/index") : "/index flag should be present in the edit command";
+        logger.log(Level.INFO, "Index for edit command flag present.");
+        return true;
+    }
+
+    @Override
+    protected boolean isValidParameters() {
+        logger.log(Level.INFO, "Entering check for all flags in edit command.");
         for (String key : parameters.keySet()) {
             if (!key.equals("/index") && !Arrays.asList(POSSIBLE_PARAMETERS).contains(key)) {
                 logger.log(Level.WARNING, "There is a flag that is out of specified optional parameters.");
@@ -59,7 +66,7 @@ public class EditCommand extends Command {
         assert parameters.keySet().stream().allMatch(key -> key.equals("/index")
                 || Arrays.asList(POSSIBLE_PARAMETERS).contains(key))
                 : "All flags should be members of set of predefined valid flags";
-
+        logger.log(Level.INFO, "All valid flags present for edit command.");
         return true;
     }
 
@@ -68,6 +75,16 @@ public class EditCommand extends Command {
         logger.log(Level.INFO, "Entering execute for edit command...");
         CommandResult result;
         List<String> feedback = new ArrayList<>();
+
+        if (!isPresentIndex()) {
+            logger.log(Level.WARNING, "There is no index flag so error result is output to user.");
+            feedback.add(EDIT_NO_INDEX);
+            feedback.add(MESSAGE_USAGE);
+            result = new CommandResult(feedback);
+            result.setSuccessful(false);
+            return result;
+        }
+
         if (!isValidParameters()) {
             logger.log(Level.WARNING, "There are invalid parameters so error result is output to user.");
             feedback.add(EDIT_INVALID_PARAMS);
@@ -100,7 +117,9 @@ public class EditCommand extends Command {
 
         if (foundInternship == null || checkWrongTypeOfInternship) {
             logger.log(Level.WARNING, "Internship not found");
-            result = new CommandResult(EDIT_UNABLE_TO_FIND_INTERNSHIP);
+            feedback.add(EDIT_UNABLE_TO_FIND_INTERNSHIP);
+            feedback.add(EDIT_INTERNSHIP_TYPE_TO_FLAG);
+            result = new CommandResult(feedback);
             result.setSuccessful(false);
             return result;
         }
