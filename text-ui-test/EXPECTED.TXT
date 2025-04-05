@@ -72,8 +72,8 @@ To get started, type 'help' and explore all the ways InternSprint can simplify y
 ------------------------------------------------------------------------------------------------------------------------
 
 > ------------------------------------------------------------------------------------------------------------------------
-    Internships saved successfully
-    You can view the list of internships at data/internships.txt
+    All data saved successfully!
+    You can view all your saved data of DATA_TYPE in the subdirectory under /data/DATA_TYPE.txt!
     Goodbye! Hope to see you again soon!
 ------------------------------------------------------------------------------------------------------------------------
 
