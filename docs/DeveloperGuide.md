@@ -518,16 +518,16 @@ been simplified using reference frames, expanded on below to help aid in clarity
   a `CommandResult` is returned. 
 
 <div align="center">
-<img src="images/DeleteImages/DeleteCommand.drawio.png" alt="DeleteCommandSequenceDiagramOverview" width="50%">
+<img src="images/DeleteImages/deleteCommandOverview.png" alt="deleteCommandOverview" width="50%">
 </div>
 
 Below are the expanded reference frames for successful and unsuccessful CommandResults returned by execute() method.
 The reference frame for saving internships can also be seen below.
 
 <div align="center">
-<img src="images/DeleteImages/DeleteWrongParameter.drawio.png" alt="DeleteCommandSequenceDiagramOverview" width="60%"> 
-<img src="images/DeleteImages/DeleteCorrectParameter.drawio.png" alt="DeleteCommandSequenceDiagramOverview" width="60%">
-<img src="images/DeleteImages/SaveInternship.drawio.png" alt="DeleteCommandSequenceDiagramOverview" width="60%">
+<img src="images/DeleteImages/deleteIncorrectParameters.png" alt="deleteIncorrectParameters" width="60%"> 
+<img src="images/DeleteImages/deleteCorrectParameters.png" alt="deleteCorrectParameters" width="60%">
+<img src="images/DeleteImages/saveInternship.png" alt="saveInternship" width="60%">
 </div>
 
 * Print calls, assert statements, logging, and other non-essential calls are omitted in the diagrams for clarity.
