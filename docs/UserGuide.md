@@ -260,7 +260,7 @@ Extended Format (with optional parameters): `edit /index INDEX_NUMBER /c COMPANY
   `/hardtech` flag else if you try and set a software tech flag to a hardware role an error message will be displayed.
 
 Example of usage:
-<div style="font-size: 0.85em;">
+<div style="font-size: 0.65em;">
 <pre><code>
 > edit /index 1 /c IBM /tech C, C++ /eli Y3 student /ex Fast Learner
 ------------------------------------------------------------------------------------------------------------------------
@@ -488,7 +488,7 @@ Basic Format: `project general /n PROJECT_NAME /r ROLE /dept DEPARTMENT /obj OBJ
 * All parameters/flags are mandatory and must be present in the command string for successful execution.
 
 Examples of usage:
-<div style="font-size: 0.85em;">
+<div style="font-size: 0.65em;">
 <pre><code>
 >  project general /n Team Project for CS2113 /r Unit Tester /dept Software Engineering /obj To get an A+ /desc Worked at identifying feature flaws in app /dur May-August
 ------------------------------------------------------------------------------------------------------------------------
@@ -513,7 +513,7 @@ Basic Format: `project software /n PROJECT_NAME /r ROLE /dept DEPARTMENT /pro PR
 
 Examples of usage:
 
-<div style="font-size: 0.85em;">
+<div style="font-size: 0.65em;">
 <pre><code>
 >  project software /n Team Project for CS2113 /r Unit Tester /pro Java, C++ /obj To get an A+ /desc Worked at identifying feature flaws in app /dur May-August
 ------------------------------------------------------------------------------------------------------------------------
@@ -537,7 +537,7 @@ Basic Format: `project hardware /n PROJECT_NAME /r ROLE /dept DEPARTMENT /hcomp 
 * All parameters/flags are mandatory and must be present in the command string for successful execution.
 
 Examples of usage:
-<div style="font-size: 0.85em;">
+<div style="font-size: 0.65em;">
 <pre><code>
 > project hardware /n Team Project for EE2026 /r Ui Developer /hcomp Basys Board/obj To get an A+ /desc Worked at creating pixel art for the UI /dur May-August
 ------------------------------------------------------------------------------------------------------------------------
