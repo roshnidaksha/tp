@@ -106,6 +106,8 @@ Format: `help` OR `help COMMAND`
 * `help COMMAND` is used to view the usage of the specific command.
 
 Example of usage:
+<div style="font-size: 0.85em;">
+
 
 ```
 > help add general
@@ -116,6 +118,7 @@ Example of usage:
 ------------------------------------------------------------------------------------------------------------------------
 ```
 ---
+</div>
 
 ### Listing all internships: `list`
 Adds a new item to the list of todo items.
@@ -125,6 +128,8 @@ Format: `list`
 * `list` is used to view the list of all added internships.
 
 Example of usage:
+<div style="font-size: 0.85em;">
+
 
 ```
 > list
@@ -139,6 +144,7 @@ Example of usage:
 ```
 
 ---
+</div>
 
 ### Adding a general category of internship: `add general`
 Allows users to add a new general internship to their list of internship applications.
@@ -151,6 +157,8 @@ Extended Format (with optional parameters): `add general /c COMPANY_NAME /r ROLE
 * The `COMPANY_NAME`, `ROLE` and `DEPARTMENT` must be unique to the list of internships and are mandatory parameters.
 
 Examples of usage:
+<div style="font-size: 0.85em;">
+
 
 ```
 > add general /c Google /r Human Resource /dept HR
@@ -171,6 +179,7 @@ Examples of usage:
 ```
 
 ---
+</div>
 
 ### Adding a software category of internship: `add software`
 Allows users to add a new software internship to their list of internship applications.
@@ -183,6 +192,8 @@ Extended Format (with optional parameters): `add software /c COMPANY_NAME /r ROL
 * The `COMPANY_NAME`, `ROLE` and `TECHNOLOGIES` must be unique to the list of internships and are mandatory parameters.
 
 Examples of usage:
+<div style="font-size: 0.85em;">
+
 
 ```
 > add software /c Google /r Software Engineer /tech Java, Python
@@ -203,6 +214,7 @@ Examples of usage:
 ```
 
 ---
+</div>
 
 ### Adding a hardware category of internship: `add hardware`
 Allows users to add a new hardware internship to their list of internship applications.
@@ -216,6 +228,7 @@ Extended Format (with optional parameters): `add hardware /c COMPANY_NAME /r ROL
   mandatory parameters.
 
 Examples of usage:
+<div style="font-size: 0.85em;">
 
 ```
 > add hardware /c Google /r Hardware Engineer /hardtech Arduino, Raspberry Pi
@@ -236,6 +249,7 @@ Examples of usage:
 ```
 
 ---
+</div>
 
 ### Editing an internship: `edit`
 Allows users to add (job description, eligibility, and expectations) or modify (company name, role,tech and status)
@@ -256,6 +270,8 @@ Extended Format (with optional parameters): `edit /index INDEX_NUMBER /c COMPANY
   `/hardtech` flag else if you try and set a software tech flag to a hardware role an error message will be displayed.
 
 Example of usage:
+<div style="font-size: 0.85em;">
+
 
 ```
 > edit /index 1 /c IBM /tech C, C++ /eli Y3 student /ex Fast Learner
@@ -278,6 +294,7 @@ Example of usage:
 ```
 
 ---
+</div>
 
 ### Deleting an internship: `delete`
 Allows users to delete an internship from the list of internship applications.
@@ -287,6 +304,8 @@ Format: `delete /index INDEX_OF_INTERNSHIP`
 * The `INDEX_OF_INTERNSHIP` should not be out of range of the internship list.
 
 Example of usage:
+<div style="font-size: 0.85em;">
+
 
 ```
 > delete /index 1
@@ -298,6 +317,7 @@ Example of usage:
 ```
 
 ---
+</div>
 
 ### Finding internships: `find`
 Allows users to find internships based on the internship type, company name or role.
@@ -309,6 +329,8 @@ Format: `find [TYPE] [/c COMPANY_NAME] [/r ROLE]`
 * It is required to specify at least one of the parameters.
 
 Example of usage:
+<div style="font-size: 0.85em;">
+
 
 ```
 > find software /c Google
@@ -318,6 +340,7 @@ Example of usage:
 ------------------------------------------------------------------------------------------------------------------------
 ```
 ---
+</div>
 
 ### Viewing extended description of a specific internship: `desc`
 Allows users to view the description of an internship from the list of internship applications.
@@ -327,6 +350,8 @@ Format: `desc /index INDEX_OF_INTERNSHIP`
 * The `INDEX_OF_INTERNSHIP` should not be out of range of the internship list.
 
 Example of usage:
+<div style="font-size: 0.85em;">
+
 
 ```
 > desc /index 1
@@ -339,6 +364,7 @@ Example of usage:
 ```
 
 ---
+</div>
 
 ### Adding interviews for internships: `interviewfor`
 Allows users to add multiple rounds of interviews for each internship added.
@@ -353,6 +379,7 @@ Extended Format (With optional parameters): `interviewfor /index INDEX_OF_INTERN
 * The `INDEX_OF_INTERNSHIP` should not be out of range of the internship list.
 
 Example of usage:
+<div style="font-size: 0.85em;">
 
 ```
 > interviewfor /index 1 /date 2025-01-01 /start 10:00 /end 14:00 /type technical round
@@ -365,13 +392,14 @@ Example of usage:
 ```
 
 ---
-
+</div>
 ### Sorting all interviews added by date: `sortInterviews`
 Allows users to sort all rounds of interviews added across multiple internships by date.
 
 Format: `sortInterviews`
 
 Example of usage:
+<div style="font-size: 0.85em;">
 
 ```
 > sortInterviews
@@ -392,6 +420,7 @@ Example of usage:
 ```
 
 ---
+</div>
 
 ### User Commands
 
@@ -410,6 +439,8 @@ data for their CVs and job applications, hence all data is output in neat ASCII 
 required contexts.
 
 Example of usage:
+<div style="font-size: 0.85em;">
+
 
 ```
 > my /name John Doe /ind Software /c Google /r Developer /mgoals 100 applications /ygoals 2 internships
@@ -427,7 +458,7 @@ Example of usage:
 ```
 
 ---
-
+</div>
 ### Viewing user profile information: `view user`
 Allows users to view user profile information with details such as name, or preferrred industries, roles
 or companies.
@@ -438,6 +469,8 @@ Basic Format: `view user`
   required contexts.
 
 Example of usage:
+<div style="font-size: 0.85em;">
+
 
 ```
 > view user
@@ -465,6 +498,7 @@ Example of usage:
 ```
 
 ---
+</div>
 
 ### Adding a general category of project: `project general`
 Allows users to add a new general project to their list of projects stored in their user profile. 
@@ -475,19 +509,22 @@ Basic Format: `project general /n PROJECT_NAME /r ROLE /dept DEPARTMENT /obj OBJ
 * All parameters/flags are mandatory and must be present in the command string for successful execution.
 
 Examples of usage:
+<div style="font-size: 0.85em;">
+
 
 ```
-> project general /n Team Project for CS2113 /r Unit Tester /dept Software Engineering /obj To get an A+ /desc Worked at identifying feature flaws in app /dur May-August
+>  project general /n Team Project for CS2113 /r Unit Tester /dept Software Engineering /obj To get an A+ /desc Worked at identifying feature flaws in app /dur May-August
 ------------------------------------------------------------------------------------------------------------------------
     Project successfully added to user profile. Below are the details for the same: 
 
-    Project: Team Project for CS2113, Role: Unit Tester, Dept: Software Engineering, Objectives: To get an A+, Duration: May-August, Description: Worked at identifying feature flaws in app
-    Now you have 1 projects in your user profile.
+    Project: Team Project for CS2113, Role: Unit Tester, Dept: Software Engineering
+    Objectives: To get an A+, Duration: May-August, Description: Worked at identifying feature flaws in app
+    Now you have 3 projects in your user profile.
 ------------------------------------------------------------------------------------------------------------------------
 ```
 
 ---
-
+</div>
 ### Adding a software category of internship: `project software`
 Allows users to add a new software project to their list of projects stored in their user profile.
 This
@@ -498,17 +535,21 @@ Basic Format: `project software /n PROJECT_NAME /r ROLE /dept DEPARTMENT /pro PR
 
 Examples of usage:
 
+<div style="font-size: 0.85em;">
+
 ```
-> project software /n Team Project for CS2113 /r Unit Tester /pro Java, C++ /obj To get an A+ /desc Worked at identifying feature flaws in app /dur May-August
+>  project software /n Team Project for CS2113 /r Unit Tester /pro Java, C++ /obj To get an A+ /desc Worked at identifying feature flaws in app /dur May-August
 ------------------------------------------------------------------------------------------------------------------------
     Project successfully added to user profile. Below are the details for the same: 
 
-    Project: Team Project for CS2113, Role: Unit Tester, Programming Languages: Java, C++, Objectives: To get an A+, Duration: May-August, Description: Worked at identifying feature flaws in app
-    Now you have 2 projects in your user profile.
+    Project: Team Project for CS2113, Role: Unit Tester, Programming Languages: Java, C++
+    Objectives: To get an A+, Duration: May-August, Description: Worked at identifying feature flaws in app
+    Now you have 1 projects in your user profile.
 ------------------------------------------------------------------------------------------------------------------------
 ```
 
 ---
+</div>
 
 ### Adding a hardware category of internship: `project hardware`
 Allows users to add a new hardware project to their list of projects stored in their user profile.
@@ -519,19 +560,23 @@ Basic Format: `project hardware /n PROJECT_NAME /r ROLE /dept DEPARTMENT /hcomp 
 * All parameters/flags are mandatory and must be present in the command string for successful execution.
 
 Examples of usage:
+<div style="font-size: 0.85em;">
+
 
 ```
 > project hardware /n Team Project for EE2026 /r Ui Developer /hcomp Basys Board/obj To get an A+ /desc Worked at creating pixel art for the UI /dur May-August
 ------------------------------------------------------------------------------------------------------------------------
     Project successfully added to user profile. Below are the details for the same: 
 
-    Project: Team Project for EE2026, Role: Ui Developer, Hardware Components: Basys Board, Objectives: To get an A+, Duration: May-August, Description: Worked at creating pixel art for the UI
-    Now you have 3 projects in your user profile.
+    Project: Team Project for EE2026, Role: Ui Developer, Hardware Components: Basys Board
+    Objectives: To get an A+, Duration: May-August, Description: Worked at creating pixel art for the UI
+    Now you have 2 projects in your user profile.
 ------------------------------------------------------------------------------------------------------------------------
 
 ```
 
 ---
+</div>
 
 ### Viewing a general category of project: `view general`
 Allows users to view list of saved general projects.
@@ -543,6 +588,8 @@ Basic Format: `view general`
 
 
 Examples of usage:
+<div style="font-size: 0.85em;">
+
 
 ```
 > view general
@@ -567,6 +614,7 @@ Examples of usage:
 ```
 
 ---
+</div>
 
 ### Viewing a software category of internship: `view software`
 Allows users to view list of saved software projects.
@@ -577,6 +625,8 @@ Basic Format: `view software`
   required contexts.
 
 Examples of usage:
+<div style="font-size: 0.85em;">
+
 
 ```
 > view software
@@ -601,6 +651,7 @@ Examples of usage:
 ```
 
 ---
+</div>
 
 ### Viewing a hardware category of internship: `view hardware`
 Allows users to view list of saved hardware projects.
@@ -612,6 +663,7 @@ Basic Format: `view hardware`
 
 
 Examples of usage:
+<div style="font-size: 0.85em;">
 
 ```
 > view hardware
@@ -636,6 +688,7 @@ Examples of usage:
 ```
 
 ---
+</div>
 ### Exit `bye`
 
 Exits the program. A user can exit the program at any time by typing `bye` in the command line.
