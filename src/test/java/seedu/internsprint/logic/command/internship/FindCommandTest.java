@@ -14,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.internsprint.util.InternSprintExceptionMessages.INVALID_CATEGORY_ERROR;
 import static seedu.internsprint.util.InternSprintMessages.NO_INTERNSHIPS_FOUND;
 import static seedu.internsprint.util.InternSprintMessages.NUMBER_OF_INTERNSHIPS_FOUND;
 
@@ -79,6 +80,22 @@ class FindCommandTest {
     }
 
     @Test
+    void execute_provideCompanyNameInLowerCase_returnsTrue() {
+        FindCommand findCommand = new FindCommand();
+        findCommand.getParameters().put("/c", "facebook");
+        CommandResult result = findCommand.execute(internshipList,  new UserProfile());
+        assertTrue(result.isSuccessful());
+    }
+
+    @Test
+    void execute_providePartialRole_returnsTrue() {
+        FindCommand findCommand = new FindCommand();
+        findCommand.getParameters().put("/r", "intern");
+        CommandResult result = findCommand.execute(internshipList,  new UserProfile());
+        assertTrue(result.isSuccessful());
+    }
+
+    @Test
     void execute_provideNoValidInput_returnsFalse() {
         FindCommand findCommand = new FindCommand();
         CommandResult result = findCommand.execute(internshipList,  new UserProfile());
@@ -93,5 +110,14 @@ class FindCommandTest {
         findCommand.getParameters().put("/r", " ");
         CommandResult result = findCommand.execute(internshipList,  new UserProfile());
         assertFalse(result.isSuccessful());
+    }
+
+    @Test
+    void execute_provideWrongType_returnsFalse() {
+        FindCommand findCommand = new FindCommand();
+        findCommand.getParameters().put("description", "random");
+        CommandResult result = findCommand.execute(internshipList,  new UserProfile());
+        assertFalse(result.isSuccessful());
+        assertEquals(INVALID_CATEGORY_ERROR, result.getFeedbackToUser().get(0));
     }
 }
