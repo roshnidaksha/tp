@@ -49,6 +49,8 @@ public class DateTimeParser {
      * @return The LocalTime object.
      */
     public static LocalTime parseTimeInput(String input) {
+        input = normalizeTimeInput(input);
+        System.out.println("Normalized input: " + input);
         Date date = extractDate(input);
         return LocalTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
     }
@@ -108,4 +110,13 @@ public class DateTimeParser {
         }
         return group.getDates().get(0);
     }
+
+    private static String normalizeTimeInput(String input) {
+        String normalized = input.toLowerCase();
+        normalized = normalized.replaceAll("(\\d{1,2})-(am|pm)", "$1 $2");
+        normalized = normalized.replaceAll("(\\d{1,2})-(\\d{2})(?!\\s*(am|pm))", "$1:$2");
+        normalized = normalized.replaceAll("(\\d{1,2})-(\\d{2})(?=(am|pm))", "$1:$2");
+        return normalized;
+    }
+
 }
