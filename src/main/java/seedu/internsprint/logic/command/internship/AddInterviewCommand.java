@@ -146,16 +146,22 @@ public class AddInterviewCommand extends Command {
      * @param internships InternshipList object.
      * @return CommandResult object.
      */
-    private CommandResult createAndAddInterview(List<String> feedback, Internship internship,
+    protected CommandResult createAndAddInterview(List<String> feedback, Internship internship,
                                                 InternshipList internships) {
-        Interview interview = new Interview(
-            parameters.get("/date"),
-            parameters.get("/start"),
-            parameters.get("/end"),
-            parameters.get("/type"),
-            parameters.getOrDefault("/email", ""),
-            parameters.getOrDefault("/notes", "")
-        );
+        Interview interview = null;
+        try {
+            interview = new Interview(
+                parameters.get("/date"),
+                parameters.get("/start"),
+                parameters.get("/end"),
+                parameters.get("/type"),
+                parameters.getOrDefault("/email", ""),
+                parameters.getOrDefault("/notes", "")
+            );
+        } catch (IllegalArgumentException e) {
+            feedback.add(e.getMessage());
+            return new CommandResult(feedback, false);
+        }
         interview.setInternshipId(internship.getInternshipId());
 
         try {

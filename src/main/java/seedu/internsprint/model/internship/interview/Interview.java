@@ -3,12 +3,15 @@ package seedu.internsprint.model.internship.interview;
 import org.json.JSONObject;
 import seedu.internsprint.exceptions.DuplicateEntryException;
 import seedu.internsprint.logic.parser.DateTimeParser;
+import seedu.internsprint.util.InternSprintLogger;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.DUPLICATE_INTERVIEW;
+import static seedu.internsprint.util.InternSprintExceptionMessages.END_TIME_BEFORE_START_TIME;
 import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_REQUIRED_PARAMETERS;
 
 public class Interview {
@@ -27,6 +30,7 @@ public class Interview {
     protected String notes;
 
     private int internshipId = -1;
+    private final Logger logger = InternSprintLogger.getLogger();
 
     public Interview(String interviewDate, String interviewStartTime, String interviewEndTime,
                      String interviewType) {
@@ -45,6 +49,8 @@ public class Interview {
         this.interviewStartTime = DateTimeParser.parseTimeInput(interviewStartTime);
         this.interviewEndTime = DateTimeParser.parseTimeInput(interviewEndTime);
         this.interviewType = interviewType;
+
+        checkDateAndTime(this.interviewDate, this.interviewStartTime, this.interviewEndTime);
 
         setRoundCounter(this.roundCounter);
     }
@@ -67,6 +73,8 @@ public class Interview {
         this.interviewEndTime = DateTimeParser.parseTimeInput(interviewEndTime);
         this.interviewType = interviewType;
 
+        checkDateAndTime(this.interviewDate, this.interviewStartTime, this.interviewEndTime);
+
         if (interviewerEmail != null && !interviewerEmail.isBlank()) {
             this.interviewerEmail = interviewerEmail;
         }
@@ -76,6 +84,13 @@ public class Interview {
         }
 
         this.roundCounter = 0;
+    }
+
+    private void checkDateAndTime(LocalDate interviewDate, LocalTime startTime, LocalTime endTime) {
+        if (startTime.isAfter(endTime) || startTime.equals(endTime)) {
+            logger.warning("Interview start time cannot be after end time.");
+            throw new IllegalArgumentException(END_TIME_BEFORE_START_TIME);
+        }
     }
 
     @Override
@@ -132,10 +147,12 @@ public class Interview {
 
     public void addInterviewRound(Interview round) throws DuplicateEntryException {
         if (this.equals(round)) {
+            logger.warning("Interview round cannot be the same as the current round.");
             throw new DuplicateEntryException(DUPLICATE_INTERVIEW);
         }
         for (Interview nextRound : nextRounds) {
             if (nextRound.equals(round)) {
+                logger.warning("Interview round cannot be the same as the current round.");
                 throw new DuplicateEntryException(DUPLICATE_INTERVIEW);
             }
         }
