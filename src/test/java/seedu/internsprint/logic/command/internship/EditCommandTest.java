@@ -23,16 +23,95 @@ class EditCommandTest {
     @Test
     void isValidParameters_provideCorrectIndexAndFlags_returnsValid() {
         EditCommand editCommand = new EditCommand();
-
-        HashMap<String, String> parameters = editCommand.getParameters();
-        parameters.put("/index", "1");
-        parameters.put("/c", "Java");
-        parameters.put("/eli", "Y3 students");
-        parameters.put("/r", "/Automation Testing Intern");
-        parameters.put("/tech", "Java, C, C++");
-        parameters.put("/dept", "Quality Assurance");
-        editCommand.setParameters(parameters);
+        editCommand.getParameters().put("/index", "1");
+        editCommand.getParameters().put("/c", "Java");
+        editCommand.getParameters().put("/eli", "Y3 students");
+        editCommand.getParameters().put("/r","/Automation Testing Intern");
+        editCommand.getParameters().put("/tech", "Java, C, C++");
+        editCommand.getParameters().put("/dept","Quality Assurance");
         assertTrue(editCommand.isValidParameters());
+    }
+    @Test
+    void isValidParameters_provideNoIndex_returnsValid() {
+        EditCommand editCommand = new EditCommand();
+        editCommand.getParameters().put("/c", "Java");
+        editCommand.getParameters().put("/eli", "Y3 students");
+        editCommand.getParameters().put("/r","/Automation Testing Intern");
+        editCommand.getParameters().put("/tech", "Java, C, C++");
+        editCommand.getParameters().put("/dept","Quality Assurance");
+        assertTrue(editCommand.isValidParameters());
+    }
+    @Test
+    void isValidParameters_provideInvalidFlag_returnsInvalid() {
+        EditCommand editCommand = new EditCommand();
+        editCommand.getParameters().put("/c", "Java");
+        editCommand.getParameters().put("/eli", "Y3 students");
+        editCommand.getParameters().put("/r","/Automation Testing Intern");
+        editCommand.getParameters().put("/tech", "Java, C, C++");
+        editCommand.getParameters().put("/deadline","27th January");
+        assertFalse(editCommand.isValidParameters());
+    }
+
+
+    @Test
+    void execute_editCompanyAndRoleForSoftwareInternships_editsCorrectly() {
+        EditCommand editCommand = new EditCommand();
+        editCommand.getParameters().put("/index", "1");
+        editCommand.getParameters().put("/c", "Java");
+        editCommand.getParameters().put("/r","Automation Testing Intern");
+        SoftwareInternship internship = new SoftwareInternship("Facebook","Software Engineering", "SWE");
+        InternshipList internshipList = new InternshipList();
+        assertDoesNotThrow(() -> internshipList.addInternship(internship));
+        editCommand.execute(internshipList, new UserProfile());
+        assertEquals("Java", internship.getCompanyName());
+        assertEquals("Automation Testing Intern", internship.getRole());
+        assertEquals("software", internship.getType());
+
+    }
+
+    @Test
+    void execute_editCompanyAndRoleForGeneralInternships_editsCorrectly() {
+        EditCommand editCommand = new EditCommand();
+        editCommand.getParameters().put("/index", "1");
+        editCommand.getParameters().put("/c", "UBS");
+        editCommand.getParameters().put("/r","IT Intern");
+        GeneralInternship internship = new GeneralInternship("Facebook","Tech Support", "IT");
+        InternshipList internshipList = new InternshipList();
+        assertDoesNotThrow(() -> internshipList.addInternship(internship));
+        editCommand.execute(internshipList, new UserProfile());
+        assertEquals("UBS", internship.getCompanyName());
+        assertEquals("IT Intern", internship.getRole());
+        assertEquals("general", internship.getType());
+    }
+    @Test
+    void execute_editCompanyAndRoleForHarwareInternships_editsCorrectly() {
+        EditCommand editCommand = new EditCommand();
+        editCommand.getParameters().put("/index", "1");
+        editCommand.getParameters().put("/c", "Xilinx");
+        editCommand.getParameters().put("/r","Engineering Intern");
+        HardwareInternship internship = new HardwareInternship("Facebook","Automation Expert", "C");
+        InternshipList internshipList = new InternshipList();
+        assertDoesNotThrow(() -> internshipList.addInternship(internship));
+        editCommand.execute(internshipList, new UserProfile());
+        assertEquals("Xilinx", internship.getCompanyName());
+        assertEquals("Engineering Intern", internship.getRole());
+        assertEquals("hardware", internship.getType());
+    }
+
+    @Test
+    void execute_invalidFieldForSoftware_throwsError() {
+        EditCommand editCommand = new EditCommand();
+        editCommand.getParameters().put("/index", "1");
+        editCommand.getParameters().put("/c", "Java");
+        editCommand.getParameters().put("/dept","SWE Intern");
+        SoftwareInternship internship = new SoftwareInternship("Facebook","Automation Intern", "C");
+        InternshipList internshipList = new InternshipList();
+        assertDoesNotThrow(() -> internshipList.addInternship(internship));
+        editCommand.execute(internshipList, new UserProfile());
+        assertEquals("Java", internship.getCompanyName());
+        assertEquals("Automation Intern", internship.getRole());
+        assertEquals("C", internship.getTechStack());
+        assertEquals("software", internship.getType());
     }
 
     @Test
@@ -43,7 +122,7 @@ class EditCommandTest {
         editCommand.setParameters(parameters);
         assertFalse(editCommand.isPresentIndex());
     }
-    
+
     @Test
     void isPresentIndex_provideIndex_returnsValid() {
         EditCommand editCommand = new EditCommand();
@@ -52,70 +131,6 @@ class EditCommandTest {
         parameters.put("/eli", "Y3 students");
         editCommand.setParameters(parameters);
         assertTrue(editCommand.isPresentIndex());
-    }
-
-    @Test
-    void isValidParameters_provideInvalidFlag_returnsInvalid() {
-        EditCommand editCommand = new EditCommand();
-        HashMap<String, String> parameters = editCommand.getParameters();
-        parameters.put("/c", "Java");
-        parameters.put("/eli", "Y3 students");
-        parameters.put("/r", "/Automation Testing Intern");
-        parameters.put("/tech", "Java, C, C++");
-        parameters.put("/deadline", "27th January");
-        editCommand.setParameters(parameters);
-        assertFalse(editCommand.isValidParameters());
-    }
-
-    @Test
-    void execute_editCompanyAndRoleForSoftwareInternships_editsCorrectly() {
-        EditCommand editCommand = new EditCommand();
-        HashMap<String, String> parameters = editCommand.getParameters();
-        parameters.put("/index", "1");
-        parameters.put("/c", "Java");
-        parameters.put("/r", "Automation Testing Intern");
-        editCommand.setParameters(parameters);
-        SoftwareInternship internship = new SoftwareInternship("Facebook", "Software Engineering", "SWE");
-        InternshipList internshipList = new InternshipList();
-        assertDoesNotThrow(() -> internshipList.addInternship(internship));
-        editCommand.execute(internshipList, new UserProfile());
-        assertEquals("Java", internship.getCompanyName());
-        assertEquals("Automation Testing Intern", internship.getRole());
-        assertEquals("software", internship.getType());
-    }
-
-    @Test
-    void execute_editCompanyAndRoleForGeneralInternships_editsCorrectly() {
-        EditCommand editCommand = new EditCommand();
-        HashMap<String, String> parameters = editCommand.getParameters();
-        parameters.put("/index", "1");
-        parameters.put("/c", "UBS");
-        parameters.put("/r", "IT Intern");
-        editCommand.setParameters(parameters);
-        GeneralInternship internship = new GeneralInternship("Facebook", "Tech Support", "IT");
-        InternshipList internshipList = new InternshipList();
-        assertDoesNotThrow(() -> internshipList.addInternship(internship));
-        editCommand.execute(internshipList, new UserProfile());
-        assertEquals("UBS", internship.getCompanyName());
-        assertEquals("IT Intern", internship.getRole());
-        assertEquals("general", internship.getType());
-    }
-
-    @Test
-    void execute_editCompanyAndRoleForHarwareInternships_editsCorrectly() {
-        EditCommand editCommand = new EditCommand();
-        HashMap<String, String> parameters = editCommand.getParameters();
-        parameters.put("/index", "1");
-        parameters.put("/c", "Xilinx");
-        parameters.put("/r", "Engineering Intern");
-        editCommand.setParameters(parameters);
-        HardwareInternship internship = new HardwareInternship("Facebook", "Automation Expert", "C");
-        InternshipList internshipList = new InternshipList();
-        assertDoesNotThrow(() -> internshipList.addInternship(internship));
-        editCommand.execute(internshipList, new UserProfile());
-        assertEquals("Xilinx", internship.getCompanyName());
-        assertEquals("Engineering Intern", internship.getRole());
-        assertEquals("hardware", internship.getType());
     }
 
     @Test
@@ -136,24 +151,6 @@ class EditCommandTest {
     }
 
     @Test
-    void execute_invalidFieldForSoftware_throwsError() {
-        EditCommand editCommand = new EditCommand();
-        HashMap<String, String> parameters = editCommand.getParameters();
-        parameters.put("/index", "1");
-        parameters.put("/c", "Java");
-        parameters.put("/dept", "SWE Intern");
-        editCommand.setParameters(parameters);
-        SoftwareInternship internship = new SoftwareInternship("Facebook", "Automation Intern", "C");
-        InternshipList internshipList = new InternshipList();
-        assertDoesNotThrow(() -> internshipList.addInternship(internship));
-        editCommand.execute(internshipList, new UserProfile());
-        assertEquals("Java", internship.getCompanyName());
-        assertEquals("Automation Intern", internship.getRole());
-        assertEquals("C", internship.getTechStack());
-        assertEquals("software", internship.getType());
-    }
-
-    @Test
     void execute_editInternshipIsDuplicate_returnsError() {
         EditCommand editCommand = new EditCommand();
         HashMap<String, String> parameters = editCommand.getParameters();
@@ -171,17 +168,6 @@ class EditCommandTest {
         assertEquals(MESSAGE_DUPLICATE_INTERNSHIP, result.getFeedbackToUser().get(0));
         assertEquals("Facebook", internshipList.getInternshipMap().get("software").get(0).getCompanyName());
         assertEquals("Automation Intern", internshipList.getInternshipMap().get("software").get(0).getRole());
-    }
-
-    @Test
-    void isValidParameters_provideIncorrectOptionalFlags_returnsInvalid() {
-        EditCommand editCommand = new EditCommand();
-        HashMap<String, String> parameters = editCommand.getParameters();
-        parameters.put("/index", "1");
-        parameters.put("/c", "Java");
-        parameters.put("/date", "2020-05-01");
-        editCommand.setParameters(parameters);
-        assertFalse(editCommand.isValidParameters());
     }
 
     @Test
