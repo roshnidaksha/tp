@@ -76,6 +76,12 @@ public class InterviewTest {
     }
 
     @Test
+    void constructor_provideEndTimeBeforeStartTime_throwsException() {
+        assertThrows(IllegalArgumentException.class, () ->
+            new Interview("tomorrow", "10am", "9am", "Technical"));
+    }
+
+    @Test
     void addInterviewRound_shouldIncreaseRoundsAndStoreCorrectly() {
         Interview round2 = new Interview("2025-06-05", "09:00", "10:00",
                 "CEO Test");

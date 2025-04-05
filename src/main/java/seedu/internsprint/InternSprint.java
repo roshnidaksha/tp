@@ -5,7 +5,6 @@ import seedu.internsprint.logic.command.CommandResult;
 import seedu.internsprint.logic.parser.CommandParser;
 import seedu.internsprint.model.internship.InternshipList;
 import seedu.internsprint.model.userprofile.UserProfile;
-import seedu.internsprint.model.userprofile.project.ProjectList;
 import seedu.internsprint.storage.StorageManager;
 import seedu.internsprint.util.InternSprintLogger;
 import seedu.internsprint.util.Ui;
@@ -22,13 +21,11 @@ public class InternSprint {
     private final StorageManager storageManager;
     private final InternshipList internships;
     private final UserProfile user;
-    private final ProjectList projects;
 
     public InternSprint() {
         storageManager = StorageManager.getInstance();
         internships = new InternshipList();
         user = new UserProfile();
-        projects = new ProjectList();
     }
 
     /**

@@ -74,7 +74,9 @@ Follow the guide [[se-edu/guides] IDEA: Importing a Gradle project]
 
 ### Architecture
 
-![OverallArchitecture](images/OverallArchitecture.png)
+<div align="center">
+<img src="images/OverallArchitecture.png" alt="OverallArchitecture" width="40%">
+</div>
 
 The **Architecture Diagram** above shows the high-level implementation of the InternSprint application.
 
@@ -243,6 +245,7 @@ The overall system model has been divided into two separate UML diagrams for eas
 
 *Internships and Interview Diagram*
 ![Model_UML_Pt1](images/ModelImages/Model_UML_Pt1.png)
+
 *User Profile and Projects Diagram*
 ![Model_UML_Pt2](images/ModelImages/Model_UML_Pt2.png)
 
@@ -337,7 +340,9 @@ testing and debugging to be more focused and efficient.
 Below is the simplified sequence diagram for adding a new software internship. 
 A similar sequence is followed for adding a general or hardware internship.
 
-![AddCommandSequenceDiagramOverview](images/AddInternshipImages/AddCommandSequenceDiagramOverview.png)
+<div align="center">
+<img src="images/AddInternshipImages/AddCommandSequenceDiagramOverview.png" alt="AddCommandSequenceDiagramOverview" width="50%">
+</div>
 
 * `InternSprint.java` obtains the correct `*Command` object from the `CommandParser` class and calls the 
 `execute()` method of that `*Command` object.
@@ -348,7 +353,9 @@ according to the type of internship.
 * If the parameters are not valid (as depicted in the sequence diagram below), then a `CommandResult` with the correct 
 usage message is returned to the user. The `isSuccessful` field of the `CommandResult` object is set to `false`.
 
-![AddCommandSequenceDiagramOverview](images/AddInternshipImages/AddCommandSequenceDiagramAlternateFrameOne.png)
+<div align="center">
+<img src="images/AddInternshipImages/AddCommandSequenceDiagramAlternateFrameOne.png" alt="AddCommandSequenceDiagramOverview" width="60%">
+</div>
 
 * If the parameters are valid (as depicted in the sequence diagram below), then a new internship 
 (here `SoftwareInternship`) is created.
@@ -430,13 +437,16 @@ and a successful execution result is returned to the user.
   a `CommandResult` is returned. The reference frame for saving internships is similar to the reference frame 
   under `DeleteCommand`.
 
-![EditCommandSequenceDiagramOverview](images/EditImages/edit_overview.png)
+<div align="center">
+<img src="images/EditImages/edit_overview.png" alt="EditCommandSequenceDiagramOverview" width="100%">
+</div>
 
 Below are the expanded reference frames for successful and unsuccessful CommandResults returned by execute() method.
 
-![EditCommandSequenceDiagramOverview](images/EditImages/edit_ref_1.png)
-![EditCommandSequenceDiagramOverview](images/EditImages/edit_ref_2.png)
-
+<div align="center">
+<img src="images/EditImages/edit_ref_1.png" alt="EditCommandSequenceDiagramOverview" width="60%">
+<img src="images/EditImages/edit_ref_2.png" alt="EditCommandSequenceDiagramOverview" width="60%">
+</div>
 
 Print calls, assert statements, logging, and other non-essential calls are omitted in the diagram for clarity.
 For full clarity, note below is a comprehensive sequence diagram, combining all reference frames and expanding logic
@@ -446,7 +456,6 @@ behind duplicate-checking for example.
 to supplement an additional level of detail to above overview diagram (which should be sufficient for understanding).
 Such an expanded view will be isolated to this one command but execution logic resembles other Commands, 
 hence can refer to [this diagram](images/EditImages/edit_command_pdf.drawio.pdf)  for thoroughness for all such commands.*
-
 
 [Edit-Command Sequence Diagram](images/EditImages/edit_command_pdf.drawio.pdf)
 
@@ -508,16 +517,18 @@ been simplified using reference frames, expanded on below to help aid in clarity
 * Depending on whether the internships are successfully saved to the `internships.txt` file,
   a `CommandResult` is returned. 
 
-![deleteCommandOverview.png](images/DeleteImages/deleteCommandOverview.png)
+<div align="center">
+<img src="images/DeleteImages/deleteCommandOverview.png" alt="deleteCommandOverview" width="50%">
+</div>
 
 Below are the expanded reference frames for successful and unsuccessful CommandResults returned by execute() method.
 The reference frame for saving internships can also be seen below.
 
-![deleteIncorrectParameters.png](images/DeleteImages/deleteIncorrectParameters.png)
-
-![deleteCorrectParameters.png](images/DeleteImages/deleteCorrectParameters.png)
-
-![saveInternship.png](images/DeleteImages/saveInternship.png)
+<div align="center">
+<img src="images/DeleteImages/deleteIncorrectParameters.png" alt="deleteIncorrectParameters" width="60%"> 
+<img src="images/DeleteImages/deleteCorrectParameters.png" alt="deleteCorrectParameters" width="60%">
+<img src="images/DeleteImages/saveInternship.png" alt="saveInternship" width="60%">
+</div>
 
 * Print calls, assert statements, logging, and other non-essential calls are omitted in the diagrams for clarity.
   
@@ -557,23 +568,28 @@ This command allows the user to list all internships they have added. Data store
 **Sequence Diagrams**<br>
 Below are the sequence diagrams for listing all internships.  
 
-![ListCommand_PT1](images/ListImages/ListCommand_PT1.png)
+<div align="center">
+<img src="images/ListImages/ListCommand_PT1.png" alt="ListCommandSequenceDiagramOverview" width="50%">
+</div>
 * The execute() method of the ListCommand class is called
 
 * Execute() method checks the validity of the parameters using the isValidParameters() method.
  
 * If extra parameters are entered(as depicted in the sequence diagram below), it will be invalid and hence, a commandResult with the correct usage message is returned to the user. 
 
-![ListCommand_PT2](images/ListImages/ListCommand_PT2.png)
+<div align="center">
+<img src="images/ListImages/ListCommand_PT2.png" alt="ListCommandSequenceDiagramOverview" width="60%">
+</div>
+
 * If the parameters are valid (as depicted in the sequence diagram below), then the internships in the internship list are iterated through by catergory (software, hardware, general) and added to a arrayList as formatted strings.
 
 * A command result containing these internships is then returned.
-  ![ListCommand_PT3](images/ListImages/ListCommand_PT3.png)
+
+<div align="center">
+<img src="images/ListImages/ListCommand_PT3.png" alt="ListCommandSequenceDiagramOverview" width="100%">
+</div>
+
 *Print calls, assert statements, logging, and other non-essential calls are omitted in the diagram for clarity.
-
-
-
-
 
 
 ### 5. Create/Update User Profile

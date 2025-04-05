@@ -90,6 +90,13 @@ class CommandParserTest {
     }
 
     @Test
+    void parseKeyValuePairs_provideRepeatedFlag_throwsIllegalArgumentException() {
+        Command command = new AddSoftwareInternshipCommand();
+        assertThrows(IllegalArgumentException.class,
+            () -> CommandParser.parseKeyValuePairs("/key1 value1 /key1 value2", command));
+    }
+
+    @Test
     void validateIndex_emptyIndex_throwsIllegalArgumentException() {
         InternshipList internships = new InternshipList();
         assertThrows(IllegalArgumentException.class,
