@@ -438,7 +438,7 @@ and a successful execution result is returned to the user.
   under `DeleteCommand`.
 
 <div align="center">
-<img src="images/EditImages/edit_overview.png" alt="EditCommandSequenceDiagramOverview" width="100%">
+<img src="images/EditImages/edit_overview.PNG" alt="EditCommandSequenceDiagramOverview" width="70%">
 </div>
 
 Below are the expanded reference frames for successful and unsuccessful CommandResults returned by execute() method.
@@ -447,6 +447,8 @@ Below are the expanded reference frames for successful and unsuccessful CommandR
 <img src="images/EditImages/edit_ref_1.png" alt="EditCommandSequenceDiagramOverview" width="60%">
 <img src="images/EditImages/edit_ref_2.png" alt="EditCommandSequenceDiagramOverview" width="60%">
 </div>
+
+*Here the opt frame is utilized and **not** the alt frame since this better reflects the way the code flow works.*
 
 Print calls, assert statements, logging, and other non-essential calls are omitted in the diagram for clarity.
 For full clarity, note below is a comprehensive sequence diagram, combining all reference frames and expanding logic
