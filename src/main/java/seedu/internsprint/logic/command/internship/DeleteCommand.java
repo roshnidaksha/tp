@@ -77,7 +77,6 @@ public class DeleteCommand extends Command {
 
         try {
             internships.saveInternships();
-            feedback.add(InternSprintMessages.SAVE_SUCCESS_MESSAGE);
         } catch (IOException e) {
             feedback.add(e.getMessage());
             result = new CommandResult(feedback);

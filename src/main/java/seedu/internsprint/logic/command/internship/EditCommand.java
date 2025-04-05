@@ -10,7 +10,6 @@ import seedu.internsprint.model.internship.InternshipList;
 import seedu.internsprint.model.internship.SoftwareInternship;
 import seedu.internsprint.model.userprofile.UserProfile;
 import seedu.internsprint.util.InternSprintLogger;
-import seedu.internsprint.util.InternSprintMessages;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -137,7 +136,6 @@ public class EditCommand extends Command {
 
         try {
             internships.saveInternships();
-            feedback.add(InternSprintMessages.SAVE_SUCCESS_MESSAGE);
         } catch (IOException e) {
             feedback.add(e.getMessage());
             result = new CommandResult(feedback);
