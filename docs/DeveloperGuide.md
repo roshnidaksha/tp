@@ -508,16 +508,16 @@ been simplified using reference frames, expanded on below to help aid in clarity
 * Depending on whether the internships are successfully saved to the `internships.txt` file,
   a `CommandResult` is returned. 
 
-![DeleteCommand.drawio.png](images/DeleteImages/DeleteCommand.drawio.png)
+![deleteCommandOverview.png](images/DeleteImages/deleteCommandOverview.png)
 
 Below are the expanded reference frames for successful and unsuccessful CommandResults returned by execute() method.
 The reference frame for saving internships can also be seen below.
 
-![DeleteWrongParameter.drawio.png](images/DeleteImages/DeleteWrongParameter.drawio.png)
+![deleteIncorrectParameters.png](images/DeleteImages/deleteIncorrectParameters.png)
 
-![DeleteCorrectParameter.drawio.png](images/DeleteImages/DeleteCorrectParameter.drawio.png)
+![deleteCorrectParameters.png](images/DeleteImages/deleteCorrectParameters.png)
 
-![SaveInternship.drawio.png](images/DeleteImages/SaveInternship.drawio.png)
+![saveInternship.png](images/DeleteImages/saveInternship.png)
 
 * Print calls, assert statements, logging, and other non-essential calls are omitted in the diagrams for clarity.
   
