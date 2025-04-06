@@ -2,7 +2,9 @@
 ## Introduction
 
 ***InternSprint is your Ultimate Internship Application Assistant!***
-
+<div align="center">
+<img src="images/UGImages/welcome_is.png" alt="WelcomeToInternsprintSS" width="100%">
+</div>
 Navigating internship applications can be overwhelming - multiple platforms, countless CV versions, and keeping track
 of application stages can quickly become chaotic. InternSprint is here to streamline the entire process, acting as your
 personal assistant for managing and organizing internship applications efficiently.
@@ -101,6 +103,8 @@ and easily tracking status of your applications.
 > * Items in square brackets `[...]` are optional.
 > * `/` is a reserved character to represent flag prefixes. It should not be used to give the value of any parameter.
 >   Use hyphens (`-`) instead.
+
+<div style="page-break-after: always;"></div>
 
 ### Internship Commands
 
@@ -399,6 +403,8 @@ Example of usage:
 
 ---
 
+<div style="page-break-after: always;"></div>
+
 ### Sorting all interviews added by date: `sortInterviews`
 Allows users to sort all rounds of interviews added across multiple internships by date.
 
@@ -589,6 +595,7 @@ Basic Format: `view general`
   data for their CVs and job applications, hence all data is output in neat ASCII tables which can be copied and pasted into
   required contexts.
 
+<div style="page-break-after: always;"></div>
 
 Examples of usage:
 <div style="font-size: 0.85em;">
@@ -660,6 +667,7 @@ Basic Format: `view hardware`
   data for their CVs and job applications, hence all data is output in neat ASCII tables which can be copied and pasted into
   required contexts.
 
+<div style="page-break-after: always;"></div>
 
 Examples of usage:
 <div style="font-size: 0.85em;">
@@ -742,6 +750,8 @@ the same subdirectory of `[JAR file location]/data`. This will ensure your data 
 should be only one `internships.txt` in the location.
 
 ---
+
+<div style="page-break-after: always;"></div>
 
 ## Command Summary
 
