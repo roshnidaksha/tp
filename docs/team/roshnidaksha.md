@@ -91,6 +91,7 @@ other messages used in the application.
 [(#17)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/17)
 * Referred to [ASCII Table](https://mvnrepository.com/artifact/de.vandermeer/asciitable) implementation from `view project` commands to display interview rounds in a more intuitive
 format while describing an internship. [(#237)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/237)
+* Maintaining the issue tracker: Authored 40+ issues and assigned them appropriately among a total of 120+ issues.
 
 **Testing**
 * Add Internship Commands [(#28)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/28) [(#96)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/96/files)
