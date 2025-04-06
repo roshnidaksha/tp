@@ -432,8 +432,14 @@ Example of usage:
 ### Updating user profile information: `my`
 Allows users to update user profile information with details such as name, or preferrred industries, roles
 or companies.
-Basic Format: `my /c COMPANIES_YOU_PREFER /r ROLES_YOU_PREFER /ygoals YEARLY_GOALS /mgoals MONTHLY_GOALS /pay PAY_RANGE
+Basic Format: `my /c COMPANIES_YOU_PREFER /r ROLES_YOU_PREFER /ygoals YEARLY_GOALS /mgoals MONTHLY_GOALS /pay MIN_PAY-MAX_PAY
                  /ind INDUSTRIES_YOU_PREFER /time TIME_RANGE /name YOUR_NAME`
+
+***NOTE:***  When entering pay range `/pay MIN_PAY - MAX_PAY`, ensure minimum and maximum are both numerical values with minimum less than maximum,
+and separate the two with a hyphen "-". Otherwise, you will be prompted again to re-enter these details. 
+
+Do note there is no date-time format mandatory for your preferred `/time TIME_RANGE`, so that you may enter any string such as "Semester 1" or even "Next year" as per your 
+convenience.
 
 > This format shows you all the possible flags or parameters you can set for an internship, however they are ALL optional
 > (as-needed basis) -
