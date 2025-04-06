@@ -72,14 +72,14 @@ public class InternSprint {
         }
 
         return interviewResult.isSuccessful() && internshipResult.isSuccessful()
-                && profileResult.isSuccessful() && projectResult.isSuccessful();
+            && profileResult.isSuccessful() && projectResult.isSuccessful();
     }
 
     /**
      * Reads the user command and executes it, until the user issues the exit command.
      */
     private void runCommandLoopUntilExitCommand() {
-        logger.log(Level.INFO, "Loading internships helfrom storage");
+        logger.log(Level.INFO, "Loading internships from storage");
         boolean isLoadingSuccessful = loadData();
         if (!isLoadingSuccessful) {
             return;
