@@ -104,7 +104,6 @@ and easily tracking status of your applications.
 > * `/` is a reserved character to represent flag prefixes. It should not be used to give the value of any parameter.
 >   Use hyphens (`-`) instead.
 
-<div style="page-break-after: always;"></div>
 
 ### Internship Commands
 
@@ -210,6 +209,7 @@ Extended Format (with optional parameters): `add software /c COMPANY_NAME /r ROL
 /tech TECHNOLOGIES /desc DESCRIPTION /status STATUS`
 
 * The `COMPANY_NAME`, `ROLE` and `TECHNOLOGIES` must be unique to the list of internships and are mandatory parameters.
+<div style="page-break-after: always;"></div>
 
 Examples of usage:
 <div style="font-size: 0.85em;">
@@ -454,7 +454,7 @@ convenience.
 * This feature is implemented to allow the user to be able to simply copy, paste, and use tabular-formatted user profile
   data for their CVs and job applications, hence all data is output in neat ASCII tables which can be copied and pasted into
   required contexts.
-
+<div style="page-break-after: always;"></div>
 Example of usage:
 <div style="font-size: 0.85em;">
 <pre><code>
