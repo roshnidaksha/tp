@@ -152,7 +152,7 @@ Example of usage:
 </div>
 
 ---
-
+<div style="page-break-after: always;"></div>
 ### Adding a new internship: `add [TYPE]`
 
 Internships are categorized into 3 types: `general`, `software` and `hardware`.
@@ -403,7 +403,7 @@ Example of usage:
 
 ---
 
-<div style="page-break-after: always;"></div>
+
 
 ### Sorting all interviews added by date: `sort interviews`
 Allows users to sort all rounds of interviews added across multiple internships by date.
