@@ -34,6 +34,38 @@ class CommandParserTest {
         assertEquals("bye", result[0]);
         assertEquals("", result[1]);
     }
+  
+    void parseCommand_provideCorrectCommand_returnsCorrectObject() {
+        String input = "add software /key1 value1";
+        Command command = CommandParser.parseCommand(input);
+        assertEquals(AddSoftwareInternshipCommand.class, command.getClass());
+    }
+
+    @Test
+    void parseCommand_provideTrailingWhitespace_returnsCorrectObject() {
+        String input = "add software   /key1 value1";
+        Command command = CommandParser.parseCommand(input);
+        assertEquals(AddSoftwareInternshipCommand.class, command.getClass());
+    }
+
+    @Test
+    void parseCommand_provideLeadingWhitespace_returnsCorrectObject() {
+        String input = "   add software /key1 value1";
+        Command command = CommandParser.parseCommand(input);
+        assertEquals(AddSoftwareInternshipCommand.class, command.getClass());
+    }
+
+    @Test
+    void parseCommand_provideIncorrectCommand_throwsIllegalArgumentException() {
+        String input = "add invalid /key1 value1";
+        assertThrows(IllegalArgumentException.class, () -> CommandParser.parseCommand(input));
+    }
+
+    @Test
+    void parseCommand_provideTrailingInvalidInput_throwsIllegalArgumentException() {
+        String input = "add softwareinvalid /key1 value1";
+        assertThrows(IllegalArgumentException.class, () -> CommandParser.parseCommand(input));
+    }
 
     @Test
     void parseKeyValuePairs_emptyInput_returnsNull() {

@@ -2,6 +2,8 @@ package seedu.internsprint.logic.parser;
 
 import seedu.internsprint.util.InternSprintLogger;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -57,7 +59,6 @@ public class DateTimeParser {
     public static LocalTime parseTimeInput(String input) {
         logger.info("Parsing time only input");
         input = normalizeTimeInput(input);
-        System.out.println("Normalized input: " + input);
         Date date = extractDate(input);
         return LocalTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
     }
@@ -103,6 +104,10 @@ public class DateTimeParser {
      */
     private static Date extractDate(String input) {
         logger.info("Extracting date object from input");
+
+        ByteArrayOutputStream nattyErrorStream = new ByteArrayOutputStream();
+        System.setErr(new PrintStream(nattyErrorStream));
+
         Parser parser = new Parser();
         List<DateGroup> groups = parser.parse(input);
 
@@ -116,7 +121,7 @@ public class DateTimeParser {
 
         if (!input.toLowerCase().equals(matchedText)) {
             logger.warning("Partial date format found or invalid date");
-            throw new IllegalArgumentException(String.format(PARTIAL_DATE_FORMAT, matchedText));
+            throw new IllegalArgumentException(String.format(PARTIAL_DATE_FORMAT, input, matchedText));
         }
         return group.getDates().get(0);
     }

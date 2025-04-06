@@ -25,9 +25,10 @@ and easily tracking status of your applications.
     * [Help: `help`](#help-help)
     * [Internship Commands](#internship-commands)
         * [Listing all internships: `list`](#listing-all-internships-list)
-        * [Adding a general category of internship: `add general`](#adding-a-general-category-of-internship-add-general)
-        * [Adding a software category of internship: `add software`](#adding-a-software-category-of-internship-add-software)
-        * [Adding a hardware category of internship: `add hardware`](#adding-a-hardware-category-of-internship-add-hardware)
+        * [Adding a new internship: `add [TYPE]`](#adding-a-new-internship-add-type)
+          * [Adding a general category of internship: `add general`](#adding-a-general-category-of-internship-add-general)
+          * [Adding a software category of internship: `add software`](#adding-a-software-category-of-internship-add-software)
+          * [Adding a hardware category of internship: `add hardware`](#adding-a-hardware-category-of-internship-add-hardware)
         * [Editing an internship: `edit`](#editing-an-internship-edit)
         * [Deleting an internship: `delete`](#deleting-an-internship-delete)
         * [Finding internships: `find`](#finding-internships-find)
@@ -95,6 +96,14 @@ and easily tracking status of your applications.
 
 ## Features
 
+> **Notes about the command format:**
+> * Words in `UPPER_CASE` are the parameters to be supplied by the user.
+> * Items in square brackets `[...]` are optional.
+> * `/` is a reserved character to represent flag prefixes. It should not be used to give the value of any parameter.
+>   Use hyphens (`-`) instead.
+
+<div style="page-break-after: always;"></div>
+
 ### Internship Commands
 
 ### Help: `help`
@@ -143,13 +152,28 @@ Example of usage:
 
 ---
 
+### Adding a new internship: `add [TYPE]`
+
+Internships are categorized into 3 types: `general`, `software` and `hardware`.
+
+They have multiple parameters that can be set, and some of them are optional.
+* The `COMPANY_NAME`, `ROLE` and `DEPARTMENT/TECHNOLOGIES` must be unique to the list of internships and are mandatory
+  parameters. They cannot be blank.
+* Adding an internship with the same company name, role and department/technologies as an existing internship is not
+  allowed and will result in an error message.
+* The `DESCRIPTION`, `ELIGIBILITY`, `EXPECTATIONS` and `STATUS` are optional parameters.
+
+Examples of usage for each type of internship can be found below.
+
+---
+
 ### Adding a general category of internship: `add general`
 Allows users to add a new general internship to their list of internship applications.
 
 Basic Format: `add general /c COMPANY_NAME /r ROLE /dept DEPARTMENT`
 
 Extended Format (with optional parameters): `add general /c COMPANY_NAME /r ROLE /ex EXPECTATIONS /eli ELIGIBILITY 
-/dept DEPARTMENT /desc DESCRIPTION`
+/dept DEPARTMENT /desc DESCRIPTION /status STATUS`
 
 * The `COMPANY_NAME`, `ROLE` and `DEPARTMENT` must be unique to the list of internships and are mandatory parameters.
 
@@ -181,7 +205,7 @@ Allows users to add a new software internship to their list of internship applic
 Basic Format: `add software /c COMPANY_NAME /r ROLE /tech TECHNOLOGIES`
 
 Extended Format (with optional parameters): `add software /c COMPANY_NAME /r ROLE /ex EXPECTATIONS /eli ELIGIBILITY
-/tech TECHNOLOGIES /desc DESCRIPTION`
+/tech TECHNOLOGIES /desc DESCRIPTION /status STATUS`
 
 * The `COMPANY_NAME`, `ROLE` and `TECHNOLOGIES` must be unique to the list of internships and are mandatory parameters.
 
@@ -214,7 +238,7 @@ Allows users to add a new hardware internship to their list of internship applic
 Basic Format: `add hardware /c COMPANY_NAME /r ROLE /hardtech HARDWARE_TECHNOLOGIES`
 
 Extended Format (with optional parameters): `add hardware /c COMPANY_NAME /r ROLE /ex EXPECTATIONS /eli ELIGIBILITY
-/hardtech HARDWARE_TECHNOLOGIES /desc DESCRIPTION`
+/hardtech HARDWARE_TECHNOLOGIES /desc DESCRIPTION /status STATUS`
 
 * The `COMPANY_NAME`, `ROLE` and `HARDWARE_TECHNOLOGIES` must be unique to the list of internships and are
   mandatory parameters.
@@ -360,6 +384,7 @@ Extended Format (With optional parameters): `interviewfor /index INDEX_OF_INTERN
 * Duplicate interviews are not allowed. However, adding interviews with different parameters for the same index
   of internship is allowed as it will add multiple rounds of interviews for that particular internship.
 * The `INDEX_OF_INTERNSHIP` should not be out of range of the internship list.
+* Refer to [Date and Time Formats](#date-and-time-formats) for acceptable date and time formats.
 
 Example of usage:
 <div style="font-size: 0.85em;">
@@ -375,6 +400,8 @@ Example of usage:
 </div>
 
 ---
+
+<div style="page-break-after: always;"></div>
 
 ### Sorting all interviews added by date: `sortInterviews`
 Allows users to sort all rounds of interviews added across multiple internships by date.
@@ -409,8 +436,14 @@ Example of usage:
 ### Updating user profile information: `my`
 Allows users to update user profile information with details such as name, or preferrred industries, roles
 or companies.
-Basic Format: `my /c COMPANIES_YOU_PREFER /r ROLES_YOU_PREFER /ygoals YEARLY_GOALS /mgoals MONTHLY_GOALS /pay PAY_RANGE
+Basic Format: `my /c COMPANIES_YOU_PREFER /r ROLES_YOU_PREFER /ygoals YEARLY_GOALS /mgoals MONTHLY_GOALS /pay MIN_PAY-MAX_PAY
                  /ind INDUSTRIES_YOU_PREFER /time TIME_RANGE /name YOUR_NAME`
+
+***NOTE:***  When entering pay range `/pay MIN_PAY - MAX_PAY`, ensure minimum and maximum are both numerical values with minimum less than maximum,
+and separate the two with a hyphen "-". Otherwise, you will be prompted again to re-enter these details. 
+
+Do note there is no date-time format mandatory for your preferred `/time TIME_RANGE`, so that you may enter any string such as "Semester 1" or even "Next year" as per your 
+convenience.
 
 > This format shows you all the possible flags or parameters you can set for an internship, however they are ALL optional
 > (as-needed basis) -
@@ -560,6 +593,7 @@ Basic Format: `view general`
   data for their CVs and job applications, hence all data is output in neat ASCII tables which can be copied and pasted into
   required contexts.
 
+<div style="page-break-after: always;"></div>
 
 Examples of usage:
 <div style="font-size: 0.85em;">
@@ -631,6 +665,7 @@ Basic Format: `view hardware`
   data for their CVs and job applications, hence all data is output in neat ASCII tables which can be copied and pasted into
   required contexts.
 
+<div style="page-break-after: always;"></div>
 
 Examples of usage:
 <div style="font-size: 0.85em;">
@@ -700,6 +735,8 @@ Relative dates are also accepted:
 - tomorrow
 - next Friday
 
+> Provide only valid dates in the command line. `Natty` cannot read years after 10000, which is not valid in this era.
+
 ---
 
 ## FAQ
@@ -711,6 +748,8 @@ the same subdirectory of `[JAR file location]/data`. This will ensure your data 
 should be only one `internships.txt` in the location.
 
 ---
+
+<div style="page-break-after: always;"></div>
 
 ## Command Summary
 
