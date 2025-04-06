@@ -126,7 +126,7 @@ public class CommandParser {
             command = new ProjectHardwareCommand();
             break;
         default:
-            throw new IllegalArgumentException(String.format(INVALID_COMMAND_TYPE, commandType));
+            throw new IllegalArgumentException(INVALID_COMMAND_TYPE);
         }
         parseKeyValuePairs(params, command);
         return command;
@@ -144,7 +144,7 @@ public class CommandParser {
             "view user"};
         for (String command : flagCommands) {
             if (userInput.toLowerCase().startsWith(command)) {
-                return new String[]{command, userInput.substring(command.length()).trim()};
+                return new String[]{userInput, userInput.substring(command.length()).trim()};
             }
         }
         String[] commandTypeAndParams = userInput.split(" ", 2);
