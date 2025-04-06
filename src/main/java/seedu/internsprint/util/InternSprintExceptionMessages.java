@@ -8,8 +8,8 @@ public class InternSprintExceptionMessages {
     public static final String REPEATED_FLAG = "Repeated flag found: %s";
 
     public static final String INVALID_DATE_FORMAT = "Invalid date format or no date found";
-    public static final String PARTIAL_DATE_FORMAT = "Some input words is not recognized as a date. \n"
-        + "    Date interpreted is: %s. Please give a better format.";
+    public static final String PARTIAL_DATE_FORMAT = "Some input words is not recognized as a date/time. \n"
+        + "    Date/Time interpreted from %s is: %s. Please give a better format.";
     public static final String END_TIME_BEFORE_START_TIME = "Interview start time cannot be after end time.";
 
     public static final String UNABLE_TO_CREATE_DIRECTORY = "Unable to create directory: %s";
@@ -40,6 +40,10 @@ public class InternSprintExceptionMessages {
             + "    The user profile command works as mentioned below:";
     public static final String INVALID_CATEGORY_ERROR = "Invalid type provided: Valid types are: " +
             "software, hardware, general.";
+    public static final String NOTE_NO_PARAMETERS = "You provided no parameters," +
+            "but in any case here is the correct message usage and your profile information for reference.";
+    public static final String INVALID_STIPEND_RANGE = "Invalid stipend range. " +
+            "Please use the format 'min-max' where min < max.";
     public static final String INVALID_INDEX_ERROR = "Invalid index: Please enter a valid index within the list.";
     public static final String ADD_INTERVIEW_INVALID_PARAMS = "You have not entered a valid parameter.\n"
             + "    The addition of an interview command works as mentioned below:";
