@@ -1,6 +1,9 @@
 package seedu.internsprint.model.internship.interview;
 
 import org.json.JSONObject;
+
+import de.vandermeer.asciitable.AsciiTable;
+import de.vandermeer.asciitable.CWC_LongestLine;
 import seedu.internsprint.exceptions.DuplicateEntryException;
 import seedu.internsprint.logic.parser.DateTimeParser;
 import seedu.internsprint.util.InternSprintLogger;
@@ -8,6 +11,7 @@ import seedu.internsprint.util.InternSprintLogger;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Logger;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.DUPLICATE_INTERVIEW;
@@ -110,28 +114,50 @@ public class Interview {
 
     public ArrayList<String> toDescription() {
         ArrayList<String> interviewString = new ArrayList<>();
-        if (roundCounter == 0) {
-            interviewString.add("Interview Details:");
-        } else {
-            interviewString.add("Round 1 Interview Details:");
-        }
-        interviewString.add("    Date: " + interviewDate);
-        interviewString.add("    Start Time: " + interviewStartTime);
-        interviewString.add("    End Time: " + interviewEndTime);
-        interviewString.add("    Interview Type: " + interviewType);
-        if (interviewerEmail != null) {
-            interviewString.add("    Interviewer Email: " + interviewerEmail);
-        }
-        if (notes != null) {
-            interviewString.add("    Notes: " + notes);
-        }
+        interviewString.add("Interview details:");
+
+        AsciiTable at = new AsciiTable();
+
+        CWC_LongestLine cwc = new CWC_LongestLine();
+        cwc.add(7, 7);   // Round No.
+        cwc.add(12, 12); // Interview Date
+        cwc.add(10, 10); // Start Time
+        cwc.add(10, 10); // End Time
+        cwc.add(10, 10); // Interview Type
+        cwc.add(25, 25); // Interviewer Email
+        cwc.add(30, 30); // Notes
+        at.getRenderer().setCWC(cwc);
+
+        at.addRule();
+        at.addRow("Round No.", "Interview Date", "Start Time", "End Time", "Interview Type", "Interviewer Email", "Notes");
+        at.addRule();
+
+        at.addRow(
+            "1",
+            getUnformattedInterviewDate(),
+            getUnformattedInterviewStartTime(),
+            getUnformattedInterviewEndTime(),
+            getInterviewType(),
+            getInterviewerEmail() == null ? "N/A" : getInterviewerEmail(),
+            getNotes() == null ? "N/A" : getNotes()
+        );
+        at.addRule();
 
         if (roundCounter != 0) {
             for (int i = 0; i < nextRounds.size(); i++) {
-                interviewString.add("Round " + (i + 2) + " Interview Details:");
-                interviewString.add("    " + nextRounds.get(i).toDescription());
+                at.addRow(
+                    String.valueOf(i + 2),
+                    nextRounds.get(i).getUnformattedInterviewDate(),
+                    nextRounds.get(i).getUnformattedInterviewStartTime(),
+                    nextRounds.get(i).getUnformattedInterviewEndTime(),
+                    nextRounds.get(i).getInterviewType(),
+                    nextRounds.get(i).getInterviewerEmail() == null ? "N/A" : nextRounds.get(i).getInterviewerEmail(),
+                    nextRounds.get(i).getNotes() == null ? "N/A" : nextRounds.get(i).getNotes()
+                );
+                at.addRule();
             }
         }
+        interviewString.addAll(Arrays.asList(at.renderAsArray()));
 
         return interviewString;
     }
