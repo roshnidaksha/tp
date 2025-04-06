@@ -35,7 +35,7 @@ public class InternSprintExceptionMessages {
     public static final String LIST_INVALID_PARAMS = "You have entered invalid parameters to the list command.\n"
             + "    The list command works as mentioned below:";
     public static final String SORT_INTERVIEWS_INVALID_PARAMS = "You have entered invalid parameters to the sort " +
-            "command.\n The sortInterviews command works as mentioned below:";
+            "command.\n The sort interviews command works as mentioned below:";
     public static final String USERPROFILE_INVALID_PARAMS = "You have not entered a valid parameter to user profile.\n"
             + "    The user profile command works as mentioned below:";
     public static final String INVALID_CATEGORY_ERROR = "Invalid type provided: Valid types are: " +

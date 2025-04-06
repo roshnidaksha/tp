@@ -33,8 +33,8 @@ and easily tracking status of your applications.
         * [Finding internships: `find`](#finding-internships-find)
         * [Viewing extended description of a specific internship:
           `desc`](#viewing-extended-description-of-a-specific-internship-desc)
-        * [Adding interviews for internships: `interviewfor`](#adding-interviews-for-internships-interviewfor)
-        * [Sorting all interviews added by date: `sortInterviews`](#sorting-all-interviews-added-by-date-sortinterviews)
+        * [Adding interviews for internships: `interview for`](#adding-interviews-for-internships-interview-for)
+        * [Sorting all interviews added by date: `sort interviews`](#sorting-all-interviews-added-by-date-sort-interviews)
     * [User Commands](#user-commands)
         * [Updating user profile information: `my`](#updating-user-profile-information-my)
         * [Viewing user profile information: `view user`](#viewing-user-profile-information-view-user)
@@ -349,12 +349,12 @@ Example of usage:
 
 ---
 
-### Adding interviews for internships: `interviewfor`
+### Adding interviews for internships: `interview for`
 Allows users to add multiple rounds of interviews for each internship added.
 
-Basic Format: `interviewfor /index INDEX_OF_INTERNSHIP /date DATE /start START_TIME /end END_TIME /type TYPE`
+Basic Format: `interview for /index INDEX_OF_INTERNSHIP /date DATE /start START_TIME /end END_TIME /type TYPE`
 
-Extended Format (With optional parameters): `interviewfor /index INDEX_OF_INTERNSHIP /date DATE /start START_TIME 
+Extended Format (With optional parameters): `interview for /index INDEX_OF_INTERNSHIP /date DATE /start START_TIME 
 /end END_TIME /type TYPE /email INTERVIEWER_EMAIL /notes NOTES`
 
 * Duplicate interviews are not allowed. However, adding interviews with different parameters for the same index
@@ -364,7 +364,7 @@ Extended Format (With optional parameters): `interviewfor /index INDEX_OF_INTERN
 Example of usage:
 <div style="font-size: 0.85em;">
 <pre><code>
-> interviewfor /index 1 /date 2025-01-01 /start 10:00 /end 14:00 /type technical round
+> interview for /index 1 /date 2025-01-01 /start 10:00 /end 14:00 /type technical round
 ------------------------------------------------------------------------------------------------------------------------
     Internships saved successfully
     You can view the list of internships at data/internships.txt
@@ -376,15 +376,15 @@ Example of usage:
 
 ---
 
-### Sorting all interviews added by date: `sortInterviews`
+### Sorting all interviews added by date: `sort interviews`
 Allows users to sort all rounds of interviews added across multiple internships by date.
 
-Format: `sortInterviews`
+Format: `sort interviews`
 
 Example of usage:
 <div style="font-size: 0.85em;">
 <pre><code>
-> sortInterviews
+> sort interviews
 ------------------------------------------------------------------------------------------------------------------------
     Here are your interviews sorted by date and time:
     1. google - intern
@@ -714,25 +714,25 @@ should be only one `internships.txt` in the location.
 
 ## Command Summary
 
-| Command            | Format                                                                                                                                                                 |
-|--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Command             | Format                                                                                                                                                                 |
+|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Internship Commands |
-| `add general`      | `add general /c COMPANY_NAME /r ROLE /dept DEPARTMENT`                                                                                                                 |
-| `add software`     | `add software /c COMPANY_NAME /r ROLE /tech TECHNOLOGIES`                                                                                                              |
-| `add hardware`     | `add hardware /c COMPANY_NAME /r ROLE /hardtech HARDWARE_TECHNOLOGIES`                                                                                                 |
-| `edit`             | `edit /index INDEX_OF_INTERNSHIP`                                                                                                                                      |
-| `delete`           | `delete /index INDEX_OF_INTERNSHIP`                                                                                                                                    |
-| `find`             | `find [TYPE] [/c COMPANY_NAME] [\r ROLE]`                                                                                                                              |
-| `desc`             | `desc /index INDEX_OF_INTERNSHIP`                                                                                                                                      |
-| `interviewfor`     | `interviewfor /index INDEX_OF_INTERNSHIP /date DATE /start START_TIME /end END_TIME /type TYPE [/email INTERVIEWER_EMAIL] [/notes NOTES]`                              |
-| `sortInterviews`   | `sortInterviews`                                                                                                                                                       |
-| User Commands      |                                                                                                                                                                        |
-| `my`               | `my /c COMPANIES_YOU_PREFER /r ROLES_YOU_PREFER /ygoals YEARLY_GOALS /mgoals MONTHLY_GOALS /pay PAY_RANGE /ind INDUSTRIES_YOU_PREFER /time TIME_RANGE /name YOUR_NAME` |
-| `view user`        | `view user`                                                                                                                                                            |
-| `project general`  | `project general /n PROJECT_NAME /r ROLE /dept DEPARTMENT /obj OBJECTIVES /desc DESCRIPTION /dur DURATION`                                                             |
-| `project software` | `project software /n PROJECT_NAME /r ROLE /dept DEPARTMENT /pro PROGRAMMING_LANGUAGES /obj OBJECTIVES /desc DESCRIPTION /dur DURATION`                                 |
-| `project hardware` | `project hardware /n PROJECT_NAME /r ROLE /dept DEPARTMENT /hcomp HARDWARE_COMPONENTS /obj OBJECTIVES /desc DESCRIPTION /dur DURATION`                                 |
-| `view general`     | `view general`                                                                                                                                                         |
-| `view software`    | `view software`                                                                                                                                                        |
-| `view hardware`    | `view hardware`                                                                                                                                                        |
+| `add general`       | `add general /c COMPANY_NAME /r ROLE /dept DEPARTMENT`                                                                                                                 |
+| `add software`      | `add software /c COMPANY_NAME /r ROLE /tech TECHNOLOGIES`                                                                                                              |
+| `add hardware`      | `add hardware /c COMPANY_NAME /r ROLE /hardtech HARDWARE_TECHNOLOGIES`                                                                                                 |
+| `edit`              | `edit /index INDEX_OF_INTERNSHIP`                                                                                                                                      |
+| `delete`            | `delete /index INDEX_OF_INTERNSHIP`                                                                                                                                    |
+| `find`              | `find [TYPE] [/c COMPANY_NAME] [\r ROLE]`                                                                                                                              |
+| `desc`              | `desc /index INDEX_OF_INTERNSHIP`                                                                                                                                      |
+| `interview for`     | `interview for /index INDEX_OF_INTERNSHIP /date DATE /start START_TIME /end END_TIME /type TYPE [/email INTERVIEWER_EMAIL] [/notes NOTES]`                             |
+| `sort interviews`   | `sort interviews`                                                                                                                                                      |
+| User Commands       |                                                                                                                                                                        |
+| `my`                | `my /c COMPANIES_YOU_PREFER /r ROLES_YOU_PREFER /ygoals YEARLY_GOALS /mgoals MONTHLY_GOALS /pay PAY_RANGE /ind INDUSTRIES_YOU_PREFER /time TIME_RANGE /name YOUR_NAME` |
+| `view user`         | `view user`                                                                                                                                                            |
+| `project general`   | `project general /n PROJECT_NAME /r ROLE /dept DEPARTMENT /obj OBJECTIVES /desc DESCRIPTION /dur DURATION`                                                             |
+| `project software`  | `project software /n PROJECT_NAME /r ROLE /dept DEPARTMENT /pro PROGRAMMING_LANGUAGES /obj OBJECTIVES /desc DESCRIPTION /dur DURATION`                                 |
+| `project hardware`  | `project hardware /n PROJECT_NAME /r ROLE /dept DEPARTMENT /hcomp HARDWARE_COMPONENTS /obj OBJECTIVES /desc DESCRIPTION /dur DURATION`                                 |
+| `view general`      | `view general`                                                                                                                                                         |
+| `view software`     | `view software`                                                                                                                                                        |
+| `view hardware`     | `view hardware`                                                                                                                                                        |
 | `bye`               | `bye`                                                                                                                                                                  |

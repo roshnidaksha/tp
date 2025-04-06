@@ -74,10 +74,10 @@ public class CommandParser {
         case "add general":
             command = new AddGeneralInternshipCommand();
             break;
-        case "interviewfor":
+        case "interview for":
             command = new AddInterviewCommand();
             break;
-        case "sortInterviews":
+        case "sort interviews":
             command = new SortInterviewCommand();
             break;
         case "bye":
@@ -141,7 +141,7 @@ public class CommandParser {
     private static String[] splitCommandTypeAndParams(String userInput) {
         String[] flagCommands = {"add software", "add hardware", "add general", "edit", "my", "project general",
             "project software", "project hardware", "view software", "view hardware", "view general",
-            "view user"};
+            "view user", "sort interviews", "interview for"};
         for (String command : flagCommands) {
             if (userInput.toLowerCase().startsWith(command)) {
                 return new String[]{command, userInput.substring(command.length()).trim()};

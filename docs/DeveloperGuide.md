@@ -852,24 +852,24 @@ the internship. You may `list` all internships to confirm. (Can check optional p
 
 **2.8 Adding interviews for internships**
 
-1. Test case: `interviewfor `
+1. Test case: `interview for `
 
     Expected: Should output error highlighting correct usage of add interview command.
 
 
-2. Test case: `interviewfor /index 1 /date 2025-01-01 /start 10:00 /end 14:00 /type technical round`
+2. Test case: `interview for /index 1 /date 2025-01-01 /start 10:00 /end 14:00 /type technical round`
 
     Expected: Should correctly add a technical interview to the internship in the list at index 1 with above timings.
 (You can potentially explore adding more optional parameter according to user guide. You may `desc` this index internship to confirm it will not appear on listing.)
 
 
-3. Test case: `interviewfor /date 2025-01-01 /start 10:00 /end 14:00 /type technical round`
+3. Test case: `interview for /date 2025-01-01 /start 10:00 /end 14:00 /type technical round`
 
     Expected: Should output error highlighting no index/invalid parameters. 
 
 **2.9 Sorting interviews for internships**
 
-1. Test case: `sortInterviews `
+1. Test case: `sort interviews `
 
     Expected: Should sort all rounds of interviews added across multiple internships by date.
 
