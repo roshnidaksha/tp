@@ -12,6 +12,7 @@ import java.util.Arrays;
 import static seedu.internsprint.util.InternSprintExceptionMessages.USERPROFILE_INVALID_PARAMS;
 import static seedu.internsprint.util.InternSprintMessages.USER_UPDATE_SUCCESS_MESSAGE;
 import static seedu.internsprint.util.InternSprintExceptionMessages.INVALID_STIPEND_RANGE;
+import static seedu.internsprint.util.InternSprintExceptionMessages.NOTE_NO_PARAMETERS;
 
 
 import java.util.logging.Logger;
@@ -81,6 +82,14 @@ public class UserProfileCommand extends Command {
             result.setSuccessful(false);
             return result;
         }
+        if (parameters.isEmpty()){
+            feedback.add(NOTE_NO_PARAMETERS);
+            feedback.add(MESSAGE_USAGE);
+            feedback.add(user.toString());
+            result = new CommandResult(feedback);
+            result.setSuccessful(true);
+            return result;
+        }
 
         boolean wrongInputByUser = setUserProfileAttributes(user,feedback);
         if (wrongInputByUser){
@@ -94,6 +103,7 @@ public class UserProfileCommand extends Command {
             logger.log(Level.WARNING, "There was an error saving the profile.");
             return result;
         }
+
 
         feedback.add(USER_UPDATE_SUCCESS_MESSAGE);
         feedback.add(user.toString());

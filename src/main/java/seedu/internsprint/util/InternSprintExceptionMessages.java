@@ -40,6 +40,8 @@ public class InternSprintExceptionMessages {
             + "    The user profile command works as mentioned below:";
     public static final String INVALID_CATEGORY_ERROR = "Invalid type provided: Valid types are: " +
             "software, hardware, general.";
+    public static final String NOTE_NO_PARAMETERS = "You provided no parameters," +
+            "but in any case here is the correct message usage and your profile information for reference.";
     public static final String INVALID_STIPEND_RANGE = "Invalid stipend range. " +
             "Please use the format 'min-max' where min < max.";
     public static final String INVALID_INDEX_ERROR = "Invalid index: Please enter a valid index within the list.";
