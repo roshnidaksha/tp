@@ -1,5 +1,6 @@
 package seedu.internsprint.model.internship;
 
+import de.vandermeer.asciitable.AsciiTable;
 import seedu.internsprint.exceptions.DuplicateEntryException;
 import seedu.internsprint.model.internship.interview.Interview;
 

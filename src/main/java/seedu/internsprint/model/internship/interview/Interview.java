@@ -1,5 +1,6 @@
 package seedu.internsprint.model.internship.interview;
 
+import de.vandermeer.asciitable.AsciiTable;
 import org.json.JSONObject;
 import seedu.internsprint.exceptions.DuplicateEntryException;
 import seedu.internsprint.logic.parser.DateTimeParser;
@@ -134,6 +135,35 @@ public class Interview {
         }
 
         return interviewString;
+    }
+
+    public String toAsciiTableFormattedDescription() {
+        AsciiTable at = new AsciiTable();
+        at.addRule();
+
+        at.addRow("Interview Date", getInterviewDate() != null ? getInterviewDate() : "N/A");
+        at.addRule();
+
+        at.addRow("Start Time", getInterviewStartTime() != null ? getInterviewStartTime() : "N/A");
+        at.addRule();
+
+        at.addRow("End Time", getInterviewEndTime() != null ? getInterviewEndTime() : "N/A");
+        at.addRule();
+
+        at.addRow("Interview Type", getInterviewType() != null ? getInterviewType() : "N/A");
+        at.addRule();
+
+        if (getInterviewerEmail() != null) {
+            at.addRow("Interviewer Email", getInterviewerEmail());
+            at.addRule();
+        }
+
+        if (getNotes() != null) {
+            at.addRow("Notes", getNotes());
+            at.addRule();
+        }
+
+        return at.render();
     }
 
     public boolean equals(Interview interview) {

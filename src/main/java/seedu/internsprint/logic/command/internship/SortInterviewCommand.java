@@ -77,19 +77,23 @@ public class SortInterviewCommand extends Command {
                 assert interview != null : "Interview cannot be null";
 
                 feedback.add((i + 1) + ". " + internship.getCompanyName() + " - " + internship.getRole());
-                feedback.add("    Date: " + interview.getUnformattedInterviewDate());
-                feedback.add("    Start: " + interview.getUnformattedInterviewStartTime());
-                feedback.add("    End: " + interview.getUnformattedInterviewEndTime());
-                feedback.add("    Type: " + interview.getInterviewType());
+                feedback.add(interview.toAsciiTableFormattedDescription());
+                feedback.add(""); // For spacing between entries
 
-                if (interview.getInterviewerEmail() != null) {
-                    feedback.add("    Email: " + interview.getInterviewerEmail());
-                }
-
-                if (interview.getNotes() != null) {
-                    feedback.add("    Notes: " + interview.getNotes());
-                }
-                feedback.add("");
+//                feedback.add((i + 1) + ". " + internship.getCompanyName() + " - " + internship.getRole());
+//                feedback.add("    Date: " + interview.getUnformattedInterviewDate());
+//                feedback.add("    Start: " + interview.getUnformattedInterviewStartTime());
+//                feedback.add("    End: " + interview.getUnformattedInterviewEndTime());
+//                feedback.add("    Type: " + interview.getInterviewType());
+//
+//                if (interview.getInterviewerEmail() != null) {
+//                    feedback.add("    Email: " + interview.getInterviewerEmail());
+//                }
+//
+//                if (interview.getNotes() != null) {
+//                    feedback.add("    Notes: " + interview.getNotes());
+//                }
+//                feedback.add("");
             }
         }
 
