@@ -1,7 +1,16 @@
-[{
-    "role": "IT Intern",
-    "companyName": "UBS",
-    "type": "general",
-    "department": "IT",
-    "internshipId": 0
-}]
+[
+    {
+        "role": "IT Intern",
+        "companyName": "UBS",
+        "type": "general",
+        "department": "IT",
+        "internshipId": 0
+    },
+    {
+        "role": "djjd",
+        "companyName": "djdj",
+        "type": "general",
+        "department": "jj",
+        "internshipId": 1
+    }
+]

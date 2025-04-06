@@ -5,7 +5,6 @@ import seedu.internsprint.logic.command.CommandResult;
 import seedu.internsprint.logic.parser.CommandParser;
 import seedu.internsprint.model.internship.InternshipList;
 import seedu.internsprint.model.userprofile.UserProfile;
-import seedu.internsprint.model.userprofile.project.ProjectList;
 import seedu.internsprint.storage.StorageManager;
 import seedu.internsprint.util.InternSprintLogger;
 import seedu.internsprint.util.Ui;
@@ -22,13 +21,11 @@ public class InternSprint {
     private final StorageManager storageManager;
     private final InternshipList internships;
     private final UserProfile user;
-    private final ProjectList projects;
 
     public InternSprint() {
         storageManager = StorageManager.getInstance();
         internships = new InternshipList();
         user = new UserProfile();
-        projects = new ProjectList();
     }
 
     /**
@@ -58,19 +55,33 @@ public class InternSprint {
         CommandResult interviewResult = storageManager.loadInterviewData(internships);
         CommandResult profileResult = storageManager.loadUserProfileData(user);
         CommandResult projectResult = storageManager.loadProjectData(user.projects);
-        Ui.showResultToUser(internshipResult);
+        if (!internshipResult.isSuccessful()) {
+            Ui.showResultToUser(internshipResult);
+        }
+        if (!interviewResult.isSuccessful()) {
+            Ui.showResultToUser(interviewResult);
+        }
+        if (!projectResult.isSuccessful()) {
+            Ui.showResultToUser(projectResult);
+        }
+        if (!profileResult.isSuccessful()) {
+            Ui.showResultToUser(profileResult);
+        }
+        if (internshipResult.isSuccessful()) {
+            Ui.showResultToUser(internshipResult);
+        }
+
         return interviewResult.isSuccessful() && internshipResult.isSuccessful()
-            && profileResult.isSuccessful() && projectResult.isSuccessful();
+                && profileResult.isSuccessful() && projectResult.isSuccessful();
     }
 
     /**
      * Reads the user command and executes it, until the user issues the exit command.
      */
     private void runCommandLoopUntilExitCommand() {
-        logger.log(Level.INFO, "Loading internships from storage");
+        logger.log(Level.INFO, "Loading internships helfrom storage");
         boolean isLoadingSuccessful = loadData();
         if (!isLoadingSuccessful) {
-            Ui.showError("Unable to load data from storage. Please check your file.");
             return;
         }
         logger.log(Level.INFO, "Data loaded successfully");
@@ -85,7 +96,6 @@ public class InternSprint {
                 logger.log(Level.INFO, "Parsed Command: " + command);
                 result = command.execute(internships, user);
                 logger.log(Level.INFO, "Command executed successfully");
-
                 Ui.showResultToUser(result);
                 isExit = result.isExit();
             } catch (IllegalArgumentException e) {
