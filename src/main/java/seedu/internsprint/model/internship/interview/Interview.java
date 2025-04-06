@@ -141,13 +141,16 @@ public class Interview {
         AsciiTable at = new AsciiTable();
         at.addRule();
 
-        at.addRow("Interview Date", getInterviewDate() != null ? getInterviewDate() : "N/A");
+        at.addRow("Interview Date", getUnformattedInterviewDate() != null ? getUnformattedInterviewDate() :
+                "N/A");
         at.addRule();
 
-        at.addRow("Start Time", getInterviewStartTime() != null ? getInterviewStartTime() : "N/A");
+        at.addRow("Start Time", getUnformattedInterviewStartTime() != null ? getUnformattedInterviewStartTime()
+                : "N/A");
         at.addRule();
 
-        at.addRow("End Time", getInterviewEndTime() != null ? getInterviewEndTime() : "N/A");
+        at.addRow("End Time", getUnformattedInterviewEndTime() != null ? getUnformattedInterviewEndTime() :
+                "N/A");
         at.addRule();
 
         at.addRow("Interview Type", getInterviewType() != null ? getInterviewType() : "N/A");

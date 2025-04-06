@@ -1,7 +1,8 @@
 package seedu.internsprint.util;
 
 public class InternSprintExceptionMessages {
-    public static final String INVALID_COMMAND_TYPE = "Unknown command type: %s";
+    public static final String INVALID_COMMAND_TYPE = "Unknown command type provided.\n"
+        + "    Please check the command type and try again.";
     public static final String ILLEGAL_VALUE_INPUT = "Illegal input: Unexpected '/' found in value for key";
     public static final String MISSING_VALUE_INPUT = "Invalid input: key %s found with no value.";
     public static final String MISSING_REQUIRED_PARAMETERS = "Missing required parameters: %s";
@@ -35,11 +36,15 @@ public class InternSprintExceptionMessages {
     public static final String LIST_INVALID_PARAMS = "You have entered invalid parameters to the list command.\n"
             + "    The list command works as mentioned below:";
     public static final String SORT_INTERVIEWS_INVALID_PARAMS = "You have entered invalid parameters to the sort " +
-            "command.\n The sortInterviews command works as mentioned below:";
+            "command.\n The sort interviews command works as mentioned below:";
     public static final String USERPROFILE_INVALID_PARAMS = "You have not entered a valid parameter to user profile.\n"
             + "    The user profile command works as mentioned below:";
     public static final String INVALID_CATEGORY_ERROR = "Invalid type provided: Valid types are: " +
             "software, hardware, general.";
+    public static final String NOTE_NO_PARAMETERS = "You provided no parameters," +
+            "but in any case here is the correct message usage and your profile information for reference.";
+    public static final String INVALID_STIPEND_RANGE = "Invalid stipend range. " +
+            "Please use the format 'min-max' where min < max.";
     public static final String INVALID_INDEX_ERROR = "Invalid index: Please enter a valid index within the list.";
     public static final String ADD_INTERVIEW_INVALID_PARAMS = "You have not entered a valid parameter.\n"
             + "    The addition of an interview command works as mentioned below:";
