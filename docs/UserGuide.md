@@ -2,7 +2,9 @@
 ## Introduction
 
 ***InternSprint is your Ultimate Internship Application Assistant!***
-
+<div align="center">
+<img src="images/UGImages/welcome_is.png" alt="WelcomeToInternsprintSS" width="100%">
+</div>
 Navigating internship applications can be overwhelming - multiple platforms, countless CV versions, and keeping track
 of application stages can quickly become chaotic. InternSprint is here to streamline the entire process, acting as your
 personal assistant for managing and organizing internship applications efficiently.
