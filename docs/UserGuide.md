@@ -2,7 +2,9 @@
 ## Introduction
 
 ***InternSprint is your Ultimate Internship Application Assistant!***
-
+<div align="center">
+<img src="images/UGImages/welcome_is.png" alt="WelcomeToInternsprintSS" width="100%">
+</div>
 Navigating internship applications can be overwhelming - multiple platforms, countless CV versions, and keeping track
 of application stages can quickly become chaotic. InternSprint is here to streamline the entire process, acting as your
 personal assistant for managing and organizing internship applications efficiently.
@@ -20,36 +22,37 @@ and easily tracking status of your applications.
 ## Table of Contents
 
 <!-- TOC -->
-  * [Quick Start](#quick-start)
-  * [Features](#features)
+* [Quick Start](#quick-start)
+* [Features](#features)
     * [Help: `help`](#help-help)
     * [Internship Commands](#internship-commands)
-      * [Listing all internships: `list`](#listing-all-internships-list)
-      * [Adding a general category of internship: `add general`](#adding-a-general-category-of-internship-add-general)
-      * [Adding a software category of internship: `add software`](#adding-a-software-category-of-internship-add-software)
-      * [Adding a hardware category of internship: `add hardware`](#adding-a-hardware-category-of-internship-add-hardware)
-      * [Editing an internship: `edit`](#editing-an-internship-edit)
-      * [Deleting an internship: `delete`](#deleting-an-internship-delete)
-      * [Finding internships: `find`](#finding-internships-find)
-      * [Viewing extended description of a specific internship:
-        `desc`](#viewing-extended-description-of-a-specific-internship-desc)
-      * [Adding interviews for internships: `interviewfor`](#adding-interviews-for-internships-interviewfor)
-      * [Sorting all interviews added by date: `sortInterviews`](#sorting-all-interviews-added-by-date-sortinterviews)
+        * [Listing all internships: `list`](#listing-all-internships-list)
+        * [Adding a new internship: `add [TYPE]`](#adding-a-new-internship-add-type)
+          * [Adding a general category of internship: `add general`](#adding-a-general-category-of-internship-add-general)
+          * [Adding a software category of internship: `add software`](#adding-a-software-category-of-internship-add-software)
+          * [Adding a hardware category of internship: `add hardware`](#adding-a-hardware-category-of-internship-add-hardware)
+        * [Editing an internship: `edit`](#editing-an-internship-edit)
+        * [Deleting an internship: `delete`](#deleting-an-internship-delete)
+        * [Finding internships: `find`](#finding-internships-find)
+        * [Viewing extended description of a specific internship:
+          `desc`](#viewing-extended-description-of-a-specific-internship-desc)
+        * [Adding interviews for internships: `interview for`](#adding-interviews-for-internships-interview-for)
+        * [Sorting all interviews added by date: `sort interviews`](#sorting-all-interviews-added-by-date-sort-interviews)
     * [User Commands](#user-commands)
-      * [Updating user profile information: `my`](#updating-user-profile-information-my)
-      * [Viewing user profile information: `view user`](#viewing-user-profile-information-view-user)
-      * [Adding a general category of project: `project general`](#adding-a-general-category-of-project-project-general)
-      * [Adding a software category of project: `project software`](#adding-a-software-category-of-project-project-software)
-      * [Adding a hardware category of project: `project hardware`](#adding-a-hardware-category-of-project-project-hardware)
-      * [Viewing a general category of project: `view general`](#viewing-a-general-category-of-project-view-general)
-      * [Viewing a software category of project: `view software`](#viewing-a-software-category-of-project-view-software)
-      * [Viewing a hardware category of project: `view hardware`](#viewing-a-hardware-category-of-project-view-hardware)
+        * [Updating user profile information: `my`](#updating-user-profile-information-my)
+        * [Viewing user profile information: `view user`](#viewing-user-profile-information-view-user)
+        * [Adding a general category of project: `project general`](#adding-a-general-category-of-project-project-general)
+        * [Adding a software category of project: `project software`](#adding-a-software-category-of-project-project-software)
+        * [Adding a hardware category of project: `project hardware`](#adding-a-hardware-category-of-project-project-hardware)
+        * [Viewing a general category of project: `view general`](#viewing-a-general-category-of-project-view-general)
+        * [Viewing a software category of project: `view software`](#viewing-a-software-category-of-project-view-software)
+        * [Viewing a hardware category of project: `view hardware`](#viewing-a-hardware-category-of-project-view-hardware)
     * [Exit `bye`](#exit-bye)
-  * [Saving the data](#saving-the-data)
-  * [Editing the data file](#editing-the-data-file)
-  * [Date and Time Formats](#date-and-time-formats)
-  * [FAQ](#faq)
-  * [Command Summary](#command-summary)
+* [Saving the data](#saving-the-data)
+* [Editing the data file](#editing-the-data-file)
+* [Date and Time Formats](#date-and-time-formats)
+* [FAQ](#faq)
+* [Command Summary](#command-summary)
 <!-- TOC -->
 
 ## Quick Start
@@ -95,6 +98,13 @@ and easily tracking status of your applications.
 
 ## Features
 
+> **Notes about the command format:**
+> * Words in `UPPER_CASE` are the parameters to be supplied by the user.
+> * Items in square brackets `[...]` are optional.
+> * `/` is a reserved character to represent flag prefixes. It should not be used to give the value of any parameter.
+>   Use hyphens (`-`) instead.
+
+
 ### Internship Commands
 
 ### Help: `help`
@@ -106,15 +116,17 @@ Format: `help` OR `help COMMAND`
 * `help COMMAND` is used to view the usage of the specific command.
 
 Example of usage:
-
-```
+<div style="font-size: 0.85em;">
+<pre><code>
 > help add general
 ------------------------------------------------------------------------------------------------------------------------
     -> add general: Adds a general internship to the internship list.
     Parameters: /c COMPANY_NAME /r ROLE /dept DEPARTMENT
     Example: add general /c Google /r Human Resource /dept HR
 ------------------------------------------------------------------------------------------------------------------------
-```
+</code></pre>
+</div>
+
 ---
 
 ### Listing all internships: `list`
@@ -125,8 +137,8 @@ Format: `list`
 * `list` is used to view the list of all added internships.
 
 Example of usage:
-
-```
+<div style="font-size: 0.85em;">
+<pre><code>
 > list
 ------------------------------------------------------------------------------------------------------------------------
   Here is your internship list!
@@ -136,7 +148,23 @@ Example of usage:
     General Internships:
       2. Company: UBS, Role: IT Intern, Dept: IT
 ------------------------------------------------------------------------------------------------------------------------
-```
+</code></pre>
+</div>
+
+---
+<div style="page-break-after: always;"></div>
+### Adding a new internship: `add [TYPE]`
+
+Internships are categorized into 3 types: `general`, `software` and `hardware`.
+
+They have multiple parameters that can be set, and some of them are optional.
+* The `COMPANY_NAME`, `ROLE` and `DEPARTMENT/TECHNOLOGIES` must be unique to the list of internships and are mandatory
+  parameters. They cannot be blank.
+* Adding an internship with the same company name, role and department/technologies as an existing internship is not
+  allowed and will result in an error message.
+* The `DESCRIPTION`, `ELIGIBILITY`, `EXPECTATIONS` and `STATUS` are optional parameters.
+
+Examples of usage for each type of internship can be found below.
 
 ---
 
@@ -146,29 +174,29 @@ Allows users to add a new general internship to their list of internship applica
 Basic Format: `add general /c COMPANY_NAME /r ROLE /dept DEPARTMENT`
 
 Extended Format (with optional parameters): `add general /c COMPANY_NAME /r ROLE /ex EXPECTATIONS /eli ELIGIBILITY 
-/dept DEPARTMENT /desc DESCRIPTION`
+/dept DEPARTMENT /desc DESCRIPTION /status STATUS`
 
 * The `COMPANY_NAME`, `ROLE` and `DEPARTMENT` must be unique to the list of internships and are mandatory parameters.
 
 Examples of usage:
-
-```
+<div style="font-size: 0.85em;">
+<pre><code>
 > add general /c Google /r Human Resource /dept HR
 ------------------------------------------------------------------------------------------------------------------------
     New internship added
     Company: Google, Role: Human Resource, Dept: HR
     Now you have 1 internships in the list
 ------------------------------------------------------------------------------------------------------------------------
-```
-
-```
+</code></pre>
+<pre><code>
 > add general /c Lazada /r Adviser /dept HR /ex Good Communication /eli Year 2 student
 ------------------------------------------------------------------------------------------------------------------------
     New internship added
     Company: Lazada, Role: Adviser, Dept: HR
     Now you have 2 internships in the list
 ------------------------------------------------------------------------------------------------------------------------
-```
+</code></pre>
+</div>
 
 ---
 
@@ -178,29 +206,31 @@ Allows users to add a new software internship to their list of internship applic
 Basic Format: `add software /c COMPANY_NAME /r ROLE /tech TECHNOLOGIES`
 
 Extended Format (with optional parameters): `add software /c COMPANY_NAME /r ROLE /ex EXPECTATIONS /eli ELIGIBILITY
-/tech TECHNOLOGIES /desc DESCRIPTION`
+/tech TECHNOLOGIES /desc DESCRIPTION /status STATUS`
 
 * The `COMPANY_NAME`, `ROLE` and `TECHNOLOGIES` must be unique to the list of internships and are mandatory parameters.
+<div style="page-break-after: always;"></div>
 
 Examples of usage:
-
-```
+<div style="font-size: 0.85em;">
+<pre><code>
 > add software /c Google /r Software Engineer /tech Java, Python
 ------------------------------------------------------------------------------------------------------------------------
     New internship added
     Company: Google, Role: Software Engineer, Tech: Java, Python
     Now you have 3 internships in the list
 ------------------------------------------------------------------------------------------------------------------------
-```
+</code></pre>
 
-```
+<pre><code>
 > add software /c IBM /r Data Analytics /tech Python, PowerBI /ex Good project showcase
 ------------------------------------------------------------------------------------------------------------------------
     New internship added
     Company: IBM, Role: Data Analytics, Tech: Python, PowerBI
     Now you have 4 internships in the list
 ------------------------------------------------------------------------------------------------------------------------
-```
+</code></pre>
+</div>
 
 ---
 
@@ -210,30 +240,30 @@ Allows users to add a new hardware internship to their list of internship applic
 Basic Format: `add hardware /c COMPANY_NAME /r ROLE /hardtech HARDWARE_TECHNOLOGIES`
 
 Extended Format (with optional parameters): `add hardware /c COMPANY_NAME /r ROLE /ex EXPECTATIONS /eli ELIGIBILITY
-/hardtech HARDWARE_TECHNOLOGIES /desc DESCRIPTION`
+/hardtech HARDWARE_TECHNOLOGIES /desc DESCRIPTION /status STATUS`
 
 * The `COMPANY_NAME`, `ROLE` and `HARDWARE_TECHNOLOGIES` must be unique to the list of internships and are
   mandatory parameters.
 
 Examples of usage:
-
-```
+<div style="font-size: 0.85em;">
+<pre><code>
 > add hardware /c Google /r Hardware Engineer /hardtech Arduino, Raspberry Pi
 ------------------------------------------------------------------------------------------------------------------------
     New internship added
     Company: Google, Role: Hardware Engineer, Tech: Arduino, Raspberry Pi
     Now you have 5 internships in the list
 ------------------------------------------------------------------------------------------------------------------------
-```
-
-```
+</code></pre>
+<pre><code>
 > add hardware /c AMD /r FPGA analyser /hardtech FPGA, Verilog /desc Low latency high throughput machine learning inference
 ------------------------------------------------------------------------------------------------------------------------
     New internship added
     Company: AMD, Role: FPGA analyser, Tech: FPGA, Verilog
     Now you have 6 internships in the list
 ------------------------------------------------------------------------------------------------------------------------
-```
+</code></pre>
+</div>
 
 ---
 
@@ -256,8 +286,8 @@ Extended Format (with optional parameters): `edit /index INDEX_NUMBER /c COMPANY
   `/hardtech` flag else if you try and set a software tech flag to a hardware role an error message will be displayed.
 
 Example of usage:
-
-```
+<div style="font-size: 0.65em;">
+<pre><code>
 > edit /index 1 /c IBM /tech C, C++ /eli Y3 student /ex Fast Learner
 ------------------------------------------------------------------------------------------------------------------------
     Internships saved successfully
@@ -265,9 +295,8 @@ Example of usage:
     Internship edited successfully.
     [Company: IBM, Role: Software Engineer, Eligibility: Y3 student, Expectations: Fast Learner, Tech Stack: C, C++]
 ------------------------------------------------------------------------------------------------------------------------
-```
-
-```
+</code></pre>
+<pre><code>
 > edit /index 2 /desc Some extended description for our users
 ------------------------------------------------------------------------------------------------------------------------
     Internships saved successfully
@@ -275,7 +304,9 @@ Example of usage:
     Internship edited successfully.
     [Company: IBM, Role: Data Analytics, Description: Some extended description for our users, Expectations: Good project showcase, Tech Stack: Python, PowerBI]
 ------------------------------------------------------------------------------------------------------------------------
-```
+</code></pre>
+</div>
+
 
 ---
 
@@ -287,15 +318,16 @@ Format: `delete /index INDEX_OF_INTERNSHIP`
 * The `INDEX_OF_INTERNSHIP` should not be out of range of the internship list.
 
 Example of usage:
-
-```
+<div style="font-size: 0.85em;">
+<pre><code>
 > delete /index 1
 ------------------------------------------------------------------------------------------------------------------------
     Internships saved successfully
     You can view the list of internships at data/internships.txt
     Successfully deleted internship: Company: Mavericks, Role: Consultant, Dept: Technical Consultation
 ------------------------------------------------------------------------------------------------------------------------
-```
+</code></pre>
+</div>
 
 ---
 
@@ -309,14 +341,16 @@ Format: `find [TYPE] [/c COMPANY_NAME] [/r ROLE]`
 * It is required to specify at least one of the parameters.
 
 Example of usage:
-
-```
+<div style="font-size: 0.85em;">
+<pre><code>
 > find software /c Google
 ------------------------------------------------------------------------------------------------------------------------
     Here are the matching internships in your list:
     1. Company: Google, Role: Software Engineer, Eligibility: Y3 student, Expectations: Fast Learner, Tech Stack: C, C++
 ------------------------------------------------------------------------------------------------------------------------
-```
+</code></pre>
+</div>
+
 ---
 
 ### Viewing extended description of a specific internship: `desc`
@@ -327,8 +361,8 @@ Format: `desc /index INDEX_OF_INTERNSHIP`
 * The `INDEX_OF_INTERNSHIP` should not be out of range of the internship list.
 
 Example of usage:
-
-```
+<div style="font-size: 0.85em;">
+<pre><code>
 > desc /index 1
 ------------------------------------------------------------------------------------------------------------------------
     Here is your internship description!
@@ -336,45 +370,50 @@ Example of usage:
     Role: intern
     Tech Stack: c++
 ------------------------------------------------------------------------------------------------------------------------
-```
+</code></pre>
+</div>
 
 ---
 
-### Adding interviews for internships: `interviewfor`
+### Adding interviews for internships: `interview for`
 Allows users to add multiple rounds of interviews for each internship added.
 
-Basic Format: `interviewfor /index INDEX_OF_INTERNSHIP /date DATE /start START_TIME /end END_TIME /type TYPE`
+Basic Format: `interview for /index INDEX_OF_INTERNSHIP /date DATE /start START_TIME /end END_TIME /type TYPE`
 
-Extended Format (With optional parameters): `interviewfor /index INDEX_OF_INTERNSHIP /date DATE /start START_TIME 
+Extended Format (With optional parameters): `interview for /index INDEX_OF_INTERNSHIP /date DATE /start START_TIME 
 /end END_TIME /type TYPE /email INTERVIEWER_EMAIL /notes NOTES`
 
 * Duplicate interviews are not allowed. However, adding interviews with different parameters for the same index
   of internship is allowed as it will add multiple rounds of interviews for that particular internship.
 * The `INDEX_OF_INTERNSHIP` should not be out of range of the internship list.
+* Refer to [Date and Time Formats](#date-and-time-formats) for acceptable date and time formats.
 
 Example of usage:
-
-```
-> interviewfor /index 1 /date 2025-01-01 /start 10:00 /end 14:00 /type technical round
+<div style="font-size: 0.85em;">
+<pre><code>
+> interview for /index 1 /date 2025-01-01 /start 10:00 /end 14:00 /type technical round
 ------------------------------------------------------------------------------------------------------------------------
     Internships saved successfully
     You can view the list of internships at data/internships.txt
     New interview added
     Interview Date: 2025-01-01, Start Time: 10:00, End Time: 14:00, Round Name: technical round
 ------------------------------------------------------------------------------------------------------------------------
-```
+</code></pre>
+</div>
 
 ---
 
-### Sorting all interviews added by date: `sortInterviews`
+
+
+### Sorting all interviews added by date: `sort interviews`
 Allows users to sort all rounds of interviews added across multiple internships by date.
 
-Format: `sortInterviews`
+Format: `sort interviews`
 
 Example of usage:
-
-```
-> sortInterviews
+<div style="font-size: 0.85em;">
+<pre><code>
+> sort interviews
 ------------------------------------------------------------------------------------------------------------------------
     Here are your interviews sorted by date and time:
     1. google - intern
@@ -382,14 +421,15 @@ Example of usage:
         Start: 10:00
         End: 11:00
         Type: Coding
-    
+&nbsp;
     2. google - intern
         Date: 2025-10-01
         Start: 15:00
         End: 17:00
         Type: HR  
 ------------------------------------------------------------------------------------------------------------------------
-```
+</code></pre>
+</div>
 
 ---
 
@@ -398,33 +438,40 @@ Example of usage:
 ### Updating user profile information: `my`
 Allows users to update user profile information with details such as name, or preferrred industries, roles
 or companies.
-Basic Format: `my /c COMPANIES_YOU_PREFER /r ROLES_YOU_PREFER /ygoals YEARLY_GOALS /mgoals MONTHLY_GOALS /pay PAY_RANGE
+Basic Format: `my /c COMPANIES_YOU_PREFER /r ROLES_YOU_PREFER /ygoals YEARLY_GOALS /mgoals MONTHLY_GOALS /pay MIN_PAY-MAX_PAY
                  /ind INDUSTRIES_YOU_PREFER /time TIME_RANGE /name YOUR_NAME`
+
+***NOTE:***  When entering pay range `/pay MIN_PAY - MAX_PAY`, ensure minimum and maximum are both numerical values with minimum less than maximum,
+and separate the two with a hyphen "-". Otherwise, you will be prompted again to re-enter these details. 
+
+Do note there is no date-time format mandatory for your preferred `/time TIME_RANGE`, so that you may enter any string such as "Semester 1" or even "Next year" as per your 
+convenience.
 
 > This format shows you all the possible flags or parameters you can set for an internship, however they are ALL optional
 > (as-needed basis) -
 > i.e. you do not need to utilize all flags when using this command, only those relevant to you.
 
 * This feature is implemented to allow the user to be able to simply copy, paste, and use tabular-formatted user profile
-data for their CVs and job applications, hence all data is output in neat ASCII tables which can be copied and pasted into
-required contexts.
-
+  data for their CVs and job applications, hence all data is output in neat ASCII tables which can be copied and pasted into
+  required contexts.
+<div style="page-break-after: always;"></div>
 Example of usage:
-
-```
+<div style="font-size: 0.85em;">
+<pre><code>
 > my /name John Doe /ind Software /c Google /r Developer /mgoals 100 applications /ygoals 2 internships
 ------------------------------------------------------------------------------------------------------------------------
     Successfully updated your user profile as shown below:
-    
+&nbsp;
     Name: John Doe
     Preferred Industries: [Software]
     Preferred Companies: [Google]
     Preferred Roles: [Developer]
     Monthly Goals: 100 applications
     Yearly Goals: 2 internships
-
+&nbsp;
 ------------------------------------------------------------------------------------------------------------------------
-```
+</code></pre>
+</div>
 
 ---
 
@@ -438,12 +485,12 @@ Basic Format: `view user`
   required contexts.
 
 Example of usage:
-
-```
+<div style="font-size: 0.85em;">
+<pre><code>
 > view user
 ------------------------------------------------------------------------------------------------------------------------
     Your personalized profile information as shown below:
-    
+&nbsp;
 ┌───────────────────────────────────────┬──────────────────────────────────────┐
 │Name                                   │John Doe                              │
 ├───────────────────────────────────────┼──────────────────────────────────────┤
@@ -462,12 +509,13 @@ Example of usage:
 │Yearly Goals                           │2 internships                         │
 └───────────────────────────────────────┴──────────────────────────────────────┘
 ------------------------------------------------------------------------------------------------------------------------
-```
+</code></pre>
+</div>
 
 ---
 
 ### Adding a general category of project: `project general`
-Allows users to add a new general project to their list of projects stored in their user profile. 
+Allows users to add a new general project to their list of projects stored in their user profile.
 This is useful for CV formatted project lists, and job applications.
 
 Basic Format: `project general /n PROJECT_NAME /r ROLE /dept DEPARTMENT /obj OBJECTIVES /desc DESCRIPTION /dur DURATION`
@@ -475,16 +523,18 @@ Basic Format: `project general /n PROJECT_NAME /r ROLE /dept DEPARTMENT /obj OBJ
 * All parameters/flags are mandatory and must be present in the command string for successful execution.
 
 Examples of usage:
-
-```
-> project general /n Team Project for CS2113 /r Unit Tester /dept Software Engineering /obj To get an A+ /desc Worked at identifying feature flaws in app /dur May-August
+<div style="font-size: 0.65em;">
+<pre><code>
+>  project general /n Team Project for CS2113 /r Unit Tester /dept Software Engineering /obj To get an A+ /desc Worked at identifying feature flaws in app /dur May-August
 ------------------------------------------------------------------------------------------------------------------------
     Project successfully added to user profile. Below are the details for the same: 
-
-    Project: Team Project for CS2113, Role: Unit Tester, Dept: Software Engineering, Objectives: To get an A+, Duration: May-August, Description: Worked at identifying feature flaws in app
-    Now you have 1 projects in your user profile.
+&nbsp;
+    Project: Team Project for CS2113, Role: Unit Tester, Dept: Software Engineering
+    Objectives: To get an A+, Duration: May-August, Description: Worked at identifying feature flaws in app
+    Now you have 3 projects in your user profile.
 ------------------------------------------------------------------------------------------------------------------------
-```
+</code></pre>
+</div>
 
 ---
 
@@ -498,15 +548,18 @@ Basic Format: `project software /n PROJECT_NAME /r ROLE /dept DEPARTMENT /pro PR
 
 Examples of usage:
 
-```
-> project software /n Team Project for CS2113 /r Unit Tester /pro Java, C++ /obj To get an A+ /desc Worked at identifying feature flaws in app /dur May-August
+<div style="font-size: 0.65em;">
+<pre><code>
+>  project software /n Team Project for CS2113 /r Unit Tester /pro Java, C++ /obj To get an A+ /desc Worked at identifying feature flaws in app /dur May-August
 ------------------------------------------------------------------------------------------------------------------------
     Project successfully added to user profile. Below are the details for the same: 
-
-    Project: Team Project for CS2113, Role: Unit Tester, Programming Languages: Java, C++, Objectives: To get an A+, Duration: May-August, Description: Worked at identifying feature flaws in app
-    Now you have 2 projects in your user profile.
+&nbsp;
+    Project: Team Project for CS2113, Role: Unit Tester, Programming Languages: Java, C++
+    Objectives: To get an A+, Duration: May-August, Description: Worked at identifying feature flaws in app
+    Now you have 1 projects in your user profile.
 ------------------------------------------------------------------------------------------------------------------------
-```
+</code></pre>
+</div>
 
 ---
 
@@ -519,17 +572,18 @@ Basic Format: `project hardware /n PROJECT_NAME /r ROLE /dept DEPARTMENT /hcomp 
 * All parameters/flags are mandatory and must be present in the command string for successful execution.
 
 Examples of usage:
-
-```
+<div style="font-size: 0.65em;">
+<pre><code>
 > project hardware /n Team Project for EE2026 /r Ui Developer /hcomp Basys Board/obj To get an A+ /desc Worked at creating pixel art for the UI /dur May-August
 ------------------------------------------------------------------------------------------------------------------------
     Project successfully added to user profile. Below are the details for the same: 
-
-    Project: Team Project for EE2026, Role: Ui Developer, Hardware Components: Basys Board, Objectives: To get an A+, Duration: May-August, Description: Worked at creating pixel art for the UI
-    Now you have 3 projects in your user profile.
+&nbsp;
+    Project: Team Project for EE2026, Role: Ui Developer, Hardware Components: Basys Board
+    Objectives: To get an A+, Duration: May-August, Description: Worked at creating pixel art for the UI
+    Now you have 2 projects in your user profile.
 ------------------------------------------------------------------------------------------------------------------------
-
-```
+</code></pre>
+</div>
 
 ---
 
@@ -541,14 +595,15 @@ Basic Format: `view general`
   data for their CVs and job applications, hence all data is output in neat ASCII tables which can be copied and pasted into
   required contexts.
 
+<div style="page-break-after: always;"></div>
 
 Examples of usage:
-
-```
+<div style="font-size: 0.85em;">
+<pre><code>
 > view general
 ------------------------------------------------------------------------------------------------------------------------
     Your personalized projects information as shown below:
-    
+&nbsp;
 ┌───────────────────────────────────────┬──────────────────────────────────────┐
 │Project:                               │Team Project for CS2113               │
 ├───────────────────────────────────────┼──────────────────────────────────────┤
@@ -564,7 +619,8 @@ Examples of usage:
 │Department:                            │Software Engineering                  │
 └───────────────────────────────────────┴──────────────────────────────────────┘
 ------------------------------------------------------------------------------------------------------------------------
-```
+</code></pre>
+</div>
 
 ---
 
@@ -577,12 +633,12 @@ Basic Format: `view software`
   required contexts.
 
 Examples of usage:
-
-```
+<div style="font-size: 0.85em;">
+<pre><code>
 > view software
 ------------------------------------------------------------------------------------------------------------------------
     Your personalized projects information as shown below:
-    
+&nbsp;
 ┌───────────────────────────────────────┬──────────────────────────────────────┐
 │Project:                               │Team Project for CS2113               │
 ├───────────────────────────────────────┼──────────────────────────────────────┤
@@ -598,7 +654,8 @@ Examples of usage:
 │Programming Languages:                 │Java, C++                             │
 └───────────────────────────────────────┴──────────────────────────────────────┘
 ------------------------------------------------------------------------------------------------------------------------
-```
+</code></pre>
+</div>
 
 ---
 
@@ -610,14 +667,15 @@ Basic Format: `view hardware`
   data for their CVs and job applications, hence all data is output in neat ASCII tables which can be copied and pasted into
   required contexts.
 
+<div style="page-break-after: always;"></div>
 
 Examples of usage:
-
-```
+<div style="font-size: 0.85em;">
+<pre><code>
 > view hardware
 ------------------------------------------------------------------------------------------------------------------------
     Your personalized projects information as shown below:
-    
+&nbsp;
 ┌───────────────────────────────────────┬──────────────────────────────────────┐
 │Project:                               │Team Project for EE2026               │
 ├───────────────────────────────────────┼──────────────────────────────────────┤
@@ -633,9 +691,10 @@ Examples of usage:
 │Hardware Components:                   │Basys Board                           │
 └───────────────────────────────────────┴──────────────────────────────────────┘
 ------------------------------------------------------------------------------------------------------------------------
-```
-
+</code></pre>
+</div>
 ---
+
 ### Exit `bye`
 
 Exits the program. A user can exit the program at any time by typing `bye` in the command line.
@@ -678,6 +737,8 @@ Relative dates are also accepted:
 - tomorrow
 - next Friday
 
+> Provide only valid dates in the command line. `Natty` cannot read years after 10000, which is not valid in this era.
+
 ---
 
 ## FAQ
@@ -690,27 +751,29 @@ should be only one `internships.txt` in the location.
 
 ---
 
+<div style="page-break-after: always;"></div>
+
 ## Command Summary
 
-| Command            | Format                                                                                                                                                                 |
-|--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Command             | Format                                                                                                                                                                 |
+|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Internship Commands |
-| `add general`      | `add general /c COMPANY_NAME /r ROLE /dept DEPARTMENT`                                                                                                                 |
-| `add software`     | `add software /c COMPANY_NAME /r ROLE /tech TECHNOLOGIES`                                                                                                              |
-| `add hardware`     | `add hardware /c COMPANY_NAME /r ROLE /hardtech HARDWARE_TECHNOLOGIES`                                                                                                 |
-| `edit`             | `edit /index INDEX_OF_INTERNSHIP`                                                                                                                                      |
-| `delete`           | `delete /index INDEX_OF_INTERNSHIP`                                                                                                                                    |
-| `find`             | `find [TYPE] [/c COMPANY_NAME] [\r ROLE]`                                                                                                                              |
-| `desc`             | `desc /index INDEX_OF_INTERNSHIP`                                                                                                                                      |
-| `interviewfor`     | `interviewfor /index INDEX_OF_INTERNSHIP /date DATE /start START_TIME /end END_TIME /type TYPE [/email INTERVIEWER_EMAIL] [/notes NOTES]`                              |
-| `sortInterviews`   | `sortInterviews`                                                                                                                                                       |
-| User Commands      |                                                                                                                                                                        |
-| `my`               | `my /c COMPANIES_YOU_PREFER /r ROLES_YOU_PREFER /ygoals YEARLY_GOALS /mgoals MONTHLY_GOALS /pay PAY_RANGE /ind INDUSTRIES_YOU_PREFER /time TIME_RANGE /name YOUR_NAME` |
-| `view user`        | `view user`                                                                                                                                                            |
-| `project general`  | `project general /n PROJECT_NAME /r ROLE /dept DEPARTMENT /obj OBJECTIVES /desc DESCRIPTION /dur DURATION`                                                             |
-| `project software` | `project software /n PROJECT_NAME /r ROLE /dept DEPARTMENT /pro PROGRAMMING_LANGUAGES /obj OBJECTIVES /desc DESCRIPTION /dur DURATION`                                 |
-| `project hardware` | `project hardware /n PROJECT_NAME /r ROLE /dept DEPARTMENT /hcomp HARDWARE_COMPONENTS /obj OBJECTIVES /desc DESCRIPTION /dur DURATION`                                 |
-| `view general`     | `view general`                                                                                                                                                         |
-| `view software`    | `view software`                                                                                                                                                        |
-| `view hardware`    | `view hardware`                                                                                                                                                        |
+| `add general`       | `add general /c COMPANY_NAME /r ROLE /dept DEPARTMENT`                                                                                                                 |
+| `add software`      | `add software /c COMPANY_NAME /r ROLE /tech TECHNOLOGIES`                                                                                                              |
+| `add hardware`      | `add hardware /c COMPANY_NAME /r ROLE /hardtech HARDWARE_TECHNOLOGIES`                                                                                                 |
+| `edit`              | `edit /index INDEX_OF_INTERNSHIP`                                                                                                                                      |
+| `delete`            | `delete /index INDEX_OF_INTERNSHIP`                                                                                                                                    |
+| `find`              | `find [TYPE] [/c COMPANY_NAME] [\r ROLE]`                                                                                                                              |
+| `desc`              | `desc /index INDEX_OF_INTERNSHIP`                                                                                                                                      |
+| `interview for`     | `interview for /index INDEX_OF_INTERNSHIP /date DATE /start START_TIME /end END_TIME /type TYPE [/email INTERVIEWER_EMAIL] [/notes NOTES]`                             |
+| `sort interviews`   | `sort interviews`                                                                                                                                                      |
+| User Commands       |                                                                                                                                                                        |
+| `my`                | `my /c COMPANIES_YOU_PREFER /r ROLES_YOU_PREFER /ygoals YEARLY_GOALS /mgoals MONTHLY_GOALS /pay PAY_RANGE /ind INDUSTRIES_YOU_PREFER /time TIME_RANGE /name YOUR_NAME` |
+| `view user`         | `view user`                                                                                                                                                            |
+| `project general`   | `project general /n PROJECT_NAME /r ROLE /dept DEPARTMENT /obj OBJECTIVES /desc DESCRIPTION /dur DURATION`                                                             |
+| `project software`  | `project software /n PROJECT_NAME /r ROLE /dept DEPARTMENT /pro PROGRAMMING_LANGUAGES /obj OBJECTIVES /desc DESCRIPTION /dur DURATION`                                 |
+| `project hardware`  | `project hardware /n PROJECT_NAME /r ROLE /dept DEPARTMENT /hcomp HARDWARE_COMPONENTS /obj OBJECTIVES /desc DESCRIPTION /dur DURATION`                                 |
+| `view general`      | `view general`                                                                                                                                                         |
+| `view software`     | `view software`                                                                                                                                                        |
+| `view hardware`     | `view hardware`                                                                                                                                                        |
 | `bye`               | `bye`                                                                                                                                                                  |

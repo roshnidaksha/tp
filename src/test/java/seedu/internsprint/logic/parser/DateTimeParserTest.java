@@ -32,6 +32,13 @@ class DateTimeParserTest {
     }
 
     @Test
+    void parseTimeInput_provideHypenatedTime_returnsCorrectObject() {
+        assertEquals("11:00", DateTimeParser.parseTimeInput("11-00").toString());
+        assertEquals("17:00", DateTimeParser.parseTimeInput("5-00pm").toString());
+        assertEquals("17:00", DateTimeParser.parseTimeInput("5-PM").toString());
+    }
+
+    @Test
     void parseDateTimeInput_provideNaturalLanguageDateTime_returnsCorrectObject() {
         LocalDate today = LocalDate.now();
         assertEquals(today.plusDays(1).atTime(17, 0).toString(),

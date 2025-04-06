@@ -10,8 +10,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static seedu.internsprint.util.InternSprintMessages.OVERALL_SAVE_SUCCESS_MESSAGE;
 import static seedu.internsprint.util.InternSprintMessages.BYE_MESSAGE;
-import static seedu.internsprint.util.InternSprintMessages.SAVE_SUCCESS_MESSAGE;
+
 
 public class ByeCommand extends Command {
     public static final String COMMAND_WORD = "bye";
@@ -37,7 +38,7 @@ public class ByeCommand extends Command {
 
         try {
             internships.saveInternships();
-            feedback.add(SAVE_SUCCESS_MESSAGE);
+            feedback.add(OVERALL_SAVE_SUCCESS_MESSAGE);
         } catch (IOException e) {
             logger.log(Level.WARNING, "Error saving internships while exiting");
             feedback.add(e.getMessage());

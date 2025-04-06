@@ -1,18 +1,1 @@
-[
-    {
-        "date": "2021-10-10",
-        "startTime": "10:00",
-        "ende": "11:00",
-        "type": "Coding",
-        "internshipId": 0,
-        "roundCounter": 0
-    },
-    {
-        "date": "2021-10-10",
-        "starime": "10:00",
-        "endTime": "11:00",
-        "type": "Coding",
-        "internshipId": 1,
-        "roundCounter": 0
-    }
-]
+[]
