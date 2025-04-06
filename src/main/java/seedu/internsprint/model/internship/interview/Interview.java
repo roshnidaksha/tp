@@ -129,7 +129,8 @@ public class Interview {
         at.getRenderer().setCWC(cwc);
 
         at.addRule();
-        at.addRow("Round No.", "Interview Date", "Start Time", "End Time", "Interview Type", "Interviewer Email", "Notes");
+        at.addRow("Round No.", "Interview Date", "Start Time", "End Time",
+            "Interview Type", "Interviewer Email", "Notes");
         at.addRule();
 
         at.addRow(
