@@ -96,8 +96,8 @@ public class DateTimeParser {
      * @return The extracted date.
      */
     private static Date extractDate(String input) {
-        ByteArrayOutputStream NattyErrorStream = new ByteArrayOutputStream();
-        System.setErr(new PrintStream(NattyErrorStream));
+        ByteArrayOutputStream nattyErrorStream = new ByteArrayOutputStream();
+        System.setErr(new PrintStream(nattyErrorStream));
 
         Parser parser = new Parser();
         List<DateGroup> groups = parser.parse(input);
