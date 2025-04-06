@@ -201,6 +201,7 @@ InternSprint . It represents the internal state of the application and is update
 - Handle user information and goals via the `UserProfile`
 
 #### Package Structure
+<div style="page-break-after: always;"></div>
 
 ```
 model
@@ -437,8 +438,10 @@ and a successful execution result is returned to the user.
   a `CommandResult` is returned. The reference frame for saving internships is similar to the reference frame 
   under `DeleteCommand`.
 
+<div style="page-break-after: always;"></div>
+
 <div align="center">
-<img src="images/EditImages/edit_overview.PNG" alt="EditCommandSequenceDiagramOverview" width="70%">
+<img src="images/EditImages/edit_overview.png" alt="EditCommandSequenceDiagramOverview" width="70%">
 </div>
 
 Below are the expanded reference frames for successful and unsuccessful CommandResults returned by execute() method.
@@ -680,6 +683,8 @@ job application processes for tech-savvy users who **value automation and comman
 The product helps CEG students **effortlessly track and maintain job applications** at different stages using short 
 commands, all within a unified CLI. Stay organized, save time, and streamline the application process with automation, 
 ensuring a seamless and efficient job hunt.
+
+<div style="page-break-after: always;"></div>
 
 ## User Stories
 
