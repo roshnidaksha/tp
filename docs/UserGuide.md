@@ -102,6 +102,8 @@ and easily tracking status of your applications.
 > * `/` is a reserved character to represent flag prefixes. It should not be used to give the value of any parameter.
 >   Use hyphens (`-`) instead.
 
+<div style="page-break-after: always;"></div>
+
 ### Internship Commands
 
 ### Help: `help`
@@ -399,6 +401,8 @@ Example of usage:
 
 ---
 
+<div style="page-break-after: always;"></div>
+
 ### Sorting all interviews added by date: `sortInterviews`
 Allows users to sort all rounds of interviews added across multiple internships by date.
 
@@ -589,6 +593,7 @@ Basic Format: `view general`
   data for their CVs and job applications, hence all data is output in neat ASCII tables which can be copied and pasted into
   required contexts.
 
+<div style="page-break-after: always;"></div>
 
 Examples of usage:
 <div style="font-size: 0.85em;">
@@ -660,6 +665,7 @@ Basic Format: `view hardware`
   data for their CVs and job applications, hence all data is output in neat ASCII tables which can be copied and pasted into
   required contexts.
 
+<div style="page-break-after: always;"></div>
 
 Examples of usage:
 <div style="font-size: 0.85em;">
@@ -742,6 +748,8 @@ the same subdirectory of `[JAR file location]/data`. This will ensure your data 
 should be only one `internships.txt` in the location.
 
 ---
+
+<div style="page-break-after: always;"></div>
 
 ## Command Summary
 
