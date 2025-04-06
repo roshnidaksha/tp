@@ -11,6 +11,8 @@ import java.util.Arrays;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.USERPROFILE_INVALID_PARAMS;
 import static seedu.internsprint.util.InternSprintMessages.USER_UPDATE_SUCCESS_MESSAGE;
+import static seedu.internsprint.util.InternSprintExceptionMessages.INVALID_STIPEND_RANGE;
+
 
 import java.util.logging.Logger;
 import java.util.logging.Level;
@@ -20,9 +22,9 @@ import java.util.logging.Level;
  */
 public class UserProfileCommand extends Command {
     public static final String COMMAND_WORD = "my";
-    public static final String MESSAGE_USAGE = "    " + COMMAND_WORD + ": Edits your user profile to save details about"
-            + "yourself.\n" + "     Parameters: " + "/c COMPANIES_YOU_PREFER /r ROLES_YOU_PREFER /ygoals YEARLY_GOALS"
-            + " /mgoals MONTHLY_GOALS\n" + "     /pay PAY_RANGE /ind INDUSTRIES_YOU_PREFER /time TIME_RANGE " +
+    public static final String MESSAGE_USAGE =  COMMAND_WORD + ": Edits your user profile to save details about"
+            + " yourself.\n" + "     Parameters: " + "/c COMPANIES_YOU_PREFER /r ROLES_YOU_PREFER /ygoals YEARLY_GOALS"
+            + " /mgoals MONTHLY_GOALS\n" + "     /pay MIN_PAY_MAX_PAY /ind INDUSTRIES_YOU_PREFER /time TIME_RANGE " +
             "/name YOUR_NAME\n"
             + "     Example: " + COMMAND_WORD + " /name John Doe /c Google,Java /r Hardware Engineer, Automation Intern"
             + " /pay 2000-3000";
@@ -79,8 +81,14 @@ public class UserProfileCommand extends Command {
             result.setSuccessful(false);
             return result;
         }
-        setUserProfileAttributes(user);
 
+        boolean wrongInputByUser = setUserProfileAttributes(user,feedback);
+        if (wrongInputByUser){
+            feedback.add(MESSAGE_USAGE);
+            result = new CommandResult(feedback);
+            result.setSuccessful(false);
+            return result;
+        }
         result = user.saveProfile(feedback);
         if (!result.isSuccessful()) {
             logger.log(Level.WARNING, "There was an error saving the profile.");
@@ -94,19 +102,24 @@ public class UserProfileCommand extends Command {
         return result;
     }
 
-    private void setUserProfileAttributes(UserProfile user) {
+    private boolean setUserProfileAttributes(UserProfile user, ArrayList<String> feedback) {
         logger.log(Level.INFO, "Updating given parameters...");
         if (parameters.containsKey("/name")) {
             user.setName(parameters.get("/name"));
         }
         if (parameters.containsKey("/pay")) {
-            user.setTargetStipendRange(parameters.get("/pay"));
+            String stipendRange = parameters.get("/pay");
+            if (!isValidStipendRange(stipendRange)) {
+                feedback.add(INVALID_STIPEND_RANGE);
+                return true;
+            } else {
+                user.setTargetStipendRange(stipendRange);
+            }
         }
         if (parameters.containsKey("/ind")) {
             user.setPreferredIndustries(parameters.get("/ind"));
         }
         if (parameters.containsKey("/time")) {
-            //to be edited to work with date time parser
             user.setInternshipDateRange(parameters.get("/time"));
         }
         if (parameters.containsKey("/ygoals")) {
@@ -121,5 +134,27 @@ public class UserProfileCommand extends Command {
         if (parameters.containsKey("/r")) {
             user.setPreferredRoles(parameters.get("/r"));
         }
+        return false;
     }
+    private boolean isValidStipendRange(String stipendRange) {
+        try {
+            String[] parts = stipendRange.trim().split("-");
+            if (parts.length != 2) {
+                return false;
+            }
+
+            double min = Double.parseDouble(parts[0].trim());
+            double max = Double.parseDouble(parts[1].trim());
+            min = Math.round(min * 100.0) / 100.0;
+            max = Math.round(max * 100.0) / 100.0;
+            return !(min >= max);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
 }
+
+
+
+
