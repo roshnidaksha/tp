@@ -23,7 +23,7 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.ADD_INTERVIE
 import static seedu.internsprint.util.InternSprintExceptionMessages.DESC_UNABLE_TO_FIND_INTERNSHIP;
 import static seedu.internsprint.util.InternSprintMessages.ADD_INTERVIEW_MESSAGE_SUCCESS;
 
-/*
+/**
  * Represents a command to add an interview to an internship.
  */
 public class AddInterviewCommand extends Command {
