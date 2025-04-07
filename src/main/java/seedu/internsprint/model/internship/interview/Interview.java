@@ -92,11 +92,10 @@ public class Interview {
 
     /**
      * Checks if the start time is before the end time.
-     * If not, it throws an IllegalArgumentException.
      *
-     * @param interviewDate The date of the interview.
-     * @param startTime The start time of the interview.
-     * @param endTime The end time of the interview.
+     * @param interviewDate The date of the interview
+     * @param startTime     The start time of the interview
+     * @param endTime       The end time of the interview
      */
     private void checkDateAndTime(LocalDate interviewDate, LocalTime startTime, LocalTime endTime) {
         if (startTime.isAfter(endTime) || startTime.equals(endTime)) {
@@ -106,10 +105,10 @@ public class Interview {
     }
 
     /**
-     * Returns a string representation of the Interview object.
+     * Returns a string representation of the interview.
      * The details of that interview excluding the next rounds are included.
      *
-     * @return A string representation of the Interview object.
+     * @return A string containing the interview details.
      */
     @Override
     public String toString() {
@@ -185,8 +184,8 @@ public class Interview {
     }
 
     /**
-     * Checks if two Interview objects are equal.
-     * Two interviews are considered equal if they have the same date, start time, and end time.
+     * Checks if this interview is equal to another interview.
+     * Two interviews are considered equal if their date, start time and end time are equal.
      *
      * @param interview The interview to compare with.
      * @return true if the interviews are equal, false otherwise.

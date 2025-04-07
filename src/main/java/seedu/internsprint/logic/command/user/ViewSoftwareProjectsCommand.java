@@ -24,7 +24,7 @@ public class ViewSoftwareProjectsCommand extends Command {
 
     @Override
     protected boolean isValidParameters() {
-        assert parameters.isEmpty():"There should be no flags in this command.";
+        assert parameters.isEmpty() : "There should be no flags in this command.";
         return true;
     }
 
@@ -37,7 +37,7 @@ public class ViewSoftwareProjectsCommand extends Command {
      * Showcases CV-formatted version of projects
      *
      * @param internships refers to the internship list
-     * @param user refers to user saved in session
+     * @param user        refers to user saved in session
      * @return formatted projects string or error message in CommandResult type
      */
     @Override
@@ -46,7 +46,7 @@ public class ViewSoftwareProjectsCommand extends Command {
         CommandResult result;
         List<String> feedback = new ArrayList<>();
         feedback.add(PROJECTS_VIEW_SUCCESS_MESSAGE);
-        for(Project gen:user.projects.getProjectMap().get("software")) {
+        for (Project gen : user.projects.getProjectMap().get("software")) {
             feedback.add(gen.toDescription());
         }
         result = new CommandResult(feedback);
