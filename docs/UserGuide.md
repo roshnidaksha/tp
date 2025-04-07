@@ -340,6 +340,7 @@ Format: `find [TYPE] [/c COMPANY_NAME] [/r ROLE]`
 * `TYPE`, `COMPANY_NAME` and `ROLE` are optional parameters.
 * It is required to specify at least one of the parameters.
 
+<div style="page-break-after: always;"></div>
 Example of usage:
 <div style="font-size: 0.85em;">
 <pre><code>
