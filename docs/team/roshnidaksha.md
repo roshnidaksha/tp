@@ -18,17 +18,17 @@ Check out my contributions to InternSprint at the [TP Dashboard](https://nus-cs2
 
 ### Enhancements Implemented:  
 
- 1. **New feature:** Added the ability to add new internships to the list.
+1. **New feature:** Added the ability to add new internships to the list.
 [(#17)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/17)
 
-    * **What it does**: allows the users to add a new internship to their list of internships.
-    * **Highlights**: The user can add internships with a variety of parameters, including the type of internship (software, hardware, general),
-   company name, technologies required, status of internship, eligibility, role and description.
-   Only the first 3 are mandatory parameters, and the rest are optional.
-    * **Contributions**: I created the `AddInternshipCommand` class and its subclasses, 
-   `AddSoftwareInternshipCommand`, `AddHardwareInternshipCommand` and `AddGeneralInternshipCommand`. 
-   I also created the `Internship` class and its subclasses, `SoftwareInternship`, `HardwareInternship` and `GeneralInternship`. 
-   To manage the list of internships, I created the `InternshipList` class, achieving better encapsulation and separation of concerns.
+   * **What it does**: allows the users to add a new internship to their list of internships.
+   * **Highlights**: The user can add internships with a variety of parameters, including the type of internship (software, hardware, general),
+  company name, technologies required, status of internship, eligibility, role and description.
+  Only the first 3 are mandatory parameters, and the rest are optional.
+   * **Contributions**: I created the `AddInternshipCommand` class and its subclasses, 
+  `AddSoftwareInternshipCommand`, `AddHardwareInternshipCommand` and `AddGeneralInternshipCommand`. 
+  I also created the `Internship` class and its subclasses, `SoftwareInternship`, `HardwareInternship` and `GeneralInternship`. 
+  To manage the list of internships, I created the `InternshipList` class, achieving better encapsulation and separation of concerns.
 
 
 2. **New feature:** Added the ability to add an interview to an internship.
@@ -40,11 +40,10 @@ Check out my contributions to InternSprint at the [TP Dashboard](https://nus-cs2
   Only the first 4 are mandatory parameters, and the rest are optional.
    * **Contributions**: Created the `AddInterviewCommand` class.
 
-**NOTE:** For both the features above, the command takes care to not add any duplicate internships or interviews to the list.
-[(#113)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/113)
-[(#120)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/120)
+    **NOTE:** For both the features above, the command takes care to not add any duplicate internships or interviews to the list.
+    [(#113)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/113)
+    [(#120)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/120)
 
-<div style="page-break-after: always;"></div>
 
 3. **New feature:** Added the function to filter internships.
 [(#87)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/87)
@@ -54,6 +53,7 @@ Check out my contributions to InternSprint at the [TP Dashboard](https://nus-cs2
    role and company name. At least one of the parameters is required to filter the internships.
    * **Contributions**: Created the `FindCommand` class.
 
+<div style="page-break-after: always;"></div>
 
 4. **Additional Enhancement:** Created a parser to handle the command line arguments.
    [(#17)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/17)
@@ -102,8 +102,6 @@ format while describing an internship. [(#237)](https://github.com/AY2425S2-CS21
 * Command Parser [(#96)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/96/files)
 * DateTimeParser [(#74)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/133)
 
-<div style="page-break-after: always;"></div>
-
 **PRs Reviewed:**
 [(#18)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/18)
 [(#29)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/29)
@@ -127,6 +125,8 @@ format while describing an internship. [(#237)](https://github.com/AY2425S2-CS21
 [(#217)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/217)
 [(#222)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/222)
 
+<div style="page-break-after: always;"></div>
+
 **Contributions to Documentation:**
 * **User Guide**
   * Adding internships: software, hardware and general [(#72)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/72)
@@ -143,25 +143,21 @@ format while describing an internship. [(#237)](https://github.com/AY2425S2-CS21
 
 *Architecture Diagram*
 
-<img src="../images/OverallArchitecture.png" alt="OverallArchitecture" width="40%">
-
-<div style="page-break-after: always;"></div>
+<img src="../images/OverallArchitecture.png" alt="OverallArchitecture" width="50%">
 
 *Command Parser Class Diagram*
 
 <img src="../images/CommandParserClassUML.png" alt="CommandParserClassUML" width="100%">
 
+<div style="page-break-after: always;"></div>
+
 *Command Class Overview Sequence Diagram*
 
 <img src="../images/CommandClassOverview.png" alt="CommandClassOverview" width="100%">
 
-<div style="page-break-after: always;"></div>
-
 *Sequence Diagrams showing the flow of execution for adding an internship*
 
 <img src="../images/AddInternshipImages/AddCommandSequenceDiagramOverview.png" alt="AddCommandSequenceDiagramOverview" width="50%">
-<img src="../images/AddInternshipImages/AddCommandSequenceDiagramAlternateFrameOne.png" alt="AddCommandSequenceDiagramOverview" width="60%">
-
 <div style="page-break-after: always;"></div>
-
+<img src="../images/AddInternshipImages/AddCommandSequenceDiagramAlternateFrameOne.png" alt="AddCommandSequenceDiagramOverview" width="60%">
 <img src="../images/AddInternshipImages/AddCommandSequenceDiagramAlternateFrameTwo.png" alt="AddCommandSequenceDiagramOverview" width="100%">
