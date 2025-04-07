@@ -65,11 +65,12 @@ Check out my contributions to InternSprint at the [TP Dashboard](https://nus-cs2
      * I developed proactive file management to ensure the log file and its directories are created automatically if not already preset to prevent runtime errors.
 
 **Contributions to UG:**
-
+ * Did the description in the UG for list, description and sort interviews commands
+ * 
 
 
 **Contributions to DG:**
-
+ * Did the model segment of the DG and used class diagrams to represent the relationship
 
 **Contributions to team-based tasks:**
  * Created the centralised logger to keep track of logging's across the application
