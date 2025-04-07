@@ -52,7 +52,6 @@ public class UserProfileCommand extends Command {
         for (String key : parameters.keySet()) {
             if (!Arrays.asList(OPTIONAL_PARAMETERS).contains(key)) {
                 logger.log(Level.WARNING, "There is some invalid key found.");
-                System.out.println("Invalid key found: " + key);
                 return false;
             }
         }

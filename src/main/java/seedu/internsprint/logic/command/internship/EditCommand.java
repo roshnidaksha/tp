@@ -69,7 +69,6 @@ public class EditCommand extends Command {
         for (String key : parameters.keySet()) {
             if (!key.equals("/index") && !Arrays.asList(POSSIBLE_PARAMETERS).contains(key)) {
                 logger.log(Level.WARNING, "There is a flag that is out of specified optional parameters.");
-                System.out.println("Invalid key found: " + key);
                 return false;
             }
         }
