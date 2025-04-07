@@ -340,6 +340,7 @@ Format: `find [TYPE] [/c COMPANY_NAME] [/r ROLE]`
 * `TYPE`, `COMPANY_NAME` and `ROLE` are optional parameters.
 * It is required to specify at least one of the parameters.
 
+<div style="page-break-after: always;"></div>
 Example of usage:
 <div style="font-size: 0.85em;">
 <pre><code>
@@ -398,6 +399,7 @@ Extended Format (With optional parameters): `interview for /index INDEX_OF_INTER
 * The `INDEX_OF_INTERNSHIP` should not be out of range of the internship list.
 * Refer to [Date and Time Formats](#date-and-time-formats) for acceptable date and time formats.
 
+<div style="page-break-after: always;"></div>
 Example of usage:
 <div style="font-size: 0.85em;">
 <pre><code>
@@ -548,7 +550,7 @@ Examples of usage:
 
 ---
 
-### Adding a software category of internship: `project software`
+### Adding a software category of project: `project software`
 Allows users to add a new software project to their list of projects stored in their user profile.
 This
 
@@ -573,7 +575,7 @@ Examples of usage:
 
 ---
 
-### Adding a hardware category of internship: `project hardware`
+### Adding a hardware category of project: `project hardware`
 Allows users to add a new hardware project to their list of projects stored in their user profile.
 This
 
@@ -634,7 +636,7 @@ Examples of usage:
 
 ---
 
-### Viewing a software category of internship: `view software`
+### Viewing a software category of project: `view software`
 Allows users to view list of saved software projects.
 Basic Format: `view software`
 
@@ -669,7 +671,7 @@ Examples of usage:
 
 ---
 
-### Viewing a hardware category of internship: `view hardware`
+### Viewing a hardware category of project: `view hardware`
 Allows users to view list of saved hardware projects.
 Basic Format: `view hardware`
 
