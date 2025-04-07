@@ -37,7 +37,7 @@ Check out my contributions to InternSprint at the [TP Dashboard](https://nus-cs2
    [()]()
 
     * **What it does**: 
-    * **Highlights**:
+    * **Highlights**: 
       * Handles both required parameters(date, start time, end time, type) and optional parameters(interviewer email, notes)
       * Supports the creation of multiple interview rounds for a particular internship
     * **Contributions**:
@@ -50,8 +50,8 @@ Check out my contributions to InternSprint at the [TP Dashboard](https://nus-cs2
 
     * **What it does**: It sorts interviews based on the dates and start-timings 
     * **Highlights**: 
-      * 
-    * **Contributions**:
+      * It displays the sorted interviews in an ASCII table for easier for better user readability
+    * **Contributions**: Created the `sort interviews` class
 
 
 5. **Additional Enhancement:** Created a centralised logger for the application
@@ -72,7 +72,8 @@ Check out my contributions to InternSprint at the [TP Dashboard](https://nus-cs2
 
 
 **Contributions to team-based tasks:**
-
+ * Created the centralised logger to keep track of logging's across the application
+ * Did the model segment of the DG where I encapsulated the logic for how data is created, modified and sored in our application. I used class diagrams to depict how the different classes are structured and related.
 
 **Contributions beyond the project team:
 **
