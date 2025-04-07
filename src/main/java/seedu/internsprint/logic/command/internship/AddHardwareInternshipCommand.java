@@ -6,6 +6,9 @@ import seedu.internsprint.model.internship.Internship;
 import java.util.Set;
 import java.util.logging.Level;
 
+/**
+ * Adds a hardware internship to the internship list.
+ */
 public class AddHardwareInternshipCommand extends AddInternshipCommand {
     public static final String COMMAND_WORD = "add hardware";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a hardware internship to the internship list.\n"
@@ -23,6 +26,11 @@ public class AddHardwareInternshipCommand extends AddInternshipCommand {
         return MESSAGE_USAGE;
     }
 
+    /**
+     * Creates a HardwareInternship object based on the parameters provided.
+     *
+     * @return HardwareInternship object with the specified parameters.
+     */
     @Override
     protected Internship createInternship() {
         logger.log(Level.INFO, "Creating Hardware Internship");

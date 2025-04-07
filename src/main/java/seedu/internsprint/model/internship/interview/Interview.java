@@ -18,6 +18,11 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.DUPLICATE_IN
 import static seedu.internsprint.util.InternSprintExceptionMessages.END_TIME_BEFORE_START_TIME;
 import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_REQUIRED_PARAMETERS;
 
+/**
+ * Represents an interview for an internship.
+ * An interview can have multiple rounds.
+ * Each round has a date, start time, end time, type, interviewer email and notes.
+ */
 public class Interview {
 
     /* Mandatory required parameters to create an Interview */
