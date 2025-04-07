@@ -172,7 +172,7 @@ public class EditCommand extends Command {
 
     /**
      * Edits corresponding field for foundInternship as specified using flags by user.
-     * @param foundInternship: the internship indexed in the list.
+     * @param foundInternship the internship indexed in the list.
      * @return Boolean object indicating whether correct flag for software or hardware internship is specified.
      */
     private boolean editParametersForFoundInternships(Internship foundInternship) {

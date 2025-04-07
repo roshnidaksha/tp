@@ -114,8 +114,8 @@ public class UserProfileCommand extends Command {
 
     /**
      * Edits corresponding field for user profile as specified using flags by user.
-     * @param user: UserProfile object referring to user saved in session.
-     * @param feedback: if invalid stipend range, add invalid error message to this feedback object for user.
+     * @param user UserProfile object referring to user saved in session.
+     * @param feedback if invalid stipend range, add invalid error message to this feedback object for user.
      * @return Boolean object indicating stipend range is wrong.
      */
     private boolean setUserProfileAttributes(UserProfile user, ArrayList<String> feedback) {
