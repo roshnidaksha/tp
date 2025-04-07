@@ -27,7 +27,7 @@ import static seedu.internsprint.util.InternSprintMessages.ADD_INTERVIEW_MESSAGE
  * Represents a command to add an interview to an internship.
  */
 public class AddInterviewCommand extends Command {
-    public static final String COMMAND_WORD = "interviewfor";
+    public static final String COMMAND_WORD = "interview for";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an interview to the internship list.\n"
         + "    Parameters: " + "/index INDEX_OF_INTERNSHIP /date DATE /start START_TIME /end END_TIME /type TYPE\n"
         + "    [/email INTERVIEWER_EMAIL] [/notes NOTES]\n"

@@ -1,7 +1,0 @@
-[{
-    "role": "IT Intern",
-    "companyName": "UBS",
-    "type": "general",
-    "department": "IT",
-    "internshipId": 0
-}]

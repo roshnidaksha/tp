@@ -36,7 +36,7 @@ public class InternSprintExceptionMessages {
     public static final String LIST_INVALID_PARAMS = "You have entered invalid parameters to the list command.\n"
             + "    The list command works as mentioned below:";
     public static final String SORT_INTERVIEWS_INVALID_PARAMS = "You have entered invalid parameters to the sort " +
-            "command.\n The sortInterviews command works as mentioned below:";
+            "command.\n The sort interviews command works as mentioned below:";
     public static final String USERPROFILE_INVALID_PARAMS = "You have not entered a valid parameter to user profile.\n"
             + "    The user profile command works as mentioned below:";
     public static final String INVALID_CATEGORY_ERROR = "Invalid type provided: Valid types are: " +
@@ -60,4 +60,8 @@ public class InternSprintExceptionMessages {
         "that internship.\n" + "    Please check your date and time or the internship you are referring to.";
     public static final String UNABLE_TO_SAVE_PROFILE = "Unable to save user profile to file %s";
     public static final String UNABLE_TO_LOAD_PROFILE = "Unable to read user profile file";
+    public static final String CORRUPTED_FILE = "The internship data file is corrupted.";
+    public static final String CORRUPTED_PROJECT_FILE = "The project data file is corrupted.";
+    public static final String CORRUPTED_INTERVIEW_FILE = "The interview data file is corrupted.";
+    public static final String CORRUPTED_PROFILE_FILE = "The profile data file is corrupted.";
 }
