@@ -53,7 +53,6 @@ public class DescriptionCommand extends Command {
                 && parameters.containsKey(REQUIRED_PARAMETERS[0]);
     }
 
-
     @Override
     public String getCommandType() {
         return "internship";
