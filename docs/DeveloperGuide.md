@@ -58,8 +58,7 @@ If you plan to use Intellij IDEA (highly recommended):
 Follow the guide [[se-edu/guides] IDEA: Configuring the JDK](https://se-education.org/guides/tutorials/intellijJdk.html)
 to ensure Intellij is configured to use **JDK 17**.
 2. **Import the project as a Gradle project**:
-Follow the guide [[se-edu/guides] IDEA: Importing a Gradle project]
-(https://se-education.org/guides/tutorials/intellijImportGradleProject.html) to import the project into IDEA.
+Follow the guide [[se-edu/guides] IDEA: Importing a Gradle project](https://se-education.org/guides/tutorials/intellijImportGradleProject.html) to import the project into IDEA.
 > Note: Importing a Gradle project is slightly different from importing a normal Java project.
 3. **Verify the setup:**
    * Run the `seedu.internsprint.InternSprint` and try a few commands.
