@@ -26,11 +26,10 @@ public class ViewGeneralProjectsCommandTest {
     }
 
     @Test
-    void viewGeneralProjects_multipleProjects_returnsAllProjects() {
+    void viewGeneralProjects_singleProject_returnsSingleProject() {
         ViewGeneralProjectsCommand viewCommand = new ViewGeneralProjectsCommand();
         UserProfile user = new UserProfile();
         InternshipList internshipList = new InternshipList();
-
         Project project1 = new GeneralProject(
                 "Project 1",
                 "Software Developer",
@@ -39,11 +38,31 @@ public class ViewGeneralProjectsCommandTest {
                 "Created a web application using React and Node.js.",
                 "3 months"
         );
+        user.projects.addProject(project1);
+        CommandResult result = viewCommand.execute(internshipList, user);
+        assertTrue(result.isSuccessful());
+        assertEquals(2, result.getFeedbackToUser().size()); // Success message + project description
+        assertEquals(InternSprintMessages.PROJECTS_VIEW_SUCCESS_MESSAGE, result.getFeedbackToUser().get(0));
+        assertEquals(project1.toDescription(), result.getFeedbackToUser().get(1));
+    }
 
+    @Test
+    void viewGeneralProjects_multipleProjects_returnsAllProjects() {
+        ViewGeneralProjectsCommand viewCommand = new ViewGeneralProjectsCommand();
+        UserProfile user = new UserProfile();
+        InternshipList internshipList = new InternshipList();
+        Project project1 = new GeneralProject(
+                "Project 1",
+                "Software Developer",
+                "Tech Department",
+                "Develop a web app",
+                "Created a web application using React and Node.js.",
+                "3 months"
+        );
         Project project2 = new GeneralProject(
                 "Project 2",
                 "Machine Learning Engineer",
-                "AI Department",
+                "AI",
                 "Train an AI model",
                 "Developed a deep learning model for image recognition.",
                 "6 months"
@@ -68,5 +87,4 @@ public class ViewGeneralProjectsCommandTest {
             viewCommand.execute(internshipList, null);
         });
     }
-    
 }

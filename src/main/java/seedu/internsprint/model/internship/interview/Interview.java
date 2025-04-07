@@ -1,6 +1,9 @@
 package seedu.internsprint.model.internship.interview;
 
 import org.json.JSONObject;
+
+import de.vandermeer.asciitable.AsciiTable;
+import de.vandermeer.asciitable.CWC_LongestLine;
 import seedu.internsprint.exceptions.DuplicateEntryException;
 import seedu.internsprint.logic.parser.DateTimeParser;
 import seedu.internsprint.util.InternSprintLogger;
@@ -8,12 +11,18 @@ import seedu.internsprint.util.InternSprintLogger;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Logger;
 
 import static seedu.internsprint.util.InternSprintExceptionMessages.DUPLICATE_INTERVIEW;
 import static seedu.internsprint.util.InternSprintExceptionMessages.END_TIME_BEFORE_START_TIME;
 import static seedu.internsprint.util.InternSprintExceptionMessages.MISSING_REQUIRED_PARAMETERS;
 
+/**
+ * Represents an interview for an internship.
+ * An interview can have multiple rounds.
+ * Each round has a date, start time, end time, type, interviewer email and notes.
+ */
 public class Interview {
 
     /* Mandatory required parameters to create an Interview */
@@ -86,6 +95,13 @@ public class Interview {
         this.roundCounter = 0;
     }
 
+    /**
+     * Checks if the start time is before the end time.
+     *
+     * @param interviewDate The date of the interview
+     * @param startTime     The start time of the interview
+     * @param endTime       The end time of the interview
+     */
     private void checkDateAndTime(LocalDate interviewDate, LocalTime startTime, LocalTime endTime) {
         if (startTime.isAfter(endTime) || startTime.equals(endTime)) {
             logger.warning("Interview start time cannot be after end time.");
@@ -93,6 +109,12 @@ public class Interview {
         }
     }
 
+    /**
+     * Returns a string representation of the interview.
+     * The details of that interview excluding the next rounds are included.
+     *
+     * @return A string containing the interview details.
+     */
     @Override
     public String toString() {
         String interviewString = "    Interview Date: " + interviewDate +
@@ -108,34 +130,71 @@ public class Interview {
         return interviewString;
     }
 
+    /**
+     * Converts the Interview object to a detailed string representation.
+     * It includes details about all the rounds of the interview.
+     * The details are formatted in a table format.
+     *
+     * @return An ArrayList of strings representing the interview details.
+     */
     public ArrayList<String> toDescription() {
         ArrayList<String> interviewString = new ArrayList<>();
-        if (roundCounter == 0) {
-            interviewString.add("Interview Details:");
-        } else {
-            interviewString.add("Round 1 Interview Details:");
-        }
-        interviewString.add("    Date: " + interviewDate);
-        interviewString.add("    Start Time: " + interviewStartTime);
-        interviewString.add("    End Time: " + interviewEndTime);
-        interviewString.add("    Interview Type: " + interviewType);
-        if (interviewerEmail != null) {
-            interviewString.add("    Interviewer Email: " + interviewerEmail);
-        }
-        if (notes != null) {
-            interviewString.add("    Notes: " + notes);
-        }
+        interviewString.add("Interview details:");
+
+        AsciiTable at = new AsciiTable();
+
+        CWC_LongestLine cwc = new CWC_LongestLine();
+        cwc.add(7, 7);   // Round No.
+        cwc.add(12, 12); // Interview Date
+        cwc.add(10, 10); // Start Time
+        cwc.add(10, 10); // End Time
+        cwc.add(10, 10); // Interview Type
+        cwc.add(25, 25); // Interviewer Email
+        cwc.add(30, 30); // Notes
+        at.getRenderer().setCWC(cwc);
+
+        at.addRule();
+        at.addRow("Round No.", "Interview Date", "Start Time", "End Time",
+            "Interview Type", "Interviewer Email", "Notes");
+        at.addRule();
+
+        at.addRow(
+            "1",
+            getUnformattedInterviewDate(),
+            getUnformattedInterviewStartTime(),
+            getUnformattedInterviewEndTime(),
+            getInterviewType(),
+            getInterviewerEmail() == null ? "N/A" : getInterviewerEmail(),
+            getNotes() == null ? "N/A" : getNotes()
+        );
+        at.addRule();
 
         if (roundCounter != 0) {
             for (int i = 0; i < nextRounds.size(); i++) {
-                interviewString.add("Round " + (i + 2) + " Interview Details:");
-                interviewString.add("    " + nextRounds.get(i).toDescription());
+                at.addRow(
+                    String.valueOf(i + 2),
+                    nextRounds.get(i).getUnformattedInterviewDate(),
+                    nextRounds.get(i).getUnformattedInterviewStartTime(),
+                    nextRounds.get(i).getUnformattedInterviewEndTime(),
+                    nextRounds.get(i).getInterviewType(),
+                    nextRounds.get(i).getInterviewerEmail() == null ? "N/A" : nextRounds.get(i).getInterviewerEmail(),
+                    nextRounds.get(i).getNotes() == null ? "N/A" : nextRounds.get(i).getNotes()
+                );
+                at.addRule();
             }
         }
+        interviewString.addAll(Arrays.asList(at.renderAsArray()));
 
         return interviewString;
     }
 
+    /**
+     * Checks if this interview is equal to another interview.
+     * Two interviews are considered equal if their date, start time and end time are equal.
+     *
+     * @param interview The interview to compare with.
+     * @return true if the interviews are equal, false otherwise.
+     */
     public boolean equals(Interview interview) {
         if (interview == null) {
             return false;
@@ -145,6 +204,13 @@ public class Interview {
             && interviewEndTime.equals(interview.interviewEndTime);
     }
 
+    /**
+     * Adds an interview round to the current interview.
+     * If the round is the same as the current round, it throws a DuplicateEntryException.
+     *
+     * @param round The interview round to be added.
+     * @throws DuplicateEntryException If the round is the same as the current round.
+     */
     public void addInterviewRound(Interview round) throws DuplicateEntryException {
         if (this.equals(round)) {
             logger.warning("Interview round cannot be the same as the current round.");

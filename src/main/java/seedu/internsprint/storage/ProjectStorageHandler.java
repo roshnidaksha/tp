@@ -27,6 +27,7 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_CR
 import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_CREATE_FILE;
 import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_READ_FILE;
 import static seedu.internsprint.util.InternSprintExceptionMessages.CORRUPTED_PROJECT_FILE;
+import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_PARSE_JSON;
 import static seedu.internsprint.util.InternSprintMessages.LOADING_DATA_SUCCESS;
 import static seedu.internsprint.util.InternSprintMessages.LOADING_DATA_FIRST_TIME;
 
@@ -106,14 +107,12 @@ public class ProjectStorageHandler implements Storage<ProjectList> {
     public CommandResult load(ProjectList projects) {
         logger.log(Level.INFO, "Beginning process to load projects from file ...");
         CommandResult result;
-
         if (!file.exists() || file.length() == 0) {
             logger.log(Level.INFO, "Data file is either missing or empty");
             result = new CommandResult(LOADING_DATA_FIRST_TIME);
             result.setSuccessful(true);
             return result;
         }
-
         StringBuilder jsonData = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
@@ -125,20 +124,31 @@ public class ProjectStorageHandler implements Storage<ProjectList> {
             return errorReadingFile();
         }
 
-        JSONArray jsonArray = new JSONArray(jsonData.toString());
-
-        if (jsonArray.isEmpty()) {
+        JSONArray jsonArray;
+        try {
+            jsonArray = new JSONArray(jsonData.toString());
+        } catch (JSONException e) {
+            logger.log(Level.WARNING, "File is corrupted or not valid JSON: " + e.getMessage());
+            List<String> feedback = new ArrayList<>();
+            feedback.add(CORRUPTED_PROJECT_FILE);
+            feedback.add(UNABLE_TO_PARSE_JSON);
+            feedback.add("Please fix or delete the file at: " + file.getAbsolutePath());
+            result = new CommandResult(feedback);
+            result.setSuccessful(false);
+            return result;
+        }
+        if (jsonArray.isEmpty() && jsonData.length() != 2) {
             logger.log(Level.WARNING, "Error in formatting such that JSONArray could not be" +
                     " created successfully");
             result = errorReadingFile();
             return result;
         }
-        assert !jsonArray.isEmpty() : "Array of JSON objects read from file should not be empty at this point";
+        assert !(jsonArray.isEmpty() && jsonData.length() != 2)
+            : "Array of JSON objects read from file should not be empty at this point";
         logger.log(Level.INFO, "Successfully extracted projects as JSON objects from file");
 
         List<String> feedback = new ArrayList<>();
         boolean hasCorruption = false;
-
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject projectJson = jsonArray.getJSONObject(i);
             try {

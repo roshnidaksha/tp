@@ -53,7 +53,6 @@ public class DescriptionCommand extends Command {
                 && parameters.containsKey(REQUIRED_PARAMETERS[0]);
     }
 
-
     @Override
     public String getCommandType() {
         return "internship";
@@ -63,7 +62,7 @@ public class DescriptionCommand extends Command {
      * Executes the description command.
      *
      * @param internships InternshipList object.
-     * @param user Userprofile object.
+     * @param user        Userprofile object.
      * @return CommandResult object containing the result of the command execution.
      */
     @Override

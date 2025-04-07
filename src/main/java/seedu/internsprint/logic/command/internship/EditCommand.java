@@ -41,6 +41,12 @@ public class EditCommand extends Command {
     public String getCommandType() {
         return "internship";
     }
+
+    /**
+     * Executes a check that /index flag is present, so that specific error message can be displayed to user
+     *
+     * @return Boolean object indicating whether index is present or not.
+     */
     protected boolean isPresentIndex(){
         logger.log(Level.INFO, "Entering check for index flag in edit command.");
         if (!parameters.containsKey("/index")) {
@@ -52,13 +58,17 @@ public class EditCommand extends Command {
         return true;
     }
 
+    /**
+     * Executes a check that all valid flags are present, so that specific error message can be displayed to user
+     *
+     * @return Boolean object indicating whether flags follow predefined logic or not.
+     */
     @Override
     protected boolean isValidParameters() {
         logger.log(Level.INFO, "Entering check for all flags in edit command.");
         for (String key : parameters.keySet()) {
             if (!key.equals("/index") && !Arrays.asList(POSSIBLE_PARAMETERS).contains(key)) {
                 logger.log(Level.WARNING, "There is a flag that is out of specified optional parameters.");
-                System.out.println("Invalid key found: " + key);
                 return false;
             }
         }
@@ -69,6 +79,13 @@ public class EditCommand extends Command {
         return true;
     }
 
+    /**
+     * Executes the command to edit an indexed internship.
+     *
+     * @param internships InternshipList
+     * @param user UserProfile.
+     * @return CommandResult object indicating whether execution was successful or not.
+     */
     @Override
     public CommandResult execute(InternshipList internships, UserProfile user) {
         logger.log(Level.INFO, "Entering execute for edit command...");
@@ -152,6 +169,11 @@ public class EditCommand extends Command {
         return result;
     }
 
+    /**
+     * Edits corresponding field for foundInternship as specified using flags by user.
+     * @param foundInternship the internship indexed in the list.
+     * @return Boolean object indicating whether correct flag for software or hardware internship is specified.
+     */
     private boolean editParametersForFoundInternships(Internship foundInternship) {
         logger.log(Level.INFO, "Editing given parameters...");
         boolean checkWrongTypeOfInternship = false;

@@ -27,6 +27,11 @@ public class DeleteCommand extends Command {
     public static final String[] REQUIRED_PARAMETERS = {"/index"};
     private static Logger logger = InternSprintLogger.getLogger();
 
+    /**
+     * Validates that the required parameters are present for this command.
+     *
+     * @return true if the index parameter is present, false otherwise.
+     */
     @Override
     protected boolean isValidParameters() {
         return parameters.size() == REQUIRED_PARAMETERS.length
@@ -37,6 +42,15 @@ public class DeleteCommand extends Command {
         return "internship";
     }
 
+    /**
+     * Executes the delete command.
+     * It deletes the internship entry at the specified index
+     * from the relevant category, and saves the updated list.
+     *
+     * @param internships InternshipList
+     * @param user UserProfile
+     * @return CommandResult object indicating whether execution was successful or not
+     */
     @Override
     public CommandResult execute(InternshipList internships, UserProfile user) {
         assert internships != null : "InternshipList should not be null";

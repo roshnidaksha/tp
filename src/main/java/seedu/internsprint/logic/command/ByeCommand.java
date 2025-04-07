@@ -13,7 +13,9 @@ import java.util.logging.Logger;
 import static seedu.internsprint.util.InternSprintMessages.OVERALL_SAVE_SUCCESS_MESSAGE;
 import static seedu.internsprint.util.InternSprintMessages.BYE_MESSAGE;
 
-
+/**
+ * Represents a command to exit the program.
+ */
 public class ByeCommand extends Command {
     public static final String COMMAND_WORD = "bye";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Exits the program.\n"
@@ -31,6 +33,14 @@ public class ByeCommand extends Command {
         return "internship";
     }
 
+    /**
+     * Executes the command to exit the program.
+     * All unsaved data will be saved before exiting.
+     *
+     * @param internships InternshipList or UserProfile user.
+     * @param user Userprofile object.
+     * @return CommandResult object.
+     */
     @Override
     public CommandResult execute(InternshipList internships, UserProfile user) {
         CommandResult result;
@@ -38,6 +48,7 @@ public class ByeCommand extends Command {
 
         try {
             internships.saveInternships();
+            user.projects.saveProjects();
             feedback.add(OVERALL_SAVE_SUCCESS_MESSAGE);
         } catch (IOException e) {
             logger.log(Level.WARNING, "Error saving internships while exiting");

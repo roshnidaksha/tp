@@ -67,7 +67,8 @@ public class InternSprint {
         if (!profileResult.isSuccessful()) {
             Ui.showResultToUser(profileResult);
         }
-        if (internshipResult.isSuccessful()) {
+        if (internshipResult.isSuccessful() && interviewResult.isSuccessful()
+            && profileResult.isSuccessful() && projectResult.isSuccessful()) {
             Ui.showResultToUser(internshipResult);
         }
 
