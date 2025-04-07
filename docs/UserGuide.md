@@ -425,21 +425,21 @@ Example of usage:
 <pre><code>
 > sort interviews
 ------------------------------------------------------------------------------------------------------------------------
-    Here are your interviews sorted by date and time:
-    1. google - intern
-        Date: 2025-10-01
-        Start: 10:00
-        End: 11:00
-        Type: Coding
-&nbsp;
-    2. google - intern
-        Date: 2025-10-01
-        Start: 15:00
-        End: 17:00
-        Type: HR  
+   Here are your interviews sorted by date and time.
+┌────────────┬────────────┬────────────┬──────────┬──────────┬──────────┬────────────────────┬───────────────────────────────────┐
+│Company Name│Role        │Interview   │Start Time│End Time  │Interview │Interviewer Email   │Notes                              │
+│            │            │Date        │          │          │Type      │                    │                                   │
+├────────────┼────────────┼────────────┼──────────┼──────────┼──────────┼────────────────────┼───────────────────────────────────┤
+│Google      │Software    │2021-10-10  │10:00     │11:00     │Coding    │N/A                 │N/A                                │
+│            │Engineer    │            │          │          │          │                    │                                   │
+├────────────┼────────────┼────────────┼──────────┼──────────┼──────────┼────────────────────┼───────────────────────────────────┤
+│facebook    │intern      │2021-10-11  │10:00     │11:00     │Coding    │N/A                 │N/A                                │
+└────────────┴────────────┴────────────┴──────────┴──────────┴──────────┴────────────────────┴───────────────────────────────────┘
 ------------------------------------------------------------------------------------------------------------------------
 </code></pre>
 </div>
+
+Note: sort interviews command serves the dual function to list all interviews as well. To view the list of all interviews, users can simply use the sort interviews command.
 
 ---
 
