@@ -76,6 +76,7 @@ Check out my contributions to InternSprint at the [TP Dashboard](https://nus-cs2
 
 **Contributions to team-based tasks :**
 * Updated `.gitignore` to ignore data and log files. [(#232)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/233)
+* Managed release for v1.0 and v2.1.
 * Initialised the project with the following classes: [(#17)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/17)
   * Created `Ui` class with commonly used methods.
   * Created `InternSprintExceptionMessages` and `InternSprintMessages` classes to store the exception messages and
