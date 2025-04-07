@@ -4,7 +4,7 @@
 InternSprint is your Ultimate Internship Application Assistant. 
 Navigating internship applications can be overwhelming - multiple platforms, countless CV versions, and keeping track of 
 application stages can quickly become chaotic. InternSprint is here to streamline the entire process, acting as your personal 
-assistant for managing and organizing internship applications efficiently. InternSprint is a CLI application used internship management.
+assistant for managing and organizing internship applications efficiently. InternSprint is a CLI application used for internship management.
 It is written in Java, and has about 8 kLoC.
 ## Summary of Contributions
 ### Code contributed: 
@@ -15,22 +15,22 @@ It is written in Java, and has about 8 kLoC.
 
     **What it does**: allows the user to edit saved internships: either the user can edit preexisting parameters, or make use of a set of additional optional parameters like status or description.
 
-    **Highlights**: This enhancement involved designing the implementation of optional or extended parameters requiring changes to all internship classes (software,hardware,general), and its index-based approach to update parameters was emulated in other commands such as "delete" or "my". 
+    **Highlights**: This enhancement involved designing the implementation of optional or extended parameters requiring changes to all internship classes (software,hardware,general), and its index-based approach and updating parameters logic was emulated in other commands such as "delete" or "my". 
 
 
 2. **New Feature**: Added the ability to create user profile information
 
    **What it does**: allows the user to edit their profile information for use on CVs, by making use of a set of additional optional parameters. This involved implementing new command: "my".
 
-   **Highlights**: This enhancement creating a model type called user, and its corresponding class, and restructuring the command execution logic for all commands to work with a new model type. It then required the implementation of two new commands, edit and view user profile.
-It also involved JUnit Testing to validate the new commands. To achieve the CV formatting we desired I sourced, requested use of and implemented the ASCIITable library.
+   **Highlights**: This enhancement creating a model type called user, and its corresponding class, and restructuring the command execution logic for all commands to work with a new model type. It then required the implementation of a new command to edit user profile.
+It also involved JUnit Testing to validate the new commands. 
 
 
 3. **New Feature**: Added the ability to view user profile in CV-friendly table
 
-   **What it does**: allows the user to voew their profile information for use on CVs, by making use of a set of additional optional parameters. This involved implementing command: "view user".
+   **What it does**: allows the user to view their profile information for use on CVs. This involved implementing a new command: "view user".
 
-   **Highlights**: To achieve the CV formatting we desired I sourced, requested use of and implemented the ASCIITable library.
+   **Highlights**: To achieve the CV formatting we desired I sourced and implemented the ASCIITable library.
 
 
 4. **New Feature**: Added the commands to add three project types
