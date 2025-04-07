@@ -86,6 +86,14 @@ public class Interview {
         this.roundCounter = 0;
     }
 
+    /**
+     * Checks if the start time is before the end time.
+     *
+     * @param interviewDate The date of the interview
+     * @param startTime     The start time of the interview
+     * @param endTime       The end time of the interview
+     * @throws IllegalArgumentException if startTime is after or equal to endTime.
+     */
     private void checkDateAndTime(LocalDate interviewDate, LocalTime startTime, LocalTime endTime) {
         if (startTime.isAfter(endTime) || startTime.equals(endTime)) {
             logger.warning("Interview start time cannot be after end time.");
@@ -93,6 +101,11 @@ public class Interview {
         }
     }
 
+    /**
+     * Returns a string representation of the interview.
+     *
+     * @return A string containing the interview details.
+     */
     @Override
     public String toString() {
         String interviewString = "    Interview Date: " + interviewDate +
@@ -108,6 +121,11 @@ public class Interview {
         return interviewString;
     }
 
+    /**
+     * Returns a description of the interview in a list of strings.
+     *
+     * @return An ArrayList of strings representing the interview description.
+     */
     public ArrayList<String> toDescription() {
         ArrayList<String> interviewString = new ArrayList<>();
         if (roundCounter == 0) {
@@ -136,13 +154,20 @@ public class Interview {
         return interviewString;
     }
 
+    /**
+     * Checks if this interview is equal to another interview.
+     * Two interviews are considered equal if their date, start time and end time are equal.
+     *
+     * @param interview The interview to compare with.
+     * @return true if the interviews are equal, false otherwise.
+     */
     public boolean equals(Interview interview) {
         if (interview == null) {
             return false;
         }
         return interviewDate.equals(interview.interviewDate)
-            && interviewStartTime.equals(interview.interviewStartTime)
-            && interviewEndTime.equals(interview.interviewEndTime);
+                && interviewStartTime.equals(interview.interviewStartTime)
+                && interviewEndTime.equals(interview.interviewEndTime);
     }
 
     public void addInterviewRound(Interview round) throws DuplicateEntryException {
