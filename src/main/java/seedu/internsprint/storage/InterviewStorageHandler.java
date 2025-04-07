@@ -1,5 +1,6 @@
 package seedu.internsprint.storage;
 
+import org.json.JSONException;
 import seedu.internsprint.logic.command.CommandResult;
 import seedu.internsprint.model.internship.InternshipList;
 import seedu.internsprint.model.internship.interview.Interview;
@@ -19,11 +20,13 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 import static seedu.internsprint.util.InternSprintExceptionMessages.FILE_ALREADY_EXISTS;
 import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_CREATE_DIRECTORY;
 import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_CREATE_FILE;
-import static seedu.internsprint.util.InternSprintExceptionMessages.CORRUPTED_INTERVIEW_FILE;
 import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_READ_FILE;
+import static seedu.internsprint.util.InternSprintExceptionMessages.CORRUPTED_INTERVIEW_FILE;
+import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_PARSE_JSON;
 import static seedu.internsprint.util.InternSprintMessages.LOADING_DATA_SUCCESS;
 import static seedu.internsprint.util.InternSprintMessages.LOADING_DATA_FIRST_TIME;
 
@@ -118,7 +121,20 @@ public class InterviewStorageHandler implements Storage<InternshipList> {
             logger.log(Level.SEVERE, "Error reading file");
             return  errorReadingFile();
         }
-        JSONArray jsonArray = new JSONArray(jsonData.toString());
+
+        JSONArray jsonArray;
+        try {
+            jsonArray = new JSONArray(jsonData.toString());
+        } catch (JSONException e) {
+            logger.log(Level.WARNING, "File is corrupted or not valid JSON: " + e.getMessage());
+            List<String> feedback = new ArrayList<>();
+            feedback.add(CORRUPTED_INTERVIEW_FILE);
+            feedback.add(UNABLE_TO_PARSE_JSON);
+            feedback.add("Please fix or delete the file at: " + file.getAbsolutePath());
+            result = new CommandResult(feedback);
+            result.setSuccessful(false);
+            return result;
+        }
         if (jsonArray.isEmpty() && jsonData.length() != 2) {
             logger.log(Level.WARNING, "Error in formatting such that JSONArray could not be" +
                     " created successfully");
