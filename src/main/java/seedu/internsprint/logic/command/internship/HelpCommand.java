@@ -60,11 +60,26 @@ public class HelpCommand extends Command {
         return "internship";
     }
 
+    /**
+     * Checks if the parameters passed to the HelpCommand are valid.
+     * The help command accepts either no parameters or a single parameter.
+     *
+     * @return true if parameters are empty or size is 1, false otherwise
+     */
     @Override
     protected boolean isValidParameters() {
         return parameters.isEmpty() || parameters.size() == 1;
     }
 
+    /**
+     * Executes the help command and returns the appropriate help message.
+     * If no parameters are provided, it shows help for all commands.
+     * If a command is specified, it shows the usage message for that command.
+     *
+     * @param internships InternshipList
+     * @param user UserProfile
+     * @return CommandResult object indicating whether execution was successful or not
+     */
     @Override
     public CommandResult execute(InternshipList internships, UserProfile user) {
         String feedback;

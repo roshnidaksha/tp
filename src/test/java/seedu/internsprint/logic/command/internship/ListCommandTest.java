@@ -1,5 +1,6 @@
 package seedu.internsprint.logic.command.internship;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import seedu.internsprint.logic.command.CommandResult;
@@ -18,13 +19,19 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.internsprint.util.InternSprintMessages.LIST_MESSAGE_SUCCESS;
 
 public class ListCommandTest {
-    private static SoftwareInternship internship1 = new SoftwareInternship("Facebook",
-            "software Intern", "C++");
-    private static SoftwareInternship internship2 = new SoftwareInternship("Google", "SWE Intern",
-            "Java");
-    private static HardwareInternship internship3 = new HardwareInternship("Accenture",
-            "hardware Intern", "baremetal");
-    private static UserProfile userProfile = new UserProfile();
+    private SoftwareInternship internship1;
+    private SoftwareInternship internship2;
+    private HardwareInternship internship3;
+    private UserProfile userProfile;
+
+    @BeforeEach
+    void setUp() {
+        internship1 = new SoftwareInternship("Facebook", "software Intern", "C++");
+        internship2 = new SoftwareInternship("Google", "SWE Intern", "Java");
+        internship3 = new HardwareInternship("Accenture", "hardware Intern",
+                "baremetal");
+        userProfile = new UserProfile();
+    }
 
     @Test
     void isValidParameters_provideNoParameters_returnsTrue() {
