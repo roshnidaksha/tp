@@ -65,5 +65,5 @@ public class InternSprintExceptionMessages {
     public static final String CORRUPTED_INTERVIEW_FILE = "The interview data file is corrupted.";
     public static final String CORRUPTED_PROFILE_FILE = "The profile data file is corrupted.";
     public static final String UNABLE_TO_PARSE_JSON = "Unable to parse JSON data. Please check for syntax errors " +
-            "like missing commas, colons, quotes, or brackets";
+        "like missing commas, colons, quotes, or brackets";
 }
