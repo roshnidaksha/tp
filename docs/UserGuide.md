@@ -399,6 +399,7 @@ Extended Format (With optional parameters): `interview for /index INDEX_OF_INTER
 * The `INDEX_OF_INTERNSHIP` should not be out of range of the internship list.
 * Refer to [Date and Time Formats](#date-and-time-formats) for acceptable date and time formats.
 
+<div style="page-break-after: always;"></div>
 Example of usage:
 <div style="font-size: 0.85em;">
 <pre><code>
