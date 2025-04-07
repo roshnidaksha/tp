@@ -106,7 +106,7 @@ public class InternshipList {
     }
 
     /**
-     * Gets the interview list of all internships.
+     * Gets the list of all interviews of all internships.
      *
      * @return List of interviews.
      */

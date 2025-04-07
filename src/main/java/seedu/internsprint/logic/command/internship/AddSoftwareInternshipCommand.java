@@ -6,6 +6,9 @@ import seedu.internsprint.model.internship.SoftwareInternship;
 import java.util.Set;
 import java.util.logging.Level;
 
+/**
+ * Adds a software internship to the internship list.
+ */
 public class AddSoftwareInternshipCommand extends AddInternshipCommand {
     public static final String COMMAND_WORD = "add software";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a software internship to the internship list.\n"
@@ -23,6 +26,11 @@ public class AddSoftwareInternshipCommand extends AddInternshipCommand {
         return MESSAGE_USAGE;
     }
 
+    /**
+     * Creates a software internship with the given parameters.
+     *
+     * @return SoftwareInternship object with the given parameters.
+     */
     @Override
     protected Internship createInternship() {
         logger.log(Level.INFO, "Creating Software Internship");
