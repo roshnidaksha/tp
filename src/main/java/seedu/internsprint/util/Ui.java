@@ -16,10 +16,6 @@ public class Ui {
 
     private static final String ERROR_PREFIX = "[ERROR] ";
 
-    public static void showDivider() {
-        System.out.println(DIVIDER);
-    }
-
     public static void showWelcomeMessage() {
         System.out.println(DIVIDER);
         System.out.println(LOGO);

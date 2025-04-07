@@ -61,7 +61,7 @@ public class HardwareInternship extends Internship {
     @Override
     public ArrayList<String> toDescription() {
         ArrayList<String> internshipString = super.toDescription();
-        internshipString.add("Embedded Systems: " + embeddedSystems);
+        internshipString.add("Tech: " + embeddedSystems);
         return internshipString;
     }
 

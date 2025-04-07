@@ -21,11 +21,11 @@ import static seedu.internsprint.util.InternSprintMessages.NO_INTERVIEWS_SCHEDUL
 import static seedu.internsprint.util.InternSprintMessages.SORT_INTERVIEWS_MESSAGE_SUCCESS;
 
 public class SortInterviewCommand extends Command {
-    public static final String COMMAND_WORD = "sortInterviews";
+    public static final String COMMAND_WORD = "sort interviews";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts the internship by the name of the interview " +
-            "entry.\n "
-            + " Parameters: None\n"
-            + "Example: " + COMMAND_WORD;
+            "entry.\n"
+            + "    Parameters: None\n"
+            + "    Example: " + COMMAND_WORD;
     private static final Logger logger = InternSprintLogger.getLogger();
 
     @Override
@@ -93,7 +93,7 @@ public class SortInterviewCommand extends Command {
             }
         }
 
-        logger.log(Level.INFO, "sortInterviews command executed successfully");
+        logger.log(Level.INFO, "sort interviews command executed successfully");
         result = new CommandResult(feedback);
         result.setSuccessful(true);
         return result;

@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 import static seedu.internsprint.util.InternSprintExceptionMessages.FILE_ALREADY_EXISTS;
 import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_CREATE_DIRECTORY;
 import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_CREATE_FILE;
+import static seedu.internsprint.util.InternSprintExceptionMessages.CORRUPTED_INTERVIEW_FILE;
 import static seedu.internsprint.util.InternSprintExceptionMessages.UNABLE_TO_READ_FILE;
 import static seedu.internsprint.util.InternSprintMessages.LOADING_DATA_SUCCESS;
 import static seedu.internsprint.util.InternSprintMessages.LOADING_DATA_FIRST_TIME;
@@ -45,7 +46,7 @@ public class InterviewStorageHandler implements Storage<InternshipList> {
             if (file.getParentFile() != null && !file.getParentFile().exists()) {
                 if (!file.getParentFile().mkdirs()) {
                     throw new RuntimeException(String.format(UNABLE_TO_CREATE_DIRECTORY,
-                        file.getParentFile().getAbsolutePath()));
+                            file.getParentFile().getAbsolutePath()));
                 }
                 assert file.getParentFile().exists() : "Directory should exist at this point";
             }
@@ -82,7 +83,7 @@ public class InterviewStorageHandler implements Storage<InternshipList> {
         try (FileWriter fileWriter = new FileWriter(file)) {
             fileWriter.write(jsonArray.toString(4));
             logger.log(Level.INFO, String.format("Successfully saved %s Interviews to file %s",
-                jsonArray.length(), file.getAbsolutePath()));
+                    jsonArray.length(), file.getAbsolutePath()));
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Error writing to file");
             throw new IOException(String.format(UNABLE_TO_CREATE_FILE,
@@ -107,8 +108,6 @@ public class InterviewStorageHandler implements Storage<InternshipList> {
             result.setSuccessful(true);
             return result;
         }
-        assert file.length() != 0 : "File should not be an empty file at this point";
-
         StringBuilder jsonData = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
@@ -116,11 +115,9 @@ public class InterviewStorageHandler implements Storage<InternshipList> {
                 jsonData.append(line);
             }
         } catch (IOException e) {
-            result = errorReadingFile();
             logger.log(Level.SEVERE, "Error reading file");
-            return result;
+            return  errorReadingFile();
         }
-
         JSONArray jsonArray = new JSONArray(jsonData.toString());
         if (jsonArray.isEmpty() && jsonData.length() != 2) {
             logger.log(Level.WARNING, "Error in formatting such that JSONArray could not be" +
@@ -129,13 +126,31 @@ public class InterviewStorageHandler implements Storage<InternshipList> {
             return result;
         }
         assert !(jsonArray.isEmpty() && jsonData.length() != 2) :
-            "Array of JSON objects read from file should not be empty at this point";
+                "Array of JSON objects read from file should not be empty at this point";
         logger.log(Level.INFO, "Successfully extracted interviews as JSON objects from file");
 
+        List<String> feedback = new ArrayList<>();
+        boolean hasCorruption = false;
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject interviewJson = jsonArray.getJSONObject(i);
-            addInterviewToList(internships, interviewJson);
+            try {
+                addInterviewToList(internships, interviewJson);
+            } catch (RuntimeException e) {
+                logger.log(Level.WARNING, "Skipping corrupted entry: " + e.getMessage());
+                hasCorruption = true;
+                feedback.add("Error at JSON entry index: " + (i + 1));
+                feedback.add("Faulty entry: " + interviewJson.toString(4));
+            }
         }
+
+        if (hasCorruption) {
+            feedback.add(0, CORRUPTED_INTERVIEW_FILE);
+            feedback.add("Please fix or delete the file at: " + file.getAbsolutePath());
+            result = new CommandResult(feedback);
+            result.setSuccessful(false);
+            return result;
+        }
+
         logger.log(Level.INFO, "Successfully added interviews from file to interview list in app");
         result = new CommandResult(LOADING_DATA_SUCCESS);
         result.setSuccessful(true);
