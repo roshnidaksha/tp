@@ -42,8 +42,7 @@ public class SortInterviewCommand extends Command {
     private static final int END_WIDTH = 10;
     private static final int TYPE_WIDTH = 10;
     private static final int EMAIL_WIDTH = 20;
-    private static final int NOTES_MIN_WIDTH = 25;
-    private static final int NOTES_MAX_WIDTH = 35;
+    private static final int NOTES_WIDTH = 25;
 
     @Override
     public String getCommandType() {
@@ -156,7 +155,7 @@ public class SortInterviewCommand extends Command {
         cwc.add(END_WIDTH, END_WIDTH); // End Time
         cwc.add(TYPE_WIDTH, TYPE_WIDTH); // Interview Type
         cwc.add(EMAIL_WIDTH, EMAIL_WIDTH); // Interviewer Email
-        cwc.add(NOTES_MAX_WIDTH, NOTES_MIN_WIDTH); // Notes
+        cwc.add(NOTES_WIDTH, NOTES_WIDTH); // Notes
         return cwc;
     }
 
