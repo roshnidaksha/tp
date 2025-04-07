@@ -48,6 +48,23 @@ class DeleteCommandTest {
     }
 
     @Test
+    void deleteCommand_multipleDeletions_returnsValid() {
+        DeleteCommand deleteCommand = new DeleteCommand();
+        HashMap<String, String> parameters1 = deleteCommand.getParameters();
+        parameters1.put("/index", "1");
+        deleteCommand.setParameters(parameters1);
+        CommandResult result1 = deleteCommand.execute(internshipList, user);
+        assertTrue(result1.isSuccessful());
+
+        HashMap<String, String> parameters2 = deleteCommand.getParameters();
+        parameters2.put("/index", "1");
+        deleteCommand.setParameters(parameters2);
+        CommandResult result2 = deleteCommand.execute(internshipList, user);
+        assertTrue(result2.isSuccessful());
+        assertEquals(0, internshipList.getInternshipMap().get("general").size());
+    }
+
+    @Test
     void deleteCommand_provideMissingIndex_returnsInvalid() {
         DeleteCommand deleteCommand = new DeleteCommand();
         CommandResult result = deleteCommand.execute(new InternshipList(),new UserProfile());
@@ -88,7 +105,5 @@ class DeleteCommandTest {
         assertEquals(InternSprintExceptionMessages.INVALID_INDEX_RANGE, result.getFeedbackToUser().get(0));
         assertFalse(result.isSuccessful());
     }
-
-
 }
 
