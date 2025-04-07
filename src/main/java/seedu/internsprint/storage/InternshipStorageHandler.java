@@ -140,7 +140,7 @@ public class InternshipStorageHandler implements Storage<InternshipList> {
             result.setSuccessful(false);
             return result;
         }
-        if (jsonArray.isEmpty()) {
+        if (jsonArray.isEmpty() && jsonData.length() != 2) {
             logger.log(Level.WARNING, "Error in formatting such that JSONArray could not be created successfully");
             result = errorReadingFile();
             return result;
