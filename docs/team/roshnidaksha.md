@@ -76,19 +76,22 @@ Check out my contributions to InternSprint at the [TP Dashboard](https://nus-cs2
 
 **Contributions to team-based tasks :**
 * Updated `.gitignore` to ignore data and log files. [(#232)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/233)
+* Initialised the project with the following classes: [(#17)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/17)
+  * Created `Ui` class with commonly used methods.
+  * Created `InternSprintExceptionMessages` and `InternSprintMessages` classes to store the exception messages and
+    other messages used in the application.
 * Created `Command` and `CommandResult` classes to manage the command execution and result.
 [(#17)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/17)
-* Created `Storage` interface to handle storage of different kinds of data. [(#126)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/126)
+* Created `Storage` interface and singleton `StorageManager` class to handle storage of different kinds of data. 
+[(#126)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/126)
 
   * Wrote the skeleton code for `fromJSON` and `toJSON` methods to handle JSON parsing using [JSON in Java](https://mvnrepository.com/artifact/org.json/json)
-  external library.
+  external library. The same format was used to save other information.
   [(#56)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/56)
-  * Implemented `InternshipStorageHandler` to save internship data in JSON format.
+  * Implemented `createfile()` and `save()` methods of `InternshipStorageHandler` to save internship data in JSON format.
   [(#24)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/24)
   [(#133)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/133)
-* Created `InternSprintExceptionMessages` and `InternSprintMessages` classes to store the exception messages and 
-other messages used in the application.
-[(#17)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/17)
+
 * Referred to [ASCII Table](https://mvnrepository.com/artifact/de.vandermeer/asciitable) implementation from `view project` commands to display interview rounds in a more intuitive
 format while describing an internship. [(#237)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/237)
 * Maintaining the issue tracker: Authored 40+ issues and assigned them appropriately among a total of 120+ issues.
