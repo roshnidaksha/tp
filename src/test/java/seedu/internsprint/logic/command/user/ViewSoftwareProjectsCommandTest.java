@@ -29,22 +29,47 @@ public class ViewSoftwareProjectsCommandTest {
     }
 
     @Test
+    void viewSoftwareProjects_singleProject_returnsSingleProject() {
+        ViewSoftwareProjectsCommand viewCommand = new ViewSoftwareProjectsCommand();
+        UserProfile user = new UserProfile();
+        InternshipList internshipList = new InternshipList();
+        Project project1 = new SoftwareProject(
+                "Software Project 1",
+                "Developer",
+                List.of("Java", "Python"),
+                "Develop a mobile app",
+                "Built a mobile app with React Native.",
+                "6 months"
+        );
+        user.projects.addProject(project1);
+        CommandResult result = viewCommand.execute(internshipList, user);
+        assertTrue(result.isSuccessful());
+        assertEquals(2, result.getFeedbackToUser().size());
+        assertEquals(InternSprintMessages.PROJECTS_VIEW_SUCCESS_MESSAGE, result.getFeedbackToUser().get(0));
+        assertEquals(project1.toDescription(), result.getFeedbackToUser().get(1));
+    }
+
+    @Test
     void viewSoftwareProjects_multipleProjects_returnsAllProjects() {
         ViewSoftwareProjectsCommand viewCommand = new ViewSoftwareProjectsCommand();
         UserProfile user = new UserProfile();
         InternshipList internshipList = new InternshipList();
-
         Project project1 = new SoftwareProject(
-                "Software Project 1", "Developer",
-                List.of("Java", "Python"), "Develop a mobile app",
-                "Built a mobile app with React Native.", "6 months"
+                "Software Project 1",
+                "Developer",
+                List.of("Java", "Python"),
+                "Develop a mobile app",
+                "Built a mobile app with React Native.",
+                "6 months"
         );
         Project project2 = new SoftwareProject(
-                "Software Project 2", "Tester",
-                List.of("JavaScript", "C#"), "Test an API",
-                "Tested a RESTful API for various use cases.", "4 months"
+                "Software Project 2",
+                "Tester",
+                List.of("JavaScript", "C#"),
+                "Test an API",
+                "Tested a RESTful API for various use cases.",
+                "4 months"
         );
-
         user.projects.addProject(project1);
         user.projects.addProject(project2);
         CommandResult result = viewCommand.execute(internshipList, user);

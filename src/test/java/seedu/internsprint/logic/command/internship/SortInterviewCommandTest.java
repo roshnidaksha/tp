@@ -21,16 +21,11 @@ import static seedu.internsprint.util.InternSprintMessages.NO_INTERVIEWS_SCHEDUL
 import static seedu.internsprint.util.InternSprintMessages.SORT_INTERVIEWS_MESSAGE_SUCCESS;
 
 class SortInterviewCommandTest {
-    private SoftwareInternship internship1 = new SoftwareInternship("Facebook",
-            "software Intern", "C++");
-    private HardwareInternship internship2 = new HardwareInternship("Accenture",
-            "hardware Intern", "baremetal");
-    private Interview interview1 = new Interview("2025-04-12", "10:00",
-            "11:00", "HR");
-    private Interview interview2 = new Interview("2025-04-12", "08:00",
-            "09:00", "Technical");
-    private Interview interview3 = new Interview("2025-04-13", "09:00",
-            "10:00", "Managerial");
+    private SoftwareInternship internship1;
+    private HardwareInternship internship2;
+    private Interview interview1;
+    private Interview interview2;
+    private Interview interview3;
 
     private InternshipList internshipList;
     private UserProfile userProfile;
@@ -38,6 +33,16 @@ class SortInterviewCommandTest {
     //
     @BeforeEach
     void setUp() {
+        internship1 = new SoftwareInternship("Facebook", "software Intern",
+                "C++");
+        internship2 = new HardwareInternship("Accenture", "hardware Intern",
+                "baremetal");
+        interview1 = new Interview("2025-04-12", "10:00", "11:00",
+                "HR");
+        interview2 = new Interview("2025-04-12", "08:00", "09:00",
+                "Technical");
+        interview3 = new Interview("2025-04-13", "09:00", "10:00",
+                "Managerial");
         internshipList = new InternshipList();
         userProfile = new UserProfile();
 
