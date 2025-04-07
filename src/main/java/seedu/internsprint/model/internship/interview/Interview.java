@@ -1,6 +1,5 @@
 package seedu.internsprint.model.internship.interview;
 
-import de.vandermeer.asciitable.AsciiTable;
 import org.json.JSONObject;
 import seedu.internsprint.exceptions.DuplicateEntryException;
 import seedu.internsprint.logic.parser.DateTimeParser;

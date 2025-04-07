@@ -61,7 +61,7 @@ public class SortInterviewCommand extends Command {
      * and then displays them in an ASCII table
      *
      * @param internships InternshipList
-     * @param user Userprofile object.
+     * @param user        Userprofile object.
      * @return A CommandResult object containing feedback and success status.
      */
     @Override
@@ -108,7 +108,7 @@ public class SortInterviewCommand extends Command {
      *
      * @param allEntries a list of InterviewEntry objects containing pairs of interviews and internships
      * @return an AsciiTable with columns for company name, role, interview date, start time,
-     * end time, interview type, interviewer email, and notes.
+     *     end time, interview type, interviewer email, and notes.
      */
     private AsciiTable buildInterviewTable(List<InterviewEntry> allEntries) {
         AsciiTable at = new AsciiTable();
@@ -117,7 +117,7 @@ public class SortInterviewCommand extends Command {
 
         at.addRule();
         at.addRow("Company Name", "Role", "Interview Date", "Start Time", "End Time", "Interview Type",
-                "Interviewer Email", "Notes");
+                    "Interviewer Email", "Notes");
         at.addRule();
         for (int i = 0; i < allEntries.size(); i++) {
             InterviewEntry entry = allEntries.get(i);
