@@ -90,6 +90,14 @@ public class Interview {
         this.roundCounter = 0;
     }
 
+    /**
+     * Checks if the start time is before the end time.
+     * If not, it throws an IllegalArgumentException.
+     *
+     * @param interviewDate The date of the interview.
+     * @param startTime The start time of the interview.
+     * @param endTime The end time of the interview.
+     */
     private void checkDateAndTime(LocalDate interviewDate, LocalTime startTime, LocalTime endTime) {
         if (startTime.isAfter(endTime) || startTime.equals(endTime)) {
             logger.warning("Interview start time cannot be after end time.");
@@ -97,6 +105,12 @@ public class Interview {
         }
     }
 
+    /**
+     * Returns a string representation of the Interview object.
+     * The details of that interview excluding the next rounds are included.
+     *
+     * @return A string representation of the Interview object.
+     */
     @Override
     public String toString() {
         String interviewString = "    Interview Date: " + interviewDate +
@@ -112,6 +126,13 @@ public class Interview {
         return interviewString;
     }
 
+    /**
+     * Converts the Interview object to a detailed string representation.
+     * It includes details about all the rounds of the interview.
+     * The details are formatted in a table format.
+     *
+     * @return An ArrayList of strings representing the interview details.
+     */
     public ArrayList<String> toDescription() {
         ArrayList<String> interviewString = new ArrayList<>();
         interviewString.add("Interview details:");
@@ -163,6 +184,13 @@ public class Interview {
         return interviewString;
     }
 
+    /**
+     * Checks if two Interview objects are equal.
+     * Two interviews are considered equal if they have the same date, start time, and end time.
+     *
+     * @param interview The interview to compare with.
+     * @return true if the interviews are equal, false otherwise.
+     */
     public boolean equals(Interview interview) {
         if (interview == null) {
             return false;
@@ -172,6 +200,13 @@ public class Interview {
             && interviewEndTime.equals(interview.interviewEndTime);
     }
 
+    /**
+     * Adds an interview round to the current interview.
+     * If the round is the same as the current round, it throws a DuplicateEntryException.
+     *
+     * @param round The interview round to be added.
+     * @throws DuplicateEntryException If the round is the same as the current round.
+     */
     public void addInterviewRound(Interview round) throws DuplicateEntryException {
         if (this.equals(round)) {
             logger.warning("Interview round cannot be the same as the current round.");
