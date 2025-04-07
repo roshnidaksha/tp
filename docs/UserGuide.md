@@ -423,7 +423,6 @@ Format: `sort interviews`
 Example of usage:
 <div style="font-size: 0.85em;">
 <pre><code>
-```plaintext
 > sort interviews
 ------------------------------------------------------------------------------------------------------------------------
    Here are your interviews sorted by date and time.
