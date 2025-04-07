@@ -51,7 +51,7 @@ public class ListCommand extends Command {
      * Executes the command to list internships.
      *
      * @param internshipList InternshipList object.
-     * @param user Userprofile object.
+     * @param user           Userprofile object.
      * @return CommandResult object containing the result of the command execution.
      */
     @Override
