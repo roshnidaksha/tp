@@ -68,6 +68,12 @@ public class CommandResult {
         this.isExit = false;
     }
 
+    /**
+     * Constructs a {@code CommandResult} with multiple feedback and a success status.
+     *
+     * @param feedbackToUser Feedback to be shown to the user.
+     * @param isSuccessful Indicates if the command was successful.
+     */
     public CommandResult(List<String> feedbackToUser, boolean isSuccessful) {
         logger.log(Level.INFO, "Multiple feedback provided to user and command is unsuccessful...");
         this.feedbackToUser = feedbackToUser;

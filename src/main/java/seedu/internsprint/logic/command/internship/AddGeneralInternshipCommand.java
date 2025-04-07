@@ -6,6 +6,9 @@ import seedu.internsprint.model.internship.Internship;
 import java.util.Set;
 import java.util.logging.Level;
 
+/**
+ * Handles the addition of a general internship to the internship list.
+ */
 public class AddGeneralInternshipCommand extends AddInternshipCommand {
     public static final String COMMAND_WORD = "add general";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a general internship to the internship list.\n"
@@ -23,6 +26,11 @@ public class AddGeneralInternshipCommand extends AddInternshipCommand {
         return MESSAGE_USAGE;
     }
 
+    /**
+     * Creates a GeneralInternship object based on the parameters provided.
+     *
+     * @return GeneralInternship object with the specified details.
+     */
     @Override
     protected Internship createInternship() {
         logger.log(Level.INFO, "Creating General Internship");

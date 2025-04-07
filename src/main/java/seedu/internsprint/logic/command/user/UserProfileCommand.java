@@ -112,6 +112,12 @@ public class UserProfileCommand extends Command {
         return result;
     }
 
+    /**
+     * Edits corresponding field for user profile as specified using flags by user.
+     * @param user UserProfile object referring to user saved in session.
+     * @param feedback if invalid stipend range, add invalid error message to this feedback object for user.
+     * @return Boolean object indicating stipend range is wrong.
+     */
     private boolean setUserProfileAttributes(UserProfile user, ArrayList<String> feedback) {
         logger.log(Level.INFO, "Updating given parameters...");
         if (parameters.containsKey("/name")) {
@@ -146,6 +152,7 @@ public class UserProfileCommand extends Command {
         }
         return false;
     }
+
     private boolean isValidStipendRange(String stipendRange) {
         try {
             String[] parts = stipendRange.trim().split("-");

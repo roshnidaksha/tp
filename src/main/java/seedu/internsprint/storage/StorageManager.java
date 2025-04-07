@@ -67,6 +67,7 @@ public class StorageManager {
     public CommandResult loadUserProfileData(UserProfile userProfile) {
         return profileStorageHandler.load(userProfile);
     }
+
     // ================== Project methods =================
 
     public void saveProjectData(ProjectList projects) throws IOException {
