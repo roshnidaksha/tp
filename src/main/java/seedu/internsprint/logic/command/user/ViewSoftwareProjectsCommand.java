@@ -37,7 +37,7 @@ public class ViewSoftwareProjectsCommand extends Command {
      * Showcases CV-formatted version of projects
      *
      * @param internships refers to the internship list
-     * @param user        refers to user saved in session
+     * @param user  refers to user saved in session
      * @return formatted projects string or error message in CommandResult type
      */
     @Override
