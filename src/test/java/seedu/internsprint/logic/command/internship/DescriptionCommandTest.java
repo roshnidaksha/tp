@@ -23,11 +23,11 @@ import static seedu.internsprint.util.InternSprintExceptionMessages.INVALID_INDE
 import static seedu.internsprint.util.InternSprintMessages.DESC_MESSAGE_SUCCESS;
 
 public class DescriptionCommandTest {
+    private static final int EXPECTED_FEEDBACK_LINES = 4;
     private HardwareInternship internship1;
     private GeneralInternship internship2;
     private SoftwareInternship internship3;
     private InternshipList internshipList;
-    private static final int EXPECTED_FEEDBACK_LINES = 4;
 
     @BeforeEach
     void setUp() {
