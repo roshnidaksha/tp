@@ -143,7 +143,8 @@ public class ProjectStorageHandler implements Storage<ProjectList> {
             result = errorReadingFile();
             return result;
         }
-        assert !jsonArray.isEmpty() && jsonData.length() != 2 : "Array of JSON objects read from file should not be empty at this point";
+        assert !jsonArray.isEmpty() && jsonData.length() != 2
+            : "Array of JSON objects read from file should not be empty at this point";
         logger.log(Level.INFO, "Successfully extracted projects as JSON objects from file");
 
         List<String> feedback = new ArrayList<>();
