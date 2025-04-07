@@ -18,7 +18,7 @@ Check out my contributions to InternSprint at the [TP Dashboard](https://nus-cs2
 
 ### Enhancements Implemented:  
 
-1. **New feature:** Added the ability to add new internships to the list.
+ 1. **New feature:** Added the ability to add new internships to the list.
 [(#17)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/17)
 
     * **What it does**: allows the users to add a new internship to their list of internships.
@@ -34,11 +34,11 @@ Check out my contributions to InternSprint at the [TP Dashboard](https://nus-cs2
 2. **New feature:** Added the ability to add an interview to an internship.
 [(#92)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/92)
 
-    * **What it does**: allows the users to add an interview to an internship.
-    * **Highlights**: The user can add an interview with a variety of parameters, including the date, start time, end time, 
-   type of interview, interviewer email and notes.
-   Only the first 4 are mandatory parameters, and the rest are optional.
-    * **Contributions**: Created the `AddInterviewCommand` class.
+   * **What it does**: allows the users to add an interview to an internship.
+   * **Highlights**: The user can add an interview with a variety of parameters, including the date, start time, end time, 
+  type of interview, interviewer email and notes.
+  Only the first 4 are mandatory parameters, and the rest are optional.
+   * **Contributions**: Created the `AddInterviewCommand` class.
 
 **NOTE:** For both the features above, the command takes care to not add any duplicate internships or interviews to the list.
 [(#113)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/113)
@@ -102,6 +102,8 @@ format while describing an internship. [(#237)](https://github.com/AY2425S2-CS21
 * Command Parser [(#96)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/96/files)
 * DateTimeParser [(#74)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/133)
 
+<div style="page-break-after: always;"></div>
+
 **PRs Reviewed:**
 [(#18)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/18)
 [(#29)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/29)
@@ -125,8 +127,6 @@ format while describing an internship. [(#237)](https://github.com/AY2425S2-CS21
 [(#217)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/217)
 [(#222)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/222)
 
-<div style="page-break-after: always;"></div>
-
 **Contributions to Documentation:**
 * **User Guide**
   * Adding internships: software, hardware and general [(#72)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/72)
@@ -145,15 +145,17 @@ format while describing an internship. [(#237)](https://github.com/AY2425S2-CS21
 
 <img src="../images/OverallArchitecture.png" alt="OverallArchitecture" width="40%">
 
+<div style="page-break-after: always;"></div>
+
 *Command Parser Class Diagram*
 
 <img src="../images/CommandParserClassUML.png" alt="CommandParserClassUML" width="100%">
 
-<div style="page-break-after: always;"></div>
-
 *Command Class Overview Sequence Diagram*
 
 <img src="../images/CommandClassOverview.png" alt="CommandClassOverview" width="100%">
+
+<div style="page-break-after: always;"></div>
 
 *Sequence Diagrams showing the flow of execution for adding an internship*
 
