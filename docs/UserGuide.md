@@ -440,6 +440,8 @@ Example of usage:
 </code></pre>
 </div>
 
+Note: sort interviews command serves the dual function to list all interviews as well. To view the list of all interviews, users can simply use the sort interviews command.
+
 ---
 
 ### User Commands
