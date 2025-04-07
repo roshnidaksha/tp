@@ -715,21 +715,32 @@ inputs.
 
 ## Saving the data
 
-InternSprint data is saved in the hard disk automatically after any command that changes the data.
+InternSprint's internship, project, interview and user profile data is saved in the hard disk automatically after any 
+command that changes the data.
 There is no need to save manually.
 
 ---
 
 ## Editing the data file
 
-InternSprint data is saved automatically in `.json` format `[JAR file location]/data/internships.txt`.
-Advanced users are welcome to update data directly by editing that data file.
+InternSprint's internship data is saved automatically in `.json` format at `[JAR file location]/data/internships.txt`,
+while the project data and interview data are stored in `.json` format at `[JAR file location]/data/projects.txt` 
+and `[JAR file location]/data/interviews.txt` respectively.
+The user profile data is stored in a structured plain text format at `[JAR file location]/data/user.txt`.
+
+Advanced users are welcome to update data directly by editing the data files.
 
 > CAUTION!:
-> The data file has particular `.json` formatting, any change to this file that violates this formatting could **corrupt
-the
-data** and would require the data file to be deleted
-> and started again. Therefore, edit the data file only if you are confident that you can update it correctly.
+> The data file follows a strict .json format. 
+> Any modification that violates this format, such as altering brackets, commas, colons, or quotes, 
+> can corrupt the data and prevent the application from running correctly. 
+> If this happens, you will see an error message and must fix the file or delete it to restart the application.
+
+***NOTE:***
+- Changing JSON formatting elements like commas, colons, brackets, or quotes will trigger an error.
+- Changing keys in the JSON entries (e.g., `companyname`) will also trigger an error.
+- However, changing values in teh JSON entries (e.g., "UBS" to "U") will not trigger an error.
+Therefore, always double-check that your changes to values are valid.
 
 ---
 
