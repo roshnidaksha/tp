@@ -2,7 +2,7 @@
 
 By: Aravind Theertha (@theertha120)
 
-## Project: InternSprint
+## Project Overview: InternSprint
 
 InternSprint is your Ultimate Internship Application Assistant. Navigating internship 
 applications can be overwhelming - multiple platforms, countless CV versions, and keeping track of application 
@@ -10,9 +10,9 @@ stages can quickly become chaotic. InternSprint is here to streamline the entire
 assistant for managing and organizing internship applications efficiently. InternSprint is a CLI application used for
 internship management. It is written in Java, and has about 8 kLoC.
 
-### Summary of Contributions
+## Summary of Contributions
 
-## Code Contributed
+### Code Contributed
 
 Here is the Code I have contributed:
 [Code Contributed](https://nus-cs2113-ay2425s2.github.io/tp-dashboard/?search=&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2025-02-21&tabOpen=true&tabType=authorship&tabAuthor=theertha120&tabRepo=AY2425S2-CS2113-T11a-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code&authorshipIsBinaryFileTypeChecked=false&authorshipIsIgnoredFilesChecked=false)
@@ -55,22 +55,22 @@ during internship loading.
    when loading internship data from file.
    
    * **Highlights**: It checks for:
-   - Syntax-level issues (e.g., missing commas, brackets, or quotes)
-   - Schema-level issues such as missing or incorrectly named keys (e.g., "company name" changed to "com")
+       * Syntax-level issues (e.g., missing commas, brackets, or quotes)
+       * Schema-level issues such as missing or incorrectly named keys (e.g., "company name" changed to "com")
       
-**Contributions to team-based tasks :**
+### Contributions to team-based tasks :
 * Created `DeleteCommand` and `HelpCommand` classes from `Command` and `CommandResult` classes.
 * Created `StorageManager`, `InterviewStorageHandler`, `ProjectStorageHandler`, `ProfileStorageHandler` from the 
 `Storage` interface to handle storage of different kinds of data.
 * Created `Project`, `ProjectList`, `HardwareProject`, `SoftwareProject`, `GeneralProject` using which the 
 project commands where built.
 
-**Testing**
+### Testing
 * Delete Command 
 * Help Command 
 * View Projects Commands (General, Hardware, Software) 
 
-**Contributions to Documentation:**
+### Contributions to Documentation:
 * **User Guide**
     * Delete Command Feature
     * Help Command Feature
