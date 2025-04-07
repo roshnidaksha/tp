@@ -24,11 +24,13 @@ Check out my contributions to InternSprint at the [TP Dashboard](https://nus-cs2
     * **Highlights**: The internships are segregated and displayed according to the three categories of software, hardware and general. The company, role and department of each internship is shown. The command does not take in any additional flags. 
     * **Contributions**: Created the `listCommand` class.
 
+
 2. **New feature:** Added the ability to view the description of any particular internship from the list.
 
     * **What it does**: Allows users to view the detailed description of any internship and based on its index in the list
     * **Highlights**: After validating and parsing the user input (which includes the internship type and index), this feature uses the internship map to retrieve the appropriate list of internships. The parsed internship type serves as the key to this map.
     * **Contributions**: Created the `DescriptionCommand` class.
+
 
 3. **New feature:** Added an Interview class that models the concept of an interview.
 
@@ -40,6 +42,7 @@ Check out my contributions to InternSprint at the [TP Dashboard](https://nus-cs2
       * Created the `interview` class and Designed the core attributes needed for it.
       * Created constructors to accommodate compulsory and mandatory parameters and handled all possible exceptions across the class.
 
+
 4. **New feature:** Added the function to sort interviews.
 
     * **What it does**: It sorts interviews based on the dates and start-timings 
@@ -48,6 +51,7 @@ Check out my contributions to InternSprint at the [TP Dashboard](https://nus-cs2
     * **Contributions**: 
        * Created the `sort interviews` class
        * Created a helper class, `InterviewEntry`, to encapsulate both the internship and its associated interview into a single object. This design aids in the collection and sorting of multiple rounds of interviews by flattening the nested data structure.
+
 
 5. **Additional Enhancement:** Created a centralised logger for the application
 
@@ -64,6 +68,7 @@ Note: For all the command classes and interview class, JUNIT tests, assertions a
 **Contributions to Documentation:**
 * **User Guide**
  * Added documentation for the features `list`, `description` and `sort interviews` commands
+
 **Developer Guide:**
  * Model Component: [(#155)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/155)
  * List all internships: [(#155)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/155)
@@ -80,7 +85,7 @@ User Profile and Projects Diagram
 
 **Contributions to team-based tasks:**
  * Created the centralised logger to keep track of logging's across the application
- * Did the model segment of the DG where I encapsulated the logic for how data is created, modified and sored in our application. I used class diagrams to depict how the different classes are structured and related.
+ * Did the model segment of the DG where I encapsulated the logic for how data is created, modified and stored in our application. I used class diagrams to depict how the different classes are structured and related.
  * Helped to resize, reformat and re-upload `delete` command sequence diagrams.
 
 
