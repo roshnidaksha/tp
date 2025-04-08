@@ -49,7 +49,7 @@ Check out my contributions to InternSprint at the [TP Dashboard](https://nus-cs2
     * **Highlights**: 
       * It displays the sorted interviews in an ASCII table for easier for better user readability
     * **Contributions**: 
-       * Created the `sort interviews` class
+       * Created the `sortInterviewCommand` class
        * Created a helper class, `InterviewEntry`, to encapsulate both the internship and its associated interview into a single object. This design aids in the collection and sorting of multiple rounds of interviews by flattening the nested data structure.
 
 
@@ -70,8 +70,8 @@ Note: For all the command classes and interview class, JUNIT tests, assertions a
  * Added documentation for the features `list`, `description` and `sort interviews` commands
 
 **Developer Guide:**
- * Model Component: [(#155)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/155)
- * List all internships: [(#155)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/155)
+ * Model Component: Created class diagrams for Model and explain the system's model structure in the DG [(#155)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/155)
+ * List all internships: Created sequence diagrams for `listCommand` and explained its structure in the DG [(#155)](https://github.com/AY2425S2-CS2113-T11a-3/tp/pull/155)
 
 **Extracts from Developer Guide**
 
